@@ -13728,3 +13728,52 @@ standing position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-12 - Spec 090 Stage G3 audit (T404): CONFIRMED - independent recomputation reproduces every profile and the bar re-applies as SEPARATED
+
+The T404 second-worker audit of the T403 administration
+(PR #560, merge `e4e32ee9`) is recorded at
+`specs/090-projected-constraints-generalization-study/records/stage-g3-audit-record.md`,
+with its instrument at `tools/spec090/audit_g3.py`,
+written from the freeze record's definitions alone and
+never importing or executing the executor's tool. Both
+pinned source files rehash to the freeze's pins. All
+six profiles (A0, A1, A2, A3, C1, C2) reproduce
+identically in all five components under independent
+recomputation from the frozen extraction; the C1 seed
+and bijection regenerate from the freeze's section 8
+rule and the bijection's SHA-256 matches the outcome
+record's quoted `cc4c4803...`. The frozen bar,
+re-applied to the auditor's own profiles, gives the
+outcome record's table exactly - (A0, A1) and (A0, A2)
+differ in inventory size, M, X; (A0, A3) in inventory
+size, M, X, B; both controls identical to A0; all
+tables at 2,906 objects and 12,639 tokens - so
+SEPARATED is confirmed, not merely consistent. Every
+sampled number in the outcome record agrees with the
+run records, including all twelve quoted profile and
+result-block SHA-256 values (reproduced under the
+canonical form the audit record names). Two grades
+ride below the headline: the outcome record's section
+2(a) double-run claim is UNVERIFIED as an in-repo
+claim, because the six verification run records are
+not in the repository (the outcome record itself
+discloses the verification store is working evidence,
+not the store of record); the on-disk verification
+store corroborates the claim in full, and the audit's
+own recomputation establishes the profiles regardless.
+The claims ledger is byte-identical across the T403
+landing (C090-23's empty diff, verified at both the
+base and the merge), the overlap item stands as
+UNMEASURABLE with no substituted method, and the
+Spec 076 disclosure and capped C090-19 wording are
+carried as the owner's ruling requires. Ledger gate
+on the audit's final tree: full 29 PASS / 0 FAIL /
+1 NOT-RUN, --regen 32 PASS / 0 FAIL / 0 NOT-RUN - the
+standing profile.
+
+No claim's status, stage, or score was changed by this landing; the
+standing position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

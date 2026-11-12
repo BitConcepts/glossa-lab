@@ -13624,3 +13624,42 @@ standing position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-12 - Spec 090 Stage G3 freeze (T402): the separator's administration is frozen before any computation
+
+The G3 freeze record
+(`specs/090-projected-constraints-generalization-study/records/stage-g3-freeze-record.md`)
+pins, before any identity-structure profile is computed over
+H1: both source files by SHA-256 (the corpus snapshot
+`08fc96c8…`, agreeing with G1 §1.5's canonical pin; the M77
+flat file `878fd223…`, agreeing with G1 §1.2); the extraction
+rules of package §3.1 (source-system filter; the
+`canonical_grapheme_ids` list as recorded is the sequence,
+verified against Spec 093's snapshot census, which shows the
+`sign_instance_count` field deterministically excludes the
+eroded `000` code); the permitted counts (H1 = 2,906 records,
+12,639 tokens; the §6 floors of 300 records / 1,000 tokens do
+not fire); the case list A0–A3 and controls C1/C2 in
+executable form, with tie-breaking fixed mechanically; the
+C1 relabeling seed, fixed by a stated hash rule (seed
+835303130428943522); the profile definitions of §2; and the
+bar of §5 verbatim. Two items are recorded unresolved rather
+than papered over: the H1↔flat-file object overlap is not
+measurable by the specified route (the flat file carries no
+identifiers, verified line by line), and the held-out
+verification's enumerated limb passes (Spec 077's frozen
+record and the anchor-support audit computed no profile over
+H1) while an adjacent-record finding stands beside it (Spec
+076's frozen study published a sequence-length profile and
+positional slot aggregates over the same 2,906-record frame
+under a different token construction; the tension between
+§3/C090-18's scoping and §6's gloss is stated verbatim in the
+freeze for the parent seat's ruling, and T403 does not start
+until it is ruled). Claims borne on: C090-18, C090-19,
+C090-21 — none adjudicated, none moved.
+
+No claim's status, stage, or score was changed by this landing; the
+standing position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

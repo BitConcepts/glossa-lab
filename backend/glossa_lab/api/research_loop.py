@@ -697,14 +697,47 @@ async def get_staging() -> dict[str, Any]:
     return {"candidates": candidates, "counts": counts, "archive_counts": archive_counts}
 
 
+def _append_rejection_history(
+    candidate: dict, rejected_at: str, rejected_reason: str,
+) -> None:
+    """Append one rejection to the candidate's rejection history.
+
+    The history is append-only: re-staging or approving a candidate
+    must never erase the fact that it was once rejected (2026-11-13
+    acceptance-path probe (g), defect 5: reject -> re-stage ->
+    approve left no trace of the rejection).
+    """
+    history = candidate.setdefault("rejection_history", [])
+    entry = {"rejected_at": rejected_at, "rejected_reason": rejected_reason}
+    if entry not in history:
+        history.append(entry)
+
+
+def _preserve_current_rejection(candidate: dict) -> None:
+    """Fold a record's current rejected_at / rejected_reason scalars
+    into rejection_history before they are overwritten or cleared,
+    so a rejection recorded by the scalar fields alone (including
+    records written before rejection_history existed) is not lost.
+    """
+    rejected_at = candidate.get("rejected_at")
+    if rejected_at:
+        _append_rejection_history(
+            candidate, rejected_at,
+            candidate.get("rejected_reason") or "user rejected")
+
+
 @router.post("/staging/action")
 async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
     """Approve, reject, or delete a staged anchor candidate.
 
     Body: {sign, proposed_reading, action: 'approve'|'reject'|'delete', reason?}
 
-    - approve  → review_status='approved', approved_at timestamp
-    - reject   → review_status='rejected', rejected_reason kept for audit
+    - approve  → review_status='approved', approved_at timestamp;
+      state-guarded: valid only from 'staged' or 'blocked',
+      refused (ok=False, nothing changed) from any other state
+    - reject   → review_status='rejected', rejected_reason kept
+      for audit; every rejection is also appended to the
+      append-only rejection_history, which re-staging preserves
     - delete   → removes entry from file entirely
     """
     sign     = body.get("sign", "")
@@ -725,6 +758,21 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
     except Exception as exc:
         return {"ok": False, "error": f"could not read staging file: {exc}"}
 
+    if action == "approve":
+        # State guard (2026-11-13 acceptance-path probe (h),
+        # defect 6): approve is valid only from the states the
+        # pipeline stages candidates in — "staged" or "blocked".
+        # Approving an already-approved (or rejected, verified,
+        # expired) candidate is refused and changes nothing.
+        for c in candidates:
+            if c.get("sign") == sign and c.get("proposed_reading") == reading:
+                status = c.get("review_status") or "staged"
+                if status not in ("staged", "blocked"):
+                    return {"ok": False, "error":
+                            f"cannot approve candidate {sign}={reading} "
+                            f"in state '{status}'; approve requires "
+                            f"'staged' or 'blocked'"}
+
     now = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
     matched = False
     updated: list[dict] = []
@@ -738,11 +786,17 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
                 c["review_status"] = "approved"
                 c["approved_at"] = now
             elif action == "reject":
+                _preserve_current_rejection(c)
                 c["review_status"] = "rejected"
                 c["rejected_at"] = now
                 c["rejected_reason"] = reason or "user rejected"
+                _append_rejection_history(c, now, c["rejected_reason"])
             elif action == "staged":
-                # Re-stage: move approved/rejected back to staging queue
+                # Re-stage: move approved/rejected back to staging
+                # queue. The rejection itself is never erased: fold
+                # the current rejection into the append-only
+                # rejection_history before clearing the scalars.
+                _preserve_current_rejection(c)
                 c["review_status"] = "staged"
                 c.pop("approved_at", None)
                 c.pop("rejected_at", None)

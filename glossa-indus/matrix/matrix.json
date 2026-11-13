@@ -3,9 +3,9 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl",
  "generated_by": "tools/ledger/generate_matrix.py (backend/glossa_lab/matrix_generate.py)",
  "as_of": {
-  "ledger_sha256": "378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f",
-  "ledger_lines": 995,
-  "ledger_date": "2026-11-06",
+  "ledger_sha256": "95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a",
+  "ledger_lines": 1008,
+  "ledger_date": "2026-11-13",
   "ledger_schema": "ledger-schema v1",
   "matrix_defs": "matrix-defs v1"
  },
@@ -5790,6 +5790,84 @@
   },
   {
    "id": "092-platform-hardening-r4/C092-3",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-7",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-4",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-5",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-13",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-11",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-10",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-6",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-9",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-2",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-12",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-8",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-3",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "094-research-loop-acceptance-hardening/C094-1",
    "population": "bundle",
    "status": "draft",
    "stage": "created"
@@ -24567,6 +24645,149 @@
    ]
   },
   {
+   "row": "094-research-loop-acceptance-hardening/C094-1",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-1",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-10",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-10",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-11",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-11",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-12",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-12",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-13",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-13",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-2",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-2",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-3",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-3",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-4",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-4",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-5",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-5",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-6",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-6",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-7",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-7",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-8",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-8",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "094-research-loop-acceptance-hardening/C094-9",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "094-research-loop-acceptance-hardening/C094-9",
+    "spec.md"
+   ]
+  },
+  {
    "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "column": "055",
    "column_class": "studies",
@@ -24734,8 +24955,8 @@
   }
  ],
  "coverage": {
-  "rows_total": 964,
-  "rows_with_cells": 950,
+  "rows_total": 977,
+  "rows_with_cells": 963,
   "empty_rows": [
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -25093,30 +25314,30 @@
    ],
    "corpus_texts": []
   },
-  "cells_total": 1487,
+  "cells_total": 1500,
   "cells_by_relation": {
-   "supports": 1480,
+   "supports": 1493,
    "opposes": 7,
    "constrains": 0
   },
   "cells_by_class": {
    "studies": 7,
-   "documents": 1480,
+   "documents": 1493,
    "research_checks": 0,
    "anchors": 0,
    "corpus_texts": 0
   },
   "falsifier_coverage": {
-   "covered": 955,
-   "total": 964,
+   "covered": 968,
+   "total": 977,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 941,
-     "total": 941
+     "covered": 954,
+     "total": 954
     }
    }
   },

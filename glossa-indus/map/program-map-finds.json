@@ -164,10 +164,10 @@
   }
  ],
  "stamp": {
-  "ledger_latest_entry_date": "2026-11-06",
-  "ledger_lines": 995,
+  "ledger_latest_entry_date": "2026-11-13",
+  "ledger_lines": 1008,
   "ledger_schema": "ledger-schema v1",
-  "ledger_sha256": "378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f",
+  "ledger_sha256": "95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a",
   "program_map_defs": "program-map-defs v1",
   "program_map_taxonomy": "program-map-taxonomy v1"
  },

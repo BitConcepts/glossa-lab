@@ -506,6 +506,11 @@
       "spec_dir": "092-platform-hardening-r4",
       "domain": "Program infrastructure",
       "subdomain": "Governance, lifecycle & generated layers"
+    },
+    {
+      "spec_dir": "094-research-loop-acceptance-hardening",
+      "domain": "Program infrastructure",
+      "subdomain": "Governance, lifecycle & generated layers"
     }
   ],
   "extracted_documents": [

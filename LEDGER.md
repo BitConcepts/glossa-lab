@@ -13970,3 +13970,118 @@ position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-13 - Spec 094 T004 executed: the claims-ledger intake deferred at adoption (PR #566) is discharged
+
+The adoption of Spec 094 (PR #566) landed the spec files only and
+deferred the claims-ledger intake by name, as tasks.md T004, on the
+Spec 092 pattern (PR #548). This act executes it, and the declared
+exception on #566's CI (the gate's V10 program-map equivalence legs
+naming the unassigned spec directory, the program-map conformance
+failures, and the bundle-versus-ledger reconciliation gap) is
+discharged: the failures were the missing intake, and the intake
+cures every one.
+
+The program-map assignment: `094-research-loop-acceptance-hardening`
+is assigned in `glossa-indus/map/program-map-taxonomy.json` to
+Program infrastructure / Governance, lifecycle & generated layers,
+the subdomain of Specs 089-092. The intake proper ran through
+`tools/ledger/import_bundle.py --spec
+specs/094-research-loop-acceptance-hardening --date 2026-11-13` -
+the only sanctioned path, never a hand-edit: **13 appended, 0
+already canonical** (094-research-loop-acceptance-hardening/
+C094-1..13). Ledger: 995 -> **1008 lines**; SHA-256
+`378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f`
+-> `95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a`;
+append-only verified byte-wise (the first 995 lines hash to the
+pre-append file). `tools/ledger/validate_ledger.py` over the grown
+ledger: **PASS** - **977 claim entries** (bundle population 941 ->
+954, extracted 23); falsifier coverage 968 of 977 (the 13 C094
+claims all carry falsifiers); does_not_establish coverage 755 of
+977, unchanged.
+
+The settling chain was refreshed in the standing precedent order.
+`run_settling.py verify-canonicals` over the grown build, before
+any pin moved: **6/6 registered canonicals reproduce** (the C094
+claims carry no sign_refs). Both T405 scenarios were re-executed
+under run-defs v2 with the standing pair's exact 286-sign
+full-frame scope and the registered scenario ids: runs
+**settling-20261113T214900Z-951ac9** (incumbent) and
+**settling-20261113T214901Z-42d642** (full-register); both result
+blocks **byte-equal** to the superseded generation's. The Stage 4
+dual-run comparison was re-filed from the new pair via
+`run_settling.py compare`: identical to the previous filing except
+the ledger pin. Assignment sets re-materialized
+(`run_settling.py materialize-sets`, run
+**settling-20261113T214910Z-cd0183**; sets unchanged - incumbent
+94, full-register 286, H003 out of frame; the artifact's only
+differing line is the producing-run line). The settling-canonical
+provenance pin was refreshed `378f700d...`/995 ->
+`95d62298...`/1008 with the re-derivation recorded in the file
+itself as `re_derivations[9]` (expectations unchanged;
+glossa-settle-1 unchanged). The superseded pair
+(settling-20261110T153530Z-bef382, record SHA-256
+`02495eba32170f0465b953ba833cc029f2ebd9c0bced9c62d9beb138fbb03874`,
+git blob `587ad817b0adb7e2c9f38df89c93d567f381d015`, and
+settling-20261110T153537Z-fdc511, record SHA-256
+`da877030e9d69c8f1a7323dbe2d215e05f9f38d3451b4a6578841eb273d643d4`,
+git blob `ee9205ffedefaa13df3e45556d6f41f982505d54`) departed the
+store in the refresh commit `5eec8341c88dbb091c900b6482664664c8f596d5`;
+`tools/ledger/build_legacy_index.py` on the committed refresh
+appended the `re_derivations[9]` event entry, and the pair's two
+`departure` acts were appended through
+`run_records.departure_act` + `append_act` (run-defs v2 sec. 7.1),
+the completion builder's departure branch not reaching
+writer-entered generations, exactly as at the Spec 092 intake.
+Run index: 51 -> **59 acts**.
+
+Regeneration over the grown ledger with the plain generators in
+dependency order (the Spec 093 Appendix A procedure): matrix
+(matrix.json SHA-256
+`4035852c28c50b65cc11020a08a5819b7fbe65e5430cfc3449ffecc18c92791f`),
+the Spec 086 map (map-data.json SHA-256
+`c9112e08c1cb5719a31eb3bb4b48e5dd161ad30b8d03f86becfc29501fb91fea`;
+settling runs carried: 2), and the program map (**977 claims -
+95 studies - 28 unjudged studies** - the 094 study is judged once
+its claims stand in the ledger; finds 38, `bundle_less_study` back
+to 28).
+
+Gate on the final tree, `tools/ledger/check_ledger_gate.py`
+(glossa-ci venv), verbatim summaries, recorded per T004(e):
+
+- default: **29 PASS / 0 FAIL / 1 NOT-RUN** - RESULT: PASS
+- `--regen`: **32 PASS / 0 FAIL / 0 NOT-RUN** - RESULT: PASS
+
+The standing profile, restored over the grown census (1008 lines,
+977 claims).
+
+Test maintenance - census re-pins, every moved literal re-set from
+the regenerated artifacts' actuals, no check weakened, skipped, or
+deleted: `test_program_map_conformance.py` (claims 964 -> 977;
+bundle 941 -> 954; class open 955 -> 968; studies 94 -> 95;
+falsifier present 955 -> 968; Program infrastructure 21 -> 22;
+unjudged 28, null-falsifier extracted 9, multi-spec 44 unchanged);
+`test_spec086_map.py` (claims_total 964 -> 977 at three sites;
+draft 940 -> 953; ledger lines 995 -> 1008; claim elements 964 ->
+977; elements total 1608 -> 1621; supports 1480 -> 1493 at two
+sites; loads 964 -> 977; falsifier census 955/964 -> 968/977; AEE
+state census 964 -> 977; claims untouched by any run 963 -> 976);
+`test_spec086_ledger_gate.py` ("1487 matrix cells" -> 1500; "964
+claims counted" -> 977; "1487 map edges" -> 1500; "supports 1480"
+-> 1493; "964 claim nodes" -> 977; "94 study nodes" -> 95);
+`frontend/e2e/system-graph.spec.ts` ("964 claims in the ledger" ->
+977). `test_spec086_ledger_migration.py::test_p2_reconciliation`,
+red on the adoption PR for the bundle-versus-ledger fingerprint
+gap, passes on the import alone. One local-only note:
+`test_spec086_map.py::test_builder_refuses_a_run_pinned_to_another_build`
+fails on this VM with the same DID-NOT-RAISE signature it carries
+on pristine main here (glob-order baseline; CI is authoritative
+for it).
+
+This act establishes no C094 claim - the build stages discharge
+them. No existing claim's status, stage, or score was changed; the
+research loop remains off the live stores (C094-13); the standing
+position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

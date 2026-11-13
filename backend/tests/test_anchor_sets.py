@@ -92,6 +92,59 @@ def test_update_anchor_set_not_found(client):
     assert resp.status_code == 404
 
 
+# ── creation validation (acceptance-path defect 7, 2026-11-13) ────────────────
+# Probe evidence: POST /api/v1/anchor-sets accepted a fabricated cipher
+# (ZZZ901 -> ka) that exists in no corpus inventory and no anchor register,
+# and stored it at confidence "high" because the caller omitted the field.
+# Anchor sets feed experiments as verified mappings, so creation is
+# fail-closed: the grapheme must exist, and confidence must be explicit.
+
+def _name_count(client, name):
+    return sum(1 for e in client.get("/api/v1/anchor-sets").json() if e["name"] == name)
+
+
+def test_create_anchor_set_rejects_unknown_grapheme(client):
+    before = _name_count(client, "Fabricated")
+    resp = client.post("/api/v1/anchor-sets", json={
+        "name": "Fabricated", "language": "probe",
+        "pairs": [{"cipher": "ZZZ901", "target": "ka", "confidence": "high"}],
+    })
+    assert resp.status_code == 400
+    assert "ZZZ901" in resp.json()["detail"]
+    assert _name_count(client, "Fabricated") == before
+
+
+def test_create_anchor_set_rejects_unknown_grapheme_among_known(client):
+    pairs = [
+        {"cipher": "004", "target": "T", "confidence": "high"},
+        {"cipher": "ZZZ904", "target": "x", "confidence": "low"},
+    ]
+    resp = client.post("/api/v1/anchor-sets", json={"name": "Mixed", "pairs": pairs})
+    assert resp.status_code == 400
+    assert "ZZZ904" in resp.json()["detail"]
+
+
+def test_create_anchor_set_requires_explicit_confidence(client):
+    """Omitting confidence must not silently store the pair as 'high'."""
+    before = _name_count(client, "No Confidence")
+    resp = client.post("/api/v1/anchor-sets", json={
+        "name": "No Confidence",
+        "pairs": [{"cipher": "004", "target": "T"}],
+    })
+    assert resp.status_code == 422
+    assert _name_count(client, "No Confidence") == before
+
+
+def test_create_anchor_set_accepts_register_form_grapheme(client):
+    """The register names signs M-prefixed (M342); the corpus inventory
+    names the same signs bare (342) and starred (*267). Each form of a
+    real grapheme is accepted at creation."""
+    a = _create_set(client, name="Register Form", pairs=[
+        {"cipher": "M342", "target": "x", "confidence": "low", "note": ""},
+    ])
+    assert a["pairs"][0]["cipher"] == "M342"
+
+
 # ── delete ─────────────────────────────────────────────────────────────────────
 
 def test_delete_anchor_set(client):

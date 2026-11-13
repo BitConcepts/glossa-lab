@@ -13816,6 +13816,112 @@ test_spec029_phase_a 31, test_spec029_phase_b 60,
 test_study_loop 7, test_indus_claims_carryover 2) plus the new
 module: 159 passed, 0 failed, run locally with the CI venv.
 
+## 2026-11-13 - Anchor-set creation validation: fabricated graphemes refused, confidence explicit (acceptance-path defect 7)
+
+The 2026-11-13 acceptance-path test of the automated research
+loop found that POST /api/v1/anchor-sets accepted pairs naming
+graphemes that exist in no corpus and no anchor register, and
+stored them at confidence "high" when the caller omitted the
+field (probe: cipher ZZZ901 -> "ka" created at high confidence).
+Anchor sets feed experiments as verified mappings, so creation
+is now fail-closed in backend/glossa_lab/api/anchor_sets.py:
+
+- Every pair's cipher must exist in the program's records: the
+  anchor register (backend/reports/INDUS_FINAL_ANCHORS.json, the
+  signs API's authoritative anchor file) or the pinned corpus
+  snapshot's canonical grapheme inventory
+  (glossa-corpus/indus/exports/indus_research.jsonl, SHA-256
+  pinned by the Spec 090 G3 freeze). Existence in either source
+  suffices; the register's M-prefixed naming (M342) and the
+  inventory's bare form (342) name the same signs and both match.
+  An unknown grapheme is refused with HTTP 400 naming it; if
+  neither source can be read, pair-bearing creation is refused
+  with HTTP 503 rather than admitted unverified.
+- AnchorPair.confidence is now a required field with no default.
+  Omitting it is refused (422) instead of silently storing the
+  pair as "high". No in-repo caller or test relied on the
+  default (the frontend always sends the field; the MCP tool
+  forwards caller-supplied pairs). Because AnchorPair is shared
+  with the update model, an update that omits confidence on a
+  pair is likewise refused rather than defaulted.
+
+Stored sets and their format are untouched; no data migrated.
+Four regression tests land with the fix (unknown grapheme,
+unknown grapheme among known ones, omitted confidence, and a
+register-form positive control); the three refusal tests failed
+on the pre-fix code with 201 responses and pass after. Local
+runs (CI venv): test_anchor_sets 16, test_research_loop 20,
+test_staging_promotion_evidence 5, test_glossa_mcp and
+test_cloud_workspace_scope green - 96 passed in total. Scope is
+the creation path only: the PUT update path's grapheme
+membership is unchanged by this landing and is recorded as the
+same class of opening for a follow-up decision.
+
+No claim's status, stage, or score was changed by this landing; the
+standing position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-13 - Research-loop promotion integrity: corpus membership precondition, no anchor overwrite at any confidence, the request may not supply the evidence (acceptance-path defects 3, 4, and the bug part of 2)
+
+The same 2026-11-13 acceptance-path test found three defects in
+POST /api/v1/research-loop/staging/promote (promote_to_anchors in
+backend/glossa_lab/api/research_loop.py). Defect 3 (probe (d)): a
+grapheme that exists in no corpus (ZZZ904, "phantom-grapheme")
+was promoted to a MEDIUM anchor; no corpus-membership check
+existed anywhere on the path. Defect 4 (probe (c)): only
+HIGH/MEDIUM anchors were protected from overwrite, so LOW anchor
+M252's reading "min" was silently replaced and its confidence
+raised to MEDIUM - 116 of the 287 anchors (113 CANDIDATE + 3 LOW)
+were unprotected. Defect 2, bug part (probe (b)): the promote
+request itself could supply the H26 evidence reference through
+the evidence_refs map for a candidate whose record carried none;
+a self-referential candidate was promoted on evidence_ref
+README.md. (What counts as adequate evidence is Spec 094 policy
+and is not decided here; the ref-resolves rule is unchanged.)
+
+The fix, confined to promote_to_anchors and its helpers: (1)
+Corpus membership is a promotion precondition under the same
+dual-source rule as anchor-set creation (PR #564,
+api/anchor_sets.py): the grapheme must be named by the anchor
+register (backend/reports/INDUS_FINAL_ANCHORS.json) or by the
+pinned corpus snapshot's canonical grapheme inventory
+(glossa-corpus/indus/exports/indus_research.jsonl), with the
+register's M-prefixed names and the inventory's bare names
+treated as the same signs (M342 == 342). Candidates named by
+neither source are reported in blocked_unknown_grapheme; when
+the snapshot cannot be read, membership the register alone
+cannot vouch for fails closed. (2) Promotion never overwrites
+or mutates an existing anchor at ANY confidence: a candidate
+whose sign is already anchored, under either name form, is
+skipped and reported like the formerly protected HIGH/MEDIUM
+signs. (3) Promotion uses only the evidence reference recorded
+on the candidate record itself; a request evidence_refs entry
+that differs from the recorded ref refuses the sign (reported
+in blocked_evidence_mismatch), and an identical entry is a
+no-op echo. Two pre-existing tests in
+test_staging_promotion_evidence.py codified the defect-2
+behaviour and were updated to the new contract on the face of
+this change; that module's fixture also gained a controlled
+corpus snapshot for the membership precondition. Minor,
+same response: when the corpus CSV is unavailable the coverage
+recalculation cannot run, and new_coverage / coverage_delta
+are now reported as null instead of a measured-looking 0.0
+(the probe response showed 92.2% -> 0.0%, delta -0.9219, for a
+collapse that never happened; the stored value was already
+guarded and is unchanged).
+
+Regression tests in backend/tests/test_promotion_integrity.py
+(11 tests): pre-fix, 10 failed and the HIGH-anchor guard-rail
+passed; post-fix all 11 pass. The full acceptance set from the
+test report (test_research_loop 20, test_research_loop_deep 15,
+test_staging_promotion_evidence 5, test_anchor_sets 12,
+test_staging_action_integrity 7, test_spec029_phase_a 31,
+test_spec029_phase_b 60, test_study_loop 7,
+test_indus_claims_carryover 2) plus the new module: 170 passed,
+0 failed, run locally with the CI venv.
+
 No claim's status, stage, or score was changed by this landing; the
 standing position is unchanged - the Indus script is not deciphered.
 

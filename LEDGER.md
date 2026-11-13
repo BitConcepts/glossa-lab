@@ -13927,3 +13927,46 @@ standing position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-13 - Spec 094 adopted: research-loop acceptance hardening (13 claims, decisions D-094-1..6 as recommended)
+
+The owner commissioned a full test of the automated research loop on
+2026-11-13 ("I suspect issues when accepting signs and things"). The
+test's policy findings - approval with no gate at all, a promotion
+evidence check satisfied by any existing file including
+requester-supplied and self-referential refs, auto-verification of
+every approved candidate from a run-level health signal, and the
+claim lifecycle machine never routed through by the anchor path
+(GR-088-05 / GAP-C07) - are now Spec 094, ratified as a block by the
+owner the same day (option tap plus typed confirmation in the
+Glossa-Lab chat): 13 claims C094-1..13 with falsifiers, six decisions
+adopted as recommended (named-humans approval list, initially the
+owner alone; promotion evidence pinned AND of a registered class;
+the automatic verification route abolished; Stage 0 immediately with
+build stages after Spec 092 S1 and before Spec 091 Stage 1; the
+storage-edit probe as a stage gate; pre-gate archive stock's
+promotability suspended, not grandfathered). The package lands at
+specs/094-research-loop-acceptance-hardening/ (spec.md, claims.md,
+aee-claims.json, plan.md, tasks.md, records/ - grounding record,
+ratification record, adoption AEE assessment: aee validate clean,
+assess outcome iterate, the normal draft-bundle reading).
+
+Two boundaries are stated on the ratification record's face. The
+claims-ledger intake (program-map assignment, the import_bundle.py
+append, regeneration, re-pins) is NOT part of the adoption PR; it
+stands as tasks.md T004, a separate gated act on the Spec 092
+pattern, and the gate's V10 leg is expected to name the unassigned
+spec directory until it lands. And the storage-edit probe, an open
+item at drafting, was completed by the parent the same day: a bare
+created-to-digested ledger edit is detected by cross-store
+consistency only (29 PASS / 0 FAIL / 1 NOT-RUN baseline to 10 FAIL
+in full mode, 13 FAIL in --regen mode), with no lifecycle
+validation anywhere - the anchor path has no equivalent net at all,
+which is the exposure the spec closes.
+
+No claim's status, stage, or score was changed by this landing; the
+research loop remains off the live stores (C094-13); the standing
+position is unchanged - the Indus script is not deciphered.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

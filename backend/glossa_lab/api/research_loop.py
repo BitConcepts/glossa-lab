@@ -1262,13 +1262,93 @@ async def staging_verify_sa() -> dict[str, Any]:
 # ── Anchor promotion helpers ────────────────────────────────────────────────
 
 _FA_PATH = _REPO / "backend" / "reports" / "INDUS_FINAL_ANCHORS.json"
+# The second source of record for which graphemes exist: the pinned
+# corpus snapshot's canonical grapheme inventory (snapshot SHA-256
+# pinned by the Spec 090 G3 freeze). Promotion applies the same
+# dual-source rule as anchor-set creation (api/anchor_sets.py).
+_CORPUS_SNAPSHOT = (_REPO / "glossa-corpus" / "indus" / "exports"
+                    / "indus_research.jsonl")
+
+_CORPUS_GRAPHEMES: frozenset[str] | None = None
 
 
-def _recalc_corpus_coverage(anchors: dict[str, Any]) -> float:
+def _corpus_grapheme_inventory() -> frozenset[str] | None:
+    """Canonical grapheme inventory of the pinned corpus snapshot.
+
+    Returns None when the snapshot cannot be read — membership for a
+    candidate the anchor register does not name is then unverifiable
+    and the caller fails closed. Only a successful read is cached.
+    """
+    global _CORPUS_GRAPHEMES  # noqa: PLW0603
+    if _CORPUS_GRAPHEMES is not None:
+        return _CORPUS_GRAPHEMES
+    try:
+        known: set[str] = set()
+        with open(_CORPUS_SNAPSHOT, encoding="utf-8") as f:
+            for line in f:
+                if not line.strip():
+                    continue
+                record = json.loads(line)
+                for grapheme in record.get("canonical_grapheme_ids") or []:
+                    if isinstance(grapheme, str):
+                        known.add(grapheme)
+    except Exception:  # noqa: BLE001
+        _log.warning(
+            "Corpus snapshot unavailable for promotion membership check",
+            exc_info=True)
+        return None
+    _CORPUS_GRAPHEMES = frozenset(known)
+    return _CORPUS_GRAPHEMES
+
+
+def _sign_forms(sid: str) -> set[str]:
+    """Name forms of one sign: the register names digit signs
+    M-prefixed (M342) where the corpus inventory names the same
+    signs bare (342); both forms denote the same sign."""
+    forms = {sid}
+    if sid.isdigit():
+        forms.add(f"M{sid}")
+    elif sid.startswith("M") and sid[1:].isdigit():
+        forms.add(sid[1:])
+    return forms
+
+
+def _existing_anchor_key(sid: str, anchors: dict[str, Any]) -> str | None:
+    """The register key of the anchor for this sign, if one exists
+    under either name form; None when the sign is not anchored."""
+    for form in _sign_forms(sid):
+        if form in anchors:
+            return form
+    return None
+
+
+def _grapheme_membership(
+    sid: str,
+    anchors: dict[str, Any],
+    corpus: frozenset[str] | None,
+) -> bool | None:
+    """Dual-source existence check for a promotion candidate.
+
+    True — the sign is named by the anchor register or by the pinned
+    corpus inventory (either source alone suffices). False — the
+    corpus was readable and neither source names it. None — the
+    corpus could not be read and the register does not name it, so
+    membership is unverifiable and the caller fails closed.
+    """
+    forms = _sign_forms(sid)
+    if forms & anchors.keys():
+        return True
+    if corpus is None:
+        return None
+    return bool(forms & corpus)
+
+
+def _recalc_corpus_coverage(anchors: dict[str, Any]) -> float | None:
     """Recalculate corpus token coverage from the Holdat CSV.
 
     Coverage = fraction of corpus sign tokens with HIGH or MEDIUM anchor.
-    Returns 0.0 if corpus is unavailable.
+    Returns None if the corpus is unavailable, so callers report
+    coverage as unavailable rather than as a measured 0.0.
     """
     import csv as _csv  # noqa: PLC0415
     try:
@@ -1280,7 +1360,7 @@ def _recalc_corpus_coverage(anchors: dict[str, Any]) -> float:
                        / "indus_corpus 2.csv")
     if not holdat_path.exists():
         _log.warning("_recalc_corpus_coverage: corpus CSV not found at %s", holdat_path)
-        return 0.0
+        return None
     hm_signs: set[str] = {
         sid for sid, info in anchors.items()
         if (info.get("confidence") or "").upper() in ("HIGH", "MEDIUM")
@@ -1297,9 +1377,9 @@ def _recalc_corpus_coverage(anchors: dict[str, Any]) -> float:
                         covered_tokens += 1
     except Exception as exc:  # noqa: BLE001
         _log.warning("_recalc_corpus_coverage: CSV read error: %s", exc)
-        return 0.0
+        return None
     if total_tokens == 0:
-        return 0.0
+        return None
     coverage = round(covered_tokens / total_tokens, 4)
     _log.info("Coverage recalc: %d/%d tokens covered = %.2f%%",
               covered_tokens, total_tokens, coverage * 100)
@@ -1312,7 +1392,17 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
 
     Reads anchor_staging_archive.json, deduplicates by sign ID (highest
     evidence_score wins; 'verified' beats 'approved' for equal scores), and
-    promotes entries whose signs do not already have a HIGH or MEDIUM anchor.
+    promotes entries whose signs do not already have an anchor. An
+    existing anchor is never overwritten or mutated, whatever its
+    confidence (acceptance-path defect 4, 2026-11-13).
+
+    Membership precondition (defect 3): a candidate's grapheme must
+    exist in the anchor register or in the pinned corpus snapshot's
+    canonical grapheme inventory — the same dual-source rule as
+    anchor-set creation. Candidates named by neither source are
+    reported in `blocked_unknown_grapheme`; when the corpus snapshot
+    cannot be read, membership the register alone cannot vouch for
+    fails closed the same way.
 
     Confidence mapping:
       - review_status == 'verified' OR evidence_score >= 0.8 → MEDIUM
@@ -1323,19 +1413,27 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
 
     Body (optional JSON):
       dry_run (bool, default False) — return stats without modifying files.
-      evidence_refs (dict sign -> ref, optional) — recorded non-SA
-        evidence references for candidates that do not carry one.
+      evidence_refs (dict sign -> ref, optional) — legacy field, no
+        longer a source of evidence (defect 2): promotion uses only
+        each candidate's recorded `evidence_ref`. An entry that
+        differs from the recorded ref refuses that sign (reported
+        in `blocked_evidence_mismatch`); an identical entry is a
+        no-op echo.
 
     Phase-109 evidence gate (spec 007 Step 4; governance H26): a
     candidate is promoted ONLY if it carries a recorded non-SA
-    evidence reference — its own `evidence_ref` field or an entry
-    in `evidence_refs`. Candidates without one are NOT written and
-    are reported in `blocked_no_evidence`. SA agreement is never a
-    sufficient condition for promotion (Phase-107).
+    evidence reference — its own `evidence_ref` field. Candidates
+    without one are NOT written and are reported in
+    `blocked_no_evidence`. SA agreement is never a sufficient
+    condition for promotion (Phase-107).
 
     Returns:
       {ok, dry_run, promoted, skipped, blocked_no_evidence,
+       blocked_unknown_grapheme, blocked_evidence_mismatch,
        total_anchors, prev_coverage, new_coverage, promotable}
+      new_coverage and coverage_delta are null when the coverage
+      recalculation could not run (corpus CSV unavailable) — never
+      a measured-looking 0.0.
     """
     try:
         body: dict[str, Any] = await request.json()
@@ -1365,11 +1463,9 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
     current_anchors: dict[str, Any] = dict(fa_data.get("anchors") or {})
     prev_coverage: float = float(fa_data.get("corpus_token_coverage", 0.0) or 0.0)
 
-    # Existing HIGH/MEDIUM signs that should not be overwritten
-    hm_signs: set[str] = {
-        sid for sid, info in current_anchors.items()
-        if (info.get("confidence") or "").upper() in ("HIGH", "MEDIUM")
-    }
+    # Corpus inventory for the membership precondition (defect 3);
+    # None when the snapshot cannot be read (fail closed below).
+    corpus_inventory = _corpus_grapheme_inventory()
 
     # ── 3. Deduplicate archive — best entry per sign ───────────────────────
     # Priority: verified > approved; then higher evidence_score wins.
@@ -1392,25 +1488,48 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
             if (st_rank, score) > (prev_rank, prev_score):
                 best_per_sign[sid] = c
 
-    promotable_count = sum(1 for sid in best_per_sign if sid not in hm_signs)
+    promotable_count = sum(
+        1 for sid in best_per_sign
+        if _existing_anchor_key(sid, current_anchors) is None)
 
     # ── 4. Promote ────────────────────────────────────────────────────────
     promoted_signs: list[str] = []
     skipped_signs: list[str] = []
     blocked_signs: list[str] = []
+    blocked_unknown_signs: list[str] = []
+    blocked_mismatch_signs: list[str] = []
     now_label = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
 
     for sid, c in best_per_sign.items():
-        if sid in hm_signs:
-            skipped_signs.append(sid)  # already HIGH/MEDIUM — never downgrade
+        if _existing_anchor_key(sid, current_anchors) is not None:
+            # Already anchored — never overwritten or mutated, at ANY
+            # confidence (defect 4: the former HIGH/MEDIUM-only rule
+            # let promotion silently replace LOW/CANDIDATE anchors,
+            # reading and confidence alike).
+            skipped_signs.append(sid)
+            continue
+        if _grapheme_membership(
+                sid, current_anchors, corpus_inventory) is not True:
+            # Defect 3: the grapheme must exist in the anchor register
+            # or the pinned corpus inventory; membership that cannot
+            # be verified (corpus unreadable) fails closed the same way.
+            blocked_unknown_signs.append(sid)
             continue
         # Phase-109 evidence gate (H26): a recorded non-SA evidence
         # reference is REQUIRED — the candidate's own evidence_ref
-        # field or the request's evidence_refs map. Leg C (C-03): the
-        # reference must also RESOLVE to an existing artifact (see
-        # _evidence_ref_resolves) — a bare non-empty string, including
-        # one fabricated in this same request, no longer passes.
-        ev_ref = c.get("evidence_ref") or evidence_refs.get(sid) or ""
+        # field; the promote request may not supply it (defect 2: a
+        # request-supplied ref promoted a self-referential candidate
+        # on README.md). A request ref that differs from the recorded
+        # ref refuses the sign; an identical one is a no-op echo.
+        # Leg C (C-03): the recorded reference must also RESOLVE to
+        # an existing artifact (see _evidence_ref_resolves) — a bare
+        # non-empty string no longer passes.
+        recorded_ref = c.get("evidence_ref") or ""
+        supplied_ref = evidence_refs.get(sid)
+        if supplied_ref is not None and supplied_ref != recorded_ref:
+            blocked_mismatch_signs.append(sid)
+            continue
+        ev_ref = recorded_ref
         if not _evidence_ref_resolves(ev_ref):
             blocked_signs.append(sid)
             continue
@@ -1437,7 +1556,10 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
             current_anchors[sid]["dedr_support"] = c["dedr_support"]
         promoted_signs.append(sid)
 
-    new_coverage = prev_coverage  # default: unchanged if dry_run or coverage calc fails
+    # Default: unchanged if dry_run. A recalculation that cannot run
+    # (corpus CSV unavailable) yields None — reported as unavailable,
+    # never as a measured 0.0.
+    new_coverage: float | None = prev_coverage
 
     if not dry_run and promoted_signs:
         # ── 5. Recalculate coverage ────────────────────────────────────────
@@ -1446,13 +1568,14 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         # ── 6. Write updated anchors file ───────────────────────────────────
         fa_data["anchors"] = current_anchors
         fa_data["total"] = len(current_anchors)
-        if new_coverage > 0:
+        if new_coverage is not None and new_coverage > 0:
             fa_data["corpus_token_coverage"] = new_coverage
         _FA_PATH.write_text(
             json.dumps(fa_data, indent=2, ensure_ascii=False), encoding="utf-8")
         _log.info(
-            "promote_to_anchors: wrote %d new anchors; coverage %.4f → %.4f",
-            len(promoted_signs), prev_coverage, new_coverage,
+            "promote_to_anchors: wrote %d new anchors; coverage %.4f → %s",
+            len(promoted_signs), prev_coverage,
+            f"{new_coverage:.4f}" if new_coverage is not None else "unavailable",
         )
 
         # ── 7a. Mark promoted entries in archive as 'promoted' ───────────────────────────
@@ -1502,31 +1625,54 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         # non-SA evidence reference (Step 4 gate above). The
         # sa_validation_jobs response key is retained, always [].
 
-    cov_delta = round(new_coverage - prev_coverage, 4) if not dry_run else 0.0
-    blocked_msg = ""
+    if new_coverage is None:
+        cov_delta: float | None = None
+    elif dry_run:
+        cov_delta = 0.0
+    else:
+        cov_delta = round(new_coverage - prev_coverage, 4)
+    blocked_parts: list[str] = []
     if blocked_signs:
-        blocked_msg = (
+        blocked_parts.append(
             f" {len(blocked_signs)} candidate(s) BLOCKED: no recorded "
             "non-SA evidence reference (H26).")
+    if blocked_unknown_signs:
+        blocked_parts.append(
+            f" {len(blocked_unknown_signs)} candidate(s) BLOCKED: "
+            "grapheme not in the anchor register or the pinned corpus "
+            "inventory.")
+    if blocked_mismatch_signs:
+        blocked_parts.append(
+            f" {len(blocked_mismatch_signs)} candidate(s) BLOCKED: "
+            "request-supplied evidence reference differs from the "
+            "candidate's recorded reference.")
+    blocked_msg = "".join(blocked_parts)
+    coverage_txt = (
+        f"Coverage: {prev_coverage*100:.1f}% → {new_coverage*100:.1f}% "
+        f"(+{cov_delta*100:.1f}%)."
+        if new_coverage is not None and cov_delta is not None else
+        f"Coverage: {prev_coverage*100:.1f}% → unavailable "
+        "(corpus CSV could not be read).")
     return {
         "ok":           True,
         "dry_run":      dry_run,
         "promoted":     len(promoted_signs),
         "skipped":      len(skipped_signs),
         "blocked_no_evidence": blocked_signs,
+        "blocked_unknown_grapheme": blocked_unknown_signs,
+        "blocked_evidence_mismatch": blocked_mismatch_signs,
         "promotable":   promotable_count,
         "total_anchors": len(current_anchors),
         "prev_coverage":  round(prev_coverage, 4),
-        "new_coverage":   round(new_coverage, 4),
+        "new_coverage":   round(new_coverage, 4) if new_coverage is not None else None,
         "coverage_delta": cov_delta,
         "sa_validation_jobs": [],
         "message": (
             f"{len(promoted_signs)} signs promoted to INDUS_FINAL_ANCHORS.json. "
-            f"Coverage: {prev_coverage*100:.1f}% → {new_coverage*100:.1f}% "
-            f"(+{cov_delta*100:.1f}%).{blocked_msg}"
+            f"{coverage_txt}{blocked_msg}"
         ) if not dry_run and promoted_signs else (
             f"Dry run: {len(promoted_signs)} would be promoted, "
-            f"{len(skipped_signs)} skipped (already HIGH/MEDIUM)."
+            f"{len(skipped_signs)} skipped (already anchored)."
             f"{blocked_msg}"
         ) if dry_run else f"No new signs to promote.{blocked_msg}",
     }

@@ -1,0 +1,316 @@
+{
+ "claims": [
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "exhibit, on the built system, one approved candidate whose record lacks either field, reached through any endpoint or lifecycle route."
+   ],
+   "id": "C094-1",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "No candidate reaches `approved` unless its record carries a non-empty falsifier statement and an approver identity that validates as a named human under the `claim_stage` actor rules (reused, not redefined). This does not establish: that the falsifier is a good one — the gate binds presence and attribution, not quality.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "drive any automated identity through the anchor-path endpoints and produce an approved, verified, or promoted state change attributable to it."
+   ],
+   "id": "C094-2",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "No identity classified as automated under the `claim_stage` rules (allowlist or process-token) can effect an approve, verify, or promote transition on the anchor path; the loop pipeline's write authority ends at creating and staging candidates. This does not establish: anything about automated staging, which stays permitted and is the loop's job.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "effect one approval or promotion whose deciding input exists in the request but nowhere on the candidate record beforehand."
+   ],
+   "id": "C094-3",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The falsifier, approver, and evidence fields the gates read are first-class fields of the candidate record; no gate decision is taken from data supplied only in the request that asks for the decision. This does not establish: a schema for its own sake — the claim binds where gate inputs live, because defect 2's request-supplied ref is the failure it closes.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "promote any candidate whose recorded evidence pin is absent, does not match the artifact's bytes, or was created by the promote request itself."
+   ],
+   "id": "C094-4",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Promotion requires, per candidate, an evidence artifact pinned by content hash (SHA-256 recorded on the record at pin time) whose bytes verify against the pin at promotion time. A bare path, a `path:KEY` string, or an unpinned request-supplied reference does not promote. This does not establish: that a verified pin makes the evidence relevant — that is C094-5's separate bar.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "promote a candidate on evidence whose class is loop output about that candidate, or a class absent from the registered list."
+   ],
+   "id": "C094-5",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The pinned artifact must belong to a named evidence class on a registered list (external corpus record, published concordance entry, independent-expert record, adjudicated claim dossier — the list as ratified at Stage 2). Artifacts generated by the loop or the anchor path about the candidate itself — pipeline outputs, staging and archive files, run syntheses — are not a qualifying class. This does not establish: the truth of any class member — classes govern admissibility, not correctness.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "exhibit a verified candidate whose record carries no per-candidate evaluation, or whose verification cites only a run-level signal."
+   ],
+   "id": "C094-6",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "A candidate reaches `verified` only through a recorded evaluation of that candidate, citing the per-candidate evidence it rests on. No run-level aggregate — a foundation check, a suite result, a run's overall delta — confers the status. This does not establish: a particular evaluation method; the claim binds the granularity and the record, Stage 3 fixes the method.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "run the anchor lifecycle over an approved candidate lacking a per-candidate evaluation, with a clean foundation check, and observe a verified flip."
+   ],
+   "id": "C094-7",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "No code path flips `approved` → `verified` from a foundation-check outcome or any equivalent global signal; the `sa_delta = 0.1` construction in `_run_anchor_lifecycle` is removed, not tuned. This does not establish: that the lifecycle's other duties (expiry of stale rejections, archiving) change — they are untouched except where they carried the flip.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "exhibit an anchor at MEDIUM whose source candidate's verified status came from any route other than C094-6's per-candidate evaluation (including the pre-094 archive stock, per C094-12)."
+   ],
+   "id": "C094-8",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Promotion confers MEDIUM confidence only on candidates verified under C094-6; an approved-but-unverified candidate promotes at LOW at most, whatever its evidence score. This does not establish: any change to HIGH, which promotion has never conferred.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "exhibit a surface response carrying an `sa_delta` value for a candidate with no recorded SA comparison behind it."
+   ],
+   "id": "C094-9",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Where no SA comparison has run for a candidate, surfaces present the delta as absent, never as a computed estimate. (Drafting observation, from code: `get_staging` currently substitutes `round(score * 0.12, 3)` as a candidate's `sa_delta` when none was recorded — response-shaping only, not persisted, and not one of the tested defects; Stage 3 demonstrates the built behaviour rather than assuming it.) This does not establish: anything about real SA deltas where a comparison did run.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "find, in the built system, any code path that changes an anchor-path record's status without passing the service, or effect one."
+   ],
+   "id": "C094-10",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Every status transition on anchor-path records (staged, approved, verified, promoted, rejected, archived, expired) is effected through a single gated transition service carrying `transition_stage`'s guarantees — one-step moves, actor validation with the automated ceiling, an evidence trail — and no endpoint or lifecycle code writes `review_status` directly. This does not establish: storage enforcement for the claim stores generally — the closure is path-scoped and the register entry is amended to say exactly that (amend, never delete).",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a write to any of the three stores that bypasses the atomic path, or a simulated write failure that leaves one truncated or zeroed."
+   ],
+   "id": "C094-11",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The three stores — `outputs/anchor_staging.json`, `outputs/anchor_staging_archive.json`, `backend/reports/INDUS_FINAL_ANCHORS.json` — are written only through the platform's atomic write path (`atomic_io.atomic_write_text`, or the verified-write successor Spec 092 Stage 2 lands, whichever is current at build); no direct truncating write to them remains in the anchor path, and a failed write leaves the previous file byte-identical under a named error. This does not establish: read-back hash verification beyond the atomic path's own guarantees — that stronger contract is Spec 092's, adopted here only if it has landed by build time.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a diff under this spec that changes a pre-existing anchor entry or claim record, or a promotion of a pre-gate entry that skipped the new record fields."
+   ],
+   "id": "C094-12",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "This spec's diff alters no existing anchor's reading or confidence, no claim's stage or status, and no ledger entry. Pre-gate `approved`/`verified` archive entries keep their recorded status as history but carry no presumption of having passed these gates: they are inventoried by count and state in Stage 0's record, and they cannot promote until they carry the record fields C094-1..5 require. This does not establish: that the pre-gate stock is sound or unsound — it is unexamined by this spec, and labelled so.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Spec 094 package, drafted 2026-11-13 on the owner's commission (Glossa-Lab chat, 2026-11-13; grounding record: records/commission-and-grounding-2026-11-13.md in this package); claim text normalized from claims.md without substantive change.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "a live-store write attributable to a loop run before the closeout record exists."
+   ],
+   "id": "C094-13",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "No research-loop run writes to the live anchor-path stores before the Stage 5 closeout record discharges C094-1..11 on their evidence. Scratch-instance loop executions for stage evidence are the only loop runs this spec contemplates. This does not establish: a permanent bar — closeout lifts it by name, and any later loop run is ordinary operations under the landed gates.",
+   "uncertainty": "insufficient_evidence"
+  }
+ ]
+}

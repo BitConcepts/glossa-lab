@@ -14085,3 +14085,68 @@ position is unchanged - the Indus script is not deciphered.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-13 - Spec 094 Stage 0 complete: live store inventory and the carried probe verdict (T010, T011)
+
+Stage 0 (grounding completion, no code) is executed and
+recorded in
+`specs/094-research-loop-acceptance-hardening/records/stage-0-inventory-2026-11-13.md`.
+Every count was read on 2026-11-13 (~17:16-17:20 EST) from
+the stores themselves: the live stores read-only on the
+mini-server, the repo copies from a fresh clone at main
+`4d08788f`, and the live loop state through the MCP read
+tools after the VM tailnet forwarder was restored and the
+backend verified by its six-key health identity. Nothing
+live was written; no loop start/stop call was made.
+
+Headline census. Anchors: the live
+`backend/reports/INDUS_FINAL_ANCHORS.json` is byte-identical
+to the repo copy (sha256 `df0cf620...`, 570,344 B) - 287
+anchors: HIGH 166, MEDIUM 5, LOW 3, CANDIDATE 113, so the
+LOW/CANDIDATE class is 116 of 287; 286 keys M-prefixed, the
+one remaining key H003. Staging diverges: the live
+`outputs/anchor_staging.json` is an empty list (0 items),
+while the repo copy carries 52 pre-gate candidates, all
+`staged`, none carrying a falsifier or an evidence ref.
+Archive diverges the other way: live
+`outputs/anchor_staging_archive.json` holds 1,107 entries
+against the repo's 1,047, and the entire difference is +60
+`verified` entries on 8 signs already present (M101, M197,
+M214, M312, M378, M406 at +9 each; M250, M324 at +3 each) -
+per sign x status the live archive dominates the repo
+archive everywhere, and those 60 entries exist only in the
+mini-server checkout's working tree, never committed.
+
+The D-094-6 pricing: the pre-gate eligible pool
+(`review_status` approved/verified) is 1,083 live entries
+(58 approved + 1,025 verified) over 108 distinct signs on
+both copies; 4 signs (M042, M046, M108, M222) already sit at
+HIGH/MEDIUM and promotion skips them, leaving the
+endpoint's promotable pool at 104 distinct signs. The
+archive schema (17 keys) has no `evidence_ref` field at
+all - 0 of 1,107 live entries carry a recorded evidence
+reference - and no `falsifier` key exists on any entry, so
+under the pre-gate rules a promotion call with no
+request-supplied refs would promote 0 of the 104 (all
+blocked at the H26 gate); the pool was reachable only
+through defect 2's request-supplied-refs hole, closed by PR
+#565. The re-evidencing backlog D-094-6 suspends is
+therefore 104 distinct signs (1,083 live eligible entries):
+status kept as history, nothing deleted, demoted, or
+re-adjudicated, no promotion until re-evidenced.
+
+The storage-edit probe's observed verdict (detected by
+cross-store consistency only - 10 FAIL in full mode, 13 FAIL
+in --regen mode, no lifecycle validation) is carried into
+the stage record as C094-10's grounding (T011), and its
+re-run against the built shape stands registered as Stage
+4's exit evidence (T403). The live loop reads off, 0 cycles
+run, 0 candidates (protocol `integrated_research_loop_v3`);
+the MCP `get_anchor_staging` tool reproduced its known
+shape error verbatim ("'list' object has no attribute
+'get'") and the staging census was read from the file
+instead. Stage 0's exit conditions are met on the record;
+claims discharged: none, by the plan's own statement.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

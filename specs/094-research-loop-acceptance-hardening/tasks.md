@@ -58,7 +58,7 @@
 
 ## Stage 0 — Grounding completion (no code)
 
-- [ ] **T010 — Live store inventory.** Read-only census of the
+- [x] **T010 — Live store inventory.** Read-only census of the
   three anchor-path stores on the live backend: staging entries by
   state; archive entries by status with the pre-gate
   approved/verified count named; anchors census. The record cites
@@ -67,7 +67,7 @@
   counts are read from the stores at a named time).
   *This does not establish:* anything about the inventoried
   entries' soundness — they are counted, not examined.
-- [ ] **T011 — Probe verdict carried; re-run staged.** The
+- [x] **T011 — Probe verdict carried; re-run staged.** The
   storage-edit probe's observed verdict (parent addendum,
   2026-11-13) is entered in the stage record as C094-10's
   grounding, and the probe's re-run against the built shape is

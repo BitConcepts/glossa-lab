@@ -13816,6 +13816,47 @@ test_spec029_phase_a 31, test_spec029_phase_b 60,
 test_study_loop 7, test_indus_claims_carryover 2) plus the new
 module: 159 passed, 0 failed, run locally with the CI venv.
 
+## 2026-11-13 - Anchor-set creation validation: fabricated graphemes refused, confidence explicit (acceptance-path defect 7)
+
+The 2026-11-13 acceptance-path test of the automated research
+loop found that POST /api/v1/anchor-sets accepted pairs naming
+graphemes that exist in no corpus and no anchor register, and
+stored them at confidence "high" when the caller omitted the
+field (probe: cipher ZZZ901 -> "ka" created at high confidence).
+Anchor sets feed experiments as verified mappings, so creation
+is now fail-closed in backend/glossa_lab/api/anchor_sets.py:
+
+- Every pair's cipher must exist in the program's records: the
+  anchor register (backend/reports/INDUS_FINAL_ANCHORS.json, the
+  signs API's authoritative anchor file) or the pinned corpus
+  snapshot's canonical grapheme inventory
+  (glossa-corpus/indus/exports/indus_research.jsonl, SHA-256
+  pinned by the Spec 090 G3 freeze). Existence in either source
+  suffices; the register's M-prefixed naming (M342) and the
+  inventory's bare form (342) name the same signs and both match.
+  An unknown grapheme is refused with HTTP 400 naming it; if
+  neither source can be read, pair-bearing creation is refused
+  with HTTP 503 rather than admitted unverified.
+- AnchorPair.confidence is now a required field with no default.
+  Omitting it is refused (422) instead of silently storing the
+  pair as "high". No in-repo caller or test relied on the
+  default (the frontend always sends the field; the MCP tool
+  forwards caller-supplied pairs). Because AnchorPair is shared
+  with the update model, an update that omits confidence on a
+  pair is likewise refused rather than defaulted.
+
+Stored sets and their format are untouched; no data migrated.
+Four regression tests land with the fix (unknown grapheme,
+unknown grapheme among known ones, omitted confidence, and a
+register-form positive control); the three refusal tests failed
+on the pre-fix code with 201 responses and pass after. Local
+runs (CI venv): test_anchor_sets 16, test_research_loop 20,
+test_staging_promotion_evidence 5, test_glossa_mcp and
+test_cloud_workspace_scope green - 96 passed in total. Scope is
+the creation path only: the PUT update path's grapheme
+membership is unchanged by this landing and is recorded as the
+same class of opening for a follow-up decision.
+
 No claim's status, stage, or score was changed by this landing; the
 standing position is unchanged - the Indus script is not deciphered.
 

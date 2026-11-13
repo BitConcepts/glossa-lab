@@ -4,8 +4,12 @@ evidence gate (governance H26) and the verify-sa rename.
 - Promotion WITHOUT a recorded non-SA evidence reference must
   fail: nothing is promoted, nothing is written, and the blocked
   candidates are reported in `blocked_no_evidence`.
-- Promotion WITH a reference (candidate field or request map)
-  succeeds and records the reference in the promoted entry.
+- Promotion WITH a reference recorded on the candidate succeeds
+  and records the reference in the promoted entry. The request
+  map is no longer a source of evidence (acceptance-path defect
+  2, 2026-11-13): a request-supplied reference that differs from
+  the candidate's recorded one refuses the sign; see
+  test_promotion_integrity.py.
 - POST /staging/verify-archive is the canonical route; the old
   /staging/verify-sa path remains only as a deprecated alias.
 """
@@ -27,6 +31,7 @@ def staging_env(tmp_path, monkeypatch):
     staging = tmp_path / "anchor_staging.json"
     archive = tmp_path / "anchor_staging_archive.json"
     anchors = tmp_path / "INDUS_FINAL_ANCHORS.json"
+    snapshot = tmp_path / "indus_research.jsonl"
     staging.write_text("[]", encoding="utf-8")
     archive.write_text("[]", encoding="utf-8")
     anchors.write_text(json.dumps({
@@ -34,9 +39,17 @@ def staging_env(tmp_path, monkeypatch):
         "anchors": {"M001": {"reading": "a", "confidence": "HIGH",
                              "basis": "b", "source": "s"}},
     }), encoding="utf-8")
+    # Promotion's membership precondition (defect 3) reads the pinned
+    # corpus inventory: the fixture's snapshot names the test sign's
+    # bare form (777 for candidate M777).
+    snapshot.write_text(
+        json.dumps({"canonical_grapheme_ids": ["777", "001"]}) + "\n",
+        encoding="utf-8")
     monkeypatch.setattr(rl, "_STAGING_JSON", staging)
     monkeypatch.setattr(rl, "_ARCHIVE_JSON", archive)
     monkeypatch.setattr(rl, "_FA_PATH", anchors)
+    monkeypatch.setattr(rl, "_CORPUS_SNAPSHOT", snapshot)
+    monkeypatch.setattr(rl, "_CORPUS_GRAPHEMES", None)
     return {"staging": staging, "archive": archive, "anchors": anchors}
 
 
@@ -83,15 +96,22 @@ def test_promotion_with_candidate_evidence_ref_succeeds(client, staging_env):
     assert "evidence_ref=LEDGER.md" in anchors["M777"]["basis"]
 
 
-def test_promotion_with_request_evidence_ref_map_succeeds(
+def test_promotion_with_request_evidence_ref_map_is_refused(
         client, staging_env):
+    """Defect 2 (2026-11-13): the request map formerly SUPPLIED the
+    evidence for a candidate whose record carried none — the exact
+    shape that promoted a self-referential candidate on README.md.
+    A request ref that differs from the candidate's recorded ref
+    (here: none recorded) now refuses the sign."""
     staging_env["archive"].write_text(
         json.dumps([_candidate()]), encoding="utf-8")
+    before = staging_env["anchors"].read_text(encoding="utf-8")
     r = client.post(f"{BASE}/staging/promote", json={
         "evidence_refs": {"M777": "glossa-indus/LEDGER.md Phase-X entry"}})
     data = r.json()
-    assert data["promoted"] == 1
-    assert data["blocked_no_evidence"] == []
+    assert data["promoted"] == 0
+    assert data["blocked_evidence_mismatch"] == ["M777"]
+    assert staging_env["anchors"].read_text(encoding="utf-8") == before
 
 
 def test_verify_archive_route_and_deprecated_alias(client, staging_env):
@@ -114,12 +134,15 @@ def test_verify_archive_route_and_deprecated_alias(client, staging_env):
 def test_promotion_with_fabricated_unresolvable_ref_is_blocked(
         client, staging_env):
     """Leg C C-03: a non-empty string that names no existing artifact
-    must NOT pass the H26 gate (live-confirmed exploit pre-fix)."""
-    staging_env["archive"].write_text(
-        json.dumps([_candidate()]), encoding="utf-8")
+    must NOT pass the H26 gate (live-confirmed exploit pre-fix). The
+    fabricated ref is carried on the candidate record here; the
+    request-supplied variant is refused earlier, as an evidence
+    mismatch (defect 2 — see the test above)."""
+    staging_env["archive"].write_text(json.dumps([_candidate(
+        evidence_ref="legc03-FABRICATED-ref-that-does-not-exist")]),
+        encoding="utf-8")
     before = staging_env["anchors"].read_text(encoding="utf-8")
-    r = client.post(f"{BASE}/staging/promote", json={
-        "evidence_refs": {"M777": "legc03-FABRICATED-ref-that-does-not-exist"}})
+    r = client.post(f"{BASE}/staging/promote", json={})
     data = r.json()
     assert data["promoted"] == 0
     assert data["blocked_no_evidence"] == ["M777"]

@@ -13778,6 +13778,44 @@ standing position is unchanged - the Indus script is not deciphered.
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
 
+## 2026-11-13 - Research-loop staging integrity: rejection history is append-only and approve is state-guarded (acceptance-path defects 5 and 6)
+
+The 2026-11-13 acceptance-path test of the automated research
+loop (report: glossa-run working record, probes run against a
+scratch backend only) found two staging-integrity defects in
+POST /api/v1/research-loop/staging/action. Defect 5 (probe (g)):
+rejecting a candidate and then re-staging it with action
+"staged" wiped rejected_at / rejected_reason from the record,
+after which approve succeeded with no trace of the rejection.
+Defect 6 (probe (h)): approving the same candidate twice
+returned ok:true twice - approve carried no state guard.
+
+The fix, confined to staging_action and its helpers in
+backend/glossa_lab/api/research_loop.py: (1) every rejection is
+appended to a permanent rejection_history list on the record
+({rejected_at, rejected_reason} per entry); reject and re-stage
+first fold any current scalar rejection into that history -
+including records written before the history field existed -
+so re-staging and later approval preserve every prior rejection
+permanently. No policy about who may re-stage is introduced;
+only the erasure is removed. (2) Approve is state-guarded: it is
+valid only from the states the pipeline stages candidates in
+("staged" / "blocked", per pipelines/research_loop.py); from
+any other state (already-approved, rejected, verified,
+expired) it returns the endpoint's existing {ok: False, error}
+refusal naming the current state and changes nothing - the
+staging file is not written.
+
+Regression tests in backend/tests/test_staging_action_integrity.py
+(7 tests): pre-fix, the 6 defect-reproducing tests failed and
+the approve-from-blocked guard-rail passed; post-fix all 7
+pass. The full acceptance set from the test report
+(test_research_loop 20, test_research_loop_deep 15,
+test_staging_promotion_evidence 5, test_anchor_sets 12,
+test_spec029_phase_a 31, test_spec029_phase_b 60,
+test_study_loop 7, test_indus_claims_carryover 2) plus the new
+module: 159 passed, 0 failed, run locally with the CI venv.
+
 ## 2026-11-13 - Anchor-set creation validation: fabricated graphemes refused, confidence explicit (acceptance-path defect 7)
 
 The 2026-11-13 acceptance-path test of the automated research

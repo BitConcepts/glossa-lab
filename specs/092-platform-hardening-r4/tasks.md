@@ -73,7 +73,7 @@
   C092-3 (surface side). Acceptance: **test**.
   *This does not establish:* consumer security — only that their
   contract did not move.
-- [ ] **T104 — Live deployment + migration proof.** The stage deploys
+- [x] **T104 — Live deployment + migration proof.** The stage deploys
   to the desktop install through the gatekeeper; the stage record
   carries the live store's key-name census (names and counts, never
   values) before and after migration and the post-restart backend

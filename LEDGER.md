@@ -14150,3 +14150,56 @@ claims discharged: none, by the plan's own statement.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-14 - Spec 092 Stage 1 complete: credential encryption at rest (T101-T104)
+
+Stage 1 of Spec 092 (platform hardening R4) is complete. The
+code legs landed in PR #569 (merge `3cb7382c`, CI 10/10,
+delivery-checker RESOLVED): a registered credential set of 16
+names in `api/settings.py`; store format v2, in which a
+credential entry's value is an AES-256-GCM envelope object
+(`{v: 2, alg, nonce, ct}`, fresh nonce per value per save)
+under D-092-1's adopted custody — a 32-byte key in a 0600 file
+outside `{data_dir}` (default
+`{data_dir.parent}/glossa-lab-credential.key`, override
+`GLOSSA_CREDENTIAL_KEY_FILE`), operator-created, never logged;
+named error states in place of the legacy loader's silent
+empty store; first-load migration that re-saves through the
+verified-write construction in the store module and compares
+value-by-value before the load returns, leaving the original
+byte-untouched on any failure; and the consumer contract
+battery passing identically against v1 and v2 stores with no
+consumer diffs beyond the authorized database-init tolerance.
+Claims discharged: C092-1..5 and the store leg of C092-7, on
+the 23-test attack battery's record (PR #569 body; stage
+record `records/stage-1-record-2026-11-14.md`).
+
+The live leg (T104) ran the same day against the one
+production store, on the mini-server (the plan's desktop text
+predates the re-stand-up; the adaptation is named in the stage
+record). Before census (names and counts, never values): 2
+entries, both plaintext — `glossa_service_credential`
+(length 43) and `study_loop_daily` (length 1) — store 107
+bytes, mode 0600, SHA-256 `9e7dde0e…`. The key file was
+created on the box (0600, key material generated on the box
+and never printed or transmitted), the `cryptography`
+dependency installed into the backend venv (50.0.2, inside
+the pinned range) before the restart, and the origin pulled
+--ff-only to `3cb7382c`. After census: the credential entry
+is a v2 envelope, the config entry is byte-shape unchanged,
+store 231 bytes at SHA-256 `cc83575e…`, mode still 0600;
+`get_key` resolves the credential at its pre-migration
+length; a second restart left the store hash unchanged
+(migration exactly once); the backend health identity reads
+the exact six-key payload and the MCP foundation check reads
+17/17 PASS, 0 fail, 0 warn against the migrated store. The
+key file exists only on the mini-server; losing it means the
+named `credential_key_missing` state and re-provisioning the
+one credential, which is D-092-1's designed posture.
+
+Stage 2 (the verified-write library) is next in the owner's
+priority order when commissioned; nothing in this entry
+starts it.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

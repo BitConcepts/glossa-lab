@@ -133,6 +133,17 @@ def test_save_keys_disk_full_preserves_stored_keys(
     monkeypatch.setattr(
         settings_api, "_keys_file", lambda: tmp_path / ".keys.json"
     )
+    # Spec 092 Stage 1: saving a credential-class value now requires
+    # the encryption key (D-092-1 custody), so this test supplies a
+    # synthetic fixture key at a patched custody location. The F1
+    # assertions below are unchanged.
+    import base64 as _base64
+
+    key_file = tmp_path / "glossa-lab-credential.key"
+    key_file.write_bytes(_base64.b64encode(bytes(range(1, 33))))
+    monkeypatch.setattr(
+        settings_api, "_credential_key_file", lambda: key_file
+    )
     settings_api._save_keys({"openai_api_key": "original"})
     keys_file = tmp_path / ".keys.json"
     previous = keys_file.read_bytes()

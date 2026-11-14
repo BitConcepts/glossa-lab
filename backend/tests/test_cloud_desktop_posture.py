@@ -21,6 +21,7 @@ The hosted edition's origin is the desktop application itself
 """
 from __future__ import annotations
 
+import base64
 import json
 import os
 
@@ -79,6 +80,13 @@ def _build(tmp_path_factory, label, *, env_credential=None, keys_credential=None
         (data_dir / ".keys.json").write_text(
             json.dumps({"glossa_service_credential": keys_credential}),
             encoding="utf-8",
+        )
+        # Spec 092 Stage 1: a store holding a credential is encrypted
+        # at rest — the first load migrates this plaintext fixture
+        # under the D-092-1 custody key, which the operator places
+        # beside the data dir. Synthetic fixture key (32 bytes).
+        (data_dir.parent / "glossa-lab-credential.key").write_bytes(
+            base64.b64encode(bytes(range(1, 33)))
         )
     get_settings.cache_clear()
     from glossa_lab.main import create_app

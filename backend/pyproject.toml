@@ -18,6 +18,9 @@ dependencies = [
     "matplotlib>=3.9,<4",
     "numpy>=1.26,<3",
     "psutil>=6,<8",
+    # Spec 092 Stage 1: AES-256-GCM credential encryption at rest
+    # (glossa_lab/api/settings.py store format v2, D-092-1 option (a)).
+    "cryptography>=44,<51",
     # Security: pin minimum safe versions for transitive CVE fixes
     "starlette>=1.0.1",
     "urllib3>=2.7.0",

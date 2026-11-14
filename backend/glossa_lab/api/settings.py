@@ -2,21 +2,34 @@
 
 Keys are stored in {data_dir}/.keys.json (not in the database).
 Values are never returned in plaintext; only a masked status is returned.
+
+Spec 092 Stage 1 — store format v2: every credential-class value (the
+registered set ``CREDENTIAL_KEYS`` below) is encrypted at rest with
+AES-256-GCM under a key held OUTSIDE the data dir (decision D-092-1,
+custody option (a)); non-credential entries keep the v1 plaintext
+shape (D-092-2, per-value scope). A legacy v1 store migrates on first
+load, exactly once and verifiably (C092-4). A store that cannot be
+decrypted raises a named :class:`CredentialStoreError` — it is never
+silently presented as an empty store (C092-3).
 """
 
 from __future__ import annotations
 
+import base64
+import binascii
 import json
 import os
+import tempfile
 import urllib.error
 import urllib.request
 from pathlib import Path
 from typing import Any
 
-from fastapi import APIRouter
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from glossa_lab.atomic_io import atomic_write_text
+from glossa_lab.atomic_io import StateWriteError
 from glossa_lab.config import get_settings
 
 router = APIRouter(prefix="/api/v1/settings", tags=["settings"])
@@ -104,24 +117,401 @@ def _keys_file() -> Path:
     return Path(settings.data_dir) / ".keys.json"
 
 
-def _load_keys() -> dict[str, str]:
-    f = _keys_file()
-    if f.exists():
-        try:
-            return json.loads(f.read_text(encoding="utf-8"))
-        except Exception:
-            return {}
-    return {}
+# ── Spec 092 Stage 1 — credential encryption at rest ──────────────────
+#
+# The registered credential set (D-092-2): the key names whose values
+# are credential-class and are therefore encrypted at rest in store
+# format v2. Data, reviewed like KNOWN_KEYS above — a future key joins
+# the encrypted class with a one-line registration here. Configuration
+# names (hosts, ports, sender addresses, toggles, intervals,
+# ``_provider_prefs``) are deliberately NOT in the set and stay
+# readable plaintext in the same file. Two KNOWN_KEYS entries are
+# identifiers rather than credentials and stay plaintext by the same
+# reasoning: ``openalex_email`` and ``unpaywall_email`` are email
+# addresses the providers require be sent in cleartext query
+# parameters to identify the caller; they confer no access.
+# ``ms_graph_client_id`` / ``ms_graph_tenant_id`` / ``smtp_username``
+# are likewise identifiers, not secrets. ``glossa_service_credential``
+# is registered here although it is not in KNOWN_KEYS: in substance it
+# authenticates service calls (``cloud_scope`` resolves it through
+# ``get_key``), so a stored value under that name is credential-class.
+CREDENTIAL_KEYS = frozenset({
+    # LLM / discovery / search provider API keys
+    "mistral_api_key",
+    "openai_api_key",
+    "anthropic_api_key",
+    "google_api_key",
+    "serp_api_key",
+    "news_api_key",
+    "brave_search_api_key",
+    "semantic_scholar_api_key",
+    "core_api_key",
+    "uspto_api_key",
+    # Academia.edu authenticated-mode session cookie (a bearer credential)
+    "academia_session_cookie",
+    # SMTP password (the one SMTP secret; host/port/user/from are config)
+    "smtp_password",
+    # Microsoft Graph long-lived refresh token
+    "ms_graph_refresh_token",
+    # Resend HTTPS API key
+    "resend_api_key",
+    # HuggingFace token
+    "hf_api_token",
+    # Cloud-edition service credential (Spec 083; read via get_key)
+    "glossa_service_credential",
+})
+
+_ENVELOPE_VERSION = 2
+_ENVELOPE_ALG = "AES-256-GCM"
+_KEY_BYTES = 32  # AES-256
+_NONCE_BYTES = 12  # AES-GCM standard nonce
+_KEY_FILE_ENV = "GLOSSA_CREDENTIAL_KEY_FILE"
+_KEY_FILE_NAME = "glossa-lab-credential.key"
 
 
-def _save_keys(data: dict[str, str]) -> None:
+class CredentialStoreError(Exception):
+    """Named error state for the credential store (C092-3).
+
+    Raised when a store file exists but cannot be honoured — the key
+    is missing or unusable, a value cannot be decrypted, the file is
+    corrupt, or a migration failed. The ``state`` attribute is the
+    machine-readable name the settings surface reports; it always
+    distinguishes the failure from "no keys configured" (an absent
+    store file, which loads as an empty dict without error). The
+    store NEVER falls back to parsing an encrypted store as plaintext
+    and never presents an undecryptable store as empty.
+    """
+
+    state = "credential_store_error"
+
+
+class CredentialKeyError(CredentialStoreError):
+    """The encryption key could not be loaded from its custody file."""
+
+    state = "credential_key_error"
+
+
+class CredentialKeyMissing(CredentialKeyError):
+    """The key file does not exist at the custody location."""
+
+    state = "credential_key_missing"
+
+
+class CredentialKeyUnreadable(CredentialKeyError):
+    """The key file exists but cannot be read (permissions, I/O)."""
+
+    state = "credential_key_unreadable"
+
+
+class CredentialKeyMalformed(CredentialKeyError):
+    """The key file's content is not valid base64."""
+
+    state = "credential_key_malformed"
+
+
+class CredentialKeyWrongLength(CredentialKeyError):
+    """The decoded key is not exactly 32 bytes (AES-256)."""
+
+    state = "credential_key_wrong_length"
+
+
+class CredentialStoreUnreadable(CredentialStoreError):
+    """The store file exists but cannot be read (permissions, I/O)."""
+
+    state = "credential_store_unreadable"
+
+
+class CredentialStoreCorrupt(CredentialStoreError):
+    """The store file is not a well-formed v1/v2 store."""
+
+    state = "credential_store_corrupt"
+
+
+class CredentialStoreUndecryptable(CredentialStoreError):
+    """A stored credential value cannot be decrypted with the loaded
+    key (wrong key, or tampered/corrupt ciphertext)."""
+
+    state = "credential_store_undecryptable"
+
+
+class CredentialStoreMigrationFailed(CredentialStoreError):
+    """A legacy-store migration could not be completed or verified;
+    the original file's state is named in the message."""
+
+    state = "credential_store_migration_failed"
+
+
+def _credential_key_file() -> Path:
+    """Resolve the D-092-1 key custody location.
+
+    The key lives OUTSIDE ``{data_dir}`` so the program's routine
+    data-dir copies (preservation snapshots, migrations) never carry
+    it (C092-2). Default: the per-user location beside the data dir —
+    ``{data_dir.parent}/glossa-lab-credential.key`` — overridable with
+    the ``GLOSSA_CREDENTIAL_KEY_FILE`` environment variable. The file
+    holds the base64 encoding of the 32-byte key and is mode 0600,
+    created by the operator; the loader never creates it.
+    """
+    override = os.environ.get(_KEY_FILE_ENV)
+    if override:
+        return Path(override)
+    return Path(get_settings().data_dir).parent / _KEY_FILE_NAME
+
+
+def _load_credential_key() -> bytes:
+    """Load the 32-byte AES-256 key from its custody file.
+
+    This is the only function that touches key material; nothing logs
+    the key or any part of it. Each failure mode is a distinct typed
+    exception (C092-3): :class:`CredentialKeyMissing`,
+    :class:`CredentialKeyUnreadable`, :class:`CredentialKeyMalformed`,
+    :class:`CredentialKeyWrongLength`.
+    """
+    path = _credential_key_file()
+    try:
+        raw = path.read_bytes()
+    except FileNotFoundError as exc:
+        raise CredentialKeyMissing(
+            f"credential key file not found at {path}; the encrypted "
+            "credential store cannot be read without it (stored "
+            "credentials are NOT being reported as unset — the key "
+            "custody file must be restored, or the credentials "
+            "re-entered after placing a new key)"
+        ) from exc
+    except OSError as exc:
+        raise CredentialKeyUnreadable(
+            f"credential key file at {path} could not be read: {exc}"
+        ) from exc
+    try:
+        key = base64.b64decode(raw.strip(), validate=True)
+    except (binascii.Error, ValueError) as exc:
+        raise CredentialKeyMalformed(
+            f"credential key file at {path} does not contain valid "
+            "base64 key material"
+        ) from exc
+    if len(key) != _KEY_BYTES:
+        raise CredentialKeyWrongLength(
+            f"credential key at {path} decodes to {len(key)} bytes; "
+            f"exactly {_KEY_BYTES} are required (AES-256)"
+        )
+    return key
+
+
+def _is_envelope(value: Any) -> bool:
+    """True when ``value`` has the v2 credential envelope shape."""
+    return (
+        isinstance(value, dict)
+        and value.get("v") == _ENVELOPE_VERSION
+        and value.get("alg") == _ENVELOPE_ALG
+        and isinstance(value.get("nonce"), str)
+        and isinstance(value.get("ct"), str)
+    )
+
+
+def _encrypt_value(key: bytes, plaintext: str) -> dict[str, Any]:
+    """Encrypt one credential value into its v2 envelope (fresh nonce)."""
+    nonce = os.urandom(_NONCE_BYTES)
+    ct = AESGCM(key).encrypt(nonce, plaintext.encode("utf-8"), None)
+    return {
+        "v": _ENVELOPE_VERSION,
+        "alg": _ENVELOPE_ALG,
+        "nonce": base64.b64encode(nonce).decode("ascii"),
+        "ct": base64.b64encode(ct).decode("ascii"),
+    }
+
+
+def _decrypt_value(key: bytes, name: str, envelope: dict[str, Any]) -> str:
+    """Decrypt one v2 envelope; any failure is the named undecryptable
+    state — never a plaintext guess and never an empty value."""
+    try:
+        nonce = base64.b64decode(envelope["nonce"], validate=True)
+        ct = base64.b64decode(envelope["ct"], validate=True)
+        return AESGCM(key).decrypt(nonce, ct, None).decode("utf-8")
+    except Exception as exc:
+        raise CredentialStoreUndecryptable(
+            f"stored credential {name!r} cannot be decrypted with the "
+            "loaded credential key (wrong key, or the store entry is "
+            "corrupt or tampered); no value is served for it"
+        ) from exc
+
+
+def _write_store_verified(target: Path, payload: str) -> None:
+    """Write the store through the verified construction (C092-7's
+    store leg, hand-rolled in this module for Stage 1; Stage 2 lifts
+    it into the verified-write library).
+
+    Temp file in the target's own directory, mode 0600 applied to the
+    temp BEFORE the rename (so no window exists where the store sits
+    at looser permissions), fsync, atomic rename, then read-back
+    verification against the payload. Any failure before the rename
+    leaves the previous store byte-identical and raises
+    :class:`StateWriteError` naming the target — the F1 discipline:
+    a failed write must never destroy the only copy of every stored
+    credential at once.
+    """
+    data = payload.encode("utf-8")
+    tmp_name: str | None = None
+    try:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        fd, tmp_name = tempfile.mkstemp(
+            dir=str(target.parent), prefix=f".{target.name}.", suffix=".tmp"
+        )
+        with os.fdopen(fd, "wb") as handle:
+            try:
+                os.fchmod(handle.fileno(), 0o600)
+            except (AttributeError, OSError):
+                # Windows has no fchmod; mkstemp's default restrictive
+                # mode and the account ACLs govern there.
+                pass
+            handle.write(data)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(tmp_name, target)
+        tmp_name = None
+        if target.read_bytes() != data:
+            raise StateWriteError(
+                f"verified write to credential store {target} failed: "
+                "read-back bytes differ from the payload written"
+            )
+    except StateWriteError:
+        raise
+    except Exception as exc:
+        raise StateWriteError(
+            f"verified write to credential store {target} failed: {exc}"
+        ) from exc
+    finally:
+        if tmp_name is not None:
+            try:
+                os.unlink(tmp_name)
+            except OSError:
+                pass
+
+
+def _read_store_file(f: Path) -> dict[str, Any]:
+    """Read and parse the store file. An absent file is an empty
+    store (``{}`` — "no keys configured"); an existing file that
+    cannot be read or parsed is a named error state, never ``{}``
+    (C092-3 retires the old silent-``{}``-on-any-error behaviour)."""
+    if not f.exists():
+        return {}
+    try:
+        text = f.read_text(encoding="utf-8")
+    except OSError as exc:
+        raise CredentialStoreUnreadable(
+            f"credential store at {f} could not be read: {exc}"
+        ) from exc
+    try:
+        data = json.loads(text)
+    except ValueError as exc:
+        raise CredentialStoreCorrupt(
+            f"credential store at {f} is not valid JSON; it is "
+            "reported as corrupt, not as an empty store"
+        ) from exc
+    if not isinstance(data, dict):
+        raise CredentialStoreCorrupt(
+            f"credential store at {f} does not hold a JSON object; "
+            "it is reported as corrupt, not as an empty store"
+        )
+    return data
+
+
+def _load_keys() -> dict[str, Any]:
+    """Load the store, returning plaintext values exactly as callers
+    have always seen them (C092-5): credential entries are decrypted
+    inside the store; non-credential entries pass through unchanged.
+
+    A store holding any credential entry needs the key — v2 envelopes
+    to decrypt, v1 plaintext entries to migrate (T102: the migration
+    runs in this same act, through the verified save path, and the
+    migrated store is re-read and compared value-by-value before this
+    load returns). A credential-free store never consults the key
+    (D-092-2: a missing key degrades exactly the credential class).
+    """
     f = _keys_file()
-    f.parent.mkdir(parents=True, exist_ok=True)
-    # F1 (disk-full cascade): never truncate the live keys file in
-    # place — a failed write must leave the previous keys intact and
-    # raise a named error, not destroy every stored key at once.
-    atomic_write_text(f, json.dumps(data, indent=2), encoding="utf-8")
-    # Restrict permissions on Unix
+    raw = _read_store_file(f)
+    if not raw:
+        return {}
+
+    needs_key = False
+    needs_migration = False
+    for name in CREDENTIAL_KEYS:
+        if name not in raw:
+            continue
+        value = raw[name]
+        if isinstance(value, str):
+            needs_key = True
+            needs_migration = True
+        elif _is_envelope(value):
+            needs_key = True
+        else:
+            raise CredentialStoreCorrupt(
+                f"credential entry {name!r} in {f} is neither a v1 "
+                "plaintext string nor a v2 envelope; it is reported "
+                "as corrupt and no value is served for it"
+            )
+    if not needs_key:
+        return dict(raw)
+
+    key = _load_credential_key()
+    plain: dict[str, Any] = dict(raw)
+    for name in CREDENTIAL_KEYS:
+        value = raw.get(name)
+        if _is_envelope(value):
+            plain[name] = _decrypt_value(key, name, value)
+
+    if needs_migration:
+        _migrate_store(f, plain)
+    return plain
+
+
+def _migrate_store(f: Path, plain: dict[str, Any]) -> None:
+    """Re-save a legacy plaintext store in v2 form and prove it by
+    re-reading (C092-4). Any failure leaves the original file
+    byte-untouched where the failure precedes the rename, and is
+    raised as the named migration state — there is no half-migrated
+    state."""
+    try:
+        _save_keys(plain)
+    except StateWriteError as exc:
+        raise CredentialStoreMigrationFailed(
+            f"legacy credential store at {f} could not be migrated: "
+            f"{exc}; the original file is untouched"
+        ) from exc
+    reread = _load_keys()
+    if reread != plain:
+        raise CredentialStoreMigrationFailed(
+            f"legacy credential store at {f} was re-saved in v2 form "
+            "but the post-migration re-read does not match the "
+            "pre-migration values; the store is reported as failed, "
+            "not trusted"
+        )
+
+
+def _save_keys(data: dict[str, Any]) -> None:
+    """Persist the store. Callers pass plaintext values (as they
+    always have); credential-class entries are encrypted into v2
+    envelopes here, inside the store, and every write goes through
+    the verified construction. A save carrying credential values
+    requires the key — without it the save is refused with the named
+    key state rather than writing a credential in plaintext."""
+    f = _keys_file()
+    out: dict[str, Any] = dict(data)
+    credential_names = [n for n in CREDENTIAL_KEYS if n in out]
+    if credential_names:
+        key = _load_credential_key()
+        for name in credential_names:
+            value = out[name]
+            if not isinstance(value, str):
+                raise CredentialStoreCorrupt(
+                    f"refusing to persist credential entry {name!r}: "
+                    "its value is not a string, and a credential is "
+                    "never written in a non-envelope form"
+                )
+            out[name] = _encrypt_value(key, value)
+    _write_store_verified(f, json.dumps(out, indent=2))
+    # Restrict permissions on Unix (the rename already lands the
+    # temp's 0600; this keeps the standing discipline for filesystems
+    # where the rename preserved a looser mode).
     try:
         f.chmod(0o600)
     except Exception:
@@ -181,7 +571,22 @@ def get_key(key_name: str) -> str | None:
             "Run `Remove-Item Env:%s` in your shell or `setx %s \"\"` to clear it.",
             env_name, env_val, env_name, env_name,
         )
-    stored = _load_keys().get(key_name)
+    try:
+        stored = _load_keys().get(key_name)
+    except CredentialStoreError as exc:
+        # C092-3: an undecryptable store serves no credential. The
+        # named state itself is reported by the settings surface (and
+        # logged here, once per state); get_key's contract to its
+        # many callers is a value or None, and env-supplied values
+        # above remain resolvable while the store is down.
+        if exc.state not in _log_warned:
+            _log_warned.add(exc.state)
+            logging.getLogger("glossa_lab.api.settings").warning(
+                "Credential store unavailable (%s): %s. Stored values "
+                "are being served as unset until the store is readable.",
+                exc.state, exc,
+            )
+        return None
     if stored and _is_placeholder(stored):
         return None
     return stored
@@ -492,7 +897,17 @@ async def verify_key(body: VerifyRequest) -> dict[str, Any]:
 @router.get("")
 async def read_settings() -> dict[str, Any]:
     """Return settings with masked key values — never exposes plaintext."""
-    stored = _load_keys()
+    store_error: dict[str, str] | None = None
+    try:
+        stored = _load_keys()
+    except CredentialStoreError as exc:
+        # C092-3: the surface reports the named error state. No stored
+        # value is served; env-sourced keys still report truthfully,
+        # and the ``store_error`` field distinguishes this state from
+        # "no keys configured" (an absent store, which carries no
+        # ``store_error`` at all).
+        stored = {}
+        store_error = {"state": exc.state, "detail": str(exc)}
     keys_status: dict[str, Any] = {}
     for k in KNOWN_KEYS:
         # Env var takes precedence
@@ -505,17 +920,28 @@ async def read_settings() -> dict[str, Any]:
             keys_status[k] = {"set": False, "source": None, "masked": ""}
 
     stored_providers = stored.get(_PROVIDERS_KEY, {})
-    return {
+    body: dict[str, Any] = {
         "keys": keys_status,
         "providers": stored_providers,
         "data_dir": str(get_settings().data_dir),
     }
+    if store_error is not None:
+        body["store_error"] = store_error
+    return body
 
 
 @router.put("")
 async def update_settings(body: dict[str, Any]) -> dict[str, Any]:
     """Update stored settings. Pass empty string to clear a key."""
-    stored = _load_keys()
+    try:
+        stored = _load_keys()
+    except CredentialStoreError as exc:
+        # A write never proceeds from an unreadable store: starting
+        # from a silently-empty dict would destroy every stored
+        # credential on save. Refuse with the named state (C092-3).
+        raise HTTPException(
+            status_code=503, detail=f"{exc.state}: {exc}"
+        ) from exc
     updated: list[str] = []
 
     for k in KNOWN_KEYS:
@@ -542,7 +968,12 @@ async def update_settings(body: dict[str, Any]) -> dict[str, Any]:
                 updated_providers.append(pid)
         stored[_PROVIDERS_KEY] = prefs
 
-    _save_keys(stored)
+    try:
+        _save_keys(stored)
+    except CredentialStoreError as exc:
+        raise HTTPException(
+            status_code=503, detail=f"{exc.state}: {exc}"
+        ) from exc
 
     return {
         "updated": updated,

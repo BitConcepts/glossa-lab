@@ -43,7 +43,7 @@
 
 ## Stage 1 — Credential encryption at rest (PR: feat/092-s1-credential-encryption)
 
-- [ ] **T101 — Store format v2 + key loading.** The registered
+- [x] **T101 — Store format v2 + key loading.** The registered
   credential set; the v2 envelope for credential entries under the
   D-092-1 construction; the single key loader with its named failure
   modes; `_load_keys` decrypting inside the store functions;
@@ -54,7 +54,7 @@
   sweep over the data dir and the repo tree).
   *This does not establish:* that a live store has migrated — that is
   T102's mechanism and T104's act.
-- [ ] **T102 — Legacy migration + verified save path.** First-load
+- [x] **T102 — Legacy migration + verified save path.** First-load
   migration of v1 credential entries, re-save through the
   temp + fsync + rename + read-back construction implemented in the
   store module, post-migration re-read comparison, failure leaves
@@ -65,7 +65,7 @@
   missing-key fixtures leave the original file's bytes unchanged).
   *This does not establish:* the library form of the write
   construction — Stage 2 lifts it and re-proves this leg.
-- [ ] **T103 — Contract preservation.** The consumer-facing battery
+- [x] **T103 — Contract preservation.** The consumer-facing battery
   run identically against v1 and v2 stores: masked GET shape, PUT
   semantics incl. the env side effect, `get_key` resolution order
   and placeholder filtering, the Graph save/disconnect path, the

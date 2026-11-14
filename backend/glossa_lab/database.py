@@ -728,7 +728,10 @@ class Database:
                 pass
             # Migrate Ollama prefs from .keys.json
             try:
-                from glossa_lab.api.settings import _load_keys  # noqa: PLC0415
+                from glossa_lab.api.settings import (  # noqa: PLC0415
+                    CredentialStoreError,
+                    _load_keys,
+                )
                 keys = _load_keys()
                 prefs = keys.get("_provider_prefs", {})
                 ollama_pref = prefs.get("ollama", {})
@@ -782,6 +785,17 @@ class Database:
                                 "", now, now,
                             ),
                         )
+            except CredentialStoreError as exc:
+                # Spec 092 (C092-3, startup clause): this one-time
+                # prefs migration is a startup-path reader that cannot
+                # tolerate an undecryptable credential store — it
+                # skips with the reason logged, never crashes startup
+                # and never proceeds as if the store were unconfigured.
+                logger.warning(
+                    "Skipping .keys.json provider-prefs migration: "
+                    "credential store unavailable (%s: %s)",
+                    exc.state, exc,
+                )
             except Exception:  # noqa: BLE001
                 pass
             await self._conn.execute("UPDATE _schema_version SET version = ?", (20,))

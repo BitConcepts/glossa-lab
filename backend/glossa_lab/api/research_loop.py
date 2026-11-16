@@ -23,6 +23,8 @@ from typing import Any
 from fastapi import APIRouter, Query, Request
 from fastapi.responses import StreamingResponse
 
+from glossa_lab.claim_stage import is_automated_actor, is_listed_approver
+
 _REPO = Path(__file__).resolve().parents[3]
 
 router = APIRouter(prefix="/api/v1/research-loop", tags=["research-loop"])
@@ -624,6 +626,41 @@ def _evidence_ref_resolves(ref: Any) -> bool:
     return (_REPO / path_part).is_file() or (_REPO / "backend" / path_part).is_file()
 
 
+def _approval_gate_refusal(candidate: dict) -> str | None:
+    """Spec 094 Stage 1 approval gate (C094-1..3): the refusal reason
+    for a candidate record that may not be approved, verified, or
+    promoted, or None when the record passes.
+
+    Every input is read from the candidate RECORD — never from the
+    request that asks for the transition (C094-3). The record must
+    carry a non-empty falsifier and an approver identity that
+    validates as a named human on the D-094-1 list under the
+    claim_stage actor rules; an automated identity recorded as
+    approver refuses the transition outright (C094-2). Records
+    written before the gate landed carry neither field and are
+    unapprovable until adjudication records them (C094-12).
+    """
+    falsifier = candidate.get("falsifier")
+    if not isinstance(falsifier, str) or not falsifier.strip():
+        return ("candidate record carries no falsifier; approval requires "
+                "a falsifier recorded on the candidate record "
+                "(Spec 094 C094-1)")
+    approver = candidate.get("approver")
+    if not isinstance(approver, str) or not approver.strip():
+        return ("candidate record carries no approver; approval requires "
+                "a named-human approver recorded on the candidate record "
+                "(Spec 094 C094-1)")
+    if is_automated_actor(approver):
+        return (f"recorded approver {approver!r} is an automated identity; "
+                "automated actors cannot approve, verify, or promote "
+                "(Spec 094 C094-2)")
+    if not is_listed_approver(approver):
+        return (f"recorded approver {approver!r} does not validate as a "
+                "named human on the D-094-1 approvers list "
+                "(Spec 094 C094-1)")
+    return None
+
+
 @router.get("/staging")
 async def get_staging() -> dict[str, Any]:
     """Return all anchor candidates from the staging file."""
@@ -734,7 +771,11 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
 
     - approve  → review_status='approved', approved_at timestamp;
       state-guarded: valid only from 'staged' or 'blocked',
-      refused (ok=False, nothing changed) from any other state
+      refused (ok=False, nothing changed) from any other state;
+      gate-guarded (Spec 094 Stage 1): the candidate RECORD must
+      carry a non-empty falsifier and an approver validating as a
+      named human on the D-094-1 list — gate inputs are read from
+      the record only, never from this request (C094-1..3)
     - reject   → review_status='rejected', rejected_reason kept
       for audit; every rejection is also appended to the
       append-only rejection_history, which re-staging preserves
@@ -772,6 +813,16 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
                             f"cannot approve candidate {sign}={reading} "
                             f"in state '{status}'; approve requires "
                             f"'staged' or 'blocked'"}
+                # Approval gate (Spec 094 Stage 1, C094-1..3): the
+                # record itself must carry a non-empty falsifier and
+                # a listed named-human approver. The request body is
+                # never a source for either — a gate decision taken
+                # from request-only data is refused by construction.
+                refusal = _approval_gate_refusal(c)
+                if refusal is not None:
+                    return {"ok": False, "error":
+                            f"cannot approve candidate {sign}={reading}: "
+                            f"{refusal}"}
 
     now = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
     matched = False
@@ -1048,6 +1099,11 @@ async def cleanup_staging() -> dict[str, Any]:
     - Approved items  → marked 'verified', moved to archive file
     - Rejected items  → deleted permanently (no archive copy)
     - Staged / blocked → remain in staging for future review
+    - Approved/verified items whose record fails the Spec 094
+      approval gate (no recorded falsifier, or a recorded approver
+      that is automated or not a listed named human) are NOT
+      verified: they remain in staging, status untouched, and are
+      reported in blocked_no_approval_gate (C094-2)
 
     Use after reviewing a batch: approve the good ones, reject the bad ones,
     then call this once to flush everything and leave only unreviewed items.
@@ -1067,9 +1123,18 @@ async def cleanup_staging() -> dict[str, Any]:
     remaining: list[dict] = []
     pruned_count = 0
 
+    blocked_gate: list[str] = []
     for c in candidates:
         status = c.get("review_status", "staged")
         if status in ("approved", "verified"):
+            # Approval gate (Spec 094 Stage 1, C094-2): the verify
+            # transition cleanup performs is refused for a record
+            # that never passed the approval gate — it stays in
+            # staging, status untouched, and is reported.
+            if _approval_gate_refusal(c) is not None:
+                blocked_gate.append(c.get("sign") or c.get("sign_id", ""))
+                remaining.append(c)
+                continue
             c = dict(c)
             c["review_status"] = "verified"
             c["verified_at"] = now
@@ -1124,6 +1189,7 @@ async def cleanup_staging() -> dict[str, Any]:
         "ok": True,
         "archived": len(to_archive),
         "pruned": pruned_count,
+        "blocked_no_approval_gate": blocked_gate,
         "remaining_staged": remaining_staged,
         "remaining": len(remaining),
         "message": (
@@ -1140,6 +1206,14 @@ async def staging_verify_archive() -> dict[str, Any]:
     One-click action for the anchor review queue. Marks all 'approved'
     candidates as 'verified' and archives them. Does NOT require a
     full research loop run.
+
+    Spec 094 Stage 1 (C094-2): an approved candidate whose record
+    fails the approval gate (no recorded falsifier, or a recorded
+    approver that is automated or not a listed named human) is NOT
+    verified — it stays in staging, status untouched, and is
+    reported in blocked_no_approval_gate; when every approved
+    candidate is blocked, the call refuses (ok=False) and writes
+    nothing.
 
     Phase-109 rename (spec 007 Step 4): this endpoint was previously
     named /staging/verify-sa, but it performs NO SA test of any
@@ -1166,11 +1240,27 @@ async def staging_verify_archive() -> dict[str, Any]:
     if not approved:
         return {"ok": False, "error": "No approved candidates to verify. Approve some candidates first."}
 
-    # Mark all approved → verified + archive them
+    # Approval gate (Spec 094 Stage 1, C094-2): verification is
+    # refused for an approved record that never passed the approval
+    # gate. Blocked candidates stay in staging, status untouched,
+    # and are reported by sign; they are never silently verified.
+    blocked_gate_signs = [
+        c.get("sign") or c.get("sign_id", "")
+        for c in approved if _approval_gate_refusal(c) is not None]
+    if len(blocked_gate_signs) == len(approved):
+        return {"ok": False,
+                "error": "No approved candidate passes the Spec 094 "
+                         "approval gate (a recorded falsifier and a "
+                         "listed named-human approver are required); "
+                         "verification refused.",
+                "blocked_no_approval_gate": blocked_gate_signs}
+
+    # Mark all gate-passing approved → verified + archive them
     to_archive: list[dict] = []
     remaining: list[dict] = []
     for c in candidates:
-        if c.get("review_status") == "approved":
+        if (c.get("review_status") == "approved"
+                and _approval_gate_refusal(c) is None):
             c["review_status"] = "verified"
             c["verified_at"] = now
             c["archived_at"] = now
@@ -1236,6 +1326,7 @@ async def staging_verify_archive() -> dict[str, Any]:
         "exp_id": exp_id,
         "exp_name": exp_name,
         "job_id": job_id,
+        "blocked_no_approval_gate": blocked_gate_signs,
         "message": f"{len(to_archive)} candidate(s) verified and archived.",
         "suggested_sa_exp": exp_id,
         "suggested_sa_name": exp_name,
@@ -1430,7 +1521,8 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
     Returns:
       {ok, dry_run, promoted, skipped, blocked_no_evidence,
        blocked_unknown_grapheme, blocked_evidence_mismatch,
-       total_anchors, prev_coverage, new_coverage, promotable}
+       blocked_no_approval_gate, total_anchors, prev_coverage,
+       new_coverage, promotable}
       new_coverage and coverage_delta are null when the coverage
       recalculation could not run (corpus CSV unavailable) — never
       a measured-looking 0.0.
@@ -1498,6 +1590,7 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
     blocked_signs: list[str] = []
     blocked_unknown_signs: list[str] = []
     blocked_mismatch_signs: list[str] = []
+    blocked_gate_signs: list[str] = []
     now_label = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
 
     for sid, c in best_per_sign.items():
@@ -1532,6 +1625,16 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         ev_ref = recorded_ref
         if not _evidence_ref_resolves(ev_ref):
             blocked_signs.append(sid)
+            continue
+        # Approval gate (Spec 094 Stage 1, C094-1/C094-2/C094-12):
+        # promotion is refused for a record that never passed the
+        # approval gate — no recorded falsifier, or a recorded
+        # approver that is automated or not a listed named human.
+        # This is what suspends the pre-gate archive stock: it keeps
+        # its recorded status as history but cannot promote until
+        # the record carries the gate fields (D-094-6).
+        if _approval_gate_refusal(c) is not None:
+            blocked_gate_signs.append(sid)
             continue
         score = float(c.get("evidence_score", 0) or 0)
         st = (c.get("review_status") or "").lower()
@@ -1646,6 +1749,11 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
             f" {len(blocked_mismatch_signs)} candidate(s) BLOCKED: "
             "request-supplied evidence reference differs from the "
             "candidate's recorded reference.")
+    if blocked_gate_signs:
+        blocked_parts.append(
+            f" {len(blocked_gate_signs)} candidate(s) BLOCKED: record "
+            "does not pass the Spec 094 approval gate (a recorded "
+            "falsifier and a listed named-human approver are required).")
     blocked_msg = "".join(blocked_parts)
     coverage_txt = (
         f"Coverage: {prev_coverage*100:.1f}% → {new_coverage*100:.1f}% "
@@ -1661,6 +1769,7 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         "blocked_no_evidence": blocked_signs,
         "blocked_unknown_grapheme": blocked_unknown_signs,
         "blocked_evidence_mismatch": blocked_mismatch_signs,
+        "blocked_no_approval_gate": blocked_gate_signs,
         "promotable":   promotable_count,
         "total_anchors": len(current_anchors),
         "prev_coverage":  round(prev_coverage, 4),

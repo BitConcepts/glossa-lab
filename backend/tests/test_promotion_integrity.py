@@ -87,10 +87,15 @@ def client():
 
 
 def _candidate(**over):
+    # Spec 094 Stage 1: the fixture carries the approval-gate record
+    # fields (falsifier + listed named-human approver) — the
+    # conforming adjudicated shape the promote gate requires.
     c = {"sign": "M777", "proposed_reading": "test-reading",
          "review_status": "verified", "evidence_score": 0.99,
          "evidence_type": "positional_profile",
          "source_experiment": "unit-test",
+         "falsifier": "the reading fails if the positional profile does not replicate",
+         "approver": "Tristen Pierson",
          "evidence_ref": "LEDGER.md"}
     c.update(over)
     return c

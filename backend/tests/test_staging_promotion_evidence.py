@@ -59,10 +59,15 @@ def client():
 
 
 def _candidate(**over):
+    # Spec 094 Stage 1: the fixture carries the approval-gate record
+    # fields (falsifier + listed named-human approver) so the H26
+    # evidence gate is the deciding gate in these tests.
     c = {"sign": "M777", "proposed_reading": "test",
          "review_status": "verified", "evidence_score": 0.9,
          "evidence_type": "positional_profile",
-         "source_experiment": "unit-test"}
+         "source_experiment": "unit-test",
+         "falsifier": "the reading fails if the positional profile does not replicate",
+         "approver": "Tristen Pierson",}
     c.update(over)
     return c
 
@@ -116,7 +121,10 @@ def test_promotion_with_request_evidence_ref_map_is_refused(
 
 def test_verify_archive_route_and_deprecated_alias(client, staging_env):
     candidate = {"sign": "M555", "proposed_reading": "x",
-                 "review_status": "approved"}
+                 "review_status": "approved",
+                 "falsifier": "the reading fails on replication",
+                 "approver": "Tristen Pierson",
+                 "evidence_ref": "LEDGER.md"}
     staging_env["staging"].write_text(
         json.dumps([candidate]), encoding="utf-8")
     r = client.post(f"{BASE}/staging/verify-archive")

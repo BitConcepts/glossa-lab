@@ -31,6 +31,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Generator
 
+from glossa_lab.claim_stage import CANDIDATE_GATE_FIELDS
+
 logger = logging.getLogger(__name__)
 
 
@@ -1495,6 +1497,17 @@ class ResearchLoop:
         new_unique = [c for c in self.anchor_candidates
                       if (c["sign"], c["proposed_reading"]) not in seen_keys
                       and (c["sign"], c["proposed_reading"]) not in exclusion]
+        # Spec 094 Stage 1 (C094-3): the staging write carries the
+        # candidate record's gate fields — falsifier, approver, and
+        # evidence_ref — as first-class fields on every record it
+        # writes. They start empty: the pipeline stages candidates,
+        # it does not adjudicate them, and a record carrying no
+        # falsifier or approver is unapprovable until adjudication
+        # records them. Records already in the staging file are not
+        # rewritten (no migration; C094-12).
+        for c in new_unique:
+            for field in CANDIDATE_GATE_FIELDS:
+                c.setdefault(field, "")
         dropped = before_count - len(new_unique)
         if dropped:
             logger.info("Excluded %d previously-processed candidates from staging", dropped)

@@ -4,14 +4,14 @@
    "by_class": {
     "closed_other": 1,
     "negative": 6,
-    "open": 968,
+    "open": 985,
     "positive": 2
    },
    "by_population": {
-    "bundle": 954,
+    "bundle": 971,
     "extracted": 23
    },
-   "total": 977
+   "total": 994
   },
   "domains": {
    "Anchors & readings": {
@@ -69,19 +69,19 @@
     }
    },
    "Program infrastructure": {
-    "claims": 237,
+    "claims": 254,
     "claims_by_class": {
      "closed_other": 1,
      "negative": 0,
-     "open": 236,
+     "open": 253,
      "positive": 0
     },
     "restricted_studies": 0,
-    "studies": 22,
+    "studies": 23,
     "studies_by_class": {
      "closed_other": 0,
      "negative": 0,
-     "open": 16,
+     "open": 17,
      "positive": 0,
      "unjudged": 6
     }
@@ -117,8 +117,8 @@
     "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
     "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001"
    ],
-   "present": 968,
-   "total": 977
+   "present": 985,
+   "total": 994
   },
   "judgment_call_studies": [],
   "multi_spec_claims": [
@@ -171,12 +171,12 @@
    "by_class": {
     "closed_other": 0,
     "negative": 0,
-    "open": 66,
+    "open": 67,
     "positive": 0,
     "unjudged": 28
    },
    "restricted": 1,
-   "total": 95
+   "total": 96
   },
   "unjudged_studies": [
    "001-glossa-lab-baseline",
@@ -13570,6 +13570,244 @@
    },
    {
     "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-1",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-10",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-11",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-12",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-13",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-14",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-15",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-16",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-17",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-2",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-3",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-4",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-5",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-6",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-7",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-8",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "095-red-team-remediation/C095-9",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "095-red-team-remediation",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
     "document": "ancient_writing_and_modern_technologies_51831ac9",
     "domain": "Claim families by study line",
     "falsifier_present": false,
@@ -15404,14 +15642,30 @@
     },
     "restricted": false,
     "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "domain": "Program infrastructure",
+    "id": "095-red-team-remediation",
+    "judgment_call": false,
+    "kind": "study",
+    "member_counts": {
+     "closed_other": 0,
+     "negative": 0,
+     "open": 17,
+     "positive": 0,
+     "total": 17
+    },
+    "restricted": false,
+    "subdomain": "Governance, lifecycle & generated layers"
    }
   ]
  },
  "stamp": {
-  "ledger_latest_entry_date": "2026-11-13",
-  "ledger_lines": 1008,
+  "ledger_latest_entry_date": "2026-11-15",
+  "ledger_lines": 1025,
   "ledger_schema": "ledger-schema v1",
-  "ledger_sha256": "95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a",
+  "ledger_sha256": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
   "program_map_defs": "program-map-defs v1",
   "program_map_taxonomy": "program-map-taxonomy v1"
  },

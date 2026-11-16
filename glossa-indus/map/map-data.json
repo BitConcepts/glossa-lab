@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 977,
+  "claims_total": 994,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 953,
+   "draft": 970,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a",
-   "ledger_lines": 1008,
-   "ledger_date": "2026-11-13",
+   "ledger_sha256": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
+   "ledger_lines": 1025,
+   "ledger_date": "2026-11-15",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "4035852c28c50b65cc11020a08a5819b7fbe65e5430cfc3449ffecc18c92791f",
+   "matrix_sha256": "c879e3b4798f75ad390d1d49f246383388880dd29212357691086871f88ecb20",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-   "assignment_sets_sha256": "3b2b1a29da72ba9df6d9e6bcbd3f102d037c2efd4e00e9f129f917a290ea71ac",
-   "comparison_sha256": "6145582fd0043062b0a9c31b647bb85b3bc09456fdddb53536c3f2889fd913d0",
-   "settling_canonical_sha256": "7856368fba7a3c6184467efe834f3b13e5231039f0a3ae2dd719c4716fe71999"
+   "assignment_sets_sha256": "aa4e47abd1c53e3362d592239ef1b539d05cd35fe68c233962175d022ea19f1c",
+   "comparison_sha256": "3bfc0c521a9fbd7852a9864403cc87e127d72454102d982ab4ec88bf01d310cc",
+   "settling_canonical_sha256": "28c9a6f128a4fc48889ac1e6c777b919f3c6154179c3eabb84709480d66fefa5"
   }
  },
  "elements": [
@@ -7882,6 +7882,142 @@
    "kind": "claim",
    "id": "094-research-loop-acceptance-hardening/C094-1",
    "statement": "No candidate reaches `approved` unless its record carries a non-empty falsifier statement and an approver identity that validates as a named human under the `claim_stage` actor rules (reused, not redefined). This does not establish: that the falsifier is a good one — the gate binds presence and attribution, not quality.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-15",
+   "statement": "The Eteocypriot second-target work under this spec is a proposal and preregistration draft only: the draft states the corpus's legal status and source, the bilingual and sign-list basis, the held-out design, and the adjudication route before any analysis exists; no Eteocypriot analysis is executed under this spec, and execution requires a separate owner decision recorded outside this spec's stages. This does not establish: that Eteocypriot is tractable, related to any other script, or evidence about the Indus script in either direction.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-1",
+   "statement": "The red-team reconciliation register of 2026-11-15 (43 rows, RT-01..RT-43) is this program's scope of record for the external red-team review of 2026-11-15: every row carries exactly one disposition (DUPLICATE-OF-RECORD with its owning vehicle named, NEW with its register section-N item named, or FACT-DISPUTED with the governing record named); the review's one confirmed defect (RT-03) sits inside the NEW rows as a micro-task on a duplicate family, and its one security risk requiring verification (RT-06) sits inside the duplicate rows under its Spec 083 vehicle; the 23 duplicate rows are worked only under their owning vehicles (Spec 092's remainder, Spec 094, Specs 091, 093, 088, 053 and 083, and the named gap-register entries), and no work item exists in this spec for a duplicate row. This does not establish: that any duplicate row's underlying work is complete, correct, or scheduled; the register maps scope, it does not discharge it.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-3",
+   "statement": "Every corpus a claim in this program rests on carries an immutable identity of record (version, content hash, source, licensing terms, object, inscription and sign counts under a named counting basis, and normalization rules) stated in the corpus's own intake or identity record, and every loader of a claim-bearing corpus fails closed, refusing to run and naming the mismatch, when the identity is missing or any element differs from the record. This does not establish: that any corpus's contents are correct or complete; identity pins what was used, not whether it was right.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-11",
+   "statement": "The multi-script data model is specified with claims and falsifiers of its own: seventeen entities (WritingSystem, LanguageHypothesis, Corpus, Artifact, Inscription, Sign, SignVariant, Transcription, ReadingHypothesis, TranslationHypothesis, Context, Evidence, Claim, Falsifier, Experiment, Execution, Result, Adjudication) with sign shape held separate from phonetic value and semantic interpretation, and no Indus-specific or Proto-Dravidian assumption inside the generic layer; the Indus record instantiates the model without changing a single Indus fact, count, or standing. This does not establish: that any other script's data exists in the system; the model is specified and the Indus record instantiated, nothing more.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-17",
+   "statement": "Any document under docs/red-team/ is a derived document: it names the records it derives from on its face, states no rule, verdict, or requirement of its own, and is never cited as authority for a program decision; the governing records remain the reconciliation register, this spec, and the vehicles the register names. This does not establish: that derived documents are complete or current; derivation is a reading aid, and staleness in a derived document is corrected by regenerating it, never by editing the record it derives from.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-5",
+   "statement": "No corrected-validator v1 routine remains executable in a claim-bearing path of the live application unguarded: each of the four live v1 node paths of record (phonotactics v1 via the Phase-58 and Phase-108 experiment nodes; site-statistics v1 via the Phase-69 node and the provenance recompute; crosswalk v1 via the Phase-96 node) is migrated to its corrected v2 module, retired from the node registry, or mechanically guarded so its output cannot enter a claim-bearing record unlabelled; and a pinning test that plants a legacy-rule call in a claim-bearing path fails. This does not establish: that any historical result computed with a v1 routine is wrong; the exposure of record is prospective, and historical results stand or fall by their own revalidation entries (GR-088-03).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-6",
+   "statement": "Every consumer of the synthetic indus_public_corpus is enumerated and classified (test, demonstration, or claim-bearing) in a census of record, and no claim-bearing path consumes it: a planted fixture that presents the synthetic corpus as a real corpus in a claim-bearing path fails a pinning test, and the public loader's synthetic labelling is machine-checked, not comment-only. This does not establish: that the synthetic corpus is useless; it remains available to its classified test and demonstration consumers under its label.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-8",
+   "statement": "Program-wide standards of record state, once, the program's equivalence and statistical-reporting rules: equivalence is claimed only against a preregistered margin with an equivalence test, never from a non-significant difference; and a statistical result is reportable only with its effect size, uncertainty interval, multiplicity handling, and achieved power or precision basis, never a p-value alone; studies adopted after this standard cite it instead of restating local rules. This does not establish: that any past result retroactively satisfies the standard; earlier results keep the rules they were frozen under.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-12",
+   "statement": "The platform gains a dashboard home and the feature set of record (program status, inscription explorer, hypothesis comparison, evidence inspection, experiment reproduction, researcher contribution), each built wireframe-first with the owner's approval of the wireframes by name and Playwright verification at desktop and mobile widths before any verified claim, and each feature naming its refusals in its specification (no automatic promotion of any candidate, no self-certification of any claim), with the Research Assistant boundary inherited from Spec 025 (advisory only) and Spec 094 (no automated approval). This does not establish: that the features are usable or used; usability is C095-13's question, and adoption of any feature by researchers is a separate matter.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-13",
+   "statement": "A scored functional and usability audit package runs on the Spec 083 acceptance vehicle: the functional checklist and the eight-step new-researcher protocol of record (arrive from the public page; establish what the system claims and does not claim; find one inscription and its evidence trail; distinguish observation, transcription, hypothesis and claim; reproduce one published result; submit one candidate with a falsifier; follow its adjudication; export the audit trail), plus an accessibility pass over the same surfaces; every failure is filed with its screenshot evidence, and the package's scores are stated against thresholds fixed before the run. This does not establish: that the platform is fit for any particular researcher; the package scores the audited tasks only.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-9",
+   "statement": "Before a reading claim is scored SUPPORTED at any strength, a rival-construction exercise of record attempts to fit the same evidence with a rival sign function (and, where the claim is phonetic, a rival value from a named unrelated language family); the program's outcome vocabulary gains NOT IDENTIFIABLE by a recorded amendment when the rival construction fits comparably; and the protocol is first applied to the six independently supported anchors of record (M044, M047, M124, M202, M329, M330), whose standings are re-stated under the protocol's outcome, whatever it is. This does not establish: that any reading is false; NOT IDENTIFIABLE bounds what the evidence can distinguish, it does not disprove a reading.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-2",
+   "statement": "The strict-corpus artifact firestore_indusarrays_full.jsonl is located and verified against its intake pin of record (PR #393, 2026-10-25: SHA-256 073a83aa5e0f81055e7b68d2ccdf160027bb5061b4b870e58f3d3457cad1a578; census 3,916 records / 3,137 sequences / 2,665 dockeys / 12,494 sign instances) before any use: a candidate file whose digest differs from the pin stops the remediation; a verified file is placed read-only at the canonical path glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl, its census and the canonical export pin of record (prefix e90fd7ce41121529) reproduce exactly through the V3 loader, and Spec 053's frozen step 0 is re-executed only under a new execution order with its gates unchanged. This does not establish: anything about Spec 053's substantive result; the claim yadav_2009_arxiv_manual_001 stands as recorded until a re-execution under unchanged gates produces its own record.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-4",
+   "statement": "A named suite in CI exercises twelve fail-closed loader cases against the program's claim-bearing loaders (missing corpus, wrong content hash, same-name-different-corpus, empty loader result, duplicate identifiers, contradictory mappings, unknown signs, damaged spans, reversed reading order, partial availability, unauthorized access, and synthetic-presented-as-real), every case refuses or flags as its case definition requires, and the suite runs on every change to a covered loader. This does not establish: that loaders are correct on well-formed input; the battery proves refusal behavior on malformed identity and content, not analytic correctness.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-16",
+   "statement": "The Meroitic work under this spec is the scoping of a reproduction benchmark as a study spec: an independent implementation reproduces published sign-frequency and positional results from the openly published 2025 Meroitic corpus, against success criteria and a falsifier fixed in the scoping record, using the existing fixture module as its starting inventory; the benchmark's execution is a separately commissioned study, not a stage of this spec. This does not establish: that the deciphered Meroitic values validate any Indus method; the benchmark tests pipeline fidelity on a solved script, and transfer to an undeciphered script is a separate claim requiring its own evidence.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-14",
+   "statement": "Releases of the platform and its public claims are gated by one composed gate of thirteen components of record (unit tests, integration tests, frontend tests, end-to-end tests, ledger validation, corpus identity verification, anchor regression, claim-stage validation, provenance completeness, security checks, accessibility checks, reproducibility smoke test, public-claims consistency), each component's result recorded per release candidate, exceptions existing only as recorded owner-approved entries, and a planted stale public claim of the RT-03 shape blocks the candidate it is planted in. This does not establish: that a gated release is correct in substance; the gate proves the checks ran and passed, not that the science is right.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-10",
+   "statement": "Reading direction is carried as data: every inscription-level record in a claim-bearing corpus states its orientation basis, every positional or sequential result names the orientation assumption it was computed under, and every such result is reported beside its reversed-orientation variant or an explicit statement of why reversal is undefined for it. This does not establish: that either orientation is correct for any inscription; the claim governs reporting, not the undecided direction question.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "095-red-team-remediation/C095-7",
+   "statement": "The claims-ledger gate carries a check class that flags, at intake, the six contamination shapes of record (a source-derived value labelled independent; a self-labelling derivative presented as source data; a translation or reading column presented as corpus data; a derived result presented as independent confirmation; the same data under two source identities; a summary or delivery presented as the underlying record), and the class re-detects the six historical instances of record (the GR-088-01, GR-088-11, GR-088-16 and GR-088-29 family) from their records in its acceptance fixtures. This does not establish: that flagged intakes are substantively wrong; the class flags provenance shape for adjudication, it does not rule on content.",
    "status": "draft",
    "stage": "created",
    "population": "bundle"
@@ -26800,6 +26936,193 @@
    ]
   },
   {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-1",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-1",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-10",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-10",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-11",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-11",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-12",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-12",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-13",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-13",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-14",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-14",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-15",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-15",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-16",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-16",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-17",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-17",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-2",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-2",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-3",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-3",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-4",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-4",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-5",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-5",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-6",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-6",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-7",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-7",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-8",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-8",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "095-red-team-remediation/C095-9",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "095-red-team-remediation/C095-9",
+    "spec.md"
+   ]
+  },
+  {
    "from": "055",
    "to": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "rel": "opposes",
@@ -31847,6 +32170,91 @@
    "constrains": 0
   },
   "094-research-loop-acceptance-hardening/C094-1": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-15": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-1": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-3": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-11": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-17": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-5": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-6": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-8": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-12": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-13": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-9": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-2": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-4": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-16": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-14": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-10": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "095-red-team-remediation/C095-7": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -37712,6 +38120,108 @@
    },
    {
     "id": "094-research-loop-acceptance-hardening/C094-1",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-15",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-1",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-3",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-11",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-17",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-5",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-6",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-8",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-12",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-13",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-9",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-2",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-4",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-16",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-14",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-10",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "095-red-team-remediation/C095-7",
     "population": "bundle",
     "status": "draft",
     "stage": "created"
@@ -56632,6 +57142,193 @@
     ]
    },
    {
+    "row": "095-red-team-remediation/C095-1",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-1",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-10",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-10",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-11",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-11",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-12",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-12",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-13",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-13",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-14",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-14",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-15",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-15",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-16",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-16",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-17",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-17",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-2",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-2",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-3",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-3",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-4",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-4",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-5",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-5",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-6",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-6",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-7",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-7",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-8",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-8",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "095-red-team-remediation/C095-9",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "095-red-team-remediation/C095-9",
+     "spec.md"
+    ]
+   },
+   {
     "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
     "column": "055",
     "column_class": "studies",
@@ -56799,8 +57496,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 977,
-   "rows_with_cells": 963,
+   "rows_total": 994,
+   "rows_with_cells": 980,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -57158,30 +57855,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1500,
+   "cells_total": 1517,
    "cells_by_relation": {
-    "supports": 1493,
+    "supports": 1510,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1493,
+    "documents": 1510,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 968,
-    "total": 977,
+    "covered": 985,
+    "total": 994,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 954,
-      "total": 954
+      "covered": 971,
+      "total": 971
      }
     }
    },
@@ -62226,8 +62923,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 977,
-   "rows_with_cells": 963,
+   "rows_total": 994,
+   "rows_with_cells": 980,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -62585,15 +63282,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1500,
+   "cells_total": 1517,
    "cells_by_relation": {
-    "supports": 1493,
+    "supports": 1510,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1493,
+    "documents": 1510,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -62662,7 +63359,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 953,
+    "draft": 970,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -62672,26 +63369,26 @@
    },
    "by_stage": {
     "checked": 3,
-    "created": 942,
+    "created": 959,
     "explained": 8
    },
    "no_stage_recorded": 24,
    "by_population": {
-    "bundle": 954,
+    "bundle": 971,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 968,
-   "total": 977,
+   "covered": 985,
+   "total": 994,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 954,
-     "total": 954
+     "covered": 971,
+     "total": 971
     }
    },
    "gap_claims": [
@@ -62708,8 +63405,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 977,
-   "total": 977
+   "without_state": 994,
+   "total": 994
   },
   "unresolved": {
    "sign_mentions": [
@@ -64195,7 +64892,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "settling-20261113T214900Z-951ac9",
+      "record": "settling-20261116T034814Z-3681c4",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -64209,7 +64906,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "settling-20261113T214901Z-42d642",
+      "record": "settling-20261116T034819Z-8203db",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -158832,6 +159529,1451 @@
     },
     "sign_records": []
    }
+  },
+  "095-red-team-remediation/C095-15": {
+   "id": "095-red-team-remediation/C095-15",
+   "statement": "The Eteocypriot second-target work under this spec is a proposal and preregistration draft only: the draft states the corpus's legal status and source, the bilingual and sign-list basis, the held-out design, and the adjudication route before any analysis exists; no Eteocypriot analysis is executed under this spec, and execution requires a separate owner decision recorded outside this spec's stages. This does not establish: that Eteocypriot is tractable, related to any other script, or evidence about the Indus script in either direction.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "Any Eteocypriot analysis output exists under this spec; or the draft lacks the legal status, the held-out design, or the adjudication route."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-15",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-15",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-15",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-15",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-1": {
+   "id": "095-red-team-remediation/C095-1",
+   "statement": "The red-team reconciliation register of 2026-11-15 (43 rows, RT-01..RT-43) is this program's scope of record for the external red-team review of 2026-11-15: every row carries exactly one disposition (DUPLICATE-OF-RECORD with its owning vehicle named, NEW with its register section-N item named, or FACT-DISPUTED with the governing record named); the review's one confirmed defect (RT-03) sits inside the NEW rows as a micro-task on a duplicate family, and its one security risk requiring verification (RT-06) sits inside the duplicate rows under its Spec 083 vehicle; the 23 duplicate rows are worked only under their owning vehicles (Spec 092's remainder, Spec 094, Specs 091, 093, 088, 053 and 083, and the named gap-register entries), and no work item exists in this spec for a duplicate row. This does not establish: that any duplicate row's underlying work is complete, correct, or scheduled; the register maps scope, it does not discharge it.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "A register row is found without a disposition, with two dispositions, or naming no owning vehicle or section-N item; or a stage task in this spec is found whose work duplicates a duplicate row's owning vehicle."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-1",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-1",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-1",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-1",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-3": {
+   "id": "095-red-team-remediation/C095-3",
+   "statement": "Every corpus a claim in this program rests on carries an immutable identity of record (version, content hash, source, licensing terms, object, inscription and sign counts under a named counting basis, and normalization rules) stated in the corpus's own intake or identity record, and every loader of a claim-bearing corpus fails closed, refusing to run and naming the mismatch, when the identity is missing or any element differs from the record. This does not establish: that any corpus's contents are correct or complete; identity pins what was used, not whether it was right.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "A claim-bearing corpus is found in use without a complete identity of record; or a loader executes against a corpus whose hash, counts, or normalization differ from its identity record without refusing."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-3",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-3",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-3",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-3",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-11": {
+   "id": "095-red-team-remediation/C095-11",
+   "statement": "The multi-script data model is specified with claims and falsifiers of its own: seventeen entities (WritingSystem, LanguageHypothesis, Corpus, Artifact, Inscription, Sign, SignVariant, Transcription, ReadingHypothesis, TranslationHypothesis, Context, Evidence, Claim, Falsifier, Experiment, Execution, Result, Adjudication) with sign shape held separate from phonetic value and semantic interpretation, and no Indus-specific or Proto-Dravidian assumption inside the generic layer; the Indus record instantiates the model without changing a single Indus fact, count, or standing. This does not establish: that any other script's data exists in the system; the model is specified and the Indus record instantiated, nothing more.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "The specification lacks claims or falsifiers for any of the seventeen entities; a generic-layer rule names an Indus or Proto-Dravidian assumption; or instantiating the model alters any Indus record."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-11",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-11",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-11",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-11",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-17": {
+   "id": "095-red-team-remediation/C095-17",
+   "statement": "Any document under docs/red-team/ is a derived document: it names the records it derives from on its face, states no rule, verdict, or requirement of its own, and is never cited as authority for a program decision; the governing records remain the reconciliation register, this spec, and the vehicles the register names. This does not establish: that derived documents are complete or current; derivation is a reading aid, and staleness in a derived document is corrected by regenerating it, never by editing the record it derives from.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "A docs/red-team/ document is found without its sources named, stating a rule or verdict of its own, or cited as authority in a program record."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-17",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-17",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-17",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-17",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-5": {
+   "id": "095-red-team-remediation/C095-5",
+   "statement": "No corrected-validator v1 routine remains executable in a claim-bearing path of the live application unguarded: each of the four live v1 node paths of record (phonotactics v1 via the Phase-58 and Phase-108 experiment nodes; site-statistics v1 via the Phase-69 node and the provenance recompute; crosswalk v1 via the Phase-96 node) is migrated to its corrected v2 module, retired from the node registry, or mechanically guarded so its output cannot enter a claim-bearing record unlabelled; and a pinning test that plants a legacy-rule call in a claim-bearing path fails. This does not establish: that any historical result computed with a v1 routine is wrong; the exposure of record is prospective, and historical results stand or fall by their own revalidation entries (GR-088-03).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "Any of the four paths executes its v1 routine in the live app without migration, retirement, or a mechanical guard; or the planted legacy-rule call passes the pinning test."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-5",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-5",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-5",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-5",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-6": {
+   "id": "095-red-team-remediation/C095-6",
+   "statement": "Every consumer of the synthetic indus_public_corpus is enumerated and classified (test, demonstration, or claim-bearing) in a census of record, and no claim-bearing path consumes it: a planted fixture that presents the synthetic corpus as a real corpus in a claim-bearing path fails a pinning test, and the public loader's synthetic labelling is machine-checked, not comment-only. This does not establish: that the synthetic corpus is useless; it remains available to its classified test and demonstration consumers under its label.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "A consumer of indus_public_corpus is found that the census does not name or misclassifies; or the planted synthetic-as-real fixture passes."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-6",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-6",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-6",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-6",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-8": {
+   "id": "095-red-team-remediation/C095-8",
+   "statement": "Program-wide standards of record state, once, the program's equivalence and statistical-reporting rules: equivalence is claimed only against a preregistered margin with an equivalence test, never from a non-significant difference; and a statistical result is reportable only with its effect size, uncertainty interval, multiplicity handling, and achieved power or precision basis, never a p-value alone; studies adopted after this standard cite it instead of restating local rules. This does not establish: that any past result retroactively satisfies the standard; earlier results keep the rules they were frozen under.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "A program record adopted after the standard claims equivalence from a non-significant difference, reports a p-value without the required companions, or restates a local equivalence rule in place of the standard."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-8",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-8",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-8",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-8",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-12": {
+   "id": "095-red-team-remediation/C095-12",
+   "statement": "The platform gains a dashboard home and the feature set of record (program status, inscription explorer, hypothesis comparison, evidence inspection, experiment reproduction, researcher contribution), each built wireframe-first with the owner's approval of the wireframes by name and Playwright verification at desktop and mobile widths before any verified claim, and each feature naming its refusals in its specification (no automatic promotion of any candidate, no self-certification of any claim), with the Research Assistant boundary inherited from Spec 025 (advisory only) and Spec 094 (no automated approval). This does not establish: that the features are usable or used; usability is C095-13's question, and adoption of any feature by researchers is a separate matter.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "A feature ships without owner-approved wireframes or without desktop and mobile rendered verification; a feature's specification omits its refusals; or any feature promotes or certifies automatically."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-12",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-12",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-12",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-12",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-13": {
+   "id": "095-red-team-remediation/C095-13",
+   "statement": "A scored functional and usability audit package runs on the Spec 083 acceptance vehicle: the functional checklist and the eight-step new-researcher protocol of record (arrive from the public page; establish what the system claims and does not claim; find one inscription and its evidence trail; distinguish observation, transcription, hypothesis and claim; reproduce one published result; submit one candidate with a falsifier; follow its adjudication; export the audit trail), plus an accessibility pass over the same surfaces; every failure is filed with its screenshot evidence, and the package's scores are stated against thresholds fixed before the run. This does not establish: that the platform is fit for any particular researcher; the package scores the audited tasks only.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "The audit runs without pre-fixed thresholds; a step is scored without evidence; a failure is filed without screenshot evidence; or the accessibility pass is absent."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-13",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-13",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-13",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-13",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-9": {
+   "id": "095-red-team-remediation/C095-9",
+   "statement": "Before a reading claim is scored SUPPORTED at any strength, a rival-construction exercise of record attempts to fit the same evidence with a rival sign function (and, where the claim is phonetic, a rival value from a named unrelated language family); the program's outcome vocabulary gains NOT IDENTIFIABLE by a recorded amendment when the rival construction fits comparably; and the protocol is first applied to the six independently supported anchors of record (M044, M047, M124, M202, M329, M330), whose standings are re-stated under the protocol's outcome, whatever it is. This does not establish: that any reading is false; NOT IDENTIFIABLE bounds what the evidence can distinguish, it does not disprove a reading.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "A reading is scored SUPPORTED after the protocol's adoption with no rival-construction record; a rival fits comparably and the outcome is not recorded NOT IDENTIFIABLE; or the six anchors' re-statement under the protocol does not exist."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-9",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-9",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-9",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-9",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-2": {
+   "id": "095-red-team-remediation/C095-2",
+   "statement": "The strict-corpus artifact firestore_indusarrays_full.jsonl is located and verified against its intake pin of record (PR #393, 2026-10-25: SHA-256 073a83aa5e0f81055e7b68d2ccdf160027bb5061b4b870e58f3d3457cad1a578; census 3,916 records / 3,137 sequences / 2,665 dockeys / 12,494 sign instances) before any use: a candidate file whose digest differs from the pin stops the remediation; a verified file is placed read-only at the canonical path glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl, its census and the canonical export pin of record (prefix e90fd7ce41121529) reproduce exactly through the V3 loader, and Spec 053's frozen step 0 is re-executed only under a new execution order with its gates unchanged. This does not establish: anything about Spec 053's substantive result; the claim yadav_2009_arxiv_manual_001 stands as recorded until a re-execution under unchanged gates produces its own record.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "The artifact is used, placed, or a re-execution is ordered with a digest that differs from the pin; the placed file is writable; the loader census or the export pin differs from the pinned census on the placed file; or Spec 053's gates are altered in the re-execution order."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-2",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-2",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-2",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-2",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-4": {
+   "id": "095-red-team-remediation/C095-4",
+   "statement": "A named suite in CI exercises twelve fail-closed loader cases against the program's claim-bearing loaders (missing corpus, wrong content hash, same-name-different-corpus, empty loader result, duplicate identifiers, contradictory mappings, unknown signs, damaged spans, reversed reading order, partial availability, unauthorized access, and synthetic-presented-as-real), every case refuses or flags as its case definition requires, and the suite runs on every change to a covered loader. This does not establish: that loaders are correct on well-formed input; the battery proves refusal behavior on malformed identity and content, not analytic correctness.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "Any of the twelve cases executes silently, returns data, or passes its fixture without the defined refusal or flag; or a covered loader changes without the suite running."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-4",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-4",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-4",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-4",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-16": {
+   "id": "095-red-team-remediation/C095-16",
+   "statement": "The Meroitic work under this spec is the scoping of a reproduction benchmark as a study spec: an independent implementation reproduces published sign-frequency and positional results from the openly published 2025 Meroitic corpus, against success criteria and a falsifier fixed in the scoping record, using the existing fixture module as its starting inventory; the benchmark's execution is a separately commissioned study, not a stage of this spec. This does not establish: that the deciphered Meroitic values validate any Indus method; the benchmark tests pipeline fidelity on a solved script, and transfer to an undeciphered script is a separate claim requiring its own evidence.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "Meroitic benchmark results are produced as a stage task of this spec; or the scoping record lacks fixed success criteria or a falsifier."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-16",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-16",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-16",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-16",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-14": {
+   "id": "095-red-team-remediation/C095-14",
+   "statement": "Releases of the platform and its public claims are gated by one composed gate of thirteen components of record (unit tests, integration tests, frontend tests, end-to-end tests, ledger validation, corpus identity verification, anchor regression, claim-stage validation, provenance completeness, security checks, accessibility checks, reproducibility smoke test, public-claims consistency), each component's result recorded per release candidate, exceptions existing only as recorded owner-approved entries, and a planted stale public claim of the RT-03 shape blocks the candidate it is planted in. This does not establish: that a gated release is correct in substance; the gate proves the checks ran and passed, not that the science is right.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "A release ships with a component unrun or failed and no recorded owner-approved exception; or the planted stale claim does not block its candidate."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-14",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-14",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-14",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-14",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-10": {
+   "id": "095-red-team-remediation/C095-10",
+   "statement": "Reading direction is carried as data: every inscription-level record in a claim-bearing corpus states its orientation basis, every positional or sequential result names the orientation assumption it was computed under, and every such result is reported beside its reversed-orientation variant or an explicit statement of why reversal is undefined for it. This does not establish: that either orientation is correct for any inscription; the claim governs reporting, not the undecided direction question.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "A positional or sequential result is found in a claim-bearing record with no named orientation assumption, or with no reversed variant and no undefined-reversal statement."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-10",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-10",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-10",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-10",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
+  },
+  "095-red-team-remediation/C095-7": {
+   "id": "095-red-team-remediation/C095-7",
+   "statement": "The claims-ledger gate carries a check class that flags, at intake, the six contamination shapes of record (a source-derived value labelled independent; a self-labelling derivative presented as source data; a translation or reading column presented as corpus data; a derived result presented as independent confirmation; the same data under two source identities; a summary or delivery presented as the underlying record), and the class re-detects the six historical instances of record (the GR-088-01, GR-088-11, GR-088-16 and GR-088-29 family) from their records in its acceptance fixtures. This does not establish: that flagged intakes are substantively wrong; the class flags provenance shape for adjudication, it does not rule on content.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-15",
+   "falsifier": [
+    "An intake exhibiting one of the six shapes passes the gate unflagged; or any of the six historical instances is not re-detected from its record."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C095-7",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "095-red-team-remediation/C095-7",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "095-red-team-remediation/C095-7",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C095-7",
+     "document_id": null,
+     "path": "specs/095-red-team-remediation/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "c0abaca8cba29d8d98ed5a7a6bab7ebf136f78b09c6c57fe31cbf1c49f7e27d0",
+     "spec": "095-red-team-remediation"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -158839,7 +160981,7 @@
   "semantics": "glossa-settle-1",
   "assignment_sets": {
    "record": "glossa-indus/ledger/assignment-sets.json",
-   "sha256": "3b2b1a29da72ba9df6d9e6bcbd3f102d037c2efd4e00e9f129f917a290ea71ac",
+   "sha256": "aa4e47abd1c53e3362d592239ef1b539d05cd35fe68c233962175d022ea19f1c",
    "register": {
     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
@@ -158883,15 +161025,15 @@
   },
   "runs": [
    {
-    "record": "settling-20261113T214900Z-951ac9",
+    "record": "settling-20261116T034814Z-3681c4",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a",
-      "lines": 1008
+      "sha256": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
+      "lines": 1025
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -158942,15 +161084,15 @@
     }
    },
    {
-    "record": "settling-20261113T214901Z-42d642",
+    "record": "settling-20261116T034819Z-8203db",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a",
-      "lines": 1008
+      "sha256": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
+      "lines": 1025
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -159005,7 +161147,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "6145582fd0043062b0a9c31b647bb85b3bc09456fdddb53536c3f2889fd913d0",
+   "sha256": "3bfc0c521a9fbd7852a9864403cc87e127d72454102d982ab4ec88bf01d310cc",
    "result": {
     "claims_compared": [
      {
@@ -159253,7 +161395,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "7856368fba7a3c6184467efe834f3b13e5231039f0a3ae2dd719c4716fe71999",
+   "sha256": "28c9a6f128a4fc48889ac1e6c777b919f3c6154179c3eabb84709480d66fefa5",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -159588,8 +161730,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 977,
-   "claims_untouched_by_any_run": 976,
+   "claims_total": 994,
+   "claims_untouched_by_any_run": 993,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

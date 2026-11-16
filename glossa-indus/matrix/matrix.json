@@ -3,9 +3,9 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl",
  "generated_by": "tools/ledger/generate_matrix.py (backend/glossa_lab/matrix_generate.py)",
  "as_of": {
-  "ledger_sha256": "95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a",
-  "ledger_lines": 1008,
-  "ledger_date": "2026-11-13",
+  "ledger_sha256": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
+  "ledger_lines": 1025,
+  "ledger_date": "2026-11-15",
   "ledger_schema": "ledger-schema v1",
   "matrix_defs": "matrix-defs v1"
  },
@@ -5868,6 +5868,108 @@
   },
   {
    "id": "094-research-loop-acceptance-hardening/C094-1",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-15",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-1",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-3",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-11",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-17",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-5",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-6",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-8",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-12",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-13",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-9",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-2",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-4",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-16",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-14",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-10",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "095-red-team-remediation/C095-7",
    "population": "bundle",
    "status": "draft",
    "stage": "created"
@@ -24788,6 +24890,193 @@
    ]
   },
   {
+   "row": "095-red-team-remediation/C095-1",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-1",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-10",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-10",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-11",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-11",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-12",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-12",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-13",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-13",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-14",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-14",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-15",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-15",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-16",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-16",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-17",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-17",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-2",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-2",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-3",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-3",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-4",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-4",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-5",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-5",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-6",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-6",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-7",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-7",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-8",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-8",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "095-red-team-remediation/C095-9",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "095-red-team-remediation/C095-9",
+    "spec.md"
+   ]
+  },
+  {
    "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "column": "055",
    "column_class": "studies",
@@ -24955,8 +25244,8 @@
   }
  ],
  "coverage": {
-  "rows_total": 977,
-  "rows_with_cells": 963,
+  "rows_total": 994,
+  "rows_with_cells": 980,
   "empty_rows": [
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -25314,30 +25603,30 @@
    ],
    "corpus_texts": []
   },
-  "cells_total": 1500,
+  "cells_total": 1517,
   "cells_by_relation": {
-   "supports": 1493,
+   "supports": 1510,
    "opposes": 7,
    "constrains": 0
   },
   "cells_by_class": {
    "studies": 7,
-   "documents": 1493,
+   "documents": 1510,
    "research_checks": 0,
    "anchors": 0,
    "corpus_texts": 0
   },
   "falsifier_coverage": {
-   "covered": 968,
-   "total": 977,
+   "covered": 985,
+   "total": 994,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 954,
-     "total": 954
+     "covered": 971,
+     "total": 971
     }
    }
   },

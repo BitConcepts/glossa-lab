@@ -19,7 +19,6 @@ import base64
 import binascii
 import json
 import os
-import tempfile
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -31,6 +30,7 @@ from pydantic import BaseModel
 
 from glossa_lab.atomic_io import StateWriteError
 from glossa_lab.config import get_settings
+from glossa_lab.verified_write import write_file_verified
 
 router = APIRouter(prefix="/api/v1/settings", tags=["settings"])
 
@@ -335,58 +335,6 @@ def _decrypt_value(key: bytes, name: str, envelope: dict[str, Any]) -> str:
         ) from exc
 
 
-def _write_store_verified(target: Path, payload: str) -> None:
-    """Write the store through the verified construction (C092-7's
-    store leg, hand-rolled in this module for Stage 1; Stage 2 lifts
-    it into the verified-write library).
-
-    Temp file in the target's own directory, mode 0600 applied to the
-    temp BEFORE the rename (so no window exists where the store sits
-    at looser permissions), fsync, atomic rename, then read-back
-    verification against the payload. Any failure before the rename
-    leaves the previous store byte-identical and raises
-    :class:`StateWriteError` naming the target — the F1 discipline:
-    a failed write must never destroy the only copy of every stored
-    credential at once.
-    """
-    data = payload.encode("utf-8")
-    tmp_name: str | None = None
-    try:
-        target.parent.mkdir(parents=True, exist_ok=True)
-        fd, tmp_name = tempfile.mkstemp(
-            dir=str(target.parent), prefix=f".{target.name}.", suffix=".tmp"
-        )
-        with os.fdopen(fd, "wb") as handle:
-            try:
-                os.fchmod(handle.fileno(), 0o600)
-            except (AttributeError, OSError):
-                # Windows has no fchmod; mkstemp's default restrictive
-                # mode and the account ACLs govern there.
-                pass
-            handle.write(data)
-            handle.flush()
-            os.fsync(handle.fileno())
-        os.replace(tmp_name, target)
-        tmp_name = None
-        if target.read_bytes() != data:
-            raise StateWriteError(
-                f"verified write to credential store {target} failed: "
-                "read-back bytes differ from the payload written"
-            )
-    except StateWriteError:
-        raise
-    except Exception as exc:
-        raise StateWriteError(
-            f"verified write to credential store {target} failed: {exc}"
-        ) from exc
-    finally:
-        if tmp_name is not None:
-            try:
-                os.unlink(tmp_name)
-            except OSError:
-                pass
-
-
 def _read_store_file(f: Path) -> dict[str, Any]:
     """Read and parse the store file. An absent file is an empty
     store (``{}`` — "no keys configured"); an existing file that
@@ -491,9 +439,13 @@ def _save_keys(data: dict[str, Any]) -> None:
     """Persist the store. Callers pass plaintext values (as they
     always have); credential-class entries are encrypted into v2
     envelopes here, inside the store, and every write goes through
-    the verified construction. A save carrying credential values
-    requires the key — without it the save is refused with the named
-    key state rather than writing a credential in plaintext."""
+    the verified-write library (Spec 092 Stage 2: the construction
+    Stage 1 hand-rolled in this module now lives in
+    :mod:`glossa_lab.verified_write`, whose typed error subclasses
+    :class:`StateWriteError`, so this path's failure surface is
+    unchanged). A save carrying credential values requires the
+    key — without it the save is refused with the named key state
+    rather than writing a credential in plaintext."""
     f = _keys_file()
     out: dict[str, Any] = dict(data)
     credential_names = [n for n in CREDENTIAL_KEYS if n in out]
@@ -508,7 +460,12 @@ def _save_keys(data: dict[str, Any]) -> None:
                     "never written in a non-envelope form"
                 )
             out[name] = _encrypt_value(key, value)
-    _write_store_verified(f, json.dumps(out, indent=2))
+    # The store owns its directory, as the Stage 1 construction had
+    # it; the library itself never creates parents. Mode 0600 is
+    # applied to the temp before the rename, so no window exists
+    # where the store sits at looser permissions.
+    f.parent.mkdir(parents=True, exist_ok=True)
+    write_file_verified(f, json.dumps(out, indent=2), mode=0o600)
     # Restrict permissions on Unix (the rename already lands the
     # temp's 0600; this keeps the standing discipline for filesystems
     # where the rename preserved a looser mode).

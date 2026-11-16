@@ -707,6 +707,14 @@ REGISTERED_WRITERS = {
     "backend/glossa_lab/settling.py",
     "tools/ledger/generate_matrix.py",
     "tools/ledger/generate_map.py",
+    # Spec 092 Stage 2 (T203): the verified-write library and
+    # the settings store's save path are registered in the same
+    # motion that lands the library — the library is the write
+    # path the store writes through (its first adopter of
+    # record), and the store module is registered with it, per
+    # the V9 census discipline Spec 089 S5 established.
+    "backend/glossa_lab/verified_write.py",
+    "backend/glossa_lab/api/settings.py",
 }
 ARTIFACT_PATH_PATTERNS = (
     re.compile(r"glossa-indus/matrix"),

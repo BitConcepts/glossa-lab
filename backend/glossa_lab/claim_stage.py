@@ -135,6 +135,45 @@ def is_named_human(actor: str, *, actor_kind: str | None = None) -> bool:
     return not is_automated_actor(name)
 
 
+#: Named humans approved to approve, verify, and promote on the
+#: anchor path (Spec 094, D-094-1): a recorded list, initially the
+#: owner alone. It lives here, beside the actor rules' own allowlist
+#: (``AUTOMATED_ACTORS`` above), because D-094-1 fixes the list's home
+#: as wherever the actor rules already read their allowlist from, or
+#: beside it — not a new registry. Names are matched in normalized
+#: form (see ``_normalize_actor``); future approvers join by amending
+#: this list, never by call-site changes.
+NAMED_HUMAN_APPROVERS: frozenset[str] = frozenset({
+    "tristen_pierson",
+})
+
+
+def is_listed_approver(actor: str, *, actor_kind: str | None = None) -> bool:
+    """True when *actor* is a named human on the D-094-1 approvers list.
+
+    Both halves are required (fail-closed): the actor must validate
+    as a named human under the actor rules above — a process name
+    never validates — and its normalized name must be recorded in
+    ``NAMED_HUMAN_APPROVERS``. A named human who is not on the list
+    does not validate as an approver.
+    """
+    if not is_named_human(actor, actor_kind=actor_kind):
+        return False
+    return _normalize_actor(actor) in NAMED_HUMAN_APPROVERS
+
+
+#: The gate fields of an anchor-path candidate record (Spec 094,
+#: C094-3): the inputs the approval, verification, and promotion
+#: gates read. They are first-class fields of the candidate record,
+#: carried by the pipeline's staging write — never supplied in the
+#: request that asks for a transition. ``falsifier`` is the recorded
+#: falsifier statement approval requires (C094-1); ``approver`` is
+#: the recorded approver identity, validated by
+#: :func:`is_listed_approver`; ``evidence_ref`` is the recorded
+#: evidence reference the promotion gate reads.
+CANDIDATE_GATE_FIELDS: tuple[str, ...] = ("falsifier", "approver", "evidence_ref")
+
+
 # ── Record shape (A1) ─────────────────────────────────────────────────────
 
 def stage_defaults() -> dict[str, Any]:

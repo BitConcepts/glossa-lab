@@ -35,7 +35,7 @@
   **human-as-oracle** (the owner).
   *This does not establish:* approval of any later stage's output —
   each lands on its own evidence.
-- [ ] **T004 — Claims-ledger intake + program-map assignment
+- [x] **T004 — Claims-ledger intake + program-map assignment
   (separate gated act; NOT part of the adoption PR).** (a) Assign
   `094-research-loop-acceptance-hardening` in
   `glossa-indus/map/program-map-taxonomy.json` (domain/subdomain
@@ -55,6 +55,12 @@
   the act's record).
   *This does not establish:* any C094 claim — the build stages
   discharge them.
+  *Ticked 2026-11-16 on evidence already of record (the box was
+  never ticked when the act landed): intake PR #567 (2026-11-13);
+  the spec is assigned in
+  `glossa-indus/map/program-map-taxonomy.json` and C094-1..13 are
+  present in `glossa-indus/ledger/claims.jsonl` and the generated
+  layers — see `records/stage-1-record-2026-11-16.md`.*
 
 ## Stage 0 — Grounding completion (no code)
 
@@ -79,7 +85,7 @@
 
 ## Stage 1 — Record schema and the approval gate (C094-1..3)
 
-- [ ] **T101 — Candidate record fields.** Falsifier, approver, and
+- [x] **T101 — Candidate record fields.** Falsifier, approver, and
   evidence fields become first-class fields of the candidate
   record, carried by the staging write; records lacking them are
   unapprovable until they carry them. Claims: C094-3.
@@ -88,7 +94,7 @@
   construction).
   *This does not establish:* that any existing candidate gains the
   fields — pre-gate records stay as they are (C094-12).
-- [ ] **T102 — Approve-route enforcement.** `staging_action`'s
+- [x] **T102 — Approve-route enforcement.** `staging_action`'s
   approve route requires a non-empty record falsifier and an
   approver validating as a named human under the `claim_stage`
   actor rules, against the D-094-1 named-humans list; automated

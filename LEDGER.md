@@ -14203,3 +14203,62 @@ starts it.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-16 - Spec 095 adopted: red-team remediation program, Stage 0 reconciliation complete, claims intake discharged in PR #571
+
+Spec 095 (red-team remediation) is adopted. The owner
+adopted the package on 2026-11-15 (22:29 ET, "Adopt it as
+Spec 095, reconciliation first, as recommended"), with
+decisions D-095-1..6 as adopted. The spec carries 17 claims
+(C095-1..17), each with a falsifier, consolidating the 14
+genuinely new items isolated by the reconciliation register
+and the register's governance, pinnability, and
+corpus-identity claims. Its program-map assignment is
+Program infrastructure / Governance, lifecycle & generated
+layers.
+
+Stage 0 (reconciliation and register) is complete at
+adoption: the external red-team review of 2026-11-15 was
+dispositioned row by row against the program's records
+(43 rows, RT-01..RT-43; 23 duplicate-of-record, 18 rows
+carrying the 14 new items, 2 fact-disputed with the record
+governing), and the pinnability, public-surfaces, and
+validator-census passes are filed with it. One confirmed
+defect was proven in reconciliation (the anchor-model
+README presenting the retired 161-anchor cohort as
+current, RT-03); it and the tracker's one stale ledger
+sentence stand as owner-gated micro-tasks under D-095-5,
+not absorbed into the stages.
+
+The claims-ledger intake rides inside the adoption PR
+(D-095-6, the clean Spec 092 pattern of PR #548, not the
+Spec 094 #566 exception): C095-1..17 were appended through
+the importer (17 appended, 0 already canonical), the
+settling chain was refreshed in the standing order
+(verify-canonicals 6/6 before any pin moved; the T405 pair
+re-executed with byte-equal result blocks; the superseded
+pair departed under run-defs v2), and the generated layers
+were regenerated in dependency order. The ledger stands at
+1,025 lines (from 1,008), 994 program claims (from 977),
+SHA-256
+`b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100`
+(from `95d62298e6e4...`). Every census re-pin was re-set
+from the regenerated artifacts' actuals.
+
+The ledger gate on the final tree reads the standing
+profile in both modes: full mode 29 PASS / 0 FAIL /
+1 NOT-RUN; --regen 32 PASS / 0 FAIL / 0 NOT-RUN. CI on the
+adoption head (run 43804373882, head `7536bdd7`) reads
+10/10 success. The gate runs and this closing entry were
+executed from the mini-server under the owner's 2026-11-16
+order moving Glossa execution off the Muse VM, which sat
+in a write-restriction wave; the branch had earlier been
+transported to GitHub through the git-data API, all
+commits byte-identical, for the same reason.
+
+No build stage of Spec 095 is commissioned by the
+adoption; under D-095-2 the build stages stand sequenced
+after Spec 094's build stages in the adopted queue.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

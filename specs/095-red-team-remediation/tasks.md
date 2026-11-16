@@ -15,7 +15,7 @@
   Spec 095 on 2026-11-15 (22:29 ET, "Adopt it as Spec 095,
   reconciliation first, as recommended"), with D-095-1..D-095-6 as
   adopted. `records/ratification-2026-11-15.md`.
-- [ ] **T004 — claims-ledger intake, inside this PR (D-095-6).**
+- [x] **T004 — claims-ledger intake, inside this PR (D-095-6).**
   The clean Spec 092 pattern (PR #548), explicitly not the Spec 094
   #566 exception: (a) the program-map assignment is entered in
   `glossa-indus/map/program-map-taxonomy.json` (Program

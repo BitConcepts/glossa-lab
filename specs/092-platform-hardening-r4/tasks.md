@@ -85,7 +85,7 @@
 
 ## Stage 2 — The verified-write library (PR: feat/092-s2-verified-write)
 
-- [ ] **T201 — The library module.** The safe-write contract as a
+- [x] **T201 — The library module.** The safe-write contract as a
   supported `backend/glossa_lab/` module: temp + fsync + atomic
   rename + directory fsync + read-back hash, the bounded retry
   ladder with fresh-subprocess attempts, empty-content refusal,
@@ -93,7 +93,7 @@
   (library leg). Acceptance: **test** (round-trip and
   byte-preservation unit tests, incl. the rename-failure fixture).
   *This does not establish:* adoption anywhere — that is T203.
-- [ ] **T202 — Fault-injection battery in CI.** The observed failure
+- [x] **T202 — Fault-injection battery in CI.** The observed failure
   classes seeded by injection (denied open, 0-byte land, short
   write, missing parent, non-directory parent), each asserting the
   typed error with the target preserved, running inside the backend
@@ -101,7 +101,7 @@
   battery's CI job conclusions on the stage PR).
   *This does not establish:* that real waves equal the seeds — the
   claim covers the observed classes, named as such.
-- [ ] **T203 — Store refactor + writer census.** The settings save
+- [x] **T203 — Store refactor + writer census.** The settings save
   path re-pointed at the library and Stage 1's in-module construction
   deleted; C092-7 re-proven on the library path with Stage 1's
   fixtures unchanged; the spec's store writers registered for the

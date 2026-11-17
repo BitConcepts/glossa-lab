@@ -71,6 +71,12 @@ class CorpusIdentity:
     census_basis: str
     census: dict | None
     normalization: str
+    #: Orientation basis of record (Spec 095 T304): what the corpus
+    #: itself states about the reading direction of its sequences.
+    #: Every claim-bearing corpus carries one; where the corpus
+    #: records none, the entry says so, and positional use must name
+    #: its assumption rather than inherit one silently.
+    orientation_basis: str
     loaders: tuple[str, ...]
 
 
@@ -113,6 +119,9 @@ CORPUS_IDENTITIES: dict[str, CorpusIdentity] = {
             "order as stored (no reversal); longest sequence kept per "
             "(dockey, sideline)"
         ),
+        orientation_basis=(
+            "Not recorded in the corpus. Sequences are held in stored order and no reversal is applied at load; positional use assumes stored order is reading order — an assumption of the use, not a fact of the corpus (orientation carried as data from Spec 095 T304, 2026-11-16)."
+        ),
         loaders=("indus_corpus_v3", "indus_corpus_firestore"),
     ),
     V1_KEY: CorpusIdentity(
@@ -141,6 +150,9 @@ CORPUS_IDENTITIES: dict[str, CorpusIdentity] = {
             "IDs where a crosswalk entry exists (unmapped signs keep the "
             "P-number as fallback int); Fuls/Wells 3-digit IDs preserved"
         ),
+        orientation_basis=(
+            "Not recorded in the corpus. Sequences are held in the export's built order; positional use assumes that order is reading order — an assumption of the use, not a fact of the corpus (orientation carried as data from Spec 095 T304, 2026-11-16)."
+        ),
         loaders=("indus_corpus_v2",),
     ),
     ICIT_KEY: CorpusIdentity(
@@ -157,6 +169,9 @@ CORPUS_IDENTITIES: dict[str, CorpusIdentity] = {
         ),
         census={"total_sequences": 3085},
         normalization="Sequences as exported; no load-time transformation",
+        orientation_basis=(
+            "Not recorded in the corpus. Sequences as exported; positional use assumes exported order is reading order — an assumption of the use, not a fact of the corpus (orientation carried as data from Spec 095 T304, 2026-11-16)."
+        ),
         loaders=("indus_corpus_v2 (status accounting)",),
     ),
     CISI_KEY: CorpusIdentity(
@@ -186,6 +201,9 @@ CORPUS_IDENTITIES: dict[str, CorpusIdentity] = {
             "Parpola sign IDs as stored; the loader normalises the "
             "Phase-44 'signs' form to the legacy 'graphemes' form"
         ),
+        orientation_basis=(
+            "Not recorded in the compilation as held. Sign sequences are held in the compilation's stored order (Parpola sign IDs); positional use assumes stored order is reading order — an assumption of the use, not a fact of the corpus (orientation carried as data from Spec 095 T304, 2026-11-16)."
+        ),
         loaders=("indus_cisi",),
     ),
     MAYIG_KEY: CorpusIdentity(
@@ -199,6 +217,9 @@ CORPUS_IDENTITIES: dict[str, CorpusIdentity] = {
         census_basis="Layer basis: entries in the file's 'inscriptions' list",
         census={"inscriptions": 179},
         normalization="As built by phase122; no load-time transformation",
+        orientation_basis=(
+            "Not recorded in the layer. The layer inherits the CISI compilation's stored sequence order through the phase122 build, which applies no reversal as recorded; positional use assumes stored order is reading order — an assumption of the use, not a fact of the corpus (orientation carried as data from Spec 095 T304, 2026-11-16)."
+        ),
         loaders=("mayig_layer",),
     ),
     M77_KEY: CorpusIdentity(
@@ -222,6 +243,9 @@ CORPUS_IDENTITIES: dict[str, CorpusIdentity] = {
             "Whitespace-separated sign tokens, one inscription per line, "
             "order as stored"
         ),
+        orientation_basis=(
+            "Not recorded in the flat text. Inscriptions are held one per line in stored token order; positional use assumes stored order is reading order — an assumption of the use, not a fact of the corpus (orientation carried as data from Spec 095 T304, 2026-11-16)."
+        ),
         loaders=("indus_m77",),
     ),
     SITE_KEY: CorpusIdentity(
@@ -235,6 +259,9 @@ CORPUS_IDENTITIES: dict[str, CorpusIdentity] = {
         census_basis="CSV basis: data rows excluding the header row",
         census={"data_rows": 5679},
         normalization="Rows as stored; no load-time transformation",
+        orientation_basis=(
+            "Not recorded in the CSV as held. Rows and any sequence fields are as stored; positional use assumes stored order is reading order — an assumption of the use, not a fact of the corpus (orientation carried as data from Spec 095 T304, 2026-11-16)."
+        ),
         loaders=("(script-level consumers; no data-module loader)",),
     ),
     HOLDAT_KEY: CorpusIdentity(
@@ -256,6 +283,9 @@ CORPUS_IDENTITIES: dict[str, CorpusIdentity] = {
         ),
         census=None,
         normalization="As downloaded; the phase438 instrument's basis applies",
+        orientation_basis=(
+            "Not recorded in the downloads layer as held. Sequences are as downloaded, under the phase438 instrument's basis; positional use assumes stored order is reading order — an assumption of the use, not a fact of the corpus (orientation carried as data from Spec 095 T304, 2026-11-16)."
+        ),
         loaders=("(phase438 instrument; no data-module loader)",),
     ),
 }

@@ -129,18 +129,18 @@
 
 ## Stage 3 — Evidence machinery (not commissioned)
 
-- [ ] **T301 — the contamination gate class.** The six shapes
+- [x] **T301 — the contamination gate class.** The six shapes
   flagged at intake in the ledger gate; the six historical
   instances re-detected from their records in the acceptance
   fixtures. (C095-7.)
-- [ ] **T302 — the standards stated once.** Equivalence and
+- [x] **T302 — the standards stated once.** Equivalence and
   statistical-reporting standards of record, program-wide;
   later studies cite them. (C095-8.)
-- [ ] **T303 — the identifiability protocol, first application.**
+- [x] **T303 — the identifiability protocol, first application.**
   Rival constructions against M044, M047, M124, M202, M329, M330;
   the NOT IDENTIFIABLE amendment recorded; the six standings
   re-stated under the outcome. (C095-9.)
-- [ ] **T304 — reading direction as data.** Orientation basis
+- [x] **T304 — reading direction as data.** Orientation basis
   carried in the claim-bearing corpora; positional results
   re-issued with named assumptions and reversed variants or
   undefined-reversal statements. (C095-10.)

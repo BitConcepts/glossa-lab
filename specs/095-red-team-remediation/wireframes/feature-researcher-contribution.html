@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe — Researcher Contribution (Spec 095, T403)</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; color: #1a1a1a; background: #f4f4f2; }
+  header { background: #22252a; color: #eee; padding: 10px 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: baseline; }
+  header .brand { font-weight: 700; }
+  header nav a { color: #cfd4dc; margin-right: 12px; font-size: 13px; text-decoration: none; }
+  header nav a.here { color: #fff; text-decoration: underline; }
+  .gate { background: #fdf3d7; border-bottom: 2px solid #d9a400; padding: 8px 18px; font-size: 13px; }
+  main { max-width: 1180px; margin: 0 auto; padding: 18px; }
+  h1 { font-size: 22px; margin: 6px 0 2px; }
+  .sub { color: #555; font-size: 13px; margin-bottom: 16px; }
+  .layout { display: grid; grid-template-columns: 3fr 2fr; gap: 12px; }
+  .region { background: #fff; border: 1.5px dashed #8a8f98; border-radius: 6px; padding: 12px; min-height: 90px; }
+  .region h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #555; margin: 0 0 8px; }
+  .region p, .region li { font-size: 13px; color: #333; }
+  .region ul { margin: 0; padding-left: 18px; }
+  .field { border: 1px solid #bbb; border-radius: 4px; padding: 8px 10px; margin-bottom: 8px; font-size: 13px; color: #555; background: #fafafa; }
+  .field b { color: #222; }
+  .src { font-size: 11px; color: #777; font-family: ui-monospace, Menlo, monospace; margin-top: 8px; }
+  .panel { background: #fff; border: 1.5px solid #b9bec7; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .panel h2 { font-size: 15px; margin: 0 0 8px; }
+  .panel ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  .refuse { background: #fbeaea; border: 1.5px solid #c0564f; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .refuse h2 { font-size: 15px; margin: 0 0 8px; color: #7c241e; }
+  .refuse ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">Glossa Lab — Researcher Dashboard</span>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="feature-program-status.html">Program status</a>
+    <a href="feature-inscription-explorer.html">Inscription explorer</a>
+    <a href="feature-hypothesis-comparison.html">Hypothesis comparison</a>
+    <a href="feature-evidence-inspection.html">Evidence inspection</a>
+    <a href="feature-experiment-reproduction.html">Experiment reproduction</a>
+    <a class="here" href="feature-researcher-contribution.html">Researcher contribution</a>
+  </nav>
+</header>
+<div class="gate"><strong>Wireframe, not a build.</strong> Spec 095 Stage 4 (T403), owner approval by name required before any build.</div>
+<main>
+  <h1>Researcher contribution</h1>
+  <p class="sub">Submit one candidate with a falsifier (protocol step 6) and follow its adjudication (protocol step 7). Submission enters the staging queue; nothing a researcher submits reaches the ledger, the anchors, or any standing except through the program's gated transitions and a named human adjudication.</p>
+
+  <div class="layout">
+    <div class="region">
+      <h2>Candidate form</h2>
+      <div class="field"><b>Statement</b> — what is being claimed, in one assertion.</div>
+      <div class="field"><b>Falsifier (required)</b> — the condition under which the candidate would be withdrawn. The form cannot be submitted without it.</div>
+      <div class="field"><b>Evidence references</b> — items from the record, picked from the evidence surface, with their lineage shown as picked.</div>
+      <div class="field"><b>Does-not-establish</b> — what this candidate, even if accepted, would not show.</div>
+      <div class="field"><b>Subject</b> — the sign, inscription, or claim the candidate concerns, picked from the record (this is where a candidate names its sign references).</div>
+      <div class="src">machinery: research-loop staging store; claim-stage candidate gate fields (Spec 094); anchor transition service</div>
+    </div>
+    <div class="region">
+      <h2>Adjudication trail</h2>
+      <ul>
+        <li>The candidate's stage, every transition it has taken, and the act that made each transition (who or what, when, on what evidence).</li>
+        <li>An outcome is shown with its reason; a refusal names the gate that refused and why.</li>
+        <li>The trail is exportable from evidence inspection (protocol step 8).</li>
+      </ul>
+      <div class="src">sources: staging store act history; anchor transition service records</div>
+    </div>
+  </div>
+
+  <section class="panel">
+    <h2>Boundaries stated on the surface itself</h2>
+    <ul>
+      <li>The Research Assistant's role here is advisory only (Spec 025): it may help draft a statement or a falsifier; it cannot submit, approve, or promote anything.</li>
+      <li>Approval is a named human act. No automated path promotes a candidate, at any stage, under any setting (Spec 094).</li>
+    </ul>
+  </section>
+
+  <section class="refuse">
+    <h2>This surface refuses to</h2>
+    <ul>
+      <li>Accept a candidate without a falsifier.</li>
+      <li>Let a submitter approve, promote, or adjudicate their own candidate.</li>
+      <li>Let any automated actor approve a transition in its own right.</li>
+      <li>Write directly to the ledger or the anchors register; every landing goes through the gated transition service.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

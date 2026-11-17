@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe — Hypothesis Comparison (Spec 095, T403)</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; color: #1a1a1a; background: #f4f4f2; }
+  header { background: #22252a; color: #eee; padding: 10px 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: baseline; }
+  header .brand { font-weight: 700; }
+  header nav a { color: #cfd4dc; margin-right: 12px; font-size: 13px; text-decoration: none; }
+  header nav a.here { color: #fff; text-decoration: underline; }
+  .gate { background: #fdf3d7; border-bottom: 2px solid #d9a400; padding: 8px 18px; font-size: 13px; }
+  main { max-width: 1180px; margin: 0 auto; padding: 18px; }
+  h1 { font-size: 22px; margin: 6px 0 2px; }
+  .sub { color: #555; font-size: 13px; margin-bottom: 16px; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .region { background: #fff; border: 1.5px dashed #8a8f98; border-radius: 6px; padding: 12px; min-height: 90px; }
+  .region h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #555; margin: 0 0 8px; }
+  .region p, .region li { font-size: 13px; color: #333; }
+  .region ul { margin: 0; padding-left: 18px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; }
+  th { background: #f0f0ee; }
+  .src { font-size: 11px; color: #777; font-family: ui-monospace, Menlo, monospace; margin-top: 8px; }
+  .panel { background: #fff; border: 1.5px solid #b9bec7; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .panel h2 { font-size: 15px; margin: 0 0 8px; }
+  .panel ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  .refuse { background: #fbeaea; border: 1.5px solid #c0564f; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .refuse h2 { font-size: 15px; margin: 0 0 8px; color: #7c241e; }
+  .refuse ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">Glossa Lab — Researcher Dashboard</span>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="feature-program-status.html">Program status</a>
+    <a href="feature-inscription-explorer.html">Inscription explorer</a>
+    <a class="here" href="feature-hypothesis-comparison.html">Hypothesis comparison</a>
+    <a href="feature-evidence-inspection.html">Evidence inspection</a>
+    <a href="feature-experiment-reproduction.html">Experiment reproduction</a>
+    <a href="feature-researcher-contribution.html">Researcher contribution</a>
+  </nav>
+</header>
+<div class="gate"><strong>Wireframe, not a build.</strong> Spec 095 Stage 4 (T403), owner approval by name required before any build.</div>
+<main>
+  <h1>Hypothesis comparison</h1>
+  <p class="sub">Language hypotheses and rival readings compared on the evidence of record, with standings in the outcome vocabulary of record, including NOT IDENTIFIABLE. Comparison never manufactures a winner the adjudications do not name.</p>
+
+  <div class="cols">
+    <div class="region">
+      <h2>Language hypotheses</h2>
+      <ul>
+        <li>Each hypothesis (including the nonlinguistic position, carried in the same form) with its basis, its model scores where the record holds them, and its standing.</li>
+        <li>Score displays carry the reporting standard: effect size and interval, never a bare p-value.</li>
+      </ul>
+      <div class="src">sources: glossa-indus/hypotheses/ (models, model_claims, model_predictions, model_scores); spec record</div>
+    </div>
+    <div class="region">
+      <h2>Rival readings for one sign</h2>
+      <table>
+        <tr><th>Sign</th><th>Proposed value</th><th>Basis</th><th>Standing</th></tr>
+        <tr><td>M0xx</td><td>value A</td><td>named basis</td><td>NOT IDENTIFIABLE</td></tr>
+        <tr><td>M0xx</td><td>value B (rival)</td><td>named basis</td><td>carried as rival</td></tr>
+      </table>
+      <p>Rivals are rows, not footnotes. Where the identifiability protocol has been applied, its outcome and the discriminating observation that is missing are shown on the row.</p>
+      <div class="src">sources: anchors register (basis, confidence, stage, validation status); Spec 095 Stage 3 identifiability application</div>
+    </div>
+  </div>
+
+  <section class="panel">
+    <h2>Interactions</h2>
+    <ul>
+      <li>Pick a sign: all readings for it, all rivals, all standings, one table.</li>
+      <li>Pick two hypotheses: their differing predictions listed as predictions, each checkable against the corpus in the explorer.</li>
+    </ul>
+  </section>
+
+  <section class="refuse">
+    <h2>This surface refuses to</h2>
+    <ul>
+      <li>Rank readings by agreement with other hypotheses derived from the same evidence (same-lineage agreement is not support).</li>
+      <li>Hide a NOT IDENTIFIABLE outcome behind a confidence percentage.</li>
+      <li>Present a translation for any sequence; the program holds none, and this surface says so where a translation would go.</li>
+      <li>Let a reading's display strength exceed the standing of the weakest reading it rests on.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

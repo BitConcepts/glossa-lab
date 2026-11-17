@@ -147,26 +147,33 @@
 
 ## Stage 4 — Platform and surfaces (not commissioned)
 
-- [ ] **T401 — the multi-script specification.** Seventeen
+- [x] **T401 — the multi-script specification.** Seventeen
   entities with claims and falsifiers; sign shape separated from
   value and meaning; no Indus or Proto-Dravidian assumption in the
   generic layer. (C095-11.)
-- [ ] **T402 — the Indus instantiation.** The Indus record
+- [x] **T402 — the Indus instantiation.** The Indus record
   instantiates the model with zero changed facts, counts, or
   standings, proven by before/after census. (C095-11.)
 - [ ] **T403 — the dashboard home and feature set.** Wireframes
   approved by the owner by name; features built to them;
   Playwright desktop and mobile verification before any verified
   claim; refusals named per feature. (C095-12.)
+  (Stage 4: wireframes filed in this spec's wireframes/
+  directory; the build awaits the owner's approval of the
+  wireframes by name — not ticked.)
 - [ ] **T404 — the audit package run.** Functional checklist,
   eight-step new-researcher protocol, accessibility pass; scored
   against pre-fixed thresholds; failures filed with screenshots.
   (C095-13.)
-- [ ] **T405 — the composed release gate.** Thirteen components,
+  (Stage 4: the run is complete and its package verdict is
+  FAIL — see the Stage 4 record; not ticked. Remainders: the
+  dashboard leg after the T403 build, and the authenticated
+  legs on the owner's sessions.)
+- [x] **T405 — the composed release gate.** Thirteen components,
   results recorded per candidate, exceptions only as recorded
   owner-approved entries; the planted RT-03-shape stale claim
   blocks its candidate. (C095-14.)
-- [ ] **T406 — the derived document set.** docs/red-team/
+- [x] **T406 — the derived document set.** docs/red-team/
   documents generated under the no-authority rule, sources named
   on their faces. (C095-17.)
 

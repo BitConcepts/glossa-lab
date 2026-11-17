@@ -34,6 +34,7 @@ from typing import Any, Generator
 from glossa_lab.claim_stage import CANDIDATE_GATE_FIELDS
 from glossa_lab.evidence_standard import CANDIDATE_EVIDENCE_FIELDS
 from glossa_lab.verification import CANDIDATE_VERIFICATION_FIELDS
+from glossa_lab.verified_write import write_file_verified
 
 logger = logging.getLogger(__name__)
 
@@ -1533,8 +1534,16 @@ class ResearchLoop:
         if dropped:
             logger.info("Excluded %d previously-processed candidates from staging", dropped)
         merged = existing + new_unique
-        _STAGING_JSON.write_text(json.dumps(merged, indent=2, ensure_ascii=False),
-                                 encoding="utf-8")
+        # Spec 094 Stage 4 (C094-11): the staging store is written
+        # through the verified write path (glossa_lab.verified_write)
+        # like every anchor-path store — no direct truncating write
+        # to it remains. This write only ever appends new records;
+        # existing records are carried verbatim (see the Stage 1
+        # note above), so no status transition is effected here —
+        # C094-10's transition service governs transitions, not
+        # creation.
+        write_file_verified(
+            _STAGING_JSON, json.dumps(merged, indent=2, ensure_ascii=False))
         logger.info("Staged %d new candidates (%d total) → %s",
                     len(new_unique), len(merged), _STAGING_JSON)
 

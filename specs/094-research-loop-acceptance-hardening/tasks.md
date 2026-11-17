@@ -154,7 +154,7 @@
 
 ## Stage 4 — Lifecycle routing and atomic stores (C094-10..11)
 
-- [ ] **T401 — Gated transition service.** All anchor-path status
+- [x] **T401 — Gated transition service.** All anchor-path status
   transitions route through a single service carrying
   `transition_stage`'s guarantees (one-step moves, actor
   validation with the automated ceiling, evidence trail); the
@@ -165,7 +165,7 @@
   service does not exist to attempt).
   *This does not establish:* storage enforcement beyond this path
   — the closure is path-scoped (C094-10's own cap).
-- [ ] **T402 — Atomic stores.** The three anchor-path stores move
+- [x] **T402 — Atomic stores.** The three anchor-path stores move
   to `atomic_io.atomic_write_text` (or Spec 092 Stage 2's
   verified-write successor, if landed by build time); every write
   site from the drafting census is re-proven absent. Claims:
@@ -174,7 +174,7 @@
   error).
   *This does not establish:* read-back hash verification beyond
   the atomic path's own guarantees.
-- [ ] **T403 — Storage-edit probe re-run.** The probe of record
+- [x] **T403 — Storage-edit probe re-run.** The probe of record
   re-runs against the built shape; its outcome is filed with the
   stage record and handled per C094-10 as designed in Stage 0.
   Claims: package-level (D-094-5's exit gate). Acceptance:

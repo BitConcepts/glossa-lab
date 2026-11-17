@@ -493,7 +493,15 @@ def token_coverage(tokens: list[str], signs: set[str]) -> dict:
 
 
 def phonotactic_check(anchor_subset: dict) -> dict:
-    """Reuse Phase-58's own machinery (imported by file path)."""
+    """Reuse Phase-58's own machinery (imported by file path).
+
+    GUARDED (Spec 095, C095-5): this is a superseded v1 validator
+    routine. The guard raises before any v1 computation; the body
+    below is retained for the record and is unreachable. Use
+    glossa_lab.phonotactics_v2 for the corrected check.
+    """
+    from glossa_lab.legacy_validator_guard import refuse_legacy_validator  # noqa: PLC0415
+    refuse_legacy_validator("provenance_audit_phonotactic_check")
     mod = load_module_by_path(
         "phase58_phonological_gap",
         BACKEND / "scripts" / "phase58_phonological_gap.py")
@@ -539,7 +547,15 @@ def site_invariance(signs: set[str]) -> dict:
     """Phase-69 machinery: its chi2_test + I/M/T counting, eligibility
     rule quoted from phase69_site_stratification.py main(): per sign,
     sites with per-site token total >= 3 enter the table; a sign with
-    < 2 such sites is INSUFFICIENT_DATA (counted separately, p=1.0)."""
+    < 2 such sites is INSUFFICIENT_DATA (counted separately, p=1.0).
+
+    GUARDED (Spec 095, C095-5): this is a superseded v1 validator
+    routine. The guard raises before any v1 computation; the body
+    below is retained for the record and is unreachable. Use
+    glossa_lab.site_stats_v2 for the corrected test.
+    """
+    from glossa_lab.legacy_validator_guard import refuse_legacy_validator  # noqa: PLC0415
+    refuse_legacy_validator("provenance_audit_site_invariance")
     mod = load_module_by_path(
         "phase69_site_stratification",
         BACKEND / "scripts" / "phase69_site_stratification.py")

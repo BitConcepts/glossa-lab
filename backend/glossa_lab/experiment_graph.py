@@ -426,12 +426,21 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
 def _builtin_corpus(inputs: dict, params: dict) -> dict:
     """Load a named built-in corpus as sequences (does not require a DB corpus ID)."""
     name = params.get("corpus", "indus").lower().strip()
+    corpus_status = None  # synthetic label, set by the indus branch (Spec 095, C095-6)
     try:
         if name == "indus":
             from glossa_lab.data.indus_public_corpus import get_corpus_symbols  # noqa: PLC0415
             flat = get_corpus_symbols()
             # Single-token sequences — use CorpusReader for multi-sign inscriptions
             seqs: list = [[s] for s in flat]
+            # Spec 095 (C095-6): the "indus" built-in corpus is the
+            # SYNTHETIC prototype; label the output so synthetic
+            # material is never served as inscription data unlabelled
+            # (contrast indus_cisi / indus_m77, which serve real data).
+            corpus_status = (
+                "SYNTHETIC — generated prototype (indus_public_corpus), "
+                "calibrated to published statistics; not inscription data"
+            )
         elif name in ("hebrew", "old_hebrew"):
             from glossa_lab.data.old_hebrew import (  # noqa: PLC0415
                 get_corpus_inscriptions,
@@ -514,8 +523,11 @@ def _builtin_corpus(inputs: dict, params: dict) -> dict:
         return {"error": str(exc)}
     from collections import Counter  # noqa: PLC0415
     freq = Counter(flat)
-    return {"sequences": seqs, "total_sequences": len(seqs), "total_tokens": len(flat),
-            "distinct_symbols": len(freq), "corpus": name}
+    result = {"sequences": seqs, "total_sequences": len(seqs), "total_tokens": len(flat),
+              "distinct_symbols": len(freq), "corpus": name}
+    if corpus_status is not None:
+        result["corpus_status"] = corpus_status
+    return result
 
 
 def _corpus_splitter(inputs: dict, params: dict) -> dict:

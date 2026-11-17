@@ -74,6 +74,19 @@ import random
 from collections import Counter
 from typing import Any
 
+# ── Synthetic labelling (machine-readable) ───────────────────────────
+# Spec 095 (C095-6): this corpus's synthetic status is carried as
+# data, not only in prose, so consumers and tests can check it
+# mechanically. Every surface that serves this corpus must keep the
+# label attached (pinned by
+# backend/tests/test_spec095_synthetic_containment.py).
+SYNTHETIC: bool = True
+CORPUS_KIND: str = "SYNTHETIC"
+SYNTHETIC_LABEL: str = (
+    "SYNTHETIC — generated prototype calibrated to published statistics "
+    "(Yadav 2010, Rao 2009, Parpola 1994, Fuls 2014); not inscription data"
+)
+
 # ── Sign inventory (Fuls numbering, representative selection) ─────────
 
 # High-frequency signs with known properties
@@ -319,6 +332,8 @@ def corpus_statistics(seed: int = 42) -> dict[str, Any]:
     lengths = [len(i) for i in inscriptions]
     return {
         "status": "SYNTHETIC — matches published statistics",
+        "corpus_kind": CORPUS_KIND,
+        "synthetic": SYNTHETIC,
         "sources": ["Yadav 2010", "Rao 2009", "Parpola 1994", "Fuls 2014"],
         "total_tokens": len(flat),
         "n_inscriptions": len(inscriptions),

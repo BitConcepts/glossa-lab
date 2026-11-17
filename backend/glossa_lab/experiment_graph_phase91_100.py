@@ -65,7 +65,7 @@ def _phase91_100_node_defs():
         ("IndusRetroPlex", "Retroflex Series DEDR Expansion", "phase95_retroflex_expansion.py",
          "Phase-95: Systematically target signs whose Parpola depictions map to DEDR words with retroflex consonants (ṭ/ṇ/ḷ/ñ). Fill phonological gaps. CPU."),
         ("IndusCisiCrosswalk116", "CISI Crosswalk Extension to 115+", "phase96_cisi_crosswalk.py",
-         "Phase-96: Build systematic P→M crosswalk from Parpola 1994 App.B. Extend from 38 to 115+ entries. Enables full CISI cross-validation. CPU."),
+         "Phase-96: Build systematic P→M crosswalk from Parpola 1994 App.B. Extend from 38 to 115+ entries. Enables full CISI cross-validation. CPU. GUARDED (Spec 095, C095-5): the Phase-96 construction is a superseded v1 validator path; this node returns a labelled refusal instead of executing it."),
         ("IndusTrigramSA", "Trigram SA Upgrade", "phase97_trigram_sa.py",
          "Phase-97: SA with trigram LM + I/M/T positional weighting. Tests whether higher-order model resolves ENSEMBLE_LOW signs like M293. GPU."),
         ("IndusGrammarExpand", "Grammar Pattern Expansion", "phase98_grammar_expansion.py",
@@ -77,7 +77,17 @@ def _phase91_100_node_defs():
     ]
     nodes = []
     for nid, name, script, desc in specs:
-        fn = _nd(script, None)
+        if nid == "IndusCisiCrosswalk116":
+            # GUARDED (Spec 095, C095-5): the Phase-96 builder is a
+            # superseded v1 validator path (its construction copied
+            # anchor readings into the crosswalk it then validated
+            # against); the node returns a labelled refusal instead
+            # of executing it.
+            def fn(i, p):
+                from glossa_lab.legacy_validator_guard import refusal_result  # noqa: PLC0415
+                return refusal_result("crosswalk_v1_node", gpu_device=_get_device())
+        else:
+            fn = _nd(script, None)
         nodes.append(AtomicNodeDef(
             id=nid, name=name, category="Indus Decipherment",
             description=desc, inputs=[],

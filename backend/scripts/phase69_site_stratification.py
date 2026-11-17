@@ -101,6 +101,16 @@ def chi2_test(observed: list[list[float]]) -> tuple[float, float]:
 
 
 def main():
+    # GUARDED (Spec 095, C095-5): this script's chi-square routine is
+    # a superseded v1 validator (successor: glossa_lab.site_stats_v2);
+    # its reported p-values were preset, not computed. It refuses
+    # direct execution so its output cannot enter a record
+    # unlabelled.
+    raise SystemExit(
+        "LegacyValidatorRefused: phase69_site_stratification.py is a "
+        "superseded v1 validator routine (2026-10-26 repair), guarded "
+        "under Spec 095 claim C095-5. Use glossa_lab.site_stats_v2 "
+        "instead.")
     print("Phase-69: Multi-Site Stratification\n")
 
     # Load corpus with site info

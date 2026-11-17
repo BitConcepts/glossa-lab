@@ -111,18 +111,18 @@
 
 ## Stage 2 — Validator and synthetic containment (not commissioned)
 
-- [ ] **T201 — the five-validator consumer census completed.**
+- [x] **T201 — the five-validator consumer census completed.**
   corpus_frames and replay076 brought to the Stage 0 census
   standard; every consumer of every corrected family named.
   (C095-5.)
-- [ ] **T202 — the four v1 node paths discharged.** Each path
+- [x] **T202 — the four v1 node paths discharged.** Each path
   migrated to its v2 module, retired from the registry, or
   mechanically guarded, with the disposition recorded per path.
   (C095-5.)
-- [ ] **T203 — the planted legacy-rule pinning test.** A legacy
+- [x] **T203 — the planted legacy-rule pinning test.** A legacy
   v1-rule call planted in a claim-bearing path fails the test;
   the test runs in CI. (C095-5.)
-- [ ] **T204 — synthetic containment.** Every
+- [x] **T204 — synthetic containment.** Every
   `indus_public_corpus` consumer censused and classified; the
   synthetic labelling machine-checked; the planted
   synthetic-as-real fixture fails its pinning test. (C095-6.)

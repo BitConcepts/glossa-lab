@@ -89,6 +89,17 @@ PARPOLA_APPB_EXPLICIT = {
 
 
 def main():
+    # GUARDED (Spec 095, C095-5): this script is the superseded v1
+    # crosswalk construction (successor classifier:
+    # glossa_lab.crosswalk_provenance); it built most crosswalk
+    # entries by copying anchor readings into them. It refuses
+    # direct execution so the circular construction cannot be
+    # re-run into a record unlabelled.
+    raise SystemExit(
+        "LegacyValidatorRefused: phase96_cisi_crosswalk.py is a "
+        "superseded v1 validator routine (2026-10-26 repair), guarded "
+        "under Spec 095 claim C095-5. Use "
+        "glossa_lab.crosswalk_provenance instead.")
     print("Phase-96: CISI Crosswalk Extension to 115+\n")
 
     # Load existing crosswalk

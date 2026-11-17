@@ -145,22 +145,16 @@ def _ensemble_calibration(inputs: dict, params: dict) -> dict:
 # ── Phase-69: Site Stratification ────────────────────────────────────────────
 
 def _site_stratification(inputs: dict, params: dict) -> dict:
-    device = _get_device()
-    result = _run_phase_script("phase69_site_stratification.py")
-    if "error" in result:
-        return {**result, "gpu_device": device}
-    verdict = result.get("verdict", "?")
-    chi2_p  = result.get("chi2_p_value", 1.0)
-    return {
-        "verdict":       verdict,
-        "chi2_p_value":  chi2_p,
-        "site_profiles": result.get("site_profiles", {}),
-        "invariant_signs": result.get("invariant_signs", []),
-        "json":          result,
-        "number":        float(chi2_p),
-        "text":  f"Phase-69: Site stratification verdict={verdict}. chi2 p={chi2_p:.4f}.",
-        "gpu_device": device,
-    }
+    """Phase-69 site stratification — GUARDED (Spec 095, C095-5).
+
+    The Phase-69 script's chi-square routine is a superseded v1
+    validator (its reported p-values were preset, not computed);
+    this node no longer executes it and returns a labelled refusal,
+    so no v1 output can enter a record unlabelled. Use
+    glossa_lab.site_stats_v2 for the corrected test.
+    """
+    from glossa_lab.legacy_validator_guard import refusal_result  # noqa: PLC0415
+    return refusal_result("site_stats_v1_node", gpu_device=_get_device())
 
 
 # ── Phase-71: Crosswalk Completion ───────────────────────────────────────────
@@ -308,6 +302,9 @@ def _phase67_73_node_defs():
                 "Chi-squared test per sign across sites. If grammar is invariant -> "
                 "strong evidence for pan-Indus writing system (not local scripts). "
                 "GPU: torch for frequency matrices."
+                " GUARDED (Spec 095, C095-5): the Phase-69 routine is a "
+                "superseded v1 validator; this node returns a labelled "
+                "refusal instead of executing it."
             ),
             inputs=[],
             outputs=[

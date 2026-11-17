@@ -24,6 +24,10 @@ from fastapi import APIRouter, Query, Request
 from fastapi.responses import StreamingResponse
 
 from glossa_lab.claim_stage import is_automated_actor, is_listed_approver
+from glossa_lab.evidence_standard import (
+    evidence_class_refusal,
+    evidence_pin_refusal,
+)
 
 _REPO = Path(__file__).resolve().parents[3]
 
@@ -603,27 +607,36 @@ _STAGING_JSON = _REPO / "outputs" / "anchor_staging.json"
 _ARCHIVE_JSON = _REPO / "outputs" / "anchor_staging_archive.json"
 
 
-def _evidence_ref_resolves(ref: Any) -> bool:
-    """Return True when an H26 evidence reference names a real artifact.
+def _evidence_artifact_path(ref: Any) -> Path | None:
+    """Resolve an H26 evidence reference to the artifact file it names.
 
     Leg C finding C-03: the promotion gate previously accepted ANY
     non-empty string — including a fabricated reference supplied in
     the promote request itself — and conferred MEDIUM confidence on
-    it (live-confirmed end-to-end). A reference now resolves only
-    when its leading artifact token names an existing file, checked
+    it (live-confirmed end-to-end). A reference resolves only when
+    its leading artifact token names an existing file, checked
     relative to the repo root and to ``backend/``. The token may use
     the recorded ``path:KEY`` form (e.g. a reclassification-ledger
     entry) or be followed by free-text description after whitespace
     (e.g. ``"LEDGER.md Phase-X entry"``); in both cases the artifact
-    path itself must exist.
+    path itself must exist. Returns the artifact's path, or None
+    when the reference does not resolve.
     """
     if not isinstance(ref, str) or not ref.strip():
-        return False
+        return None
     token = ref.strip().split()[0].strip("()[]{},;")
     path_part = token.split(":")[0] if ":" in token else token
     if not path_part or path_part == token and "://" in token:
-        return False
-    return (_REPO / path_part).is_file() or (_REPO / "backend" / path_part).is_file()
+        return None
+    for candidate in (_REPO / path_part, _REPO / "backend" / path_part):
+        if candidate.is_file():
+            return candidate
+    return None
+
+
+def _evidence_ref_resolves(ref: Any) -> bool:
+    """Return True when an H26 evidence reference names a real artifact."""
+    return _evidence_artifact_path(ref) is not None
 
 
 def _approval_gate_refusal(candidate: dict) -> str | None:
@@ -1510,6 +1523,14 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         differs from the recorded ref refuses that sign (reported
         in `blocked_evidence_mismatch`); an identical entry is a
         no-op echo.
+      evidence_pins (dict sign -> sha256, optional) — legacy-shaped
+        field, never a source of a pin (Spec 094 C094-4): promotion
+        uses only each candidate's recorded `evidence_sha256`. An
+        entry that differs from the recorded pin — including any
+        entry for a candidate whose record carries no pin, i.e. a
+        pin the promote request itself would create — refuses that
+        sign (reported in `blocked_evidence_pin`); an identical
+        entry is a no-op echo.
 
     Phase-109 evidence gate (spec 007 Step 4; governance H26): a
     candidate is promoted ONLY if it carries a recorded non-SA
@@ -1518,10 +1539,24 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
     `blocked_no_evidence`. SA agreement is never a sufficient
     condition for promotion (Phase-107).
 
+    Spec 094 Stage 2 evidence standard (C094-4, C094-5): past the
+    approval gate, the recorded reference must be a PINNED artifact
+    of a REGISTERED class. The artifact's bytes are verified against
+    the SHA-256 recorded on the candidate record at pin time
+    (`evidence_sha256`); absence, a malformed pin, an unreadable
+    artifact, or a byte mismatch refuses the sign (reported in
+    `blocked_evidence_pin`). The candidate's recorded
+    `evidence_class` must be on the registered evidence-class list
+    (`glossa_lab.evidence_standard.REGISTERED_EVIDENCE_CLASSES`);
+    loop or anchor-path output about the candidate is not a class,
+    and an unregistered or self-referential class refuses the sign
+    (reported in `blocked_evidence_class`).
+
     Returns:
       {ok, dry_run, promoted, skipped, blocked_no_evidence,
        blocked_unknown_grapheme, blocked_evidence_mismatch,
-       blocked_no_approval_gate, total_anchors, prev_coverage,
+       blocked_no_approval_gate, blocked_evidence_pin,
+       blocked_evidence_class, total_anchors, prev_coverage,
        new_coverage, promotable}
       new_coverage and coverage_delta are null when the coverage
       recalculation could not run (corpus CSV unavailable) — never
@@ -1533,6 +1568,7 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         body = {}
     dry_run: bool = bool(body.get("dry_run", False))
     evidence_refs: dict[str, Any] = body.get("evidence_refs") or {}
+    evidence_pins: dict[str, Any] = body.get("evidence_pins") or {}
 
     if not _ARCHIVE_JSON.exists():
         return {"ok": True, "promoted": 0, "skipped": 0,
@@ -1591,6 +1627,8 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
     blocked_unknown_signs: list[str] = []
     blocked_mismatch_signs: list[str] = []
     blocked_gate_signs: list[str] = []
+    blocked_pin_signs: list[str] = []
+    blocked_class_signs: list[str] = []
     now_label = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
 
     for sid, c in best_per_sign.items():
@@ -1636,6 +1674,34 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         if _approval_gate_refusal(c) is not None:
             blocked_gate_signs.append(sid)
             continue
+        # Evidence standard (Spec 094 Stage 2, C094-4): the recorded
+        # reference must be a pinned artifact, and the pin must be
+        # the record's own. A pin supplied in the promote request
+        # that differs from the recorded pin refuses the sign — and
+        # when the record carries no pin, ANY request-supplied pin is
+        # a pin created by the promote request itself, which C094-4
+        # names as a refusal. An identical entry is a no-op echo.
+        supplied_pin = evidence_pins.get(sid)
+        recorded_pin = c.get("evidence_sha256")
+        if supplied_pin is not None and supplied_pin != recorded_pin:
+            blocked_pin_signs.append(sid)
+            continue
+        artifact_path = _evidence_artifact_path(ev_ref)
+        try:
+            artifact_bytes = (
+                artifact_path.read_bytes() if artifact_path is not None
+                else None)
+        except OSError:
+            artifact_bytes = None
+        if evidence_pin_refusal(c, artifact_bytes) is not None:
+            blocked_pin_signs.append(sid)
+            continue
+        # Evidence standard (Spec 094 Stage 2, C094-5): the recorded
+        # class must be on the registered evidence-class list; loop
+        # or anchor-path output about the candidate is not a class.
+        if evidence_class_refusal(c) is not None:
+            blocked_class_signs.append(sid)
+            continue
         score = float(c.get("evidence_score", 0) or 0)
         st = (c.get("review_status") or "").lower()
         new_conf = "MEDIUM" if (st == "verified" or score >= 0.8) else "LOW"
@@ -1646,6 +1712,8 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
             f"score={score:.2f}",
             f"status={st}",
             f"evidence_ref={ev_ref}",
+            f"evidence_sha256={c.get('evidence_sha256', '')}",
+            f"evidence_class={c.get('evidence_class', '')}",
         ]
         if c.get("dedr_support"):
             basis_parts.append(f"DEDR: {c['dedr_support']}")
@@ -1754,6 +1822,17 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
             f" {len(blocked_gate_signs)} candidate(s) BLOCKED: record "
             "does not pass the Spec 094 approval gate (a recorded "
             "falsifier and a listed named-human approver are required).")
+    if blocked_pin_signs:
+        blocked_parts.append(
+            f" {len(blocked_pin_signs)} candidate(s) BLOCKED: evidence "
+            "is not a pinned artifact whose bytes verify against the "
+            "SHA-256 recorded on the candidate record (Spec 094 "
+            "C094-4).")
+    if blocked_class_signs:
+        blocked_parts.append(
+            f" {len(blocked_class_signs)} candidate(s) BLOCKED: "
+            "recorded evidence class is not on the registered "
+            "evidence-class list (Spec 094 C094-5).")
     blocked_msg = "".join(blocked_parts)
     coverage_txt = (
         f"Coverage: {prev_coverage*100:.1f}% → {new_coverage*100:.1f}% "
@@ -1770,6 +1849,8 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         "blocked_unknown_grapheme": blocked_unknown_signs,
         "blocked_evidence_mismatch": blocked_mismatch_signs,
         "blocked_no_approval_gate": blocked_gate_signs,
+        "blocked_evidence_pin": blocked_pin_signs,
+        "blocked_evidence_class": blocked_class_signs,
         "promotable":   promotable_count,
         "total_anchors": len(current_anchors),
         "prev_coverage":  round(prev_coverage, 4),

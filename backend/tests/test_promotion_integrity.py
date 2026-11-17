@@ -29,6 +29,7 @@ POST /api/v1/research-loop/staging/promote, plus a reporting defect:
 """
 from __future__ import annotations
 
+import hashlib
 import json
 
 import pytest
@@ -90,15 +91,27 @@ def _candidate(**over):
     # Spec 094 Stage 1: the fixture carries the approval-gate record
     # fields (falsifier + listed named-human approver) — the
     # conforming adjudicated shape the promote gate requires.
+    # Spec 094 Stage 2: it also carries the evidence standard — the
+    # LEDGER.md artifact pinned by its actual SHA-256 and a
+    # registered evidence class.
     c = {"sign": "M777", "proposed_reading": "test-reading",
          "review_status": "verified", "evidence_score": 0.99,
          "evidence_type": "positional_profile",
          "source_experiment": "unit-test",
          "falsifier": "the reading fails if the positional profile does not replicate",
          "approver": "Tristen Pierson",
-         "evidence_ref": "LEDGER.md"}
+         "evidence_ref": "LEDGER.md",
+         "evidence_sha256": _ledger_pin(),
+         "evidence_class": "external_corpus_record"}
     c.update(over)
     return c
+
+
+def _ledger_pin() -> str:
+    """SHA-256 of the artifact the fixture's evidence_ref names
+    (repo-root LEDGER.md), computed from its actual bytes — the
+    Stage 2 pin a conforming record carries."""
+    return hashlib.sha256((rl._REPO / "LEDGER.md").read_bytes()).hexdigest()
 
 
 def _promote(client, promote_env, candidates, body=None):

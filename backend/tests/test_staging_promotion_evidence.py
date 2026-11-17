@@ -15,6 +15,7 @@ evidence gate (governance H26) and the verify-sa rename.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 
 import pytest
@@ -62,14 +63,26 @@ def _candidate(**over):
     # Spec 094 Stage 1: the fixture carries the approval-gate record
     # fields (falsifier + listed named-human approver) so the H26
     # evidence gate is the deciding gate in these tests.
+    # Spec 094 Stage 2: the conforming shape also carries the
+    # evidence standard — the LEDGER.md artifact pinned by its
+    # actual SHA-256 and a registered evidence class.
     c = {"sign": "M777", "proposed_reading": "test",
          "review_status": "verified", "evidence_score": 0.9,
          "evidence_type": "positional_profile",
          "source_experiment": "unit-test",
          "falsifier": "the reading fails if the positional profile does not replicate",
-         "approver": "Tristen Pierson",}
+         "approver": "Tristen Pierson",
+         "evidence_sha256": _ledger_pin(),
+         "evidence_class": "external_corpus_record"}
     c.update(over)
     return c
+
+
+def _ledger_pin() -> str:
+    """SHA-256 of the artifact the fixture's evidence_ref names
+    (repo-root LEDGER.md), computed from its actual bytes — the
+    Stage 2 pin a conforming record carries."""
+    return hashlib.sha256((rl._REPO / "LEDGER.md").read_bytes()).hexdigest()
 
 
 def test_promotion_without_evidence_ref_is_blocked(client, staging_env):

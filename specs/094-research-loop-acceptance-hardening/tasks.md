@@ -107,14 +107,14 @@
 
 ## Stage 2 — The promotion evidence standard (C094-4..5)
 
-- [ ] **T201 — Evidence pinning.** Pin-by-SHA-256 at pin time,
+- [x] **T201 — Evidence pinning.** Pin-by-SHA-256 at pin time,
   recorded on the candidate record; promotion verifies bytes
   against the pin and refuses on absence, mismatch, or a pin
   created by the promote request itself. Claims: C094-4.
   Acceptance: **test** (probe (b) variants: existing-file ref and
   request-created pin refuse; a pinned artifact promotes).
   *This does not establish:* relevance — that is T202's bar.
-- [ ] **T202 — Registered evidence classes.** The admissible-class
+- [x] **T202 — Registered evidence classes.** The admissible-class
   list lands as a registered artifact; the candidate's recorded
   class must be on it; loop or anchor-path output about the
   candidate is not a class and cannot be registered as one by

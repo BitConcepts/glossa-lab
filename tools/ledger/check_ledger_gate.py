@@ -27,6 +27,12 @@ Usage (from the repo root):
                                       published artifact
         [--candidate-map PATH]        check a candidate map
                                       artifact (V2/V4/V5/V6 legs)
+        [--contamination]             run only the contamination
+                                      class (Spec 095 T301, C095-7)
+                                      over the ledger's entries and
+                                      report under its own summary;
+                                      the V1-V11 profile is not run
+                                      and does not move
         [--intended-change NAME]      name an intended change
                                       for --regen classification
 
@@ -47,6 +53,10 @@ from pathlib import Path  # noqa: E402
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "backend"))
 
 from glossa_lab.ledger_gate import run_gate  # noqa: E402
+from glossa_lab.ledger_contamination import (  # noqa: E402
+    render_scan,
+    scan_ledger,
+)
 
 # PR-scope layer map: a changed path pulls in the check
 # classes covering the layers it touches (spec.md Point 4:
@@ -170,8 +180,16 @@ def main() -> int:
     parser.add_argument("--intended-change", default=None,
                         help="name an intended change for "
                         "--regen diff classification")
+    parser.add_argument("--contamination", action="store_true",
+                        help="run only the contamination class "
+                        "(Spec 095 T301) over the ledger")
     args = parser.parse_args()
     root = args.root.resolve()
+
+    if args.contamination:
+        n_scanned, flags = scan_ledger(root)
+        sys.stdout.write(render_scan(n_scanned, flags))
+        return 0 if not flags else 1
 
     scope: set[str] | None = None
     mode = "full"

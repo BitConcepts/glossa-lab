@@ -76,3 +76,31 @@ measured, when, under whose order), in the same change that adopts
 the new corpus. Editing a pin to match a drifted file without that
 record is a violation of this standard — drift is a finding, not an
 update.
+
+## 5. Orientation basis (added 2026-11-16, Spec 095 Stage 3, T304)
+
+Reading direction is data, not a default. Every identity in the
+registry carries an `orientation_basis`: what the corpus itself
+states about the reading direction of its sequences. A positional
+or sequential result in a claim-bearing record must name the
+orientation basis it rests on — the corpus's recorded basis where
+one exists, or the assumption it adopts where none does — and must
+either file its reversed variant (the same computation with every
+sequence read in the opposite direction) or state why a reversal
+is not defined for it.
+
+As registered on 2026-11-16, none of the eight covered corpora
+records a reading-direction basis: each registry entry states that
+plainly, and each states the standing assumption positional use
+makes in its place (stored order taken as reading order). An
+assumption named in the registry is still an assumption; it does
+not become a corpus fact by being registered. Where a corpus or a
+future acquisition does record a direction, the basis is entered
+in the registry under section 4's rule, in the same change that
+adopts it.
+
+Anchor-level direction notes (for example, the `reading_direction`
+field carried by some entries of the Phase-108 anchor trails) are
+not a corpus orientation basis: they record an assumption made
+about individual anchor entries, and they do not discharge the
+requirement above for any corpus or any positional result.

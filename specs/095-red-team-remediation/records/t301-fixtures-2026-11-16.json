@@ -1,0 +1,442 @@
+{
+ "date": "2026-11-16",
+ "fixture_set": "Spec 095 Stage 3 (T301) contamination-gate acceptance fixtures",
+ "fixtures": [
+  {
+   "citation": "GR-088-01 (scan B-01, specs/088-full-picture-map-gap-register/records/scan-families-contact.md); docs/repair-2026-10-26/baseline-and-dispositions.md sections 1.5 and 4.4: the advertised independent Parpola validation was computed from the Phase-96 crosswalk, whose values derive from the program own construction; classification rule 4.4 counts only genuinely eligible evidence toward independent validation (0 of 184 eligible).",
+   "expected_shapes": [
+    "S1"
+   ],
+   "fixture_kind": "historical",
+   "id": "hist-1-parpola-validation-labelled-independent",
+   "presentation": {
+    "id": "hist-1-parpola-validation-labelled-independent",
+    "sources": [
+     {
+      "attributed_to": "Parpola 1994",
+      "declared_identity": "Parpola 1994 comparison values",
+      "independence_asserted": true,
+      "kind": "reading-column",
+      "lineage": "program-anchor-construction",
+      "path": "outputs/phase96_cisi_crosswalk.json",
+      "presented_as": "independent-corroboration",
+      "produced_by": "program",
+      "role": "evidence_instance",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "program-anchor-construction"
+   },
+   "primary_shape": "S1"
+  },
+  {
+   "citation": "GR-088-01; docs/repair-2026-10-26/baseline-and-dispositions.md section 4.3: Phase-96 code writes the project anchor reading into the crosswalk reading field later consumed as Parpola reading; scan B-01 counts 116 entries carrying the project own readings copied under a Parpola 1994 source label.",
+   "expected_shapes": [
+    "S2"
+   ],
+   "fixture_kind": "historical",
+   "id": "hist-2-crosswalk-self-labelled-as-parpola",
+   "presentation": {
+    "id": "hist-2-crosswalk-self-labelled-as-parpola",
+    "sources": [
+     {
+      "attributed_to": "Parpola 1994",
+      "declared_identity": "Parpola 1994",
+      "independence_asserted": false,
+      "kind": "reading-column",
+      "lineage": "program-anchor-construction",
+      "path": "outputs/phase96_cisi_crosswalk.json",
+      "presented_as": "ordinary",
+      "produced_by": "program",
+      "role": "source_of_record",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "anchor-readings"
+   },
+   "primary_shape": "S2"
+  },
+  {
+   "citation": "GR-088-16 (scan A-03, specs/088-full-picture-map-gap-register/records/scan-corpus-anchors.md); reports/phase125_cross_compilation_summary.md: per-sign positional profiles computed within the mayig/CISI compilation, a sign-sequence transcription in Parpola sign IDs, and compared as corpus data against the Holdat side; the attribution line that followed (study 034-matched-object-attribution; study 058-transcription-disagreement-mechanism) localises the disagreement to the transcription layer.",
+   "expected_shapes": [
+    "S3"
+   ],
+   "fixture_kind": "historical",
+   "id": "hist-3-cross-compilation-reading-column-as-corpus",
+   "presentation": {
+    "id": "hist-3-cross-compilation-reading-column-as-corpus",
+    "sources": [
+     {
+      "attributed_to": null,
+      "declared_identity": "mayig/CISI compilation (Parpola sign-ID transcription)",
+      "independence_asserted": false,
+      "kind": "reading-column",
+      "lineage": "cisi-transcription",
+      "path": "data/corpus_layers/mayig_cisi_layer_v1.json",
+      "presented_as": "corpus-data",
+      "produced_by": "external",
+      "role": "source_of_record",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "cross-compilation-positional-comparison"
+   },
+   "primary_shape": "S3"
+  },
+  {
+   "citation": "GR-088-01 (scan B-01): every Parpola-agrees relation in the lineage is circular, it shares the derivation it would confirm; docs/repair-2026-10-26/baseline-and-dispositions.md section 5.3 distinguishes original independent evidence from later repetition on the same observations (the Phase-108 trails, reports/phase108_anchor_trails.json).",
+   "expected_shapes": [
+    "S4"
+   ],
+   "fixture_kind": "historical",
+   "id": "hist-4-parpola-agrees-as-confirmation",
+   "presentation": {
+    "id": "hist-4-parpola-agrees-as-confirmation",
+    "sources": [
+     {
+      "attributed_to": null,
+      "declared_identity": "Phase-108 Parpola agrees relation",
+      "independence_asserted": true,
+      "kind": "result",
+      "lineage": "program-anchor-construction",
+      "path": "reports/phase108_anchor_trails.json",
+      "presented_as": "independent-corroboration",
+      "produced_by": "program",
+      "role": "evidence_instance",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "program-anchor-construction"
+   },
+   "primary_shape": "S4"
+  },
+  {
+   "citation": "GR-088-29 (scan C-09, specs/088-full-picture-map-gap-register/records/scan-infra-bookkeeping.md): two production datasets (the VM-era dataset and desktop snapshot 1, 2026-10-28) held the same accumulated work product under two identities, neither adjudicated canonical until the owner ruling of 2026-11-05 (snapshot 1 canonical where they differ; census at glossa-run/lineage-census-2026-11-05/). The two dataset identities are named as the ruling names them; the operative fact is one lineage root under two identities.",
+   "expected_shapes": [
+    "S5"
+   ],
+   "fixture_kind": "historical",
+   "id": "hist-5-same-dataset-two-identities",
+   "presentation": {
+    "id": "hist-5-same-dataset-two-identities",
+    "sources": [
+     {
+      "attributed_to": null,
+      "declared_identity": "VM production dataset",
+      "independence_asserted": false,
+      "kind": "dataset",
+      "lineage": "accumulated-research-dataset",
+      "path": "(VM production dataset, snapshot-2 lineage)",
+      "presented_as": "ordinary",
+      "produced_by": "program",
+      "role": "source_of_record",
+      "sha256": null
+     },
+     {
+      "attributed_to": null,
+      "declared_identity": "desktop snapshot 1",
+      "independence_asserted": false,
+      "kind": "dataset",
+      "lineage": "accumulated-research-dataset",
+      "path": "(desktop dataset, snapshot 1, 2026-10-28)",
+      "presented_as": "ordinary",
+      "produced_by": "program",
+      "role": "source_of_record",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "dataset-intake"
+   },
+   "primary_shape": "S5"
+  },
+  {
+   "citation": "GR-088-11 (scan C-05, specs/088-full-picture-map-gap-register/records/scan-infra-bookkeeping.md): the claim-to-sign linkage exists only in the generated matrix layer, exactly one claim of 876 carries sign_refs that resolve, and the claims own records carry no linkage, so a consumer reading the linkage from glossa-indus/matrix/matrix.json is reading a generated summary in place of the underlying record.",
+   "expected_shapes": [
+    "S6"
+   ],
+   "fixture_kind": "historical",
+   "id": "hist-6-matrix-summary-as-the-record",
+   "presentation": {
+    "id": "hist-6-matrix-summary-as-the-record",
+    "sources": [
+     {
+      "attributed_to": null,
+      "declared_identity": "claims matrix (generated layer)",
+      "independence_asserted": false,
+      "kind": "summary",
+      "lineage": "claims-ledger",
+      "path": "glossa-indus/matrix/matrix.json",
+      "presented_as": "underlying-record",
+      "produced_by": "program",
+      "role": "source_of_record",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "claim-sign-linkage"
+   },
+   "primary_shape": "S6"
+  },
+  {
+   "citation": "Planted instance of shape S1 (RT-14 acceptance line, register draft): a value carried in a corpus-kind source, derived from the subject own lineage, asserted independent.",
+   "expected_shapes": [
+    "S1"
+   ],
+   "fixture_kind": "planted",
+   "id": "planted-1-derived-value-labelled-independent",
+   "presentation": {
+    "id": "planted-1-derived-value-labelled-independent",
+    "sources": [
+     {
+      "attributed_to": null,
+      "declared_identity": "independent comparison set",
+      "independence_asserted": true,
+      "kind": "corpus",
+      "lineage": "subject-derivation",
+      "path": "planted/derived_values.json",
+      "presented_as": "independent-corroboration",
+      "produced_by": "external",
+      "role": "evidence_instance",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "subject-derivation"
+   },
+   "primary_shape": "S1"
+  },
+  {
+   "citation": "Planted instance of shape S2: program-produced content attributed by the presentation to an external authority.",
+   "expected_shapes": [
+    "S2"
+   ],
+   "fixture_kind": "planted",
+   "id": "planted-2-self-labelling-derivative",
+   "presentation": {
+    "id": "planted-2-self-labelling-derivative",
+    "sources": [
+     {
+      "attributed_to": "External Authority 2001",
+      "declared_identity": "External Authority 2001",
+      "independence_asserted": false,
+      "kind": "record",
+      "lineage": "other-derivation",
+      "path": "planted/generated_table.json",
+      "presented_as": "ordinary",
+      "produced_by": "program",
+      "role": "source_of_record",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "subject"
+   },
+   "primary_shape": "S2"
+  },
+  {
+   "citation": "Planted instance of shape S3: a translation column presented as corpus data.",
+   "expected_shapes": [
+    "S3"
+   ],
+   "fixture_kind": "planted",
+   "id": "planted-3-translation-as-corpus-data",
+   "presentation": {
+    "id": "planted-3-translation-as-corpus-data",
+    "sources": [
+     {
+      "attributed_to": null,
+      "declared_identity": "translation column",
+      "independence_asserted": false,
+      "kind": "translation",
+      "lineage": "external-translation",
+      "path": "planted/translation_column.csv",
+      "presented_as": "corpus-data",
+      "produced_by": "external",
+      "role": "source_of_record",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "subject"
+   },
+   "primary_shape": "S3"
+  },
+  {
+   "citation": "Planted instance of shape S4: a derived result on the subject own lineage presented as independent confirmation.",
+   "expected_shapes": [
+    "S4"
+   ],
+   "fixture_kind": "planted",
+   "id": "planted-4-derived-result-as-confirmation",
+   "presentation": {
+    "id": "planted-4-derived-result-as-confirmation",
+    "sources": [
+     {
+      "attributed_to": null,
+      "declared_identity": "agreement study",
+      "independence_asserted": true,
+      "kind": "result",
+      "lineage": "subject-derivation",
+      "path": "planted/agreement_result.json",
+      "presented_as": "independent-corroboration",
+      "produced_by": "program",
+      "role": "evidence_instance",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "subject-derivation"
+   },
+   "primary_shape": "S4"
+  },
+  {
+   "citation": "Planted instance of shape S5: one content pin carried under two source identities.",
+   "expected_shapes": [
+    "S5"
+   ],
+   "fixture_kind": "planted",
+   "id": "planted-5-same-data-two-identities",
+   "presentation": {
+    "id": "planted-5-same-data-two-identities",
+    "sources": [
+     {
+      "attributed_to": null,
+      "declared_identity": "Dataset A",
+      "independence_asserted": false,
+      "kind": "dataset",
+      "lineage": "lineage-a",
+      "path": "planted/dataset_a.json",
+      "presented_as": "ordinary",
+      "produced_by": "external",
+      "role": "source_of_record",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+     },
+     {
+      "attributed_to": null,
+      "declared_identity": "Dataset B",
+      "independence_asserted": false,
+      "kind": "dataset",
+      "lineage": "lineage-b",
+      "path": "planted/dataset_b.json",
+      "presented_as": "ordinary",
+      "produced_by": "external",
+      "role": "source_of_record",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+     }
+    ],
+    "subject_lineage": "subject"
+   },
+   "primary_shape": "S5"
+  },
+  {
+   "citation": "Planted instance of shape S6: a summary artifact cited as the source of record.",
+   "expected_shapes": [
+    "S6"
+   ],
+   "fixture_kind": "planted",
+   "id": "planted-6-summary-as-record",
+   "presentation": {
+    "id": "planted-6-summary-as-record",
+    "sources": [
+     {
+      "attributed_to": null,
+      "declared_identity": "run summary",
+      "independence_asserted": false,
+      "kind": "summary",
+      "lineage": "subject-derivation",
+      "path": "planted/summary.md",
+      "presented_as": "ordinary",
+      "produced_by": "program",
+      "role": "source_of_record",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "subject"
+   },
+   "primary_shape": "S6"
+  },
+  {
+   "citation": "Negative control: an external source with a distinct lineage, produced externally and attributed to its own authority, asserted independent; the assertion is true, so no shape fires.",
+   "expected_shapes": [],
+   "fixture_kind": "negative",
+   "id": "neg-1-genuinely-independent-source",
+   "presentation": {
+    "id": "neg-1-genuinely-independent-source",
+    "sources": [
+     {
+      "attributed_to": "External Authority 2001",
+      "declared_identity": "External Authority 2001 corpus",
+      "independence_asserted": true,
+      "kind": "corpus",
+      "lineage": "external-corpus-lineage",
+      "path": "external/independent_corpus.jsonl",
+      "presented_as": "independent-corroboration",
+      "produced_by": "external",
+      "role": "evidence_instance",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "program-anchor-construction"
+   },
+   "primary_shape": null
+  },
+  {
+   "citation": "Negative control: a program derivative on the subject own lineage, cited under its own identity with no independence asserted; derivation alone is not contamination.",
+   "expected_shapes": [],
+   "fixture_kind": "negative",
+   "id": "neg-2-derivative-cited-as-derivative",
+   "presentation": {
+    "id": "neg-2-derivative-cited-as-derivative",
+    "sources": [
+     {
+      "attributed_to": null,
+      "declared_identity": "program crosswalk v2 (program-generated)",
+      "independence_asserted": false,
+      "kind": "reading-column",
+      "lineage": "program-anchor-construction",
+      "path": "outputs/phase96_cisi_crosswalk.json",
+      "presented_as": "ordinary",
+      "produced_by": "program",
+      "role": "evidence_instance",
+      "sha256": null
+     }
+    ],
+    "subject_lineage": "program-anchor-construction"
+   },
+   "primary_shape": null
+  },
+  {
+   "citation": "Negative control: the same file cited twice under the same identity and the same pin; one identity, so S5 does not fire.",
+   "expected_shapes": [],
+   "fixture_kind": "negative",
+   "id": "neg-3-same-file-same-identity-twice",
+   "presentation": {
+    "id": "neg-3-same-file-same-identity-twice",
+    "sources": [
+     {
+      "attributed_to": null,
+      "declared_identity": "external/corpus.jsonl",
+      "independence_asserted": false,
+      "kind": "corpus",
+      "lineage": "external-corpus-lineage",
+      "path": "external/corpus.jsonl",
+      "presented_as": "ordinary",
+      "produced_by": "external",
+      "role": "source_of_record",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+     },
+     {
+      "attributed_to": null,
+      "declared_identity": "external/corpus.jsonl",
+      "independence_asserted": false,
+      "kind": "corpus",
+      "lineage": "external-corpus-lineage",
+      "path": "external/corpus.jsonl",
+      "presented_as": "ordinary",
+      "produced_by": "external",
+      "role": "evidence_instance",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+     }
+    ],
+    "subject_lineage": "subject"
+   },
+   "primary_shape": null
+  }
+ ],
+ "note": "Each presentation is an intake-shaped record: a candidate entry plus the provenance facts intake assembles for each cited source (produced_by, attributed_to, kind, lineage, presented_as, independence_asserted). Historical fixtures reconstruct the six historical instances of record from the GR-088-01 / GR-088-11 / GR-088-16 / GR-088-29 family; each carries its record citation. Planted fixtures are minimal synthetic presentations, one per shape, built to trip exactly that shape. Negative fixtures are legitimate presentations that resemble the shapes and must not be flagged. Derivation alone is never flagged; every detector keys on the mislabelling."
+}

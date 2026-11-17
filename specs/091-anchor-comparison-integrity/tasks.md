@@ -50,7 +50,7 @@ survive into its stage report.
 
 ## Stage 1 — Definitions and protocols (PR: feat/091-s1-definitions)
 
-- [ ] **T101 — Eligibility-defs v1.** The extension of WP4's
+- [x] **T101 — Eligibility-defs v1.** The extension of WP4's
   classification rules to the locator + coding records: the entry-level
   locator definition per reading field, "independently sourced" over a
   coding record, and the mechanical recomputation of the eligible set.
@@ -60,7 +60,7 @@ survive into its stage report.
   *This does not establish:* that the eligible set is non-empty, or that
   WP4's classes are the right classes — only that the recomputation is
   defined before it is run.
-- [ ] **T102 — The blinding protocol filed.** The coder-facing protocol
+- [x] **T102 — The blinding protocol filed.** The coder-facing protocol
   of D-091-2: inputs, exclusions, the filing act that ends the blind,
   the deviation rule. Claims: C091-2 (protocol side). Acceptance:
   **human-as-oracle** (the reviewer rules the filed protocol says what
@@ -68,13 +68,13 @@ survive into its stage report.
   *This does not establish:* that any coder will follow it — compliance
   is Stage 4's oracle act; this establishes the standard it is judged
   against.
-- [ ] **T103 — The W2 reproduction protocol filed.** Attestation vs
+- [x] **T103 — The W2 reproduction protocol filed.** Attestation vs
   blind re-derivation per anchor; reader lineage exclusion; the outcome
   vocabulary. Claims: C091-5 (protocol side). Acceptance:
   **human-as-oracle**, same basis as T102.
   *This does not establish:* that readers exist or will be engaged —
   engagement is the owner's D-091-1 act.
-- [ ] **T104 — The pass-by-default enumeration.** Every credit kind in
+- [x] **T104 — The pass-by-default enumeration.** Every credit kind in
   the WP5 census traced to the code path in the frozen battery that
   awarded it; the register's "four pass-by-default paths" reconciled
   against the enumeration (grounding gap 2). Claims: C091-8 (enumeration
@@ -85,7 +85,7 @@ survive into its stage report.
   into the register here.
   *This does not establish:* the corrected battery's behavior — only
   where the defaults live, which is what battery v2 must remove.
-- [ ] **T105 — The checker-arm split for the 5.** Per-anchor
+- [x] **T105 — The checker-arm split for the 5.** Per-anchor
   determination for M042, M046, M108, M176, M342 from the R5 rule
   definitions and the full audit records: phonotactic arm,
   site-statistics arm, or both; undeterminable anchors recorded as

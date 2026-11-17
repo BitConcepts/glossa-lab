@@ -179,14 +179,21 @@
 
 ## Stage 5 — Second targets, scoping only (not commissioned)
 
-- [ ] **T501 — the Eteocypriot proposal and preregistration
+- [x] **T501 — the Eteocypriot proposal and preregistration
   draft.** Corpus legal status and source, bilingual and
   sign-list basis, held-out design, adjudication route; no
   analysis executed. (C095-15.)
-- [ ] **T502 — the Meroitic benchmark scoping.** The reproduction
+  (Stage 5: proposal and preregistration draft filed in this
+  spec's second-targets/ directory; execution is a separate
+  owner decision — see the Stage 5 scoping record.)
+- [x] **T502 — the Meroitic benchmark scoping.** The reproduction
   benchmark scoped as a study spec on the existing fixture;
   success criteria and falsifier fixed in the scoping record; no
   execution. (C095-16.)
+  (Stage 5: benchmark scoped as a study spec in this spec's
+  second-targets/ directory, with success criteria and a
+  falsifier fixed there; execution is a separately
+  commissioned study — see the Stage 5 scoping record.)
 - [ ] **T503 — closeout.** The register re-checked against
   C095-1 (no duplicate worked twice, no NEW item lost); every
   claim discharged or carried as a named remainder; the closeout

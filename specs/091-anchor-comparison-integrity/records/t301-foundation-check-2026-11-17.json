@@ -1,0 +1,99 @@
+{
+ "summary": {
+  "n_pass": 17,
+  "n_fail": 0,
+  "n_warn": 0,
+  "n_fixable": 0,
+  "overall_status": "PASS",
+  "send_to_fuls_ok": true,
+  "integrity_ok": true,
+  "send_to_fuls_msg": "All checks passed. Data integrity verified."
+ },
+ "checks": [
+  {
+   "label": "Holdat corpus: 1,670 seals / 7,002 tokens / 390 signs",
+   "status": "pass",
+   "detail": "seals=1670, tokens=7002, signs=390, out-of-order=0"
+  },
+  {
+   "label": "Holdat position order (reading-direction verified)",
+   "status": "pass",
+   "detail": "0 seals with positions out of order. Position 0 = INITIAL (classifier prefix, avg_position=0.0). Script reads right-to-left; position 0 = first read sign."
+  },
+  {
+   "label": "INDUS_FINAL_ANCHORS: H:166 M:5 L:3 U:0",
+   "status": "pass",
+   "detail": "Total=287. Citation=✓"
+  },
+  {
+   "label": "M267 = MEDIUM (not fish sign — freq=400, all motifs)",
+   "status": "pass",
+   "detail": "conf=MEDIUM — M267 has freq=400, appears on all motifs. Reading: genitive ‘iN/in’. MEDIUM accepted (UNCERTAIN is also valid). "
+  },
+  {
+   "label": "M047 = mīn (fish sign, crosswalk-backed)",
+   "status": "pass",
+   "detail": "reading='min/mīn' conf=HIGH"
+  },
+  {
+   "label": "M099 terminal position verified (CASE_MARKER_SUFFIX consistent with koḷ)",
+   "status": "pass",
+   "detail": "M099 avg_position=0.598, is_ending=True. Holdat CASE_MARKER_SUFFIX confirmed terminal (avg_pos=0.598). Reading 'koḷ' is a Dravidian verbal auxiliary that grammatically functions as a terminal/suffix element in Tamil — position-reading CONSISTENT."
+  },
+  {
+   "label": "Parpola phoneme map: 33 entries (P-number system)",
+   "status": "pass",
+   "detail": "33 phoneme entries. Uses Parpola P-numbers. Citation=✓. NOTE: separate system from Holdat M-numbers — crosswalk required for unified analysis."
+  },
+  {
+   "label": "Iconographic anchors: 12 (Parpola 2010 figs 5-23)",
+   "status": "pass",
+   "detail": "12 anchors. Fish P47=✓. Uses Parpola P-numbers (47, 87, 261, 281, 311...). SEPARATE from Holdat M-number anchors."
+  },
+  {
+   "label": "Phase-29d: Enmenanak top candidate (LIVE data)",
+   "status": "pass",
+   "detail": "Enmenanak=✓, Enheduana=✓, PNs searched=1222, best score=7.0. Score 7.0 at 100th percentile of null (p<0.001)."
+  },
+  {
+   "label": "Phase-31 T3 Zipf slope: delta=0.180 (threshold 0.3)",
+   "status": "pass",
+   "detail": "|delta|=0.180 — Both M77 (0.75) and Tamil-Brahmi (0.93) in syllabic regime (0.5-1.5). Does NOT require TB LM — this is the cleanest result."
+  },
+  {
+   "label": "CISI corpus: 179 inscriptions",
+   "status": "pass",
+   "detail": "179 Mohenjo-daro inscriptions. Uses Mahadevan M-numbers."
+  },
+  {
+   "label": "V8-V24 decipherment campaign: archived (17 rounds complete)",
+   "status": "pass",
+   "detail": "V8-V24 autonomous loop round files archived 2026-05-17 (17/17 complete). INDUS_FINAL_ANCHORS.json preserved. Active research now via Evidence Graph."
+  },
+  {
+   "label": "Dravidian Tamil LM (clean): 944 bigrams, verdict=CLEAN",
+   "status": "pass",
+   "detail": "Built from dravidian.py (DEDR + Sangam, E.1-E.3). Citation=✓. Replaces noisy Mahadevan 2003 epub LM for Phase-32 T4."
+  },
+  {
+   "label": "M↔P crosswalk: 184/390 entries (47.2%)",
+   "status": "pass",
+   "detail": "184/390 M-to-Parpola entries (all HIGH or MEDIUM confidence). Citation=✓. Covers core iconographic signs (fish variants, numerals, key ideograms). Full 390-entry expansion requires Mahadevan 1977 Appendix III manual lookup."
+  },
+  {
+   "label": "Citation audit: 6/6 files cited",
+   "status": "pass",
+   "detail": "Missing _citation in: none. Per CITATIONS.md Citation Requirements Standard v2."
+  },
+  {
+   "label": "Writing direction: position 0 = INITIAL (avg=0.000), endings avg=0.684",
+   "status": "pass",
+   "detail": "Classifier/PREFIX signs have avg_position=0.000 (should be ~0.0). CASE_MARKER_SUFFIX signs avg_position=0.684 (should be ~0.5-1.0). Position 0 = first sign in reading order. Indus script is read right-to-left; position 0 = rightmost sign = first read."
+  },
+  {
+   "label": "Phase-30a spectral gap=0.0 (8 length strata confirmed)",
+   "status": "pass",
+   "detail": "spectral_gap=0.0 across all 8 length bins (L1-1 through L9+). Corpus-wide deterministic structure — not short-inscription noise. Eigenvalues cluster at 1.0; verified structural evidence independent of phoneme assignments."
+  }
+ ]
+}

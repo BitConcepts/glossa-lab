@@ -1,0 +1,796 @@
+{
+ "run": {
+  "run_id": "study-20261117T103816Z-a25969",
+  "surface": "study",
+  "tool": "phase48_medium_validation_v2.py --execute",
+  "tool_version": "battery v2 (Spec 091 Stage 3, T301/T302)",
+  "started": "2026-11-17T10:38:16Z",
+  "finished": "2026-11-17T10:38:16Z",
+  "key": {
+   "surface": "study",
+   "command": "phase48_medium_validation_v2.py --execute",
+   "tool_version": "battery v2 (Spec 091 Stage 3, T301/T302)",
+   "input_pins": {
+    "spec": "091-anchor-comparison-integrity",
+    "stage": "stage-3-battery-v2-rerun",
+    "frozen_artifacts": {
+     "historical_battery_sha256": "e7fa7c1793e5f1574352c1595efa0ba64fb41849cba9f95ede5d39528c260e4d",
+     "wp5_audit_sha256": "c1382017f44d63e7e811b71b77917d9e3bfb40849f95806987135bae895ea52a",
+     "anchors_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+     "corpus_sha256": "62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e",
+     "roles_sha256": "eb6d3b6ae195a2570e098dc6779dbd6c7bea97da5c4714bf406c3bb98f9d2aaf",
+     "lm_sha256": "6847e671e7f2aef8a397c295d0410ba831d00e55b815ccbe63af98d9d47f7389",
+     "t104_enumeration_sha256": "673d8bcff8e8e17aabd7fab644f9a786eeab84291c3a50d71b712ffcd2408e9f",
+     "dedr_dataset": "not held — reports/jambu-dedr submodule unpopulated; the DEDR check is not_run for every sign in this run"
+    },
+    "battery_v2_sha256": "68c0bcd6dc00c573545338dc70c23bbee05612b8e7a16ade9faa0372c98bdda6"
+   },
+   "seed": "no-seed",
+   "code_version": "b9232cfe1c515f48931d131321ece385db6d9b2c",
+   "environment_class": "mini-server/linux"
+  },
+  "determinism_class": "deterministic"
+ },
+ "result": {
+  "population": [
+   "M328",
+   "M059",
+   "M162",
+   "M391",
+   "M233",
+   "M089",
+   "M051",
+   "M336",
+   "M012",
+   "M305",
+   "M073",
+   "M013",
+   "M060",
+   "M080",
+   "M057",
+   "M039",
+   "M063",
+   "M077",
+   "M018",
+   "M030",
+   "M017",
+   "M020",
+   "M004",
+   "M014",
+   "M026",
+   "M034",
+   "M027",
+   "M041"
+  ],
+  "excluded_from_subset": [
+   {
+    "sign": "M367",
+    "current_evidential_status": "insufficient_evidence",
+    "disposition_rule": "R4_pass1_only_record",
+    "note": "Recorded Phase-48 promotion outside the T302 population: not standing at requires_revalidation (GR-088-27's pair, outside Spec 091)."
+   },
+   {
+    "sign": "M048",
+    "current_evidential_status": "insufficient_evidence",
+    "disposition_rule": "R4_pass1_only_record",
+    "note": "Recorded Phase-48 promotion outside the T302 population: not standing at requires_revalidation (GR-088-27's pair, outside Spec 091)."
+   }
+  ],
+  "results": [
+   {
+    "sign": "M328",
+    "reading": "ā/āl",
+    "n_corpus": 234,
+    "holdat_role": "CASE_MARKER_SUFFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "not_run",
+      "detail": "char_not_in_lm—not_run"
+     }
+    },
+    "n_pass": 1,
+    "n_fail": 0,
+    "n_not_run": 2,
+    "score": 1,
+    "promote": false
+   },
+   {
+    "sign": "M059",
+    "reading": "ēḷ/eḷ",
+    "n_corpus": 222,
+    "holdat_role": "PERSON_OR_OWNER",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "not_run",
+      "detail": "char_not_in_lm—not_run"
+     }
+    },
+    "n_pass": 1,
+    "n_fail": 0,
+    "n_not_run": 2,
+    "score": 1,
+    "promote": false
+   },
+   {
+    "sign": "M162",
+    "reading": "il/iḷ",
+    "n_corpus": 205,
+    "holdat_role": "CASE_MARKER_SUFFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "fail",
+      "detail": "neighbour_match=0/5=0.0%"
+     }
+    },
+    "n_pass": 1,
+    "n_fail": 1,
+    "n_not_run": 1,
+    "score": 1,
+    "promote": false
+   },
+   {
+    "sign": "M391",
+    "reading": "ka/kaṇ",
+    "n_corpus": 193,
+    "holdat_role": "CASE_MARKER_SUFFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/5=60.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M233",
+    "reading": "ūr",
+    "n_corpus": 171,
+    "holdat_role": "CASE_MARKER_SUFFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "not_run",
+      "detail": "char_not_in_lm—not_run"
+     }
+    },
+    "n_pass": 1,
+    "n_fail": 0,
+    "n_not_run": 2,
+    "score": 1,
+    "promote": false
+   },
+   {
+    "sign": "M089",
+    "reading": "tu/tū",
+    "n_corpus": 171,
+    "holdat_role": "CASE_MARKER_SUFFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=4/5=80.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M051",
+    "reading": "pū/puḷ",
+    "n_corpus": 163,
+    "holdat_role": "CASE_MARKER_SUFFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/5=60.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M336",
+    "reading": "iṉ/locative",
+    "n_corpus": 161,
+    "holdat_role": "CASE_MARKER_SUFFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "fail",
+      "detail": "neighbour_match=0/5=0.0%"
+     }
+    },
+    "n_pass": 1,
+    "n_fail": 1,
+    "n_not_run": 1,
+    "score": 1,
+    "promote": false
+   },
+   {
+    "sign": "M012",
+    "reading": "oṉṟu/1",
+    "n_corpus": 143,
+    "holdat_role": "CASE_MARKER_SUFFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "fail",
+      "detail": "neighbour_match=0/5=0.0%"
+     }
+    },
+    "n_pass": 1,
+    "n_fail": 1,
+    "n_not_run": 1,
+    "score": 1,
+    "promote": false
+   },
+   {
+    "sign": "M305",
+    "reading": "ōṭu/comitative",
+    "n_corpus": 83,
+    "holdat_role": "CASE_MARKER_SUFFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "not_run",
+      "detail": "char_not_in_lm—not_run"
+     }
+    },
+    "n_pass": 1,
+    "n_fail": 0,
+    "n_not_run": 2,
+    "score": 1,
+    "promote": false
+   },
+   {
+    "sign": "M073",
+    "reading": "kōṉ",
+    "n_corpus": 25,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/4=75.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M013",
+    "reading": "nakaram",
+    "n_corpus": 23,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/5=60.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M060",
+    "reading": "kāṇṭāmirukam",
+    "n_corpus": 20,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/5=40.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M080",
+    "reading": "vēṅkai",
+    "n_corpus": 19,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/5=40.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M057",
+    "reading": "māṭu",
+    "n_corpus": 18,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/4=50.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M039",
+    "reading": "āṉai",
+    "n_corpus": 18,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "not_run",
+      "detail": "char_not_in_lm—not_run"
+     }
+    },
+    "n_pass": 1,
+    "n_fail": 0,
+    "n_not_run": 2,
+    "score": 1,
+    "promote": false
+   },
+   {
+    "sign": "M063",
+    "reading": "mutalai",
+    "n_corpus": 18,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/4=50.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M077",
+    "reading": "nal",
+    "n_corpus": 18,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "fail",
+      "detail": "neighbour_match=1/4=25.0%"
+     }
+    },
+    "n_pass": 1,
+    "n_fail": 1,
+    "n_not_run": 1,
+    "score": 1,
+    "promote": false
+   },
+   {
+    "sign": "M018",
+    "reading": "nēr",
+    "n_corpus": 18,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/5=40.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M030",
+    "reading": "kō",
+    "n_corpus": 18,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/4=75.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M017",
+    "reading": "kai",
+    "n_corpus": 18,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/4=75.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M020",
+    "reading": "kuṉ",
+    "n_corpus": 18,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/5=60.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M004",
+    "reading": "kēḷ",
+    "n_corpus": 17,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=4/5=80.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M014",
+    "reading": "tiru",
+    "n_corpus": 17,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=4/5=80.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M026",
+    "reading": "mā",
+    "n_corpus": 17,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/4=50.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M034",
+    "reading": "tōḷ",
+    "n_corpus": 17,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/4=50.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M027",
+    "reading": "māṟ",
+    "n_corpus": 17,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/5=40.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   },
+   {
+    "sign": "M041",
+    "reading": "pēr",
+    "n_corpus": 17,
+    "holdat_role": "CLASSIFIER_PREFIX",
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/4=50.0%"
+     }
+    },
+    "n_pass": 2,
+    "n_fail": 0,
+    "n_not_run": 1,
+    "score": 2,
+    "promote": true
+   }
+  ],
+  "census": {
+   "n_tested": 28,
+   "n_promoted": 19,
+   "n_not_promoted": 9,
+   "by_disposition": {
+    "insufficient_evidence": 9,
+    "supported_internal_only": 19
+   },
+   "n_checks_pass": 47,
+   "n_checks_fail": 4,
+   "n_checks_not_run": 33
+  },
+  "acts": "specs/091-anchor-comparison-integrity/records/t302-reclassification-acts.json",
+  "acts_sha256": "c3708e2ec47c63e67b48e791236381a090c22a1148237d8a8fed4d442b44cfab"
+ }
+}

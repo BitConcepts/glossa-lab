@@ -117,7 +117,7 @@ survive into its stage report.
 
 ## Stage 3 — W3 in-house legs (PRs: feat/091-s3-battery-v2, feat/091-s3-single-line)
 
-- [ ] **T301 — Battery v2, no pass-by-default.** A new versioned battery
+- [x] **T301 — Battery v2, no pass-by-default.** A new versioned battery
   (the historical script frozen, D-091-4) with every path enumerated in
   T104 removed; per removed path, a fixture in which the historical
   battery awarded credit and v2 returns not-run/fail. Claims: C091-8.
@@ -126,7 +126,7 @@ survive into its stage report.
   *This does not establish:* that v2's genuine checks are well-calibrated
   — only that its credits are earned by checks that ran over present
   inputs.
-- [ ] **T302 — The re-run over the 28 + dispositions.** One run under
+- [x] **T302 — The re-run over the 28 + dispositions.** One run under
   run-defs v1 over the WP5 Phase-48 subset's 28; dispositions filed as
   reclassification acts per the run's output; the historical output
   retired as evidence for all 28 in the same motion. Claims: C091-9,

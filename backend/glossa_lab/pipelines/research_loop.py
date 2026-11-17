@@ -33,6 +33,7 @@ from typing import Any, Generator
 
 from glossa_lab.claim_stage import CANDIDATE_GATE_FIELDS
 from glossa_lab.evidence_standard import CANDIDATE_EVIDENCE_FIELDS
+from glossa_lab.verification import CANDIDATE_VERIFICATION_FIELDS
 
 logger = logging.getLogger(__name__)
 
@@ -1517,6 +1518,16 @@ class ResearchLoop:
             # record carrying no pin or class cannot promote until
             # adjudication records them.
             for field in CANDIDATE_EVIDENCE_FIELDS:
+                c.setdefault(field, "")
+            # Spec 094 Stage 3 (C094-6): the staging write likewise
+            # carries the verification fields — the recorded
+            # per-candidate evaluation the verify transitions and
+            # the MEDIUM binding read. They start empty: evaluation
+            # is a named-human adjudication act (see
+            # glossa_lab.verification.record_verification), and a
+            # record carrying no evaluation is not verified and
+            # promotes at LOW at most.
+            for field in CANDIDATE_VERIFICATION_FIELDS:
                 c.setdefault(field, "")
         dropped = before_count - len(new_unique)
         if dropped:

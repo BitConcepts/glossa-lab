@@ -101,7 +101,16 @@ def _gated(**over):
             "evidence_ref": "LEDGER.md",
             "evidence_sha256": hashlib.sha256(
                 (rl._REPO / "LEDGER.md").read_bytes()).hexdigest(),
-            "evidence_class": "external_corpus_record"}
+            "evidence_class": "external_corpus_record",
+            # Spec 094 Stage 3: the conforming shape also carries
+            # the recorded per-candidate verification evaluation,
+            # so the verify routes' deciding gate stays the Stage 1
+            # approval gate these tests exercise.
+            "verification_evaluator": "Tristen Pierson",
+            "verification_evaluated_at": "2026-11-16T00:00:00Z",
+            "verification_evaluation": "evaluated this candidate's positional profile against the cited corpus record",
+            "verification_evidence_ref": "LEDGER.md",
+            "verification_outcome": "verified"}
     base.update(over)
     return _candidate(**base)
 

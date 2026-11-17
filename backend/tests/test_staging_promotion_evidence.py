@@ -133,11 +133,20 @@ def test_promotion_with_request_evidence_ref_map_is_refused(
 
 
 def test_verify_archive_route_and_deprecated_alias(client, staging_env):
+    # Spec 094 Stage 3: the candidate also carries the recorded
+    # per-candidate verification evaluation the verify transition
+    # now requires (C094-6); the route/alias behaviour under test
+    # is unchanged.
     candidate = {"sign": "M555", "proposed_reading": "x",
                  "review_status": "approved",
                  "falsifier": "the reading fails on replication",
                  "approver": "Tristen Pierson",
-                 "evidence_ref": "LEDGER.md"}
+                 "evidence_ref": "LEDGER.md",
+                 "verification_evaluator": "Tristen Pierson",
+                 "verification_evaluated_at": "2026-11-16T00:00:00Z",
+                 "verification_evaluation": "evaluated this candidate against the cited record",
+                 "verification_evidence_ref": "LEDGER.md",
+                 "verification_outcome": "verified"}
     staging_env["staging"].write_text(
         json.dumps([candidate]), encoding="utf-8")
     r = client.post(f"{BASE}/staging/verify-archive")

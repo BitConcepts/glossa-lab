@@ -28,6 +28,7 @@ from glossa_lab.evidence_standard import (
     evidence_class_refusal,
     evidence_pin_refusal,
 )
+from glossa_lab.verification import verification_refusal
 
 _REPO = Path(__file__).resolve().parents[3]
 
@@ -685,16 +686,21 @@ async def get_staging() -> dict[str, Any]:
             _STAGING_JSON.read_text(encoding="utf-8"))
     except Exception as exc:
         return {"error": str(exc), "candidates": []}
-    # Compute recommended / statistically_sufficient for each candidate
+    # Compute recommended / statistically_sufficient for each candidate.
+    # Spec 094 Stage 3 (C094-9): the SA delta is presented only where
+    # an SA comparison actually ran and recorded one. Where none was
+    # recorded the delta is ABSENT from the response — the former
+    # fallback substituted round(score * 0.12, 3), a fabricated
+    # estimate presented as a measured delta; it is removed, not
+    # tuned. A recorded delta is carried as its recorded value.
     for c in candidates:
         score = float(c.get("evidence_score", 0))
         sa_d = c.get("sa_delta")
-        # Fallback estimate when real SA comparison data hasn't flowed yet
         if sa_d is None:
-            sa_d = round(score * 0.12, 3)
-            c["sa_delta"] = sa_d
+            c.pop("sa_delta", None)
         else:
             sa_d = float(sa_d)
+            c["sa_delta"] = sa_d
         c["recommended"] = score >= 0.85 or (sa_d is not None and sa_d > 0.05)
         c["statistically_sufficient"] = score >= 0.7
 
@@ -900,10 +906,18 @@ def _run_anchor_lifecycle(
 ) -> None:
     """Auto-lifecycle for anchor candidates after a loop run.
 
-    - Approved candidates become 'verified' if SA confidence improved,
-      stay 'approved' if inconclusive.
-    - Verified candidates are auto-archived.
     - Rejected candidates older than 7 days become 'expired' and are archived.
+
+    Spec 094 Stage 3 (C094-7): the lifecycle no longer verifies
+    anything. The former construction read the run's foundation
+    check, derived a flat sa_delta (0.1 on a clean check), and
+    flipped approved candidates to 'verified' (auto-archiving
+    them) — a run-level aggregate conferring a per-candidate
+    status. It is removed, not tuned: verification is a recorded
+    per-candidate evaluation by a named human (C094-6), and this
+    function's only remaining duty is the expiry above. Its other
+    duties are unchanged — expiry of stale rejections is exactly
+    as before, and it never carried any other transition.
     """
     if not _STAGING_JSON.exists():
         return
@@ -915,32 +929,12 @@ def _run_anchor_lifecycle(
 
     now_iso = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
     now_ts = _time.time()
-    sa_delta = 0.0
-
-    # Check if SA confidence improved from synthesis foundation_check
-    fc = synthesis.get("foundation_check", {})
-    if fc and not fc.get("skipped"):
-        # Positive signal if no failures
-        sa_delta = 0.1 if fc.get("n_fail", 0) == 0 else -0.05
 
     to_archive: list[dict] = []
     remaining: list[dict] = []
-    auto_verified_count = 0
 
     for c in candidates:
         status = c.get("review_status", "staged")
-
-        # Approved → verified if SA improved
-        if status == "approved" and sa_delta > 0:
-            c["review_status"] = "verified"
-            c["verified_at"] = now_iso
-            c["sa_delta"] = sa_delta
-            auto_verified_count += 1
-            # Auto-archive verified candidates
-            c["archived_at"] = now_iso
-            c["archived_reason"] = "auto_verified"
-            to_archive.append(c)
-            continue
 
         # Rejected for > 7 days → expired and archived
         if status == "rejected":
@@ -979,8 +973,8 @@ def _run_anchor_lifecycle(
             json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
 
         _log.info(
-            "Anchor lifecycle: %d auto-verified and archived, %d remaining",
-            auto_verified_count, len(remaining),
+            "Anchor lifecycle: %d expired and archived, %d remaining",
+            len(to_archive), len(remaining),
         )
 
         # Emit lifecycle event
@@ -989,7 +983,6 @@ def _run_anchor_lifecycle(
             import asyncio as _aio  # noqa: PLC0415
             _aio.create_task(emit_event(
                 "lifecycle_advance",
-                auto_verified=auto_verified_count,
                 archived=len(to_archive),
                 remaining=len(remaining),
             ))
@@ -1002,7 +995,9 @@ async def archive_staging() -> dict[str, Any]:
     """Archive all approved and rejected candidates from staging.
 
     Moves them to anchor_staging_archive.json with timestamps.
-    Manual override — the auto-lifecycle also archives verified candidates.
+    Manual override. (The auto-lifecycle archives only expired
+    rejections since Spec 094 Stage 3 removed its verification
+    flip, C094-7.)
     """
     if not _STAGING_JSON.exists():
         return {"ok": False, "error": "staging file not found"}
@@ -1117,6 +1112,11 @@ async def cleanup_staging() -> dict[str, Any]:
       that is automated or not a listed named human) are NOT
       verified: they remain in staging, status untouched, and are
       reported in blocked_no_approval_gate (C094-2)
+    - Approved/verified items whose record carries no valid
+      per-candidate verification evaluation (Spec 094 Stage 3,
+      C094-6) are likewise NOT verified: they remain in staging,
+      status untouched, and are reported in
+      blocked_no_verification
 
     Use after reviewing a batch: approve the good ones, reject the bad ones,
     then call this once to flush everything and leave only unreviewed items.
@@ -1137,6 +1137,7 @@ async def cleanup_staging() -> dict[str, Any]:
     pruned_count = 0
 
     blocked_gate: list[str] = []
+    blocked_verification: list[str] = []
     for c in candidates:
         status = c.get("review_status", "staged")
         if status in ("approved", "verified"):
@@ -1146,6 +1147,17 @@ async def cleanup_staging() -> dict[str, Any]:
             # staging, status untouched, and is reported.
             if _approval_gate_refusal(c) is not None:
                 blocked_gate.append(c.get("sign") or c.get("sign_id", ""))
+                remaining.append(c)
+                continue
+            # Verification gate (Spec 094 Stage 3, C094-6): the
+            # verify transition is likewise refused for a record
+            # carrying no valid per-candidate verification
+            # evaluation — verified is a recorded evaluation by a
+            # named human, not a status this route confers on its
+            # own.
+            if verification_refusal(c) is not None:
+                blocked_verification.append(
+                    c.get("sign") or c.get("sign_id", ""))
                 remaining.append(c)
                 continue
             c = dict(c)
@@ -1203,6 +1215,7 @@ async def cleanup_staging() -> dict[str, Any]:
         "archived": len(to_archive),
         "pruned": pruned_count,
         "blocked_no_approval_gate": blocked_gate,
+        "blocked_no_verification": blocked_verification,
         "remaining_staged": remaining_staged,
         "remaining": len(remaining),
         "message": (
@@ -1227,6 +1240,15 @@ async def staging_verify_archive() -> dict[str, Any]:
     reported in blocked_no_approval_gate; when every approved
     candidate is blocked, the call refuses (ok=False) and writes
     nothing.
+
+    Spec 094 Stage 3 (C094-6): verification is a recorded
+    per-candidate evaluation by a named human, so an approved
+    candidate whose record carries no valid verification
+    evaluation is NOT verified either — it stays in staging,
+    status untouched, and is reported in blocked_no_verification.
+    This route performs the transition to 'verified' for records
+    that carry the evaluation; it does not itself confer the
+    evaluation.
 
     Phase-109 rename (spec 007 Step 4): this endpoint was previously
     named /staging/verify-sa, but it performs NO SA test of any
@@ -1260,20 +1282,32 @@ async def staging_verify_archive() -> dict[str, Any]:
     blocked_gate_signs = [
         c.get("sign") or c.get("sign_id", "")
         for c in approved if _approval_gate_refusal(c) is not None]
-    if len(blocked_gate_signs) == len(approved):
+    # Verification gate (Spec 094 Stage 3, C094-6): verification is
+    # likewise refused for an approved record that passed approval
+    # but carries no valid per-candidate verification evaluation.
+    blocked_verification_signs = [
+        c.get("sign") or c.get("sign_id", "")
+        for c in approved
+        if _approval_gate_refusal(c) is None
+        and verification_refusal(c) is not None]
+    if len(blocked_gate_signs) + len(blocked_verification_signs) == len(approved):
         return {"ok": False,
                 "error": "No approved candidate passes the Spec 094 "
-                         "approval gate (a recorded falsifier and a "
-                         "listed named-human approver are required); "
-                         "verification refused.",
-                "blocked_no_approval_gate": blocked_gate_signs}
+                         "gates (a recorded falsifier and a listed "
+                         "named-human approver, and a recorded "
+                         "per-candidate verification evaluation by a "
+                         "named human, are required); verification "
+                         "refused.",
+                "blocked_no_approval_gate": blocked_gate_signs,
+                "blocked_no_verification": blocked_verification_signs}
 
     # Mark all gate-passing approved → verified + archive them
     to_archive: list[dict] = []
     remaining: list[dict] = []
     for c in candidates:
         if (c.get("review_status") == "approved"
-                and _approval_gate_refusal(c) is None):
+                and _approval_gate_refusal(c) is None
+                and verification_refusal(c) is None):
             c["review_status"] = "verified"
             c["verified_at"] = now
             c["archived_at"] = now
@@ -1340,6 +1374,7 @@ async def staging_verify_archive() -> dict[str, Any]:
         "exp_name": exp_name,
         "job_id": job_id,
         "blocked_no_approval_gate": blocked_gate_signs,
+        "blocked_no_verification": blocked_verification_signs,
         "message": f"{len(to_archive)} candidate(s) verified and archived.",
         "suggested_sa_exp": exp_id,
         "suggested_sa_name": exp_name,
@@ -1508,9 +1543,14 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
     cannot be read, membership the register alone cannot vouch for
     fails closed the same way.
 
-    Confidence mapping:
-      - review_status == 'verified' OR evidence_score >= 0.8 → MEDIUM
-      - otherwise                                             → LOW
+    Confidence mapping (Spec 094 Stage 3, C094-8):
+      - verified under C094-6 (a recorded per-candidate
+        verification evaluation by a named human) → MEDIUM
+      - otherwise                                  → LOW
+    Status and score no longer confer MEDIUM: a 'verified' record
+    carrying no verification evaluation (the pre-094 archive
+    stock's shape) and an approved candidate at any score promote
+    at LOW at most.
 
     After writing, recalculates corpus_token_coverage and invalidates the
     in-memory signs index and foundation check dirty flag.
@@ -1704,7 +1744,14 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
             continue
         score = float(c.get("evidence_score", 0) or 0)
         st = (c.get("review_status") or "").lower()
-        new_conf = "MEDIUM" if (st == "verified" or score >= 0.8) else "LOW"
+        # MEDIUM binding (Spec 094 Stage 3, C094-8): MEDIUM exactly
+        # when the candidate is verified under C094-6 — it carries
+        # a recorded per-candidate verification evaluation effected
+        # by a named human (glossa_lab.verification). The former
+        # rule (status 'verified' OR score >= 0.8) conferred MEDIUM
+        # on score alone and on unverified 'verified' stock; both
+        # shapes now cap at LOW, whatever the score.
+        new_conf = "MEDIUM" if verification_refusal(c) is None else "LOW"
         reading = c.get("proposed_reading", "")
         basis_parts = [
             f"Promoted from anchor staging archive ({now_label})",
@@ -1715,6 +1762,12 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
             f"evidence_sha256={c.get('evidence_sha256', '')}",
             f"evidence_class={c.get('evidence_class', '')}",
         ]
+        if new_conf == "MEDIUM":
+            # The anchor's basis records the verification the
+            # MEDIUM rests on (C094-8): the named human whose
+            # per-candidate evaluation verified this candidate.
+            basis_parts.append(
+                f"verification_evaluator={c.get('verification_evaluator', '')}")
         if c.get("dedr_support"):
             basis_parts.append(f"DEDR: {c['dedr_support']}")
         current_anchors[sid] = {

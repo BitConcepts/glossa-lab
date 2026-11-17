@@ -94,6 +94,10 @@ def _candidate(**over):
     # Spec 094 Stage 2: it also carries the evidence standard — the
     # LEDGER.md artifact pinned by its actual SHA-256 and a
     # registered evidence class.
+    # Spec 094 Stage 3: it also carries the recorded per-candidate
+    # verification evaluation, so the MEDIUM positive control below
+    # promotes at MEDIUM under the C094-8 binding (verified under
+    # C094-6), not on status or score.
     c = {"sign": "M777", "proposed_reading": "test-reading",
          "review_status": "verified", "evidence_score": 0.99,
          "evidence_type": "positional_profile",
@@ -102,7 +106,12 @@ def _candidate(**over):
          "approver": "Tristen Pierson",
          "evidence_ref": "LEDGER.md",
          "evidence_sha256": _ledger_pin(),
-         "evidence_class": "external_corpus_record"}
+         "evidence_class": "external_corpus_record",
+         "verification_evaluator": "Tristen Pierson",
+         "verification_evaluated_at": "2026-11-16T00:00:00Z",
+         "verification_evaluation": "evaluated this candidate's positional profile against the cited corpus record",
+         "verification_evidence_ref": "LEDGER.md",
+         "verification_outcome": "verified"}
     c.update(over)
     return c
 

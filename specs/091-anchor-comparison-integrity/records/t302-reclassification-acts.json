@@ -1,0 +1,813 @@
+{
+ "record_id": "spec091-t302-reclassification-acts",
+ "spec": "091-anchor-comparison-integrity",
+ "task": "T302",
+ "claims": [
+  "C091-9",
+  "C091-13"
+ ],
+ "generated_by": "phase48_medium_validation_v2.py --execute (Spec 091 Stage 3, T302)",
+ "run_id": "study-20261117T103816Z-a25969",
+ "battery": {
+  "id": "phase48-battery-v2",
+  "tool": "phase48_medium_validation_v2.py",
+  "tool_version": "battery v2 (Spec 091 Stage 3, T301/T302)",
+  "sha256": "68c0bcd6dc00c573545338dc70c23bbee05612b8e7a16ade9faa0372c98bdda6"
+ },
+ "disposition_rule": "promoted by the corrected battery (score >= 2 passes; not_run never counts) -> supported_internal_only; not promoted -> insufficient_evidence. Stated in the battery's docstring before the run.",
+ "acts": [
+  {
+   "sign": "M328",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "insufficient_evidence",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 1,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "not_run",
+      "detail": "char_not_in_lm—not_run"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M059",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "insufficient_evidence",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 1,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "not_run",
+      "detail": "char_not_in_lm—not_run"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M162",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "insufficient_evidence",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 1,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "fail",
+      "detail": "neighbour_match=0/5=0.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M391",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/5=60.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M233",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "insufficient_evidence",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 1,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "not_run",
+      "detail": "char_not_in_lm—not_run"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M089",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=4/5=80.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M051",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/5=60.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M336",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "insufficient_evidence",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 1,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "fail",
+      "detail": "neighbour_match=0/5=0.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M012",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "insufficient_evidence",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 1,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "fail",
+      "detail": "neighbour_match=0/5=0.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M305",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "insufficient_evidence",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 1,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "not_run",
+      "detail": "char_not_in_lm—not_run"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M073",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/4=75.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M013",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/5=60.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M060",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/5=40.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M080",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/5=40.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M057",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/4=50.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M039",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "insufficient_evidence",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 1,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "not_run",
+      "detail": "char_not_in_lm—not_run"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M063",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/4=50.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M077",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "insufficient_evidence",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 1,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "fail",
+      "detail": "neighbour_match=1/4=25.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M018",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/5=40.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M030",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/4=75.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M017",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/4=75.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M020",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=3/5=60.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M004",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=4/5=80.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M014",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=4/5=80.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M026",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/4=50.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M034",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/4=50.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M027",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/5=40.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  },
+  {
+   "sign": "M041",
+   "act": "reclassification",
+   "from_disposition": "requires_revalidation",
+   "to_disposition": "supported_internal_only",
+   "basis": {
+    "run_id": "study-20261117T103816Z-a25969",
+    "battery": "phase48-battery-v2",
+    "score": 2,
+    "promotion_threshold": 2,
+    "tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held—not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/4=50.0%"
+     }
+    }
+   },
+   "prior_basis": "WP5 anchor-support audit, rule R5a_phase48_promotion (the historical battery's output)"
+  }
+ ],
+ "evidence_retirement": {
+  "act": "evidence_retirement",
+  "scope_signs": [
+   "M328",
+   "M059",
+   "M162",
+   "M391",
+   "M233",
+   "M089",
+   "M051",
+   "M336",
+   "M012",
+   "M305",
+   "M073",
+   "M013",
+   "M060",
+   "M080",
+   "M057",
+   "M039",
+   "M063",
+   "M077",
+   "M018",
+   "M030",
+   "M017",
+   "M020",
+   "M004",
+   "M014",
+   "M026",
+   "M034",
+   "M027",
+   "M041"
+  ],
+  "retired": "The Phase-48 historical battery's output (phase48_medium_validation.py's recorded run, as reconstructed in the WP5 anchor-support audit's phase48_reconstruction fields) as evidence for the 28 promotions' dispositions",
+  "superseded_by_run": "study-20261117T103816Z-a25969",
+  "claim": "C091-9",
+  "note": "The historical output remains of record in the WP5 audit and in git history; it is retired AS EVIDENCE for these dispositions, not deleted or edited."
+ }
+}

@@ -97,7 +97,7 @@ survive into its stage report.
 
 ## Stage 2 — W1 in-house leg: the locator pass (PR: feat/091-s2-locator-pass)
 
-- [ ] **T201 — The locator record artifact + generator.** A new
+- [x] **T201 — The locator record artifact + generator.** A new
   versioned artifact beside the frozen provenance file: per entry, per
   reading field, a locator or a documented not-found; entries referenced
   by sign id. Claims: C091-1 (artifact side), C091-13. Acceptance:

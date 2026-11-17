@@ -1,0 +1,92 @@
+{
+  "act": "step 0 (spec section 3 gates, in frozen order)",
+  "anchors": {
+    "byte_identical": true,
+    "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+    "sha256_after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "sha256_before": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+  },
+  "base_commit": "3200b7b5b6841a7b9567a81368bf84004fd17255",
+  "claim_id": "yadav_2009_arxiv_manual_001",
+  "control_set_frozen": false,
+  "estimator_ruling": "DD-053-11 option (a): the section 4.2 estimator specified completely at the freeze; the 'identical to Phase-43' reading retired — no Phase-43 estimator was sought or substituted",
+  "estimator_self_test": null,
+  "execution_date": "2026-10-21",
+  "freeze_digest": "fd2d5cb86b6aed51882a945719bb747ac34f149b08a21e6485b1407c6dc6b309",
+  "gates": [
+    {
+      "anchors_census": {
+        "anchors": 287,
+        "strict_sa_independent": 94
+      },
+      "gate": "0.1",
+      "inputs": [
+        {
+          "file": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json",
+          "match": false,
+          "observed": "9dd672d107c98082e12ffaeec11d710bc307322f21b7ea354e7e454ae2599804",
+          "pin": "904766238d4aec8fecf0a01dc7c8935689f378e31062485edc699874a36847a3",
+          "present": true
+        },
+        {
+          "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+          "match": true,
+          "observed": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+          "pin": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+          "present": true
+        },
+        {
+          "file": "data/crosswalks/sign_crosswalk_master.csv",
+          "match": true,
+          "observed": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+          "pin": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+          "present": true
+        },
+        {
+          "file": "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json",
+          "match": true,
+          "observed": "9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b",
+          "pin": "9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b",
+          "present": true
+        },
+        {
+          "file": "outputs/phase43_all.json",
+          "match": true,
+          "observed": "78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4",
+          "pin": "78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4",
+          "present": true
+        }
+      ],
+      "name": "Input integrity",
+      "verdict": "FAIL"
+    },
+    {
+      "gate": "0.2",
+      "name": "Estimator self-test",
+      "verdict": "NOT REACHED"
+    },
+    {
+      "gate": "0.3",
+      "name": "Strict corpus identification and pin",
+      "verdict": "NOT REACHED"
+    },
+    {
+      "gate": "0.4",
+      "name": "Control set freeze (cited data)",
+      "verdict": "NOT REACHED"
+    },
+    {
+      "gate": "0.5",
+      "name": "Census and floors",
+      "verdict": "NOT REACHED"
+    }
+  ],
+  "osf_registration": "s9yfe (approved and public)",
+  "outcome": "INVALID",
+  "outcome_wording_frozen_spec_6": null,
+  "phase": "Phase-413",
+  "sensitivities_computed": [],
+  "spec": "053-yadav-zipf-controls",
+  "strict_corpus_identification_attempt": null,
+  "systems_fitted": []
+}

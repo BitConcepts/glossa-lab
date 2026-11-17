@@ -36,6 +36,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from glossa_lab.data.corpus_identity import enforce_file_identity
+
 # ── Corpus file location ──────────────────────────────────────────────────────
 # data/indus_cisi_corpus.json is downloaded by scripts/download_indus_cisi.py
 # and lives in glossa-lab/data/ (same directory as rigveda_clean.json).
@@ -65,6 +67,9 @@ def _load_corpus() -> list[dict]:
     ]
     for p in _CORPUS_FILE_CANDIDATES + extra_candidates:
         if p.exists():
+            # Spec 095 identity standard: a present compilation that
+            # differs from its identity pin is refused, never loaded.
+            enforce_file_identity("indus_cisi_compilation", p)
             raw = json.loads(p.read_text("utf-8"))
             # Phase-44 format: dict with 'inscriptions' key
             if isinstance(raw, dict) and "inscriptions" in raw:

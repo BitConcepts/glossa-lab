@@ -29,6 +29,12 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional
 
+from glossa_lab.data.corpus_identity import (
+    CorpusIdentityError,
+    enforce_file_identity,
+    verify_corpus_identity,
+)
+
 _REPO = Path(__file__).parents[3]
 _FIRESTORE_JSONL = (
     _REPO
@@ -65,6 +71,9 @@ def _is_valid_sign(v: str) -> bool:
 
 def _load_records() -> list:
     """Load all Firestore records from JSONL."""
+    # Spec 095 identity standard: a present file that is not the
+    # pin-verified corpus of record is refused, never loaded.
+    enforce_file_identity("indus_v3_firestore_strict", _FIRESTORE_JSONL)
     if not _FIRESTORE_JSONL.exists():
         return []
     records = []
@@ -157,6 +166,27 @@ def load_corpus_by_dockey(min_length: int = 2) -> Dict[int, List[List[int]]]:
         dk: [s for s in seqs if len(s) >= min_length]
         for dk, seqs in _CACHE_SEQS_BY_DOCKEY.items()
     }
+
+
+def load_corpus_verified(min_length: int = 2) -> List[List[int]]:
+    """
+    Load the corpus under the Spec 095 identity standard.
+
+    Refuses (raises CorpusIdentityError) when the corpus file is
+    missing, unreadable, differs from its intake pin, or its census
+    differs from the identity record — and when a verified corpus
+    yields no sequences. Use this entry point wherever a result
+    bears on a claim.
+    """
+    verify_corpus_identity("indus_v3_firestore_strict")
+    seqs = load_corpus(min_length=min_length)
+    if not seqs:
+        raise CorpusIdentityError(
+            "indus_v3_firestore_strict: identity verified but the "
+            "loader produced zero sequences; refusing an empty result "
+            "for a corpus whose identity census is non-zero"
+        )
+    return seqs
 
 
 def corpus_stats() -> dict:

@@ -32,6 +32,7 @@ from pathlib import Path
 from typing import Any, Generator
 
 from glossa_lab.claim_stage import CANDIDATE_GATE_FIELDS
+from glossa_lab.evidence_standard import CANDIDATE_EVIDENCE_FIELDS
 
 logger = logging.getLogger(__name__)
 
@@ -1507,6 +1508,15 @@ class ResearchLoop:
         # rewritten (no migration; C094-12).
         for c in new_unique:
             for field in CANDIDATE_GATE_FIELDS:
+                c.setdefault(field, "")
+            # Spec 094 Stage 2 (C094-4, C094-5): the staging write
+            # likewise carries the evidence-standard fields — the
+            # pin, its class, and the pin's provenance. They start
+            # empty: pinning is an adjudication act (see
+            # glossa_lab.evidence_standard.pin_evidence), and a
+            # record carrying no pin or class cannot promote until
+            # adjudication records them.
+            for field in CANDIDATE_EVIDENCE_FIELDS:
                 c.setdefault(field, "")
         dropped = before_count - len(new_unique)
         if dropped:

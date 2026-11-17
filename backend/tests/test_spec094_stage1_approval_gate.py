@@ -19,6 +19,7 @@
 """
 from __future__ import annotations
 
+import hashlib
 import json
 
 import pytest
@@ -91,9 +92,16 @@ def _candidate(**over):
 
 
 def _gated(**over):
-    """A candidate carrying the full conforming gate record."""
+    """A candidate carrying the full conforming gate record.
+
+    Spec 094 Stage 2 adds the evidence standard to the conforming
+    shape: the LEDGER.md artifact pinned by its actual SHA-256 and
+    a registered evidence class."""
     base = {"falsifier": _FALSIFIER, "approver": "Tristen Pierson",
-            "evidence_ref": "LEDGER.md"}
+            "evidence_ref": "LEDGER.md",
+            "evidence_sha256": hashlib.sha256(
+                (rl._REPO / "LEDGER.md").read_bytes()).hexdigest(),
+            "evidence_class": "external_corpus_record"}
     base.update(over)
     return _candidate(**base)
 

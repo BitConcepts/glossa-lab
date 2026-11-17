@@ -35,6 +35,12 @@ import re
 from pathlib import Path
 from typing import List, Optional, Union
 
+from glossa_lab.data.corpus_identity import (
+    CorpusIdentityError,
+    enforce_file_identity,
+    verify_corpus_identity,
+)
+
 _REPO = Path(__file__).parents[3]
 _EXPORT_PATH = _REPO / "glossa-corpus" / "indus" / "exports" / "indus_research.jsonl"
 _ICIT_PATH = _REPO / "glossa-corpus" / "indus" / "exports" / "indus_icit_format.json"
@@ -162,6 +168,10 @@ def load_corpus(
 
     # Tier 1: Real corpus export
     if _EXPORT_PATH.exists():
+        # Spec 095 identity standard: a present export that differs
+        # from its identity pin is refused here — the loader does NOT
+        # fall back to another tier over a corpus that failed identity.
+        enforce_file_identity("indus_v1_research_export", _EXPORT_PATH)
         objects = _load_from_jsonl(_EXPORT_PATH)
         if objects:
             _TIER = f"real-corpus (n={len(objects)} objects from indus_research.jsonl)"
@@ -199,6 +209,32 @@ def load_corpus(
 
     _TIER = "empty (no corpus data available)"
     return []
+
+
+def load_corpus_verified(
+    as_objects: bool = False,
+    min_length: int = 2,
+) -> Union[List[List[int]], list]:
+    """
+    Load the V1 export under the Spec 095 identity standard.
+
+    Refuses (raises CorpusIdentityError) when the export is missing,
+    unreadable, differs from its identity pin, or its census differs
+    from the identity record. Unlike load_corpus(), this entry point
+    never falls back to the CISI subset or the synthetic prototype:
+    a verified load is the export of record or it is a refusal.
+    """
+    verify_corpus_identity("indus_v1_research_export")
+    objects = _load_from_jsonl(_EXPORT_PATH)
+    if not objects:
+        raise CorpusIdentityError(
+            "indus_v1_research_export: identity verified but the "
+            "export produced zero records; refusing an empty result"
+        )
+    if as_objects:
+        return objects
+    sequences = _extract_sequences(objects)
+    return [s for s in sequences if len(s) >= min_length]
 
 
 def corpus_status() -> dict:

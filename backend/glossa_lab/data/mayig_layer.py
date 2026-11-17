@@ -24,6 +24,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from glossa_lab.data.corpus_identity import enforce_file_identity
+
 _PATH = (Path(__file__).resolve().parents[3] / "data" / "corpus_layers"
          / "mayig_cisi_layer_v1.json")
 _CACHE: dict | None = None
@@ -36,6 +38,9 @@ def _load() -> dict:
             raise FileNotFoundError(
                 f"mayig layer not found at {_PATH}; run "
                 "backend/scripts/phase122_build_crosswalk_mayig.py")
+        # Spec 095 identity standard: a present layer that differs
+        # from its identity pin is refused, never loaded.
+        enforce_file_identity("mayig_cisi_layer", _PATH)
         _CACHE = json.loads(_PATH.read_text(encoding="utf-8"))
     return _CACHE
 

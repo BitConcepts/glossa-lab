@@ -31,6 +31,8 @@ from __future__ import annotations
 from collections import Counter
 from pathlib import Path
 
+from glossa_lab.data.corpus_identity import enforce_file_identity
+
 # Resolve repo root (../../../ from this file: backend/glossa_lab/data/indus_m77.py).
 _REPO_ROOT = Path(__file__).resolve().parents[3]
 
@@ -46,6 +48,9 @@ _CORPUS_CACHE: list[list[str]] | None = None
 def _load_corpus_text() -> str:
     for p in _CORPUS_FILE_CANDIDATES:
         if p.exists():
+            # Spec 095 identity standard: a present file that differs
+            # from its identity pin is refused, never loaded.
+            enforce_file_identity("indus_m77_flat", p)
             return p.read_text(encoding="utf-8", errors="ignore")
     raise FileNotFoundError(
         "mahadevan_corpus_flat.txt not found. Expected at one of: "

@@ -85,26 +85,26 @@
 
 ## Stage 1 — Corpus reproducibility (not commissioned)
 
-- [ ] **T101 — locate and verify the strict-corpus artifact.**
+- [x] **T101 — locate and verify the strict-corpus artifact.**
   Search the candidate venues read-only (custody snapshots,
   desktop-era archives, surviving trees); hash every candidate;
   the PR #393 pin decides. Any other digest stops the task
   (D-095-3). (C095-2.)
-- [ ] **T102 — place read-only and reproduce.** Place the verified
+- [x] **T102 — place read-only and reproduce.** Place the verified
   file at the canonical path with read-only permissions; reproduce
   the census (3,916 / 3,137 / 2,665 / 12,494) and the canonical
   export pin through the V3 loader; file the reproduction record.
   (C095-2.)
-- [ ] **T103 — Spec 053 step 0 re-execution.** Under a new
+- [x] **T103 — Spec 053 step 0 re-execution.** Under a new
   execution order naming this task, gates byte-unchanged from Spec
   053's frozen step 0; the outcome files as its own record and
   moves no frozen text. (C095-2.)
-- [ ] **T104 — the corpus identity standard.** State the identity
+- [x] **T104 — the corpus identity standard.** State the identity
   of record for every claim-bearing corpus (version, content hash,
   source, licensing, counts under a named basis, normalization
   rules) and make the covered loaders verify it and fail closed.
   (C095-3.)
-- [ ] **T105 — the twelve-case battery.** The twelve fail-closed
+- [x] **T105 — the twelve-case battery.** The twelve fail-closed
   cases as a named CI suite over the covered loaders, each case's
   refusal or flag as defined, running on every covered-loader
   change. (C095-4.)

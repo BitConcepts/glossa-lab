@@ -36,6 +36,8 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional
 
+from glossa_lab.data.corpus_identity import enforce_file_identity
+
 _REPO = Path(__file__).parents[3]
 _FIRESTORE_JSONL = (
     _REPO
@@ -72,6 +74,9 @@ def _is_valid_sign(v: str) -> bool:
 
 def _load_records() -> list:
     """Load all Firestore records from JSONL."""
+    # Spec 095 identity standard: a present file that is not the
+    # pin-verified corpus of record is refused, never loaded.
+    enforce_file_identity("indus_v3_firestore_strict", _FIRESTORE_JSONL)
     if not _FIRESTORE_JSONL.exists():
         return []
     records = []

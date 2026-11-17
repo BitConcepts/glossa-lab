@@ -61,15 +61,25 @@ def _phase108_node_defs():
          "Phase-108 Step 2 (spec 006): pass-1 classification under the pre-registered taxonomy; --finalize merges hand-review decisions into the final register + summary. CPU."),
         ("IndusProvenanceRecompute", "SA-Independent Subset Recomputation",
          "phase108_provenance_recompute.py", [], "phase108_subset_recomputation.json",
-         "Phase-108 Step 3 (spec 006): token coverage, Phase-58 phonotactics, Parpola agreement, Phase-69 site invariance recomputed on the SA-independent subset. CPU."),
+         "Phase-108 Step 3 (spec 006): token coverage, Phase-58 phonotactics, Parpola agreement, Phase-69 site invariance recomputed on the SA-independent subset. CPU. GUARDED (Spec 095, C095-5): the recompute's Phase-58/Phase-69 routines are superseded v1 validators; this node returns a labelled refusal instead of executing it."),
         ("IndusProvenanceImpact", "Circularity + Impact Map",
          "phase108_provenance_impact.py", [], "phase108_impact_map.json",
          "Phase-108 Step 4 (spec 006): circular chains, 31-claims map, headline-number map, foundation-check SA-citation map. A map, not an edit. CPU."),
     ]
     nodes = []
     for nid, name, script, args, report, desc in specs:
-        def fn(i, p, s=script, a=args, r=report):
-            return {**_run(s, a, r), "gpu_device": _get_device()}
+        if nid == "IndusProvenanceRecompute":
+            # GUARDED (Spec 095, C095-5): the Phase-108 recompute calls
+            # the superseded Phase-58/Phase-69 v1 routines through
+            # provenance_audit; the node returns a labelled refusal
+            # instead of executing it.
+            def fn(i, p):
+                from glossa_lab.legacy_validator_guard import refusal_result  # noqa: PLC0415
+                return refusal_result(
+                    "provenance_recompute_v1_node", gpu_device=_get_device())
+        else:
+            def fn(i, p, s=script, a=args, r=report):
+                return {**_run(s, a, r), "gpu_device": _get_device()}
 
         nodes.append(AtomicNodeDef(
             id=nid, name=name, category="Indus Decipherment",

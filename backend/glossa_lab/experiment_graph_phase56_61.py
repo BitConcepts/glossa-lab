@@ -152,35 +152,15 @@ def _expanded_sa(inputs: dict, params: dict) -> dict:
 # ── Phase-58: Phonological Gap Analysis ────────────────────────────────────────
 
 def _phonological_gap(inputs: dict, params: dict) -> dict:
-    """Validate SA assignments against Dravidian phonotactic rules.
-    Detects impossible consonant clusters, vowel harmony violations, gaps.
-    GPU: torch for phoneme distribution matrix.
-    """
-    device = _get_device()
-    result = _run_phase_script("phase58_phonological_gap.py")
-    if "error" in result:
-        return {**result, "gpu_device": device}
+    """Phase-58 phonological gap analysis — GUARDED (Spec 095, C095-5).
 
-    n_valid = result.get("n_valid", 0)
-    n_invalid = result.get("n_invalid", 0)
-    n_gap = result.get("n_gap", 0)
-    total = n_valid + n_invalid + n_gap
-    return {
-        "n_valid": n_valid,
-        "n_invalid": n_invalid,
-        "n_gap": n_gap,
-        "validity_rate": n_valid / max(total, 1),
-        "impossible_assignments": result.get("impossible_assignments", []),
-        "phoneme_gaps": result.get("phoneme_gaps", []),
-        "json": result,
-        "number": float(n_valid / max(total, 1)),
-        "text": (
-            f"Phase-58: Phonological gap analysis. "
-            f"{n_valid} valid, {n_invalid} invalid, {n_gap} gaps. "
-            f"Validity: {n_valid / max(total, 1):.1%}."
-        ),
-        "gpu_device": device,
-    }
+    The Phase-58 script is a superseded v1 validator routine; this
+    node no longer executes it and returns a labelled refusal, so no
+    v1 output can enter a record unlabelled. Use
+    glossa_lab.phonotactics_v2 for the corrected check.
+    """
+    from glossa_lab.legacy_validator_guard import refusal_result  # noqa: PLC0415
+    return refusal_result("phonotactics_v1_node", gpu_device=_get_device())
 
 
 # ── Phase-59: Full Inscription Pilot Readings ──────────────────────────────────
@@ -346,6 +326,9 @@ def _phase56_61_node_defs():
                 "and gaps in the syllabic inventory. "
                 "GPU: torch for phoneme distribution matrix. "
                 "REQUIRES: IndusExpandedSA must run first."
+                " GUARDED (Spec 095, C095-5): the Phase-58 routine is a "
+                "superseded v1 validator; this node returns a labelled "
+                "refusal instead of executing it."
             ),
             inputs=[],
             outputs=[

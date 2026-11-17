@@ -130,6 +130,16 @@ def gpu_phoneme_distribution(anchors: dict, freq: Counter) -> dict:
 
 
 def main():
+    # GUARDED (Spec 095, C095-5): this script is a superseded v1
+    # validator routine (successor: glossa_lab.phonotactics_v2). It
+    # refuses direct execution so its output cannot enter a record
+    # unlabelled. The frozen Phase-113/115 batteries load this file
+    # as a module and are unaffected.
+    raise SystemExit(
+        "LegacyValidatorRefused: phase58_phonological_gap.py is a "
+        "superseded v1 validator routine (2026-10-26 repair), guarded "
+        "under Spec 095 claim C095-5. Use glossa_lab.phonotactics_v2 "
+        "instead.")
     print("Phase-58: Phonological Gap Analysis\n")
     anchors_data = json.loads(ANCHORS.read_text("utf-8"))
     anchors = anchors_data["anchors"]

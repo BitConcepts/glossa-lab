@@ -10,7 +10,14 @@ Exposes the same interface as all other Glossa Lab corpus modules:
 Falls back gracefully:
   1. Real corpus from exports/indus_research.jsonl (preferred)
   2. CISI subset from indus_cisi.py (179 real Mohenjo-daro inscriptions)
-  3. Synthetic prototype from indus_public_corpus.py (last resort)
+
+There is NO synthetic fallback (Spec 095 Stage 2, C095-6): an earlier
+third tier named the synthetic prototype (indus_public_corpus.py) as
+a last resort. That tier was unreachable — it imported a load_corpus
+the synthetic module does not define — and it is removed, so this
+claim-bearing loader can never serve synthetic sequences as corpus
+data. When no real corpus is available the loader returns an empty
+list and corpus_status() reports the empty tier.
 
 Status tracking:
   - call corpus_status() to see what tier is active and coverage %
@@ -25,8 +32,9 @@ _citation:
   primary_sources: ["A.1", "A.7", "I.1", "I.2", "I.3", "I.4", "I.5"]
   derivation: "Data loader for ICIT-scale Indus corpus reconstruction.
                Loads from glossa-corpus/indus/exports/indus_research.jsonl.
-               Falls back to indus_cisi.py (CISI subset) or indus_public_corpus.py
-               (synthetic prototype) if the real corpus is not yet built."
+               Falls back to indus_cisi.py (CISI subset) if the real corpus
+               is not yet built. Never falls back to the synthetic
+               prototype (Spec 095, C095-6)."
 """
 from __future__ import annotations
 
@@ -159,7 +167,9 @@ def load_corpus(
     Tier priority:
         1. Real corpus (glossa-corpus/indus/exports/indus_research.jsonl)
         2. CISI subset (indus_cisi.py) — 179 Mohenjo-daro inscriptions
-        3. Synthetic prototype (indus_public_corpus.py)
+
+    No synthetic tier exists (Spec 095, C095-6): if neither real tier
+    is available the loader returns an empty list.
     """
     global _CACHE, _TIER
 
@@ -195,17 +205,11 @@ def load_corpus(
     except ImportError:
         pass
 
-    # Tier 3: Synthetic prototype (last resort)
-    try:
-        from glossa_lab.data.indus_public_corpus import load_corpus as _synth_load
-        seqs = _synth_load()
-        _TIER = f"synthetic-prototype (n={len(seqs)} generated sequences)"
-        if as_objects:
-            return []
-        _CACHE = [s for s in seqs if len(s) >= min_length]
-        return _CACHE
-    except ImportError:
-        pass
+    # No Tier 3 (Spec 095 Stage 2, C095-6): this loader never falls
+    # back to the synthetic prototype. The former synthetic tier was
+    # unreachable (it imported a load_corpus that indus_public_corpus
+    # does not define) and is removed so it cannot be revived
+    # silently; with no real corpus available the loader is empty.
 
     _TIER = "empty (no corpus data available)"
     return []

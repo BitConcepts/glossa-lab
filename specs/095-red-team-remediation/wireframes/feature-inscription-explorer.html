@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe — Inscription Explorer (Spec 095, T403)</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; color: #1a1a1a; background: #f4f4f2; }
+  header { background: #22252a; color: #eee; padding: 10px 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: baseline; }
+  header .brand { font-weight: 700; }
+  header nav a { color: #cfd4dc; margin-right: 12px; font-size: 13px; text-decoration: none; }
+  header nav a.here { color: #fff; text-decoration: underline; }
+  .gate { background: #fdf3d7; border-bottom: 2px solid #d9a400; padding: 8px 18px; font-size: 13px; }
+  main { max-width: 1180px; margin: 0 auto; padding: 18px; }
+  h1 { font-size: 22px; margin: 6px 0 2px; }
+  .sub { color: #555; font-size: 13px; margin-bottom: 16px; }
+  .layout { display: grid; grid-template-columns: 1fr 2fr; gap: 12px; }
+  .region { background: #fff; border: 1.5px dashed #8a8f98; border-radius: 6px; padding: 12px; min-height: 90px; }
+  .region h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #555; margin: 0 0 8px; }
+  .region p, .region li { font-size: 13px; color: #333; }
+  .region ul { margin: 0; padding-left: 18px; }
+  .signs { font-size: 26px; letter-spacing: .35em; padding: 10px; background: #fafafa; border: 1px solid #ddd; border-radius: 4px; text-align: center; color: #333; }
+  .src { font-size: 11px; color: #777; font-family: ui-monospace, Menlo, monospace; margin-top: 8px; }
+  .panel { background: #fff; border: 1.5px solid #b9bec7; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .panel h2 { font-size: 15px; margin: 0 0 8px; }
+  .panel ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  .refuse { background: #fbeaea; border: 1.5px solid #c0564f; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .refuse h2 { font-size: 15px; margin: 0 0 8px; color: #7c241e; }
+  .refuse ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">Glossa Lab — Researcher Dashboard</span>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="feature-program-status.html">Program status</a>
+    <a class="here" href="feature-inscription-explorer.html">Inscription explorer</a>
+    <a href="feature-hypothesis-comparison.html">Hypothesis comparison</a>
+    <a href="feature-evidence-inspection.html">Evidence inspection</a>
+    <a href="feature-experiment-reproduction.html">Experiment reproduction</a>
+    <a href="feature-researcher-contribution.html">Researcher contribution</a>
+  </nav>
+</header>
+<div class="gate"><strong>Wireframe, not a build.</strong> Spec 095 Stage 4 (T403), owner approval by name required before any build.</div>
+<main>
+  <h1>Inscription explorer</h1>
+  <p class="sub">Find one inscription and walk its evidence trail (protocol step 3), keeping observation, transcription, hypothesis, and claim visibly separate (protocol step 4). The four kinds are four labelled layers on this screen, never blended into one text.</p>
+
+  <div class="layout">
+    <div class="region">
+      <h2>Find (left rail)</h2>
+      <ul>
+        <li>Corpus picker listing only identity-verified corpora, each with its census and licensing note; a corpus whose identity fails is listed as unavailable, with the reason.</li>
+        <li>Filters: site, object class, sign present, length. Result list shows catalogue identity and context, not a reading.</li>
+      </ul>
+      <div class="src">sources: corpus identity registry (8 identities); canonical inscription store; site-attributed corpus layer</div>
+    </div>
+    <div class="region">
+      <h2>Inscription (primary)</h2>
+      <div class="signs">𐌰 𐌱 𐌲 � 𐌳</div>
+      <ul>
+        <li><strong>Observation layer:</strong> the attested sequence as recorded, damage and gap markers shown as markers (the broken cell above), orientation basis stated for this corpus.</li>
+        <li><strong>Context block:</strong> site, object class, provenance chain of the record.</li>
+        <li><strong>Transcription layers:</strong> each named transcription (keyed layers, CISI layer, V3 reconstruction) in its own row, with its basis; switching layers never edits the observation row.</li>
+        <li><strong>Hypothesis layer:</strong> readings proposed for these signs, each with its standing, linking to hypothesis comparison.</li>
+        <li><strong>Claim layer:</strong> claims that cite this inscription, linking to evidence inspection.</li>
+      </ul>
+      <div class="src">sources: corpus layers of record; anchors register; claims ledger evidence_refs</div>
+    </div>
+  </div>
+
+  <section class="panel">
+    <h2>Interactions</h2>
+    <ul>
+      <li>Selecting a sign in the sequence highlights every layer's statement about that sign, and only that sign.</li>
+      <li>"Evidence trail" walks claim → evidence → source in the evidence inspection surface, pre-filtered to this inscription.</li>
+    </ul>
+  </section>
+
+  <section class="refuse">
+    <h2>This surface refuses to</h2>
+    <ul>
+      <li>Present a transcription as the inscription itself, or merge transcription layers into one silent consensus text.</li>
+      <li>Normalize, complete, or re-order a damaged sequence without the decision being shown as a transcription act.</li>
+      <li>Show a sign's proposed reading inside the observation layer.</li>
+      <li>Offer a corpus whose identity verification fails, under any label.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

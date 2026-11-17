@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe — Evidence Inspection (Spec 095, T403)</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; color: #1a1a1a; background: #f4f4f2; }
+  header { background: #22252a; color: #eee; padding: 10px 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: baseline; }
+  header .brand { font-weight: 700; }
+  header nav a { color: #cfd4dc; margin-right: 12px; font-size: 13px; text-decoration: none; }
+  header nav a.here { color: #fff; text-decoration: underline; }
+  .gate { background: #fdf3d7; border-bottom: 2px solid #d9a400; padding: 8px 18px; font-size: 13px; }
+  main { max-width: 1180px; margin: 0 auto; padding: 18px; }
+  h1 { font-size: 22px; margin: 6px 0 2px; }
+  .sub { color: #555; font-size: 13px; margin-bottom: 16px; }
+  .layout { display: grid; grid-template-columns: 1fr 2fr; gap: 12px; }
+  .region { background: #fff; border: 1.5px dashed #8a8f98; border-radius: 6px; padding: 12px; min-height: 90px; }
+  .region h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #555; margin: 0 0 8px; }
+  .region p, .region li { font-size: 13px; color: #333; }
+  .region ul { margin: 0; padding-left: 18px; }
+  .chain { font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; background: #fafafa; border: 1px solid #ddd; border-radius: 4px; padding: 10px; }
+  .src { font-size: 11px; color: #777; font-family: ui-monospace, Menlo, monospace; margin-top: 8px; }
+  .panel { background: #fff; border: 1.5px solid #b9bec7; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .panel h2 { font-size: 15px; margin: 0 0 8px; }
+  .panel ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  .refuse { background: #fbeaea; border: 1.5px solid #c0564f; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .refuse h2 { font-size: 15px; margin: 0 0 8px; color: #7c241e; }
+  .refuse ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">Glossa Lab — Researcher Dashboard</span>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="feature-program-status.html">Program status</a>
+    <a href="feature-inscription-explorer.html">Inscription explorer</a>
+    <a href="feature-hypothesis-comparison.html">Hypothesis comparison</a>
+    <a class="here" href="feature-evidence-inspection.html">Evidence inspection</a>
+    <a href="feature-experiment-reproduction.html">Experiment reproduction</a>
+    <a href="feature-researcher-contribution.html">Researcher contribution</a>
+  </nav>
+</header>
+<div class="gate"><strong>Wireframe, not a build.</strong> Spec 095 Stage 4 (T403), owner approval by name required before any build.</div>
+<main>
+  <h1>Evidence inspection</h1>
+  <p class="sub">The claim-to-source walk (protocol steps 3 and 4): pick a claim, see its falsifier and its evidence, and walk each evidence item's lineage back to its named source. Also the audit-trail export surface (protocol step 8).</p>
+
+  <div class="layout">
+    <div class="region">
+      <h2>Claim picker (left rail)</h2>
+      <ul>
+        <li>Ledger search and filters: standing, study, sign, falsifier present or absent (the 9 falsifier-less claims are findable as a class; the gap is shown, not hidden).</li>
+        <li>Claim detail header: statement, falsifier verbatim, does-not-establish bound, stage and status, supersession chain.</li>
+      </ul>
+      <div class="src">source: glossa-indus/ledger/claims.jsonl via the ledger gate's own validation</div>
+    </div>
+    <div class="region">
+      <h2>Lineage walk (primary)</h2>
+      <div class="chain">claim → evidence item → derivation step → derivation step → named source</div>
+      <ul>
+        <li>Each evidence item shows its lineage type and independence class in the standards vocabulary; a derived item is labelled derived wherever it appears.</li>
+        <li>Matrix drill-down: the claim's row in the evidence matrix, cell by cell, each cell resolving to its item.</li>
+        <li>What the evidence does not establish is printed on the item, next to what it does.</li>
+      </ul>
+      <div class="src">sources: claims evidence_refs; glossa-indus/matrix/ (994 × 644); STANDARDS.md lineage vocabulary</div>
+    </div>
+  </div>
+
+  <section class="panel">
+    <h2>Export the audit trail (protocol step 8)</h2>
+    <ul>
+      <li>From any claim or candidate: export the full trail (claim, falsifier, evidence lineage, adjudications) as a file the researcher keeps. The export is the records themselves, not a summary written for export.</li>
+    </ul>
+  </section>
+
+  <section class="refuse">
+    <h2>This surface refuses to</h2>
+    <ul>
+      <li>Show an evidence item without its lineage, or an independence claim stronger than its typing carries.</li>
+      <li>Count a derived result as independent confirmation of its own source.</li>
+      <li>Export a summary in place of the underlying records.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

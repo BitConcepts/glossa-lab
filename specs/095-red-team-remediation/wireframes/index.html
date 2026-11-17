@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe — Researcher Dashboard Home (Spec 095, T403)</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; color: #1a1a1a; background: #f4f4f2; }
+  header { background: #22252a; color: #eee; padding: 10px 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: baseline; }
+  header .brand { font-weight: 700; letter-spacing: .02em; }
+  header nav a { color: #cfd4dc; margin-right: 12px; font-size: 13px; text-decoration: none; }
+  header nav a.here { color: #fff; text-decoration: underline; }
+  .gate { background: #fdf3d7; border-bottom: 2px solid #d9a400; padding: 8px 18px; font-size: 13px; }
+  main { max-width: 1180px; margin: 0 auto; padding: 18px; }
+  h1 { font-size: 22px; margin: 6px 0 2px; }
+  .sub { color: #555; font-size: 13px; margin-bottom: 16px; }
+  .band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px; }
+  .stat { background: #fff; border: 1.5px dashed #8a8f98; border-radius: 6px; padding: 12px; }
+  .stat .n { font-size: 24px; font-weight: 700; }
+  .stat .k { font-size: 12px; color: #555; text-transform: uppercase; letter-spacing: .05em; }
+  .stat .src { font-size: 11px; color: #777; margin-top: 6px; font-family: ui-monospace, Menlo, monospace; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .card { background: #fff; border: 1.5px solid #b9bec7; border-radius: 6px; padding: 14px; }
+  .card h2 { font-size: 15px; margin: 0 0 6px; }
+  .card p { font-size: 13px; color: #444; margin: 0 0 8px; }
+  .card .open { font-size: 12px; font-family: ui-monospace, Menlo, monospace; color: #555; }
+  .panel { background: #fff; border: 1.5px solid #b9bec7; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .panel h2 { font-size: 15px; margin: 0 0 8px; }
+  .panel ul { margin: 0; padding-left: 18px; font-size: 13px; color: #333; }
+  .refuse { background: #fbeaea; border: 1.5px solid #c0564f; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .refuse h2 { font-size: 15px; margin: 0 0 8px; color: #7c241e; }
+  .refuse ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  footer { max-width: 1180px; margin: 0 auto; padding: 0 18px 24px; font-size: 12px; color: #666; }
+  @media (max-width: 760px) { .band, .grid { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">Glossa Lab — Researcher Dashboard</span>
+  <nav>
+    <a class="here" href="index.html">Home</a>
+    <a href="feature-program-status.html">Program status</a>
+    <a href="feature-inscription-explorer.html">Inscription explorer</a>
+    <a href="feature-hypothesis-comparison.html">Hypothesis comparison</a>
+    <a href="feature-evidence-inspection.html">Evidence inspection</a>
+    <a href="feature-experiment-reproduction.html">Experiment reproduction</a>
+    <a href="feature-researcher-contribution.html">Researcher contribution</a>
+  </nav>
+</header>
+<div class="gate"><strong>Wireframe, not a build.</strong> Spec 095 Stage 4 (T403). This set is filed for the owner's approval by name; no dashboard is built, and no served surface changes, until that approval is given.</div>
+<main>
+  <h1>Dashboard home</h1>
+  <p class="sub">The researcher's first screen. Everything on it is a rendering of a record that already exists; the home mints nothing. Layout: status band, feature entries, the does-not-claim panel, recent adjudications.</p>
+
+  <section class="band" aria-label="Program census band">
+    <div class="stat"><div class="n">994</div><div class="k">claims on the ledger</div><div class="src">source: glossa-indus/ledger/claims.jsonl (gate-verified count)</div></div>
+    <div class="stat"><div class="n">96</div><div class="k">studies</div><div class="src">source: claims ledger, study census</div></div>
+    <div class="stat"><div class="n">287</div><div class="k">recorded anchor signs</div><div class="src">source: backend/reports/INDUS_FINAL_ANCHORS.json</div></div>
+    <div class="stat"><div class="n">NOT IDENTIFIABLE</div><div class="k">standing of the 6 strongest readings</div><div class="src">source: Spec 095 Stage 3 identifiability application</div></div>
+  </section>
+
+  <section class="grid" aria-label="Feature entries">
+    <div class="card"><h2>Program status</h2><p>Where the program stands: loop state, gate state, blocked items with owners.</p><div class="open">→ feature-program-status.html</div></div>
+    <div class="card"><h2>Inscription explorer</h2><p>Find one inscription, see it in context, and walk its evidence trail.</p><div class="open">→ feature-inscription-explorer.html</div></div>
+    <div class="card"><h2>Hypothesis comparison</h2><p>Language hypotheses and rival readings side by side, standings shown.</p><div class="open">→ feature-hypothesis-comparison.html</div></div>
+    <div class="card"><h2>Evidence inspection</h2><p>From any claim to its evidence, and from the evidence back to its source.</p><div class="open">→ feature-evidence-inspection.html</div></div>
+    <div class="card"><h2>Experiment reproduction</h2><p>Pick a published result, see its execution record, re-run it, compare.</p><div class="open">→ feature-experiment-reproduction.html</div></div>
+    <div class="card"><h2>Researcher contribution</h2><p>Submit a candidate with its falsifier and follow its adjudication.</p><div class="open">→ feature-researcher-contribution.html</div></div>
+  </section>
+
+  <section class="panel">
+    <h2>What this system does not claim</h2>
+    <ul>
+      <li>The Indus script is not deciphered. No panel of this dashboard says otherwise, in any wording.</li>
+      <li>No reading is presented stronger than its adjudicated standing; the strongest current standing is NOT IDENTIFIABLE.</li>
+      <li>Counts shown are the gate-verified census of record, never a larger historical figure.</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Recent adjudications</h2>
+    <ul>
+      <li>A strip of the most recent adjudication records (claim, outcome, date, adjudicator), each linking to the claim's evidence view. Sourced from the ledger's act chain and settling records; the strip shows acts, not summaries of acts.</li>
+    </ul>
+  </section>
+
+  <section class="refuse">
+    <h2>This surface refuses to</h2>
+    <ul>
+      <li>Show any number that is not the census of record (no historical cohort sizes, no vanity metrics).</li>
+      <li>Present a claim, reading, or translation at a strength above its adjudicated standing.</li>
+      <li>Offer a "decipherment progress" meter or any equivalent framing.</li>
+    </ul>
+  </section>
+</main>
+<footer>Wireframe set: specs/095-red-team-remediation/wireframes/ — see README.md for the feature map, the eight-step protocol mapping, and the approval gate.</footer>
+</body>
+</html>

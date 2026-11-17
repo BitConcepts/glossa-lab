@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe — Program Status (Spec 095, T403)</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; margin: 0; color: #1a1a1a; background: #f4f4f2; }
+  header { background: #22252a; color: #eee; padding: 10px 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: baseline; }
+  header .brand { font-weight: 700; }
+  header nav a { color: #cfd4dc; margin-right: 12px; font-size: 13px; text-decoration: none; }
+  header nav a.here { color: #fff; text-decoration: underline; }
+  .gate { background: #fdf3d7; border-bottom: 2px solid #d9a400; padding: 8px 18px; font-size: 13px; }
+  main { max-width: 1180px; margin: 0 auto; padding: 18px; }
+  h1 { font-size: 22px; margin: 6px 0 2px; }
+  .sub { color: #555; font-size: 13px; margin-bottom: 16px; }
+  .layout { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; }
+  .region { background: #fff; border: 1.5px dashed #8a8f98; border-radius: 6px; padding: 12px; min-height: 90px; }
+  .region h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #555; margin: 0 0 8px; }
+  .region p, .region li { font-size: 13px; color: #333; }
+  .region ul { margin: 0; padding-left: 18px; }
+  .src { font-size: 11px; color: #777; font-family: ui-monospace, Menlo, monospace; margin-top: 8px; }
+  .panel { background: #fff; border: 1.5px solid #b9bec7; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .panel h2 { font-size: 15px; margin: 0 0 8px; }
+  .panel ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  .refuse { background: #fbeaea; border: 1.5px solid #c0564f; border-radius: 6px; padding: 14px; margin-top: 14px; }
+  .refuse h2 { font-size: 15px; margin: 0 0 8px; color: #7c241e; }
+  .refuse ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">Glossa Lab — Researcher Dashboard</span>
+  <nav>
+    <a href="index.html">Home</a>
+    <a class="here" href="feature-program-status.html">Program status</a>
+    <a href="feature-inscription-explorer.html">Inscription explorer</a>
+    <a href="feature-hypothesis-comparison.html">Hypothesis comparison</a>
+    <a href="feature-evidence-inspection.html">Evidence inspection</a>
+    <a href="feature-experiment-reproduction.html">Experiment reproduction</a>
+    <a href="feature-researcher-contribution.html">Researcher contribution</a>
+  </nav>
+</header>
+<div class="gate"><strong>Wireframe, not a build.</strong> Spec 095 Stage 4 (T403), owner approval by name required before any build.</div>
+<main>
+  <h1>Program status</h1>
+  <p class="sub">One screen that answers "where does the program stand" entirely from records: gate results, loop state, census, and the blocked list with owners. Serves protocol step 2 (establish what the system claims and does not claim) together with the home's does-not-claim panel.</p>
+
+  <div class="layout">
+    <div class="region">
+      <h2>Gate and loop state (left, primary)</h2>
+      <ul>
+        <li>Foundation check result (17 checks) with its run time.</li>
+        <li>Ledger gate summaries: full profile, regeneration profile, contamination class — the recorded numbers, not a paraphrase.</li>
+        <li>Research-loop state: running or idle, current study, last adjudication. Read from the loop's own status surface.</li>
+      </ul>
+      <div class="src">sources: MCP foundation check; tools/ledger gate records; research-loop status API</div>
+    </div>
+    <div class="region">
+      <h2>Blocked and waiting (right rail)</h2>
+      <ul>
+        <li>Each blocked item named with its blocker and its owner (a person or a system), in the program's standing report form.</li>
+        <li>Owner-gated items are labelled as such (wireframe approvals, session proofs, sends).</li>
+      </ul>
+      <div class="src">source: goal PROGRAM-STATE record; gap register (glossa-indus/map/gap-register.md)</div>
+    </div>
+    <div class="region">
+      <h2>Census of record</h2>
+      <p>Claims, studies, anchors by standing, corpora by identity status — the same numbers as the home band, with the as-of commit for each.</p>
+      <div class="src">sources: claims ledger; INDUS_FINAL_ANCHORS.json; corpus identity registry</div>
+    </div>
+    <div class="region">
+      <h2>Recent landings</h2>
+      <p>Latest merged stages with their verdicts (wrapper and payload numbers both, per the program's reporting rule).</p>
+      <div class="src">source: spec records under specs/*/records/</div>
+    </div>
+  </div>
+
+  <section class="panel">
+    <h2>Interactions</h2>
+    <ul>
+      <li>Every number drills into the surface that owns it (census → evidence inspection; gate state → the recorded gate output).</li>
+      <li>Refresh re-reads the records; nothing is cached into a second, divergent status.</li>
+    </ul>
+  </section>
+
+  <section class="refuse">
+    <h2>This surface refuses to</h2>
+    <ul>
+      <li>Infer progress ("on track", percentages complete) that no record states.</li>
+      <li>Show a status for a job from its wrapper's completion alone; the payload verdict is the status.</li>
+      <li>Hide a failed or blocked item below a summary line.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

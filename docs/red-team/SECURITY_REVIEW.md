@@ -10,7 +10,7 @@ Sources of record:
 
 - `specs/092-platform-hardening-r4/tasks.md` (SHA-256 `5c223078b8617919…`)
 - `specs/094-research-loop-acceptance-hardening/tasks.md` (SHA-256 `676006a7a3726a4c…`)
-- `backend/glossa_lab/release_gate.py` (SHA-256 `7dcc4a5e4a1a7230…`)
+- `backend/glossa_lab/release_gate.py` (SHA-256 `2e161e8221b0daf6…`)
 - `backend/glossa_lab/anchor_transition.py` (SHA-256 `56aa6e69bb9b87e3…`)
 
 ## Mechanisms the record shows in place

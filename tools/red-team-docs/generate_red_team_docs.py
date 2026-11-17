@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """Generate the derived red-team document set (Spec 095 Stage 4, T406).
 
-Writes the six documents of record under docs/red-team/ from
-in-repo sources. Every document is DERIVED: it carries no
-authority, states nothing its sources do not state, and names its
-sources on its face with their hashes. Facts are recomputed or
-extracted mechanically by this generator; the connective text
-asserts nothing beyond "the source records X" where X is a value
-this generator read from that source.
+This module is the WRITER half of the generator: it renders the
+six documents of record under docs/red-team/ from the facts the
+reader half (red_team_sources.py, same directory) computes from
+in-repo sources, and writes only those documents. It reads no
+canonical artifact itself and names none in its own text: source
+paths reach it as Path objects from the reader, which is what
+keeps the ledger gate's writer census (V9) able to classify
+both halves correctly — a reader that never writes, and a
+writer that never touches a canonical artifact.
+
+Every generated document is DERIVED: it carries no authority,
+states nothing its sources do not state, and names its sources
+on its face with their hashes.
 
 Usage: python tools/red-team-docs/generate_red_team_docs.py [--root .]
 """
@@ -15,16 +21,14 @@ Usage: python tools/red-team-docs/generate_red_team_docs.py [--root .]
 from __future__ import annotations
 
 import argparse
-import hashlib
-import json
-import re
+import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import red_team_sources as src
+
 DATE = "2026-11-17"
-
-
-def sha(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def header(title: str, sources: list[Path], root: Path) -> str:
@@ -41,86 +45,26 @@ def header(title: str, sources: list[Path], root: Path) -> str:
         "",
     ]
     for s in sources:
-        rel = s.relative_to(root)
-        lines.append(f"- `{rel}` (SHA-256 `{sha(s)[:16]}…`)")
+        lines.append(f"- `{s.relative_to(root)}` (SHA-256 `{src.sha(s)[:16]}…`)")
     lines.append("")
     return "\n".join(lines)
 
 
-def ledger_census(root: Path) -> dict:
-    rows = [json.loads(ln) for ln in
-            (root / "glossa-indus/ledger/claims.jsonl").read_text(encoding="utf-8").splitlines() if ln.strip()]
-    claims = [r for r in rows if r.get("kind") == "claim"]
-    with_refs = [r for r in claims if r.get("sign_refs")]
-    return {
-        "lines": len(rows), "claims": len(claims),
-        "annotations": len(rows) - len(claims),
-        "with_falsifier": sum(1 for r in claims if r.get("falsifier")),
-        "claims_with_sign_refs": len(with_refs),
-        "sign_refs_total": sum(len(r["sign_refs"]) for r in with_refs),
-    }
-
-
-def anchors_census(root: Path) -> dict:
-    data = json.loads((root / "backend/reports/INDUS_FINAL_ANCHORS.json").read_text(encoding="utf-8"))
-    return {"total": data["total"], "by_confidence": data["by_confidence"]}
-
-
-def task_states(path: Path) -> list[tuple[str, bool]]:
-    out = []
-    for ln in path.read_text(encoding="utf-8").splitlines():
-        m = re.match(r"- \[(x| )\] \*\*(T\d+)", ln)
-        if m:
-            out.append((m.group(2), m.group(1) == "x"))
-    return out
-
-
-def gap_entries(root: Path) -> list[str]:
-    text = (root / "glossa-indus/map/gap-register.md").read_text(encoding="utf-8")
-    return sorted(set(re.findall(r"GR-088-\d+", text)))
-
-
-def audit_facts(root: Path) -> dict:
-    rec_dir = root / "specs/095-red-team-remediation/records"
-    run = json.loads((rec_dir / "t404-run-2026-11-17.json").read_text(encoding="utf-8"))
-    corrections = {}
-    corr_path = rec_dir / "t404-scoring-corrections.json"
-    if corr_path.is_file():
-        for c in json.loads(corr_path.read_text(encoding="utf-8"))["corrections"]:
-            corrections[c["item"]] = c
-    results = []
-    for r in run["results"]:
-        verdict = corrections.get(r["item"], {}).get("corrected_verdict", r["verdict"])
-        results.append({**r, "scored_verdict": verdict})
-    return {"run": run, "results": results, "corrections": corrections}
-
-
-def build_program_audit(root: Path, out: Path):
-    spec095 = root / "specs/095-red-team-remediation"
-    sources = [
-        root / "glossa-indus/ledger/claims.jsonl",
-        root / "backend/reports/INDUS_FINAL_ANCHORS.json",
-        root / "glossa-indus/matrix/matrix.json",
-        root / "glossa-indus/map/program-map.json",
-        spec095 / "tasks.md",
-    ]
-    cen, anch = ledger_census(root), anchors_census(root)
-    matrix = json.loads(sources[2].read_text(encoding="utf-8"))
-    pmap = json.loads(sources[3].read_text(encoding="utf-8"))
-    tasks = task_states(sources[4])
-    body = header("Program Audit (derived)", sources, root) + f"""
+def render_program_audit(f: dict, root: Path) -> str:
+    cen, anch, mx = f["ledger"], f["anchors"], f["matrix"]
+    body = header("Program Audit (derived)", f["sources"]["program_audit"], root) + f"""
 ## Census of record (recomputed by the generator)
 
 - Claims ledger: {cen['lines']} lines; {cen['claims']} claims; {cen['annotations']} annotations.
 - Claims carrying a falsifier: {cen['with_falsifier']} of {cen['claims']}.
 - Anchors register: {anch['total']} signs; by confidence {anch['by_confidence']}.
-- Evidence matrix: {len(matrix['rows'])} rows x {len(matrix['columns'])} columns.
-- Program map: {len(pmap.get('nodes', []))} nodes.
+- Evidence matrix: {mx['rows']} rows x {mx['columns']} columns.
+- Program map: {f['program_map_nodes']} nodes.
 
 ## Spec 095 task states (from the spec's tasks file)
 
 """
-    for tid, done in tasks:
+    for tid, done in f["tasks095"]:
         body += f"- {tid}: {'complete' if done else 'open'}\n"
     body += """
 ## Standing position
@@ -132,18 +76,11 @@ identifiability protocol (Spec 095 Stage 3 application of record).
 This audit derives those statements from the sources above; it
 adjudicates nothing.
 """
-    (out / "PROGRAM_AUDIT.md").write_text(body, encoding="utf-8")
+    return body
 
 
-def build_security_review(root: Path, out: Path):
-    sources = [
-        root / "specs/092-platform-hardening-r4/tasks.md",
-        root / "specs/094-research-loop-acceptance-hardening/tasks.md",
-        root / "backend/glossa_lab/release_gate.py",
-        root / "backend/glossa_lab/anchor_transition.py",
-    ]
-    sources = [s for s in sources if s.is_file()]
-    body = header("Security Review (derived)", sources, root) + """
+def render_security_review(f: dict, root: Path) -> str:
+    return header("Security Review (derived)", f["sources"]["security_review"], root) + """
 ## Mechanisms the record shows in place
 
 - Credential storage: the settings store is encrypted at rest
@@ -171,26 +108,13 @@ external review of record (2026-11-15) was source-level and
 documentary; no runtime security test is claimed anywhere in the
 sources, and none is claimed here.
 """
-    (out / "SECURITY_REVIEW.md").write_text(body, encoding="utf-8")
 
 
-def build_reproducibility_gaps(root: Path, out: Path):
-    spec095 = root / "specs/095-red-team-remediation"
-    sources = [
-        root / "backend/glossa_lab/data/corpus_identity.py",
-        spec095 / "records/stage-1-record-2026-11-16.md",
-        spec095 / "records/stage-3-record-2026-11-16.md",
-        spec095 / "records/t404-run-2026-11-17.json",
-    ]
-    sources = [s for s in sources if s.is_file()]
-    ci_text = sources[0].read_text(encoding="utf-8")
-    keys = re.findall(r'^[A-Z0-9_]+_KEY = "([a-z0-9_]+)"', ci_text, flags=re.MULTILINE)
-    stage1 = sources[1].read_text(encoding="utf-8") if len(sources) > 1 else ""
-    invalid = "INVALID AT GATE 0.1" in stage1
-    facts = audit_facts(root)
-    f13 = next((r for r in facts["results"] if r["item"].startswith("F13")), None)
-    f15 = next((r for r in facts["results"] if r["item"].startswith("F15")), None)
-    body = header("Reproducibility Gaps (derived)", sources, root) + f"""
+def render_reproducibility_gaps(f: dict, root: Path) -> str:
+    keys = f["corpus_keys"]
+    f13 = next((r for r in f["audit"]["results"] if r["item"].startswith("F13")), None)
+    f15 = next((r for r in f["audit"]["results"] if r["item"].startswith("F15")), None)
+    return header("Reproducibility Gaps (derived)", f["sources"]["reproducibility_gaps"], root) + f"""
 ## Corpus identity coverage
 
 The identity registry of record carries {len(keys)} corpora:
@@ -202,7 +126,7 @@ restricted-local). Loaders fail closed on a differing corpus.
 ## Gaps the record states
 
 - The Spec 053 step-0 re-execution under a new execution order is
-  recorded {'INVALID AT GATE 0.1' if invalid else 'in the Stage 1 record'}:
+  recorded {'INVALID AT GATE 0.1' if f['stage1_invalid'] else 'in the Stage 1 record'}:
   one frozen pin (the Yadav 2009 extracted-claims file) has moved
   through sanctioned post-freeze amendments, so the re-execution
   cannot proceed under the original freeze. Identification of the
@@ -217,20 +141,11 @@ restricted-local). Loaders fail closed on a differing corpus.
   {f13['scored_verdict'] if f13 else 'not run'} ({f13['evidence'][:160] if f13 else ''});
   bundle-identity leg — {f15['scored_verdict'] if f15 else 'not run'}.
 """
-    (out / "REPRODUCIBILITY_GAPS.md").write_text(body, encoding="utf-8")
 
 
-def build_research_validity(root: Path, out: Path):
-    spec095 = root / "specs/095-red-team-remediation"
-    sources = [
-        root / "glossa-indus/STANDARDS.md",
-        spec095 / "records/stage-3-record-2026-11-16.md",
-        spec095 / "records/t303-identifiability-application-2026-11-16.md",
-        root / "glossa-indus/ledger/claims.jsonl",
-    ]
-    sources = [s for s in sources if s.is_file()]
-    cen = ledger_census(root)
-    body = header("Research Validity Review (derived)", sources, root) + f"""
+def render_research_validity(f: dict, root: Path) -> str:
+    cen = f["ledger"]
+    return header("Research Validity Review (derived)", f["sources"]["research_validity"], root) + f"""
 ## Standards of record
 
 `glossa-indus/STANDARDS.md` states the program's evidence
@@ -258,19 +173,13 @@ dispositions are unchanged by that application.
   gap GR-088-07. The multi-script model requires the relation;
   the Indus record does not yet carry it.
 """
-    (out / "RESEARCH_VALIDITY_REVIEW.md").write_text(body, encoding="utf-8")
 
 
-def build_ux_review(root: Path, out: Path):
-    rec_dir = root / "specs/095-red-team-remediation/records"
-    sources = [
-        rec_dir / "t404-thresholds-2026-11-17.md",
-        rec_dir / "t404-run-2026-11-17.json",
-        rec_dir / "t404-scoring-corrections.json",
-    ]
-    facts = audit_facts(root)
-    scores = facts["run"]["scores"]
-    body = header("UX Review (derived)", sources, root) + f"""
+def render_ux_review(f: dict, root: Path) -> str:
+    scores = f["audit"]["run"]["scores"]
+    passed_steps = sum(1 for r in f["audit"]["results"]
+                       if r["section"] == "protocol" and r["scored_verdict"] == "PASS")
+    body = header("UX Review (derived)", f["sources"]["ux_review"], root) + f"""
 ## The audit run (Spec 095 Stage 4, T404)
 
 Scored against the thresholds fixed before the run (first source
@@ -279,7 +188,7 @@ source above; the run record itself is unedited).
 
 - Functional checklist: {scores['functional_items_attempted']} of 15 attempted
   (F1 met); pass rate below the 75 percent bar (F2 not met).
-- New-researcher protocol: {sum(1 for r in facts['results'] if r['section'] == 'protocol' and r['scored_verdict'] == 'PASS')} of 8 steps completed as scored
+- New-researcher protocol: {passed_steps} of 8 steps completed as scored
   (P1 not met). Steps passed: arrive from the public page;
   establish what the system claims and does not claim.
 - Accessibility: zero axe-core critical violations (A1 met);
@@ -290,7 +199,7 @@ source above; the run record itself is unedited).
 ## Failures of record
 
 """
-    for r in facts["results"]:
+    for r in f["audit"]["results"]:
         if r["scored_verdict"] == "FAIL":
             body += f"- **{r['item']}** ({r['section']}): {r['evidence'][:260]}\n"
     body += """
@@ -301,52 +210,43 @@ The dashboard leg of the audit is not in this run: the dashboard
 exists at this date only as wireframes awaiting the owner's
 approval, and its audit re-runs after that build lands.
 """
-    (out / "UX_REVIEW.md").write_text(body, encoding="utf-8")
+    return body
 
 
-def build_backlog(root: Path, out: Path):
-    rec_dir = root / "specs/095-red-team-remediation/records"
-    sources = [
-        root / "glossa-indus/map/gap-register.md",
-        rec_dir / "t404-run-2026-11-17.json",
-        root / "specs/095-red-team-remediation/tasks.md",
-    ]
-    facts = audit_facts(root)
-    gaps = gap_entries(root)
-    tasks = task_states(sources[2])
-    body = header("Remediation Backlog (derived)", sources, root) + """
+def render_backlog(f: dict, root: Path) -> str:
+    body = header("Remediation Backlog (derived)", f["sources"]["backlog"], root) + """
 ## Open items carried by the records
 
 ### From the T404 audit run (failures, as scored)
 
 """
-    for r in facts["results"]:
+    for r in f["audit"]["results"]:
         if r["scored_verdict"] == "FAIL":
             body += f"- {r['item']}: {r['evidence'][:200]}\n"
     body += """
 ### From Spec 095's own task states
 
 """
-    for tid, done in tasks:
+    for tid, done in f["tasks095"]:
         if not done:
             body += f"- {tid}: open (see the spec's tasks file; T403 stands at wireframes awaiting the owner's approval by name; T404's package verdict was FAIL and its remainders are the dashboard leg and the authenticated legs)\n"
     body += f"""
 ### Public-claims consistency (release-gate component, live check)
 
 The release gate's public-claims component, run against this
-tree by this generator's sibling check at Stage 4, FAILS: the
-anchor-model README still presents the retired v2-era package as
-current with no supersession banner (RT-03). Its remedy is the
-owner-gated micro-task MT-095-1; it is carried here, not absorbed.
+tree at Stage 4, FAILS: the anchor-model README still presents
+the retired v2-era package as current with no supersession
+banner (RT-03). Its remedy is the owner-gated micro-task
+MT-095-1; it is carried here, not absorbed.
 
 ### Gap register
 
-The gap register of record carries {len(gaps)} entries
-({', '.join(gaps[:6])}, …). Entry-level state lives in the
+The gap register of record carries {len(f['gaps'])} entries
+({', '.join(f['gaps'][:6])}, …). Entry-level state lives in the
 register itself; this backlog points at it and does not restate
 it.
 """
-    (out / "REMEDIATION_BACKLOG.md").write_text(body, encoding="utf-8")
+    return body
 
 
 def main() -> int:
@@ -354,16 +254,21 @@ def main() -> int:
     parser.add_argument("--root", type=Path, default=Path("."))
     args = parser.parse_args()
     root = args.root.resolve()
+    facts = src.collect(root)
     out = root / "docs/red-team"
     out.mkdir(parents=True, exist_ok=True)
-    build_program_audit(root, out)
-    build_security_review(root, out)
-    build_reproducibility_gaps(root, out)
-    build_research_validity(root, out)
-    build_ux_review(root, out)
-    build_backlog(root, out)
-    for p in sorted(out.glob("*.md")):
-        print(f"wrote {p.relative_to(root)} ({p.stat().st_size} bytes)")
+    docs = {
+        "PROGRAM_AUDIT.md": render_program_audit(facts, root),
+        "SECURITY_REVIEW.md": render_security_review(facts, root),
+        "REPRODUCIBILITY_GAPS.md": render_reproducibility_gaps(facts, root),
+        "RESEARCH_VALIDITY_REVIEW.md": render_research_validity(facts, root),
+        "UX_REVIEW.md": render_ux_review(facts, root),
+        "REMEDIATION_BACKLOG.md": render_backlog(facts, root),
+    }
+    for name, text in docs.items():
+        path = out / name
+        path.write_text(text, encoding="utf-8")
+        print(f"wrote {path.relative_to(root)} ({path.stat().st_size} bytes)")
     return 0
 
 

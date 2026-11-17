@@ -119,7 +119,7 @@ DEFAULT_SURFACES: tuple[str, ...] = (
 # The stale-claim markers of record (Stage 0 record, RT-03): the
 # v2-era package presented as current.
 STALE_MARKERS: tuple[tuple[str, str], ...] = (
-    ("161-cohort-citation", r"161 Candidate Proto-Dravidian Anchors"),
+    ("161-cohort-citation", r"161\s+Candidate\s+Proto-Dravidian\s+Anchors"),
     ("141/161-ratio", r"141/161"),
     ("161-bc-claim", r"161 H\+M signs have BC > 0"),
     ("stale-coverage", r"90\.96% H\+M"),

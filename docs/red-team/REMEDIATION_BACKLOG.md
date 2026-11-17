@@ -43,10 +43,10 @@ Sources of record:
 ### Public-claims consistency (release-gate component, live check)
 
 The release gate's public-claims component, run against this
-tree by this generator's sibling check at Stage 4, FAILS: the
-anchor-model README still presents the retired v2-era package as
-current with no supersession banner (RT-03). Its remedy is the
-owner-gated micro-task MT-095-1; it is carried here, not absorbed.
+tree at Stage 4, FAILS: the anchor-model README still presents
+the retired v2-era package as current with no supersession
+banner (RT-03). Its remedy is the owner-gated micro-task
+MT-095-1; it is carried here, not absorbed.
 
 ### Gap register
 

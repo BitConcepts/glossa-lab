@@ -125,7 +125,7 @@
 
 ## Stage 3 — Verification redefined (C094-6..9)
 
-- [ ] **T301 — Flat-delta flip removed.** The `sa_delta = 0.1`
+- [x] **T301 — Flat-delta flip removed.** The `sa_delta = 0.1`
   construction and the approved → verified flip leave
   `_run_anchor_lifecycle`; its other duties are unchanged.
   Claims: C094-7. Acceptance: **test** (a lifecycle run over
@@ -133,7 +133,7 @@
   nothing).
   *This does not establish:* that archiving or expiry behaviour
   changed — they did not, except where they carried the flip.
-- [ ] **T302 — Per-candidate verification + the MEDIUM binding.**
+- [x] **T302 — Per-candidate verification + the MEDIUM binding.**
   Verification becomes a recorded per-candidate evaluation
   (method fixed in the stage's design note before the route is
   built), effected by a named human; promotion confers MEDIUM
@@ -142,7 +142,7 @@
   at MEDIUM; unverified caps at LOW, whatever its score).
   *This does not establish:* the evaluation method's soundness —
   the claim binds granularity and record.
-- [ ] **T303 — Fabricated fallback delta removed.** `get_staging`
+- [x] **T303 — Fabricated fallback delta removed.** `get_staging`
   stops substituting `round(score * 0.12, 3)`; surfaces present
   the delta as absent where no SA comparison has run. The current
   behaviour is first demonstrated from the code on the stage

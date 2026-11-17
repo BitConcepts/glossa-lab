@@ -1,0 +1,55 @@
+{
+ "run": {
+  "run_id": "study-20261117T134331Z-7ca68f",
+  "surface": "study",
+  "tool": "spec091_stage2_locator_supplement.py --execute",
+  "tool_version": "locator-pass supplement v1 (Spec 091 Stage 2)",
+  "started": "2026-11-17T13:43:31Z",
+  "finished": "2026-11-17T13:43:31Z",
+  "key": {
+   "surface": "study",
+   "command": "spec091_stage2_locator_supplement.py --execute",
+   "tool_version": "locator-pass supplement v1 (Spec 091 Stage 2)",
+   "input_pins": {
+    "spec": "091-anchor-comparison-integrity",
+    "stage": "stage-2-locator-pass-supplement",
+    "supplements_run": "study-20261117T105335Z-4d667e",
+    "run_defs_note": "tasks.md names 'run-defs v1' for the Stage 2 run; the landed T202 run was executed and recorded under run-defs v2 (run record study-20261117T105335Z-4d667e). This supplement is likewise executed under run-defs v2 and notes the naming discrepancy the same way Stage 2 did.",
+    "frozen_artifacts": {
+     "provenance_sha256": "b7543523f8ae87e637244db07c9a07e1266b78db582cf07591fc094d0b2043e4",
+     "crosswalk_sha256": "3c54ed09b869a5046eb7e25d9e77accf25e552f17aadef95a4757a668739a7cb",
+     "t202_locator_artifact_sha256": "0074f2cc36a13943c758969430d0fdc8e3a7d0f2c5250e1594c02601534f3ef0"
+    },
+    "search_sources": {
+     "parpola_1994_pdf_sha256": "fd133822f9999c86178a32208465e847c5288b578ad14ca2cd643efe57f0e0b6",
+     "parpola_2010_pdf_sha256": "c58137e54cdde3f2acdcfaf05293dfc5f5ba33def3e0b12585c451f76bd4ba84",
+     "mahadevan_1977_sign_list_csv_sha256": "ce5dd5a59418132f54761324ca449aa0a7d37e0dad41013aca811049b36af3a4",
+     "mahadevan_1977_sign_list_json_sha256": "63059d6403898653600c3be3e2268c512550cc8f8906114ac712743f161e0ae3",
+     "wells_1998_sign_list_sha256": "bdcb8ef32f5172e4d1ddbb057e4344bccbc7aeacc1928d86c2175c12290a4bf0",
+     "phoneme_compilation_sha256": "2aee1d0caf2130847075c9167fa4e707a911c79437a177f0744cec99810eefcc"
+    },
+    "generator_sha256": "1bf7167861c91dbd429a455dbe4a2e2eeaf1d4b4c6ea24ddd1846843ea388f60",
+    "eligibility_defs": "specs/091-anchor-comparison-integrity/eligibility-defs-v1.md"
+   },
+   "seed": "no-seed",
+   "code_version": "ccf1ff15a462ec03e1ec29e2a2f218b5f49b60b7",
+   "environment_class": "mini-server/linux"
+  },
+  "determinism_class": "deterministic"
+ },
+ "result": {
+  "artifact": "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2_locators_supplement.json",
+  "artifact_sha256": "610eeff1f9d8c64449cf040c6012e22b17c3506152076a4270bd836ff009c50c",
+  "census": {
+   "n_entries": 184,
+   "phonetic_reading": {
+    "located": 9,
+    "not_found": 175
+   },
+   "semantic_reading": {
+    "located": 0,
+    "not_found": 184
+   }
+  }
+ }
+}

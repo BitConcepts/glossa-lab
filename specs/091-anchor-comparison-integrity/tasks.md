@@ -114,6 +114,23 @@ survive into its stage report.
   real searches of the named sources).
   *This does not establish:* eligibility — located readings still need
   independent coding (T401) before any class moves.
+- [x] **T202 supplement — The supplementary locator pass over the
+  recovered texts (2026-11-17).** Owner-commissioned after the
+  2026-11-17 recovery hunt changed the holdings: Parpola 1994 (held as
+  an OCR-scan custody copy) and Parpola 2010 (recovered from git
+  history) searched in full, and the M77 step run over the PINNED
+  dataset, under the same registered search order and the same
+  three-part locator test as T202. Run
+  `study-20261117T134331Z-7ca68f`; new artifact
+  `mahadevan_parpola_crosswalk_v2_locators_supplement.json` beside the
+  T202 artifact (the T202 artifact and records are not modified; the
+  supplement wins per field under the merge rule in
+  `records/stage-2-supplement-delta.json`). Census: phonetic
+  9 located / 175 not-found, semantic 0 located / 184 not-found.
+  Record: `records/stage-2-supplement-record-2026-11-17.md`.
+  *This does not establish:* eligibility — the supplemented record
+  feeds the same later-stage re-derivation as T202's, and no class
+  moves on this pass.
 
 ## Stage 3 — W3 in-house legs (PRs: feat/091-s3-battery-v2, feat/091-s3-single-line)
 

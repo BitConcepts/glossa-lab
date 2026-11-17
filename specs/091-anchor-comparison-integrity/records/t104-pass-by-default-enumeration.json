@@ -1,0 +1,212 @@
+{
+  "record_id": "spec091-t104-pass-by-default-enumeration",
+  "spec": "091-anchor-comparison-integrity",
+  "task": "T104",
+  "claim": "C091-8 (enumeration side)",
+  "generated_by": "backend/scripts/spec091_stage1_determinations.py",
+  "date": "2026-11-17",
+  "inputs": {
+    "backend/scripts/phase48_medium_validation.py": "e7fa7c1793e5f1574352c1595efa0ba64fb41849cba9f95ede5d39528c260e4d",
+    "docs/repair-2026-10-26/anchor-support-audit.json": "c1382017f44d63e7e811b71b77917d9e3bfb40849f95806987135bae895ea52a",
+    "backend/scripts/repair_anchor_audit.py": "8957a1d855122d46647cb69f85d9b158284f9f57b456821dae8f4385589aae4f"
+  },
+  "method": "Every credit kind in the WP5 census is traced to the battery code path that awarded it. Completeness is by the enumeration's own rule: every pass-awarding return in the frozen battery (6 literal `return True` branches and 2 computed pass returns) lies inside exactly one enumerated path's line range; every kind in the census is awarded by exactly one path; every kind in the audit generator's DEFAULT_CREDITS is awarded by exactly one pass-by-default path.",
+  "paths": [
+    {
+      "path_id": "P1",
+      "battery_function": "test_positional",
+      "code_location": {
+        "file": "backend/scripts/phase48_medium_validation.py",
+        "lines": [
+          119,
+          130
+        ]
+      },
+      "branch_signature": "\"PASS\" if ok",
+      "credit_kind_awarded": "genuine_positional_pass_reading_blind",
+      "is_pass_by_default": false,
+      "recorded_credits_in_wp5_census": 30,
+      "fired_in_recorded_run": true,
+      "audit_code_fact": "positional_reading_blind",
+      "note": "The expectation checks run over the role's avg_position and starter/ending flags and the verdict is computed from them. A real measurement — but the test never uses the proposed reading, so it supports distribution and functional role only (WP5 code fact 'positional_reading_blind')."
+    },
+    {
+      "path_id": "P2",
+      "battery_function": "test_positional",
+      "code_location": {
+        "file": "backend/scripts/phase48_medium_validation.py",
+        "lines": [
+          116,
+          117
+        ]
+      },
+      "branch_signature": "no_expectation—pass_by_default",
+      "credit_kind_awarded": "default_credit_no_expectation",
+      "is_pass_by_default": true,
+      "recorded_credits_in_wp5_census": 0,
+      "fired_in_recorded_run": false,
+      "audit_code_fact": "positional_pass_by_default",
+      "note": "PASS BY DEFAULT: the role has no expectation entry (UNKNOWN role or unlisted role), so there is nothing to check against and the branch returns a pass."
+    },
+    {
+      "path_id": "P3",
+      "battery_function": "test_dedr",
+      "code_location": {
+        "file": "backend/scripts/phase48_medium_validation.py",
+        "lines": [
+          138,
+          139
+        ]
+      },
+      "branch_signature": "too_short_pass",
+      "credit_kind_awarded": "default_credit_too_short",
+      "is_pass_by_default": true,
+      "recorded_credits_in_wp5_census": 9,
+      "fired_in_recorded_run": true,
+      "audit_code_fact": "dedr_too_short_pass",
+      "note": "PASS BY DEFAULT: the normalized reading is shorter than 2 characters, so the dictionary check does not run and the branch returns a pass."
+    },
+    {
+      "path_id": "P4",
+      "battery_function": "test_dedr",
+      "code_location": {
+        "file": "backend/scripts/phase48_medium_validation.py",
+        "lines": [
+          143,
+          144
+        ]
+      },
+      "branch_signature": "exact_match_",
+      "credit_kind_awarded": "exact_match_lexical_plausibility",
+      "is_pass_by_default": false,
+      "recorded_credits_in_wp5_census": 15,
+      "fired_in_recorded_run": true,
+      "audit_code_fact": "dedr_is_lexical_plausibility",
+      "note": "The dictionary scan ran (counts at lines 141-142) and found at least one entry equal to the normalized reading. Lexical plausibility, per the WP5 code fact: it shows a word of this shape exists, not that this sign stood for that word."
+    },
+    {
+      "path_id": "P5",
+      "battery_function": "test_dedr",
+      "code_location": {
+        "file": "backend/scripts/phase48_medium_validation.py",
+        "lines": [
+          145,
+          146
+        ]
+      },
+      "branch_signature": "prefix_match_",
+      "credit_kind_awarded": "prefix_match_weak_lexical_plausibility",
+      "is_pass_by_default": false,
+      "recorded_credits_in_wp5_census": 6,
+      "fired_in_recorded_run": true,
+      "audit_code_fact": "dedr_is_lexical_plausibility",
+      "note": "The dictionary scan ran (counts at lines 141-142) and found 2 or more entries sharing the first 3 normalized characters with the reading (or the reverse). Weak lexical plausibility."
+    },
+    {
+      "path_id": "P6",
+      "battery_function": "test_bigram_consistency",
+      "code_location": {
+        "file": "backend/scripts/phase48_medium_validation.py",
+        "lines": [
+          157,
+          158
+        ]
+      },
+      "branch_signature": "char_not_in_lm—pass_by_default",
+      "credit_kind_awarded": "default_credit_missing_model_character",
+      "is_pass_by_default": true,
+      "recorded_credits_in_wp5_census": 5,
+      "fired_in_recorded_run": true,
+      "audit_code_fact": "bigram_pass_by_default",
+      "note": "PASS BY DEFAULT: the reading's first character is absent from the language model, so no comparison is possible and the branch returns a pass."
+    },
+    {
+      "path_id": "P7",
+      "battery_function": "test_bigram_consistency",
+      "code_location": {
+        "file": "backend/scripts/phase48_medium_validation.py",
+        "lines": [
+          189,
+          190
+        ]
+      },
+      "branch_signature": "no_anchor_neighbours—pass_by_default",
+      "credit_kind_awarded": "default_credit_no_anchor_neighbors",
+      "is_pass_by_default": true,
+      "recorded_credits_in_wp5_census": 0,
+      "fired_in_recorded_run": false,
+      "audit_code_fact": "bigram_pass_by_default",
+      "note": "PASS BY DEFAULT: none of the sign's top following signs has a HIGH or MEDIUM anchor reading, so no neighbour could be checked and the branch returns a pass."
+    },
+    {
+      "path_id": "P8",
+      "battery_function": "test_bigram_consistency",
+      "code_location": {
+        "file": "backend/scripts/phase48_medium_validation.py",
+        "lines": [
+          191,
+          192
+        ]
+      },
+      "branch_signature": "neighbour_match=",
+      "credit_kind_awarded": "genuine_bigram_pass_as_recorded_backend_dependent",
+      "is_pass_by_default": false,
+      "recorded_credits_in_wp5_census": 20,
+      "fired_in_recorded_run": true,
+      "audit_code_fact": "bigram_backend_divergence",
+      "note": "The neighbour comparison ran and the match ratio met the 0.4 threshold. A real comparison as recorded — but the comparison set is backend-dependent (top-5 continuations with torch, all continuations without; lines 161-170), so the pass is not the same test across backends (WP5 code fact 'bigram_backend_divergence')."
+    },
+    {
+      "path_id": "AGG",
+      "battery_function": "main",
+      "code_location": {
+        "file": "backend/scripts/phase48_medium_validation.py",
+        "lines": [
+          220,
+          222
+        ]
+      },
+      "branch_signature": "promote = score >= 2",
+      "credit_kind_awarded": null,
+      "is_pass_by_default": false,
+      "recorded_credits_in_wp5_census": null,
+      "fired_in_recorded_run": null,
+      "audit_code_fact": "promotion_rule",
+      "note": "Not a credit path: the promotion rule. A sign is promoted when any 2 of the 3 tests pass, so default credits counted toward promotion exactly like measured passes (WP5 code fact 'promotion_rule')."
+    }
+  ],
+  "observed_non_credit_default": {
+    "code_location": {
+      "file": "backend/scripts/phase48_medium_validation.py",
+      "lines": [
+        110,
+        110
+      ]
+    },
+    "observation": "test_positional line 110 defaults a missing avg_position to 0.5 before the expectation checks run. This is input defaulting inside path P1, not a separate verdict path: the verdict is still computed by the expectation checks, and no census kind corresponds to it. Named here so battery v2's authors see it; it is not counted among the four pass-by-default paths."
+  },
+  "reconciliation": {
+    "register_text": "GR-088-03 (the Spec 088 gap register): the promoting battery 'carried four pass-by-default paths and promoted 30 of 30 tested'.",
+    "register_paths_claimed": 4,
+    "enumerated_pass_by_default_paths": 4,
+    "pass_by_default_path_ids": [
+      "P2",
+      "P3",
+      "P6",
+      "P7"
+    ],
+    "census_kinds_total": 6,
+    "census_default_credit_kinds_with_credits": [
+      "default_credit_missing_model_character",
+      "default_credit_too_short"
+    ],
+    "audit_default_credit_vocabulary": [
+      "default_credit_missing_model_character",
+      "default_credit_no_anchor_neighbors",
+      "default_credit_no_expectation",
+      "default_credit_too_short"
+    ],
+    "verdict": "AGREES. The register's four is a count of code paths; the census's two default-credit kinds are the two of the four paths that fired in the recorded run (default_credit_too_short: 9 credits via P3; default_credit_missing_model_character: 5 credits via P6). The other two paths (P2 no-expectation, P7 no-anchor-neighbours) fired zero times in the recorded run, so their kinds appear in the audit classifier's DEFAULT_CREDITS vocabulary but not in pass_credits_by_kind. Paths and credit kinds are different units (grounding record gap 2); there is no contradiction and no register amendment is owed.",
+    "register_amendment_proposal": null
+  }
+}

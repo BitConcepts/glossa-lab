@@ -1,0 +1,185 @@
+{
+  "record_id": "spec091-t105-checker-arm-split",
+  "spec": "091-anchor-comparison-integrity",
+  "task": "T105",
+  "claims": "C091-10, C091-11 (determination side)",
+  "generated_by": "backend/scripts/spec091_stage1_determinations.py",
+  "date": "2026-11-17",
+  "inputs": {
+    "docs/repair-2026-10-26/anchor-support-audit.json": "c1382017f44d63e7e811b71b77917d9e3bfb40849f95806987135bae895ea52a",
+    "backend/scripts/repair_anchor_audit.py": "8957a1d855122d46647cb69f85d9b158284f9f57b456821dae8f4385589aae4f"
+  },
+  "determination_rule": "An anchor requires the site-statistics arm iff its audit record's evidence vocabulary (evidence_tests, or any support line's tests in evidence_independence) names distribution or functional_role — the properties the defective validation measured and the site-statistics lineage measures. An anchor requires the phonotactic arm iff that vocabulary names phonetic_value, or its R5 rule text rests the defect on a check of the reading's sound shape. An anchor engaging neither arm is undeterminable and is recorded as phonotactic-gated (the conservative direction, per plan.md Stage 1).",
+  "arm_definitions": {
+    "site_statistics_arm": "The repair brief's corrected site-statistics lineage, site_stats_v2 (backend/glossa_lab/site_stats_v2.py): distributional measurement done properly — a computed statistic and p-value, explicit insufficient-data outcomes, no invented values, no equivalence verdicts.",
+    "phonotactic_arm": "The repair brief's corrected phonotactic checker, phonotactics_v2 (backend/glossa_lab/phonotactics_v2.py): the reading's initial sound against declared rules. Its rule set is not linguist-certified (GR-088-04), so the arm is dependency-gated wherever it is required (C091-11): no phonotactic verdict is produced under the uncertified rule set."
+  },
+  "determinations": [
+    {
+      "sign": "M042",
+      "reading_as_recorded": "vaN",
+      "current_evidential_status": "requires_revalidation",
+      "disposition_rule": "R5b_restored_reading",
+      "rule_definition": {
+        "source_file": "backend/scripts/repair_anchor_audit.py",
+        "rule_id_line": 838,
+        "rule_text": "The current value is a pre-loop reading mechanically restored in Phase-109 Step 1(b) after the research loop overwrote it. The register's reasons describe the superseded loop value, not this one; the restored entry's own record is a source label plus a recalibration bracket, with no derivation passage in the trail. The restored value needs a fresh check on its own record.",
+        "rule_text_verified_in": "docs/repair-2026-10-26/anchor-support-audit.json record for M042, field plain_language_explanation (verbatim tail)"
+      },
+      "record_fields_cited": {
+        "evidence_tests": [
+          "distribution"
+        ],
+        "support_line_tests": [
+          "distribution"
+        ],
+        "phase48_promotion": false,
+        "phase48_reconstruction_present": false
+      },
+      "determination": {
+        "arm": "site-statistics arm",
+        "site_statistics_arm_required": true,
+        "phonotactic_arm_required": false,
+        "undeterminable": false,
+        "phonotactic_gated": false
+      },
+      "basis": "The record's evidence vocabulary names ['distribution']: distribution/functional role are the properties the defective validation measured and the site-statistics lineage (site_stats_v2) measures, so the site-statistics arm is required. No field of the record names phonetic_value, and the R5 rule text rests the defect on no check of the reading's sound shape, so the phonotactic arm is not required by this record. "
+    },
+    {
+      "sign": "M046",
+      "reading_as_recorded": "kaL",
+      "current_evidential_status": "requires_revalidation",
+      "disposition_rule": "R5b_restored_reading",
+      "rule_definition": {
+        "source_file": "backend/scripts/repair_anchor_audit.py",
+        "rule_id_line": 838,
+        "rule_text": "The current value is a pre-loop reading mechanically restored in Phase-109 Step 1(b) after the research loop overwrote it. The register's reasons describe the superseded loop value, not this one; the restored entry's own record is a source label plus a recalibration bracket, with no derivation passage in the trail. The restored value needs a fresh check on its own record.",
+        "rule_text_verified_in": "docs/repair-2026-10-26/anchor-support-audit.json record for M046, field plain_language_explanation (verbatim tail)"
+      },
+      "record_fields_cited": {
+        "evidence_tests": [
+          "distribution"
+        ],
+        "support_line_tests": [
+          "distribution"
+        ],
+        "phase48_promotion": false,
+        "phase48_reconstruction_present": false
+      },
+      "determination": {
+        "arm": "site-statistics arm",
+        "site_statistics_arm_required": true,
+        "phonotactic_arm_required": false,
+        "undeterminable": false,
+        "phonotactic_gated": false
+      },
+      "basis": "The record's evidence vocabulary names ['distribution']: distribution/functional role are the properties the defective validation measured and the site-statistics lineage (site_stats_v2) measures, so the site-statistics arm is required. No field of the record names phonetic_value, and the R5 rule text rests the defect on no check of the reading's sound shape, so the phonotactic arm is not required by this record. "
+    },
+    {
+      "sign": "M108",
+      "reading_as_recorded": "kaL",
+      "current_evidential_status": "requires_revalidation",
+      "disposition_rule": "R5b_restored_reading",
+      "rule_definition": {
+        "source_file": "backend/scripts/repair_anchor_audit.py",
+        "rule_id_line": 838,
+        "rule_text": "The current value is a pre-loop reading mechanically restored in Phase-109 Step 1(b) after the research loop overwrote it. The register's reasons describe the superseded loop value, not this one; the restored entry's own record is a source label plus a recalibration bracket, with no derivation passage in the trail. The restored value needs a fresh check on its own record.",
+        "rule_text_verified_in": "docs/repair-2026-10-26/anchor-support-audit.json record for M108, field plain_language_explanation (verbatim tail)"
+      },
+      "record_fields_cited": {
+        "evidence_tests": [
+          "distribution"
+        ],
+        "support_line_tests": [
+          "distribution"
+        ],
+        "phase48_promotion": false,
+        "phase48_reconstruction_present": false
+      },
+      "determination": {
+        "arm": "site-statistics arm",
+        "site_statistics_arm_required": true,
+        "phonotactic_arm_required": false,
+        "undeterminable": false,
+        "phonotactic_gated": false
+      },
+      "basis": "The record's evidence vocabulary names ['distribution']: distribution/functional role are the properties the defective validation measured and the site-statistics lineage (site_stats_v2) measures, so the site-statistics arm is required. No field of the record names phonetic_value, and the R5 rule text rests the defect on no check of the reading's sound shape, so the phonotactic arm is not required by this record. "
+    },
+    {
+      "sign": "M176",
+      "reading_as_recorded": "an/aṇ",
+      "current_evidential_status": "requires_revalidation",
+      "disposition_rule": "R5c_phase48_cited_as_support",
+      "rule_definition": {
+        "source_file": "backend/scripts/repair_anchor_audit.py",
+        "rule_id_line": 850,
+        "rule_text": "The provenance register's stated support for this entry includes the Phase-48 battery, which is defective as recorded. The part of the standing that rests on that battery must be re-earned under a corrected test.",
+        "rule_text_verified_in": "docs/repair-2026-10-26/anchor-support-audit.json record for M176, field plain_language_explanation (verbatim tail)"
+      },
+      "record_fields_cited": {
+        "evidence_tests": [
+          "distribution",
+          "functional_role"
+        ],
+        "support_line_tests": [
+          "distribution",
+          "functional_role"
+        ],
+        "phase48_promotion": false,
+        "phase48_reconstruction_present": false
+      },
+      "determination": {
+        "arm": "site-statistics arm",
+        "site_statistics_arm_required": true,
+        "phonotactic_arm_required": false,
+        "undeterminable": false,
+        "phonotactic_gated": false
+      },
+      "basis": "The record's evidence vocabulary names ['distribution', 'functional_role']: distribution/functional role are the properties the defective validation measured and the site-statistics lineage (site_stats_v2) measures, so the site-statistics arm is required. No field of the record names phonetic_value, and the R5 rule text rests the defect on no check of the reading's sound shape, so the phonotactic arm is not required by this record. "
+    },
+    {
+      "sign": "M342",
+      "reading_as_recorded": "ay/ā",
+      "current_evidential_status": "requires_revalidation",
+      "disposition_rule": "R5c_phase48_cited_as_support",
+      "rule_definition": {
+        "source_file": "backend/scripts/repair_anchor_audit.py",
+        "rule_id_line": 850,
+        "rule_text": "The provenance register's stated support for this entry includes the Phase-48 battery, which is defective as recorded. The part of the standing that rests on that battery must be re-earned under a corrected test.",
+        "rule_text_verified_in": "docs/repair-2026-10-26/anchor-support-audit.json record for M342, field plain_language_explanation (verbatim tail)"
+      },
+      "record_fields_cited": {
+        "evidence_tests": [
+          "distribution",
+          "functional_role"
+        ],
+        "support_line_tests": [
+          "distribution",
+          "functional_role"
+        ],
+        "phase48_promotion": false,
+        "phase48_reconstruction_present": false
+      },
+      "determination": {
+        "arm": "site-statistics arm",
+        "site_statistics_arm_required": true,
+        "phonotactic_arm_required": false,
+        "undeterminable": false,
+        "phonotactic_gated": false
+      },
+      "basis": "The record's evidence vocabulary names ['distribution', 'functional_role']: distribution/functional role are the properties the defective validation measured and the site-statistics lineage (site_stats_v2) measures, so the site-statistics arm is required. No field of the record names phonetic_value, and the R5 rule text rests the defect on no check of the reading's sound shape, so the phonotactic arm is not required by this record. "
+    }
+  ],
+  "summary": {
+    "site_statistics_arm": [
+      "M042",
+      "M046",
+      "M108",
+      "M176",
+      "M342"
+    ],
+    "phonotactic_arm": [],
+    "undeterminable_phonotactic_gated": [],
+    "consequence": "On the five's own audit records the phonotactic subset is empty: all five revalidate on the site-statistics arm at Stage 3 (T303), and none of the five waits on GR-088-04. C091-11's gating therefore does not engage for the 5. This determination performs no revalidation and moves no disposition."
+  }
+}

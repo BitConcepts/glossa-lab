@@ -267,6 +267,35 @@ record is new.
 **Owner gates:** the spec is a cross-cutting act
 (block approval like any spec); the gap record names
 the backend maintainer as its owner.
+**Amendment (Spec 094 closeout, 2026-11-16):** the
+cross-cutting spec this entry called for exists —
+Spec 094 (research-loop acceptance hardening),
+adopted 2026-11-13 — and it closes this gap FOR THE
+ANCHOR PATH ONLY. On that path every status
+transition on a candidate or anchor record now
+routes through a single gated transition service
+(one-step moves, actor validation with the
+automated ceiling, an append-only evidence trail),
+and the three anchor-path stores (the staging
+file, the staging archive, and the final anchors
+file) are written only through the platform's
+verified-write path, so a failed write leaves the
+previous file byte-identical under a named error.
+The writer census proving no direct writer remains
+on the path is filed with Spec 094's Stage 4
+record, and the full policy probe battery re-ran
+clean at the Stage 5 closeout. Beyond the anchor
+path this entry stands exactly as written: the
+claims ledger and every other writer remain as
+they were — the gated transitions there still rest
+on writer discipline, backed only by the ledger
+gate's post-hoc cross-store divergence detection
+(the storage-edit probe's re-run at Spec 094
+Stage 4 reproduced its original verdict: a bare
+stage edit is caught by consistency checks alone,
+and no check validates the transition itself).
+This amendment does not establish closure of
+GR-088-05 beyond the anchor path.
 
 GR-088-06. THE 44 PENDING READINGS HAVE NO
 ADJUDICATION ROUTE (Anchors & readings). UNJUDGED.

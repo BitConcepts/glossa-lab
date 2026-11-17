@@ -184,7 +184,7 @@
 
 ## Stage 5 — Closeout (C094-12..13)
 
-- [ ] **T501 — Full battery + register amendment + boundary
+- [x] **T501 — Full battery + register amendment + boundary
   verification.** The full policy probe battery re-runs end to
   end on a scratch instance against the built system; the
   GR-088-05 register entry is amended with the path-scoped
@@ -193,7 +193,7 @@
   Claims: C094-12. Acceptance: **gate**.
   *This does not establish:* closure of GR-088-05 beyond the
   anchor path.
-- [ ] **T502 — Closeout record; C094-13 lifted by name.** The
+- [x] **T502 — Closeout record; C094-13 lifted by name.** The
   closeout record discharges C094-1..13 per claim on their
   evidence, or carries each undischarged claim as a named
   failure; on full discharge it lifts the loop-off protection by

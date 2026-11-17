@@ -23,12 +23,19 @@ from typing import Any
 from fastapi import APIRouter, Query, Request
 from fastapi.responses import StreamingResponse
 
+from glossa_lab.anchor_transition import (
+    AnchorTransitionError,
+    archive_anchor_record,
+    stamp_archive_fields,
+    transition_anchor_status,
+)
 from glossa_lab.claim_stage import is_automated_actor, is_listed_approver
 from glossa_lab.evidence_standard import (
     evidence_class_refusal,
     evidence_pin_refusal,
 )
 from glossa_lab.verification import verification_refusal
+from glossa_lab.verified_write import write_file_verified
 
 _REPO = Path(__file__).resolve().parents[3]
 
@@ -608,6 +615,37 @@ _STAGING_JSON = _REPO / "outputs" / "anchor_staging.json"
 _ARCHIVE_JSON = _REPO / "outputs" / "anchor_staging_archive.json"
 
 
+# ── Anchor-path store writes (Spec 094 Stage 4, C094-11) ─────────────
+# The three anchor-path stores are written ONLY through the verified
+# write path (glossa_lab.verified_write — Spec 092 Stage 2's library:
+# temp file in the target's directory, flush + fsync, atomic rename,
+# read-back SHA-256 verification of the temp before the rename and of
+# the target after it, one typed error when every path fails). No
+# direct truncating write to any of them remains in the anchor path:
+# the drafting census counted 12 such sites in this module, and the
+# Stage 4 exit census re-proves every one absent.
+
+def _write_store(path: Path, payload: Any) -> None:
+    """Serialize *payload* and write it to an anchor-path store
+    through the verified write path. A failed write raises
+    VerifiedWriteError (a StateWriteError) naming the target, and
+    leaves the previous file byte-identical."""
+    write_file_verified(
+        path, json.dumps(payload, indent=2, ensure_ascii=False))
+
+
+def _write_staging(records: list[dict]) -> None:
+    _write_store(_STAGING_JSON, records)
+
+
+def _write_archive(records: list[dict]) -> None:
+    _write_store(_ARCHIVE_JSON, records)
+
+
+def _write_anchors(data: dict) -> None:
+    _write_store(_FA_PATH, data)
+
+
 def _evidence_artifact_path(ref: Any) -> Path | None:
     """Resolve an H26 evidence reference to the artifact file it names.
 
@@ -799,6 +837,12 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
       for audit; every rejection is also appended to the
       append-only rejection_history, which re-staging preserves
     - delete   → removes entry from file entirely
+
+    Spec 094 Stage 4 (C094-10, C094-11): every status change here
+    is effected through the gated transition service
+    (glossa_lab.anchor_transition) — this route writes no
+    review_status directly — and the staging store is written
+    through the verified write path.
     """
     sign     = body.get("sign", "")
     reading  = body.get("proposed_reading", "")
@@ -847,37 +891,57 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
     matched = False
     updated: list[dict] = []
 
-    for c in candidates:
-        if c.get("sign") == sign and c.get("proposed_reading") == reading:
-            matched = True
-            if action == "delete":
-                continue  # drop from list
-            elif action == "approve":
-                c["review_status"] = "approved"
-                c["approved_at"] = now
-            elif action == "reject":
-                _preserve_current_rejection(c)
-                c["review_status"] = "rejected"
-                c["rejected_at"] = now
-                c["rejected_reason"] = reason or "user rejected"
-                _append_rejection_history(c, now, c["rejected_reason"])
-            elif action == "staged":
-                # Re-stage: move approved/rejected back to staging
-                # queue. The rejection itself is never erased: fold
-                # the current rejection into the append-only
-                # rejection_history before clearing the scalars.
-                _preserve_current_rejection(c)
-                c["review_status"] = "staged"
-                c.pop("approved_at", None)
-                c.pop("rejected_at", None)
-                c.pop("rejected_reason", None)
-        updated.append(c)
+    try:
+        for c in candidates:
+            if c.get("sign") == sign and c.get("proposed_reading") == reading:
+                matched = True
+                if action == "delete":
+                    continue  # drop from list — a removal, not a transition
+                elif action == "approve":
+                    # Gated transition service (Spec 094 Stage 4,
+                    # C094-10): the approval the Stage 1 gate above
+                    # validated is effected through the service, by
+                    # the approver the record itself names, on the
+                    # record's own evidence reference.
+                    transition_anchor_status(
+                        c, "approved", actor=c.get("approver") or "",
+                        evidence_refs=[c["evidence_ref"]]
+                        if c.get("evidence_ref") else [],
+                        timestamp=now)
+                    c["approved_at"] = now
+                elif action == "reject":
+                    _preserve_current_rejection(c)
+                    rejected_reason = reason or "user rejected"
+                    transition_anchor_status(
+                        c, "rejected", actor="staging_action",
+                        reason=rejected_reason, timestamp=now)
+                    c["rejected_at"] = now
+                    c["rejected_reason"] = rejected_reason
+                    _append_rejection_history(c, now, rejected_reason)
+                elif action == "staged":
+                    # Re-stage: move approved/rejected back to staging
+                    # queue. The rejection itself is never erased: fold
+                    # the current rejection into the append-only
+                    # rejection_history before clearing the scalars.
+                    _preserve_current_rejection(c)
+                    transition_anchor_status(
+                        c, "staged", actor="staging_action",
+                        reason="re-staged by operator (staging_action)",
+                        timestamp=now)
+                    c.pop("approved_at", None)
+                    c.pop("rejected_at", None)
+                    c.pop("rejected_reason", None)
+            updated.append(c)
+    except AnchorTransitionError as exc:
+        # The service refused the transition (fail-closed): nothing
+        # is written and the record keeps its status.
+        return {"ok": False, "error":
+                f"cannot {action} candidate {sign}={reading}: {exc}"}
 
     if not matched:
         return {"ok": False, "error": f"candidate {sign}={reading} not found"}
 
-    _STAGING_JSON.write_text(json.dumps(updated, indent=2, ensure_ascii=False),
-                             encoding="utf-8")
+    _write_staging(updated)
     remaining = sum(1 for c in updated if c.get("review_status") == "staged")
     _log.info("Staging action %s on %s=%s; %d staged remaining",
               action, sign, reading, remaining)
@@ -918,6 +982,10 @@ def _run_anchor_lifecycle(
     function's only remaining duty is the expiry above. Its other
     duties are unchanged — expiry of stale rejections is exactly
     as before, and it never carried any other transition.
+
+    Spec 094 Stage 4 (C094-10, C094-11): the expiry transition is
+    effected through the gated transition service and both store
+    writes go through the verified write path.
     """
     if not _STAGING_JSON.exists():
         return
@@ -945,10 +1013,20 @@ def _run_anchor_lifecycle(
                         rejected_at.replace("Z", "+00:00")
                     ).timestamp()
                     if now_ts - rej_ts > 7 * 86400:
-                        c["review_status"] = "expired"
+                        # Gated transition service (Spec 094 Stage 4,
+                        # C094-10): expiry is effected through the
+                        # service by the loop — an automated actor,
+                        # admitted because expiry sits at 'created'
+                        # rank on both sides of the stage mapping,
+                        # inside the automated ceiling. The archival
+                        # stamp follows in the same act.
+                        transition_anchor_status(
+                            c, "expired", actor="research_loop",
+                            reason="expired_after_7d", timestamp=now_iso)
                         c["expired_at"] = now_iso
-                        c["archived_at"] = now_iso
-                        c["archived_reason"] = "expired_after_7d"
+                        stamp_archive_fields(
+                            c, actor="research_loop",
+                            reason="expired_after_7d", timestamp=now_iso)
                         to_archive.append(c)
                         continue
                 except Exception:  # noqa: BLE001
@@ -965,12 +1043,10 @@ def _run_anchor_lifecycle(
             except Exception:  # noqa: BLE001
                 pass
         archive.extend(to_archive)
-        _ARCHIVE_JSON.write_text(
-            json.dumps(archive, indent=2, ensure_ascii=False), encoding="utf-8")
+        _write_archive(archive)
 
         # Update staging with remaining
-        _STAGING_JSON.write_text(
-            json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
+        _write_staging(remaining)
 
         _log.info(
             "Anchor lifecycle: %d expired and archived, %d remaining",
@@ -1015,8 +1091,16 @@ async def archive_staging() -> dict[str, Any]:
     for c in candidates:
         status = c.get("review_status", "staged")
         if status in ("approved", "rejected", "verified", "expired"):
-            c["archived_at"] = now
-            c.setdefault("archived_reason", "manual_archive")
+            # Archival through the gated transition service (Spec
+            # 094 Stage 4, C094-10): the record keeps its status;
+            # the service stamps the archive fields and appends the
+            # trail entry. A record already carrying an
+            # archived_reason keeps it (the preservation the manual
+            # archive's setdefault has always applied).
+            archive_anchor_record(
+                c, actor="staging_archive",
+                reason=c.get("archived_reason") or "manual_archive",
+                timestamp=now)
             to_archive.append(c)
         else:
             remaining.append(c)
@@ -1032,12 +1116,10 @@ async def archive_staging() -> dict[str, Any]:
         except Exception:  # noqa: BLE001
             pass
     archive.extend(to_archive)
-    _ARCHIVE_JSON.write_text(
-        json.dumps(archive, indent=2, ensure_ascii=False), encoding="utf-8")
+    _write_archive(archive)
 
     # Update staging
-    _STAGING_JSON.write_text(
-        json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
+    _write_staging(remaining)
 
     _log.info("Manual archive: %d candidates archived, %d remaining",
               len(to_archive), len(remaining))
@@ -1086,8 +1168,7 @@ async def prune_rejected_staging() -> dict[str, Any]:
                 "remaining_staged": sum(1 for c in remaining if c.get("review_status") == "staged"),
                 "message": "No rejected candidates to prune."}
 
-    _STAGING_JSON.write_text(
-        json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
+    _write_staging(remaining)
     _log.info("Prune rejected: %d items removed, %d remaining", len(pruned), len(remaining))
 
     remaining_staged = sum(1 for c in remaining if c.get("review_status") == "staged")
@@ -1121,6 +1202,11 @@ async def cleanup_staging() -> dict[str, Any]:
     Use after reviewing a batch: approve the good ones, reject the bad ones,
     then call this once to flush everything and leave only unreviewed items.
     Returns {ok, archived, pruned, remaining_staged}.
+
+    Spec 094 Stage 4 (C094-10, C094-11): the verify transition is
+    effected through the gated transition service, by the named
+    human whose recorded evaluation it rests on, and both store
+    writes go through the verified write path.
     """
     if not _STAGING_JSON.exists():
         return {"ok": True, "archived": 0, "pruned": 0, "remaining_staged": 0,
@@ -1161,10 +1247,23 @@ async def cleanup_staging() -> dict[str, Any]:
                 remaining.append(c)
                 continue
             c = dict(c)
-            c["review_status"] = "verified"
+            # Gated transition service (Spec 094 Stage 4, C094-10):
+            # the verify transition is effected through the service
+            # by the named human whose recorded per-candidate
+            # evaluation the transition rests on (the Stage 3 gate
+            # above has just validated that evaluation), on the
+            # evaluation's own evidence citation; the archival stamp
+            # follows in the same act.
+            transition_anchor_status(
+                c, "verified",
+                actor=c.get("verification_evaluator") or "",
+                evidence_refs=[c["verification_evidence_ref"]]
+                if c.get("verification_evidence_ref") else [],
+                timestamp=now)
             c["verified_at"] = now
-            c["archived_at"] = now
-            c["archived_reason"] = "cleanup_action"
+            stamp_archive_fields(
+                c, actor=c.get("verification_evaluator") or "",
+                reason="cleanup_action", timestamp=now)
             to_archive.append(c)
         elif status == "rejected":
             pruned_count += 1  # dropped — no archive copy
@@ -1179,11 +1278,9 @@ async def cleanup_staging() -> dict[str, Any]:
             except Exception:  # noqa: BLE001
                 pass
         archive.extend(to_archive)
-        _ARCHIVE_JSON.write_text(
-            json.dumps(archive, indent=2, ensure_ascii=False), encoding="utf-8")
+        _write_archive(archive)
 
-    _STAGING_JSON.write_text(
-        json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
+    _write_staging(remaining)
 
     remaining_staged = sum(1 for c in remaining if c.get("review_status") == "staged")
     _log.info(
@@ -1255,6 +1352,11 @@ async def staging_verify_archive() -> dict[str, Any]:
     kind — the name now matches what the endpoint does. The old
     path remains as a deprecated alias (below) for the committed
     frontend build.
+
+    Spec 094 Stage 4 (C094-10, C094-11): the verify transition is
+    effected through the gated transition service, by the named
+    human whose recorded evaluation it rests on, and both store
+    writes go through the verified write path.
     """
     from glossa_lab.experiment_graph import (  # noqa: PLC0415
         get_graph_experiment,
@@ -1308,10 +1410,22 @@ async def staging_verify_archive() -> dict[str, Any]:
         if (c.get("review_status") == "approved"
                 and _approval_gate_refusal(c) is None
                 and verification_refusal(c) is None):
-            c["review_status"] = "verified"
+            # Gated transition service (Spec 094 Stage 4, C094-10):
+            # the verify transition is effected through the service
+            # by the named human whose recorded per-candidate
+            # evaluation the transition rests on, on the evaluation's
+            # own evidence citation; the archival stamp follows in
+            # the same act.
+            transition_anchor_status(
+                c, "verified",
+                actor=c.get("verification_evaluator") or "",
+                evidence_refs=[c["verification_evidence_ref"]]
+                if c.get("verification_evidence_ref") else [],
+                timestamp=now)
             c["verified_at"] = now
-            c["archived_at"] = now
-            c["archived_reason"] = "manual_verify_archive"
+            stamp_archive_fields(
+                c, actor=c.get("verification_evaluator") or "",
+                reason="manual_verify_archive", timestamp=now)
             to_archive.append(c)
         else:
             remaining.append(c)
@@ -1323,10 +1437,8 @@ async def staging_verify_archive() -> dict[str, Any]:
         except Exception:  # noqa: BLE001
             pass
     archive.extend(to_archive)
-    _ARCHIVE_JSON.write_text(
-        json.dumps(archive, indent=2, ensure_ascii=False), encoding="utf-8")
-    _STAGING_JSON.write_text(
-        json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
+    _write_archive(archive)
+    _write_staging(remaining)
     _log.info("verify-archive: %d candidates verified and archived", len(to_archive))
 
     # Find and queue the best anchored SA experiment
@@ -1592,6 +1704,12 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
     and an unregistered or self-referential class refuses the sign
     (reported in `blocked_evidence_class`).
 
+    Spec 094 Stage 4 (C094-10, C094-11): each promoted entry's
+    status change is effected through the gated transition service
+    (glossa_lab.anchor_transition), by the approver the record
+    itself names, and both store writes (the anchors file and the
+    archive) go through the verified write path.
+
     Returns:
       {ok, dry_run, promoted, skipped, blocked_no_evidence,
        blocked_unknown_grapheme, blocked_evidence_mismatch,
@@ -1794,8 +1912,7 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         fa_data["total"] = len(current_anchors)
         if new_coverage is not None and new_coverage > 0:
             fa_data["corpus_token_coverage"] = new_coverage
-        _FA_PATH.write_text(
-            json.dumps(fa_data, indent=2, ensure_ascii=False), encoding="utf-8")
+        _write_anchors(fa_data)
         _log.info(
             "promote_to_anchors: wrote %d new anchors; coverage %.4f → %s",
             len(promoted_signs), prev_coverage,
@@ -1808,17 +1925,24 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         # drops to 0), so the "Promote to Anchors" button re-appears every time.
         promoted_set: set[str] = set(promoted_signs)
         try:
-            updated_archive: list[dict] = [
-                {**c, "review_status": "promoted",
-                 "promoted_at": now_label}
-                if (c.get("sign") or c.get("sign_id", "")) in promoted_set
-                else c
-                for c in archive
-            ]
-            _ARCHIVE_JSON.write_text(
-                json.dumps(updated_archive, indent=2, ensure_ascii=False),
-                encoding="utf-8",
-            )
+            # Gated transition service (Spec 094 Stage 4, C094-10):
+            # each promoted entry's status change is effected
+            # through the service, by the approver the record itself
+            # names — the Stages 1-2 gates above have validated that
+            # identity and the pinned evidence from the record — on
+            # the record's own evidence reference.
+            updated_archive: list[dict] = []
+            for c in archive:
+                if (c.get("sign") or c.get("sign_id", "")) in promoted_set:
+                    c = dict(c)
+                    transition_anchor_status(
+                        c, "promoted", actor=c.get("approver") or "",
+                        evidence_refs=[c["evidence_ref"]]
+                        if c.get("evidence_ref") else [],
+                        timestamp=now_label)
+                    c["promoted_at"] = now_label
+                updated_archive.append(c)
+            _write_archive(updated_archive)
             _log.info("promote_to_anchors: marked %d archive entries as 'promoted'",
                       len(promoted_signs))
         except Exception as _ae:  # noqa: BLE001

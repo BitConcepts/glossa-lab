@@ -105,7 +105,7 @@ survive into its stage report.
   refuses an entry filed with neither outcome).
   *This does not establish:* that the searches behind not-found outcomes
   were adequate — adequacy is sampled under T202.
-- [ ] **T202 — The locator pass executed.** The full pass over all 184
+- [x] **T202 — The locator pass executed.** The full pass over all 184
   entries as a run under run-defs v1, cited by run id in the stage
   record; sampled locators verified against the cited source text.
   Claims: C091-1. Acceptance: **test** (the record's census is 184/184;

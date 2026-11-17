@@ -1,0 +1,522 @@
+{
+ "run_id": "study-20261117T105335Z-4d667e",
+ "sample_rule": "every entry carrying a locator (census), plus every 12th entry in sign order starting with the 1st, plus every entry whose phoneme-map consultation hit",
+ "n_sampled": 32,
+ "n_locators_in_record": 0,
+ "all_locators_verified": true,
+ "results": [
+  {
+   "sign": "M001",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M013",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M016",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M025",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M037",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M047",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M049",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M050",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M053",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M060",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M061",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M073",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M085",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M086",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M087",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M088",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M091",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M092",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M097",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M099",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M115",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M117",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M124",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M126",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M127",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M139",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M145",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M147",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M151",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M163",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M222",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  },
+  {
+   "sign": "M342",
+   "fields": {
+    "phonetic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    },
+    "semantic_reading": {
+     "filed_outcome": "not_found",
+     "rederived_outcome": "not_found",
+     "match": true
+    }
+   },
+   "verified": true
+  }
+ ],
+ "all_verified": true
+}

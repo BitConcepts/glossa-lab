@@ -10,7 +10,7 @@ Sources of record:
 
 - `glossa-indus/map/gap-register.md` (SHA-256 `ec7cf3bb86501385…`)
 - `specs/095-red-team-remediation/records/t404-run-2026-11-17.json` (SHA-256 `1254a6f0485c5c00…`)
-- `specs/095-red-team-remediation/tasks.md` (SHA-256 `1a2f36f6ce033c0f…`)
+- `specs/095-red-team-remediation/tasks.md` (SHA-256 `4051496047acbd79…`)
 
 ## Open items carried by the records
 
@@ -30,12 +30,8 @@ Sources of record:
 
 ### From Spec 095's own task states
 
-- T401: open (see the spec's tasks file; T403 stands at wireframes awaiting the owner's approval by name; T404's package verdict was FAIL and its remainders are the dashboard leg and the authenticated legs)
-- T402: open (see the spec's tasks file; T403 stands at wireframes awaiting the owner's approval by name; T404's package verdict was FAIL and its remainders are the dashboard leg and the authenticated legs)
 - T403: open (see the spec's tasks file; T403 stands at wireframes awaiting the owner's approval by name; T404's package verdict was FAIL and its remainders are the dashboard leg and the authenticated legs)
 - T404: open (see the spec's tasks file; T403 stands at wireframes awaiting the owner's approval by name; T404's package verdict was FAIL and its remainders are the dashboard leg and the authenticated legs)
-- T405: open (see the spec's tasks file; T403 stands at wireframes awaiting the owner's approval by name; T404's package verdict was FAIL and its remainders are the dashboard leg and the authenticated legs)
-- T406: open (see the spec's tasks file; T403 stands at wireframes awaiting the owner's approval by name; T404's package verdict was FAIL and its remainders are the dashboard leg and the authenticated legs)
 - T501: open (see the spec's tasks file; T403 stands at wireframes awaiting the owner's approval by name; T404's package verdict was FAIL and its remainders are the dashboard leg and the authenticated legs)
 - T502: open (see the spec's tasks file; T403 stands at wireframes awaiting the owner's approval by name; T404's package verdict was FAIL and its remainders are the dashboard leg and the authenticated legs)
 - T503: open (see the spec's tasks file; T403 stands at wireframes awaiting the owner's approval by name; T404's package verdict was FAIL and its remainders are the dashboard leg and the authenticated legs)

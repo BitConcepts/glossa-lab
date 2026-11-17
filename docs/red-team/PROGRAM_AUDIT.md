@@ -12,7 +12,7 @@ Sources of record:
 - `backend/reports/INDUS_FINAL_ANCHORS.json` (SHA-256 `df0cf620a0d66b71…`)
 - `glossa-indus/matrix/matrix.json` (SHA-256 `c879e3b4798f75ad…`)
 - `glossa-indus/map/program-map.json` (SHA-256 `a084ccbcad301aa5…`)
-- `specs/095-red-team-remediation/tasks.md` (SHA-256 `1a2f36f6ce033c0f…`)
+- `specs/095-red-team-remediation/tasks.md` (SHA-256 `4051496047acbd79…`)
 
 ## Census of record (recomputed by the generator)
 
@@ -46,12 +46,12 @@ Sources of record:
 - T302: complete
 - T303: complete
 - T304: complete
-- T401: open
-- T402: open
+- T401: complete
+- T402: complete
 - T403: open
 - T404: open
-- T405: open
-- T406: open
+- T405: complete
+- T406: complete
 - T501: open
 - T502: open
 - T503: open

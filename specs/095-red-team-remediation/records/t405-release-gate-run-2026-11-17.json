@@ -1,0 +1,68 @@
+{
+  "candidate_root": "/home/tpierson/glossa-work/spec095-s4/repo",
+  "components": {
+    "unit_tests": {
+      "status": "FAIL",
+      "detail": "evidence records verdict='fail' exit_code=1 (ref stage-4-record-2026-11-17.md, Test actuals: as run, part A 1 failed / 2891 passed and part B 1 failed / 22 passed; both failures were caused by this stage's own new files, both fixed in commit 3c7a7beb, and both files re-run green (30 passed; 17 passed). No clean full-union local run exists; the union re-run is CI's on the PR.)"
+    },
+    "integration_tests": {
+      "status": "FAIL",
+      "detail": "evidence records verdict='fail' exit_code=1 (ref records/t404-run-2026-11-17.json with records/t404-scoring-corrections.json (10 of 15 items pass as corrected))"
+    },
+    "frontend_tests": {
+      "status": "NOT_RUN",
+      "detail": "no evidence entry recorded for this component"
+    },
+    "end_to_end_tests": {
+      "status": "FAIL",
+      "detail": "evidence records verdict='fail' exit_code=1 (ref records/t404-run-2026-11-17.json with records/t404-scoring-corrections.json (2 of 8 steps as scored))"
+    },
+    "ledger_validation": {
+      "status": "PASS",
+      "detail": "ledger gate --all: summary: 29 PASS / 0 FAIL / 1 NOT-RUN"
+    },
+    "corpus_identity_verification": {
+      "status": "PASS",
+      "detail": "6 verified; absent-by-design: ['holdat_downloads_layer', 'indus_v3_firestore_strict']"
+    },
+    "anchor_regression": {
+      "status": "PASS",
+      "detail": "anchors register at pin, census 287 {'HIGH': 166, 'MEDIUM': 5, 'LOW': 3, 'CANDIDATE': 113}"
+    },
+    "claim_stage_validation": {
+      "status": "PASS",
+      "detail": "ledger intake validation clean over 1025 lines"
+    },
+    "provenance_completeness": {
+      "status": "PASS",
+      "detail": "contamination class: contamination class (Spec 095 T301, C095-7): 1025 presentations scanned, 0 flag(s)"
+    },
+    "security_checks": {
+      "status": "NOT_RUN",
+      "detail": "no evidence entry recorded for this component"
+    },
+    "accessibility_checks": {
+      "status": "FAIL",
+      "detail": "evidence records verdict='fail' exit_code=1 (ref records/t404-run-2026-11-17.json (A1 met: 0 critical; A2 unmet: color-contrast serious on all six surfaces, 29 nodes; keyboard passed))"
+    },
+    "reproducibility_smoke_test": {
+      "status": "PASS",
+      "detail": "evidence: python -m pytest tests/test_spec095_stage4_instantiation.py tests/test_spec095_release_gate.py tests/test_policy_sync_conformance.py (30 passed) and the V9 re-verification set (17 passed); corpus battery inside the full suite (recorded 2026-11-17, ref stage-4-record-2026-11-17.md, Test actuals)"
+    },
+    "public_claims_consistency": {
+      "status": "FAIL",
+      "detail": "research/indus/indus-anchor-model/README.md: stale claim presented as current (markers: 161-cohort-citation, 141/161-ratio, 161-bc-claim, stale-coverage, preprint-v2-as-current); no supersession banner"
+    }
+  },
+  "exception_problems": [],
+  "blocked_by": [
+    "unit_tests",
+    "integration_tests",
+    "frontend_tests",
+    "end_to_end_tests",
+    "security_checks",
+    "accessibility_checks",
+    "public_claims_consistency"
+  ],
+  "verdict": "BLOCKED"
+}

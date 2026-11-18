@@ -6,7 +6,7 @@ corrected draft before deposit preparation and is retained as a
 working record. The v11 text was frozen for deposit on
 2026-11-18, after the owner approved the corrected text for
 deposit the same day. The version DOI assigned to v11 is recorded
-here as %%VERSION_DOI%% until the deposit is made; the title page
+here as 10.5281/zenodo.24351957 until the deposit is made; the title page
 of the paper carries the concept DOI
 (10.5281/zenodo.20379070), which resolves to the latest version.
 
@@ -38,28 +38,38 @@ branch `preprint-v11-deposit`, in `glossa-corpus/indus/`:
 
 - Source: `pierson_2026_indus_decipherment_v11_deposited.tex`,
   SHA-256
-  `3174d692a4b225ebd785c961e5638de73efdc4b8e2212df6cc1dac5c953fc0ce`.
-  (In the repository the same bytes are the file
-  `glossa-corpus/indus/pierson_2026_indus_decipherment_v11_deposit.tex`
-  at the pin commit.)
+  `99048d311f997a437fa781e5ce6b1e1fa32a73b33dde8bd31f76aebf942c49c2`.
+  It differs from the repository text at the pin commit
+  (`glossa-corpus/indus/pierson_2026_indus_decipherment_v11_deposit.tex`)
+  in exactly two places: the version DOI (a placeholder token in
+  the pinned text, filled with 10.5281/zenodo.24351957) and the
+  printed word-count figure (corrected as described below).
 - PDF: `pierson_2026_indus_decipherment_preprint_v11_DEPOSITED.pdf`,
   SHA-256
-  `08490d342a024f434f23d178d2f3de5ffecbbd3b33ed35897c0a524778e523a9`.
+  `d926055aba58431e0179a3e246ba2c6f76388ae6a22ad7446879e2bd9e224517`.
 - Build: **39 pages**; LuaLaTeX (TeX Live 2026), two passes, zero
   errors, zero undefined references or citations.
-- Word count: **21,748** (method: `pdftotext | wc -w`); the
+- Word count: **22,051** (method: `pdftotext | wc -w`); the
   printed figure in the paper's end matter equals the measured
-  figure on the deposited build (rebuilt to the fixed point; the
-  §6 commit-string swap between the freeze build and the
-  deposited build does not change the count).
+  figure on the deposited build (rebuilt to the fixed point).
 - The freeze build at R′ (which names the branch's starting
   commit in §6): source SHA-256
   `9094d83952cd57493f974bfd99d4d1576f86d19d3f58b8f817b1c4afdfe3bc34`,
   PDF SHA-256
   `f9dc2e00cdf5f784214a8173f77071a5b86e16b1fe2d3dcb7e5fc2b9115020a8`,
-  39 pages, word count 21,748. The deposited text differs from
-  the freeze text in the one §6 commit string and in no other
-  sentence.
+  39 pages. The deposited text differs from the freeze text in
+  the one §6 commit string, the version DOI, and the printed
+  word-count figure, and in no other sentence.
+- **Placeholder rendering defect, disclosed.** The version DOI
+  was carried through the freeze and pin builds as a placeholder
+  token beginning with two percent characters. In LaTeX a percent
+  character opens a comment, so in those rendered builds the
+  remainder of the §6 provenance paragraph (about 300 words) did
+  not appear, and their rendered word count measured 21,748.
+  The source text was complete at every commit. The deposited
+  build, with the DOI in place, renders the paragraph in full;
+  its measured count, 22,051, is the paper's true count, and the
+  printed figure was corrected to it before deposit.
 
 ## How this text was reached
 
@@ -129,7 +139,7 @@ source itself is untouched (SHA-256
   out, and §6 names the revision commit at which the version's
   text was frozen. The draft-provenance paragraph is rewritten
   to its deposited form: this version is the deposited v11 text
-  (version DOI: %%VERSION_DOI%%), prepared from the deposited
+  (version DOI: 10.5281/zenodo.24351957), prepared from the deposited
   v10 text, identified by the freeze commit named in §6 and by
   this version note, deposited with it.
 - **Chronology note.** The plain-language chronology note at the
@@ -138,12 +148,13 @@ source itself is untouched (SHA-256
   adjusted to match ("One identification note belongs on the
   record").
 - **Word count.** Re-measured on the deposit build and printed
-  at the measured figure (21,748, above).
+  at the measured figure (22,051, above; see the placeholder
+  rendering defect disclosed in the identity section).
 - **End matter.** The end-matter line read "End of Preprint v11
   (draft)" in the text as first frozen. Before anything was
   deposited, the word was struck on the owner's direction (the
   line now reads "End of Preprint v11"), the text was rebuilt
-  to the fixed point (21,748 words), and the freeze chain on
+  to the fixed point, and the freeze chain on
   this branch was redone from the same starting commit: the
   first chain (freeze `b7e1b644…`, pin `e942137f…`) is
   superseded in full by R′ and the pin named above, and was
@@ -162,7 +173,7 @@ source itself is untouched (SHA-256
 
 ## Remaining deposit steps (for the deposit itself)
 
-- Replace %%VERSION_DOI%% in §6 and in this note with the v11
+- Replace 10.5281/zenodo.24351957 in §6 and in this note with the v11
   version DOI once the Zenodo draft exists, before upload; the
   swap is one token for one token, and the printed word count is
   re-verified on the rebuilt PDF at that step.

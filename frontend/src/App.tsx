@@ -13,6 +13,7 @@ import { ProgramHome } from "./components/ProgramHome";
 import { SystemGraphView } from "./components/SystemGraphView";
 import { DigestionBoard, effectiveStage } from "./components/DigestionBoard";
 import { ClaimsView } from "./components/ClaimsView";
+import { ResearcherDashboard } from "./components/ResearcherDashboard";
 import { FoundationCheckView } from "./components/FoundationCheckView";
 import { DiscoveryView } from "./components/Discovery/DiscoveryView";
 import { EvidenceSourcesView } from "./components/EvidenceSourcesView";
@@ -53,6 +54,7 @@ type Tab =
   | "programs" | "home" | "claims" | "digestion" | "evidence" | "data"
   | "analysis" | "experiments" | "system-graph" | "discovery" | "loop" | "reports"
   | "jobs" | "logs" | "status" | "settings" | "help"
+  | "researcher-dashboard"
   // Cloud edition (Spec 083): account self-service + the admin
   // surface. These tabs exist only while a cloud session is active.
   | "account" | "admin"
@@ -98,6 +100,7 @@ const VALID_TABS: ReadonlySet<string> = new Set([
   "programs", "home", "claims", "digestion", "evidence", "data", "analysis",
   "experiments", "system-graph", "discovery", "loop", "reports", "jobs", "status", "settings",
   "help", "foundation-check", "ai-tools", "builder", "privacy", "entropy", "signs", "timeline",
+  "researcher-dashboard",
   "account", "admin",
 ]);
 
@@ -105,7 +108,7 @@ const TAB_LABELS: Partial<Record<Tab, string>> = {
   programs: "Programs", home: "Home", claims: "Claims", digestion: "Digestion",
   evidence: "Evidence & sources", data: "Data", analysis: "Analysis",
   experiments: "Experiments", "system-graph": "System graph", discovery: "Discovery", loop: "Research loop",
-  reports: "Reports & ledger", jobs: "Jobs", logs: "Logs", status: "Status",
+  reports: "Reports & ledger", "researcher-dashboard": "Researcher dashboard", jobs: "Jobs", logs: "Logs", status: "Status",
   settings: "Settings", help: "Help", "foundation-check": "Foundation Check",
   account: "Account & security", admin: "Admin",
   "ai-tools": "AI Tools", builder: "Manage programs", privacy: "Privacy",
@@ -626,6 +629,7 @@ function AppContent() {
     { id: "discovery", label: "Discovery", icon: "◎", count: discoveryCount },
     { id: "loop", label: "Research loop", icon: "↻" },
     { id: "reports", label: "Reports & ledger", icon: "▨" },
+    { id: "researcher-dashboard", label: "Researcher dashboard", icon: "▥" },
   ];
   const adminInviteCount = useAdminInviteCount(cloud.isAdmin);
   const toolItems: NavItem[] = [
@@ -979,6 +983,7 @@ function AppContent() {
                     </div>
                   )}
                   {tab === "reports" && <ReportsView darkMode={darkMode} />}
+                  {tab === "researcher-dashboard" && <ResearcherDashboard darkMode={darkMode} />}
                   {tab === "jobs" && <JobsView />}
                   {tab === "logs" && (
                     <LogsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />

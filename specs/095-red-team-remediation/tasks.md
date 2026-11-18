@@ -154,13 +154,16 @@
 - [x] **T402 — the Indus instantiation.** The Indus record
   instantiates the model with zero changed facts, counts, or
   standings, proven by before/after census. (C095-11.)
-- [ ] **T403 — the dashboard home and feature set.** Wireframes
+- [x] **T403 — the dashboard home and feature set.** Wireframes
   approved by the owner by name; features built to them;
   Playwright desktop and mobile verification before any verified
   claim; refusals named per feature. (C095-12.)
   (Stage 4: wireframes filed in this spec's wireframes/
-  directory; the build awaits the owner's approval of the
-  wireframes by name — not ticked.)
+  directory. Build: owner approved the wireframes by name
+  2026-11-18; built and verified the same day — build record
+  records/t403-dashboard-build-record-2026-11-18.md, screenshot
+  set in records/t403-screenshots/. C095-12's build half is
+  discharged in the build record's terms.)
 - [ ] **T404 — the audit package run.** Functional checklist,
   eight-step new-researcher protocol, accessibility pass; scored
   against pre-fixed thresholds; failures filed with screenshots.
@@ -169,6 +172,11 @@
   FAIL — see the Stage 4 record; not ticked. Remainders: the
   dashboard leg after the T403 build, and the authenticated
   legs on the owner's sessions.)
+  (2026-11-18: the dashboard leg has now run against the built
+  dashboard — addendum records/t404-dashboard-leg-addendum-
+  2026-11-18.md: protocol 8/8 (P1 met), A1 not met, A2 met.
+  T404 remains unticked: the authenticated legs and the
+  remediation-scope decision stand.)
 - [x] **T405 — the composed release gate.** Thirteen components,
   results recorded per candidate, exceptions only as recorded
   owner-approved entries; the planted RT-03-shape stale claim

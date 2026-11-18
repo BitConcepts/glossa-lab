@@ -3197,3 +3197,318 @@ export const fetchIndusMapClaim = (claimId: string): Promise<IndusMapEnvelope> =
 
 export const fetchIndusMapClaimEvidence = (claimId: string): Promise<IndusMapEnvelope> =>
   request("GET", `/indus-map/claims/${claimId}/evidence`);
+
+// ── Researcher dashboard (Spec 095 T403) ─────────────────────────────
+//
+// The read model behind the researcher dashboard surface: every
+// figure is read from the program's records by the backend module
+// (glossa_lab/api/researcher_dashboard.py) at request time. The one
+// write is a contribution candidate, which lands in the research
+// loop's staging store under the Spec 094 candidate gates.
+
+export interface DashboardIdentifiability {
+  sign: string;
+  reading: string;
+  confidence: string;
+  n: number | null;
+  identifiable: boolean;
+  outcome: string;
+  record: string;
+}
+
+export interface DashboardHome {
+  as_of: Record<string, unknown> | null;
+  census: {
+    claims: number;
+    ledger_lines: number;
+    studies: number;
+    study_ids: string[];
+    anchors_total: number;
+    anchors_by_confidence: Record<string, number>;
+    anchors_strict: number;
+    sources: Record<string, string>;
+  };
+  claims_by_status: Record<string, number>;
+  falsifier_census: {
+    covered?: number;
+    total?: number;
+    gap_claims?: string[];
+  };
+  pending_validations: { count?: number; reason?: string } | null;
+  identifiability: DashboardIdentifiability[];
+  identifiability_record: string;
+  does_not_claim: string[];
+  recent_adjudications: {
+    date: string;
+    study: string;
+    outcome: string;
+    relation: string;
+    claims: string[];
+  }[];
+  recent_adjudications_basis: string;
+  freshness: { map_as_of: unknown; ledger_sha256_now: string | null; stale: boolean };
+}
+
+export const getDashboardHome = (): Promise<DashboardHome> =>
+  request("GET", "/researcher-dashboard/home");
+
+export interface DashboardProgramStatus {
+  census: DashboardHome["census"];
+  claims_by_status: Record<string, number>;
+  freshness: DashboardHome["freshness"];
+  blocked_items: { id: string | null; text: string; owner: string | null; owner_note: string }[];
+  blocked_items_source: string;
+  recent_landing_records: { spec: string; file: string; path: string; date: string | null }[];
+  recent_landing_records_basis: string;
+}
+
+export const getDashboardProgramStatus = (): Promise<DashboardProgramStatus> =>
+  request("GET", "/researcher-dashboard/program-status");
+
+export interface DashboardCorpus {
+  key: string;
+  name: string;
+  version: string;
+  source: string;
+  licensing: string;
+  orientation_basis: string;
+  identity_paths: string[];
+  identity_status: string;
+  explorable: boolean;
+  unavailable_reason: string | null;
+  verified_sha256?: string | null;
+  census?: unknown;
+}
+
+export const getDashboardCorpora = (): Promise<{ corpora: DashboardCorpus[] }> =>
+  request("GET", "/researcher-dashboard/corpora");
+
+export interface DashboardInscriptionSummary {
+  glossa_id: string;
+  artifact_type: string | null;
+  site_name: string | null;
+  sign_instance_count: number | null;
+  text_code_diplomatic: string | null;
+  rights_status: string | null;
+  source_system: string | null;
+}
+
+export interface DashboardInscriptions {
+  corpus: string;
+  total: number;
+  items: DashboardInscriptionSummary[];
+  facets: { sites: Record<string, number>; object_classes: Record<string, number> };
+  unavailable_reason: string | null;
+}
+
+export const getDashboardInscriptions = (
+  params: Record<string, string | number>,
+): Promise<DashboardInscriptions> => {
+  const qs = new URLSearchParams(
+    Object.entries(params).map(([k, v]) => [k, String(v)]),
+  ).toString();
+  return request("GET", `/researcher-dashboard/inscriptions?${qs}`);
+};
+
+export interface DashboardInscriptionDetail {
+  glossa_id: string;
+  layers: {
+    observation: Record<string, unknown>;
+    transcription: {
+      sign_id_scheme: string | null;
+      diplomatic: string | null;
+      normalized: string | null;
+      open_export: { diplomatic: string | null; source_system: string | null } | null;
+      positions: {
+        position: number;
+        token: string;
+        grapheme: string | null;
+        anchor_reading: {
+          sign: string;
+          reading: string | null;
+          confidence: string | null;
+          validation_status: string | null;
+        } | null;
+      }[];
+      crosswalk_coverage: number | null;
+      note: string;
+    };
+    hypothesis: {
+      readings_for_signs: {
+        sign: string;
+        reading: string | null;
+        confidence: string | null;
+        validation_status: string | null;
+      }[];
+      absent_reason: string | null;
+      note: string;
+    };
+    claim: {
+      claims: { id: string; statement: string; status: string; sign_refs: string[] }[];
+      absent_reason: string | null;
+    };
+  };
+}
+
+export const getDashboardInscription = (
+  glossaId: string,
+): Promise<DashboardInscriptionDetail> =>
+  request("GET", `/researcher-dashboard/inscriptions/${encodeURIComponent(glossaId)}`);
+
+export interface DashboardHypotheses {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  models: Record<string, any>[];
+  nonlinguistic_position: {
+    claim_id: string;
+    statement: string;
+    status: string;
+    falsifier: string | null;
+    does_not_establish: string | null;
+    basis: string;
+  } | null;
+  translations: { held: number; statement: string };
+  readings: {
+    sign: string;
+    reading: string | null;
+    confidence: string | null;
+    validation_status: string | null;
+    stage: string | null;
+    identifiability: DashboardIdentifiability | null;
+  }[];
+  readings_basis: string;
+}
+
+export const getDashboardHypotheses = (): Promise<DashboardHypotheses> =>
+  request("GET", "/researcher-dashboard/hypotheses");
+
+export interface DashboardClaimSummary {
+  id: string;
+  statement: string;
+  status: string;
+  stage: string | null;
+  population: string | null;
+  date: string | null;
+  falsifier_present: boolean;
+  sign_refs: string[];
+}
+
+export interface DashboardClaims {
+  total: number;
+  items: DashboardClaimSummary[];
+  falsifier_census: DashboardHome["falsifier_census"];
+  falsifier_gap_note: string;
+}
+
+export const getDashboardClaims = (
+  params: Record<string, string | number>,
+): Promise<DashboardClaims> => {
+  const qs = new URLSearchParams(
+    Object.entries(params)
+      .filter(([, v]) => v !== "")
+      .map(([k, v]) => [k, String(v)]),
+  ).toString();
+  return request("GET", `/researcher-dashboard/claims?${qs}`);
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type DashboardClaimDetail = Record<string, any>;
+
+export const getDashboardClaim = (claimId: string): Promise<DashboardClaimDetail> =>
+  request("GET", `/researcher-dashboard/claims/${encodeURIComponent(claimId)}`);
+
+export const getDashboardClaimExport = (claimId: string): Promise<DashboardClaimDetail> =>
+  request("GET", `/researcher-dashboard/claims/${encodeURIComponent(claimId)}/export`);
+
+export interface DashboardMatrix {
+  rows_total: number;
+  rows_with_cells: number;
+  empty_rows: number;
+  columns_total: number;
+  columns_by_class: Record<string, number>;
+  cells_total: number;
+  study_columns: string[];
+  drill_down: string;
+}
+
+export const getDashboardMatrix = (): Promise<DashboardMatrix> =>
+  request("GET", "/researcher-dashboard/matrix");
+
+export interface DashboardRunSummary {
+  run_id: string | null;
+  record: string | null;
+  act: string | null;
+  candidate: string | null;
+  semantics: string | null;
+  legacy: boolean;
+  missing: string[];
+  reproducible: boolean;
+  not_reproducible_reason: string | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  input_pins: Record<string, any>;
+}
+
+export interface DashboardResults {
+  label: string | null;
+  semantics_note: string;
+  runs: DashboardRunSummary[];
+  settling_runs: {
+    record: string;
+    scenario: string | null;
+    candidate: string | null;
+    semantics: string | null;
+    assigned_count: number | null;
+    assigned_share: number | null;
+    consistent: number | null;
+    conflicts: number;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    pins: Record<string, any>;
+  }[];
+}
+
+export const getDashboardResults = (): Promise<DashboardResults> =>
+  request("GET", "/researcher-dashboard/results");
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type DashboardResultDetail = Record<string, any>;
+
+export const getDashboardResult = (runId: string): Promise<DashboardResultDetail> =>
+  request("GET", `/researcher-dashboard/results/${encodeURIComponent(runId)}`);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type DashboardRerun = Record<string, any>;
+
+export const rerunDashboardResult = (runId: string): Promise<DashboardRerun> =>
+  request("POST", `/researcher-dashboard/results/${encodeURIComponent(runId)}/rerun`, {});
+
+export interface DashboardContribution {
+  contribution_id: string;
+  statement: string;
+  falsifier: string;
+  evidence_refs: string[];
+  does_not_establish: string | null;
+  subject_sign: string | null;
+  submitted_by: string;
+  submitted_at: string;
+  review_status: string;
+  stage: string | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  stage_history: Record<string, any>[];
+}
+
+export interface DashboardContributions {
+  contributions: DashboardContribution[];
+  boundaries: { research_assistant: string; approval: string; promotion: string };
+}
+
+export const getDashboardContributions = (): Promise<DashboardContributions> =>
+  request("GET", "/researcher-dashboard/contributions");
+
+export const submitDashboardContribution = (payload: {
+  statement: string;
+  falsifier: string;
+  evidence_refs: string[];
+  does_not_establish?: string;
+  subject_sign?: string;
+  submitted_by: string;
+}): Promise<DashboardContribution> =>
+  request("POST", "/researcher-dashboard/contributions", payload);

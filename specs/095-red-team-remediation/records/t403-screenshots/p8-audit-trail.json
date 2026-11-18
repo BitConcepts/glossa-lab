@@ -1,0 +1,358 @@
+{
+  "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+  "export_kind": "audit trail — the records themselves, not a summary",
+  "ledger_row": {
+    "aee_state": null,
+    "as_of": "2026-10-12",
+    "author": "Tristen Pierson",
+    "author_kind": "human",
+    "confidence_in_source": 0.6,
+    "confidence_text": null,
+    "date": "2026-11-01",
+    "does_not_establish": "What is not understood is more basic than the value itself: which sign, in which published sign list, this number refers to. Indus sign lists number signs differently, and a bare '900' cannot be matched to a drawn sign from this record. What would change the picture: the source table re-extracted with its sign list named and the sign image attached - at which point the record would become a claim that could be checked against the corpus. Until then this is a stated gap, not a claim with evidence.",
+    "evidence_refs": [
+      "ancient_writing_and_modern_technologies_51831ac9"
+    ],
+    "explanation_record": {
+      "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+      "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+      "author": "Tristen Pierson",
+      "author_kind": "human",
+      "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+      "content_hash": "b40117b17961e9daabd67622582668d4231458ceff373f8d6eec21d3d1a23cd0",
+      "drafter": "AI agent (Muse Spark, via Muse)",
+      "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book."
+    },
+    "falsifier": null,
+    "id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+    "kind": "claim",
+    "migration": {
+      "migrated_at": "2026-11-01",
+      "run_id": "migration-2026-11-01-stage1"
+    },
+    "population": "extracted",
+    "proposition_fingerprint": "35b24f994a2708ee93073c3439fd1ad87caee00ae28bec2a2c91c965e98c1729",
+    "sign_refs": [],
+    "sources": [
+      {
+        "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+        "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+        "path": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+        "role": "source_of_record",
+        "sha256": "3af26056574d7497928e4d8f2b68b881c9f33feb384bf140b26cd7fe58b0cc39",
+        "spec": null
+      }
+    ],
+    "stage": "created",
+    "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+    "statement": "Sign value: 900 / number six",
+    "status": "untested"
+  },
+  "map_claim": {
+    "id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+    "statement": "Sign value: 900 / number six",
+    "status": "untested",
+    "stage": "created",
+    "population": "extracted",
+    "author": "Tristen Pierson",
+    "author_kind": "human",
+    "as_of": "2026-10-12",
+    "date": "2026-11-01",
+    "falsifier": null,
+    "falsifier_counts": {
+      "present": 0,
+      "evaluable": null
+    },
+    "does_not_establish": "What is not understood is more basic than the value itself: which sign, in which published sign list, this number refers to. Indus sign lists number signs differently, and a bare '900' cannot be matched to a drawn sign from this record. What would change the picture: the source table re-extracted with its sign list named and the sign image attached - at which point the record would become a claim that could be checked against the corpus. Until then this is a stated gap, not a claim with evidence.",
+    "aee_state": null,
+    "displayed_score": {
+      "state": "empty"
+    },
+    "sign_refs": [],
+    "sources": [
+      {
+        "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+        "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+        "path": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+        "role": "source_of_record",
+        "sha256": "3af26056574d7497928e4d8f2b68b881c9f33feb384bf140b26cd7fe58b0cc39",
+        "spec": null
+      }
+    ],
+    "matrix_row": {
+      "cells": [
+        {
+          "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+          "column": "055",
+          "column_class": "studies",
+          "relation": "opposes",
+          "rule": "R3",
+          "citations": [
+            "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+            "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001#first_check"
+          ]
+        }
+      ],
+      "empty": false
+    },
+    "settling_bearing": null,
+    "annotations": [
+      {
+        "id": "annotation/ancient_writing_and_modern_technologies_51831ac9__ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+        "canonical_claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+        "sidecar": {
+          "path": "glossa-indus/claims/research_checks/ancient_writing_and_modern_technologies_51831ac9__ancient_writing_and_modern_technologies_51831ac9_sign_val_0001.research_check.json",
+          "sha256": "00022ab7d418b8eb516c03a424a4bdd4fd5015297b645aaf2e82f979ac0d2345"
+        },
+        "bearing": {
+          "advisory": true,
+          "checked_at": "2026-10-22T14:41:10.232213+00:00",
+          "gaps": 1,
+          "neighbors_surfaced": 34,
+          "protocol": "docs/paper-search-mcp.md#audit-protocol",
+          "sources_requested": [
+            "arxiv",
+            "crossref",
+            "openalex",
+            "semantic",
+            "core",
+            "europepmc"
+          ],
+          "stage": "research_check",
+          "verdict": null
+        }
+      }
+    ],
+    "evidence": {
+      "column_summary": {
+        "studies": {
+          "columns": 10,
+          "cells": 1
+        },
+        "documents": {
+          "columns": 316,
+          "cells": 0
+        },
+        "research_checks": {
+          "columns": 31,
+          "cells": 0
+        },
+        "anchors": {
+          "columns": 287,
+          "cells": 0
+        },
+        "corpus_texts": {
+          "columns": 0,
+          "cells": 0
+        }
+      },
+      "source_document": {
+        "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+        "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+        "path": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+        "role": "source_of_record",
+        "sha256": "3af26056574d7497928e4d8f2b68b881c9f33feb384bf140b26cd7fe58b0cc39",
+        "spec": null
+      },
+      "sign_records": []
+    }
+  },
+  "trail": {
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+    "record_kind": "claim",
+    "source_pointer": "glossa-indus/claims/extracted_claims",
+    "stage": {
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+      "stage_as_of": "2026-10-12",
+      "stamped": true,
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0001; no pre-existing field altered."
+        }
+      ],
+      "stage_history_count": 1,
+      "latest_transition": {
+        "from_stage": null,
+        "to_stage": "created",
+        "actor": "spec029-phase-d-restaging-migration",
+        "timestamp": "2026-10-12",
+        "evidence_refs": [
+          "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001"
+        ],
+        "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0001; no pre-existing field altered."
+      }
+    },
+    "verified_unexplained": false,
+    "evidence": [
+      {
+        "ref": "ancient_writing_and_modern_technologies_51831ac9",
+        "origin_group": "ancient_writing_and_modern_technologies_51831ac9",
+        "kind": "source_document"
+      },
+      {
+        "ref": "900 / number six",
+        "origin_group": "ancient_writing_and_modern_technologies_51831ac9",
+        "kind": "quote_fragment"
+      }
+    ],
+    "origin_groups": [
+      "ancient_writing_and_modern_technologies_51831ac9"
+    ],
+    "origin_group_count": 1,
+    "evidence_instances": [],
+    "merged_into": null,
+    "falsifier": {
+      "state": "absent",
+      "falsification_condition": null,
+      "sub_claims": {}
+    },
+    "stage_transitions": [
+      {
+        "event_type": "stage_transition",
+        "from_stage": null,
+        "to_stage": "created",
+        "actor": "spec029-phase-d-restaging-migration",
+        "actor_recorded": true,
+        "timestamp": "2026-10-12",
+        "evidence_refs": [
+          {
+            "ref": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+            "origin_group": "spec029-reclassification-ledger",
+            "kind": "stage_history"
+          }
+        ],
+        "falsifier_state_at_decision": "absent",
+        "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0001; no pre-existing field altered.",
+        "source_pointer": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001"
+      }
+    ],
+    "verdicts": [
+      {
+        "event_type": "verdict",
+        "verdict": "untested",
+        "actor": null,
+        "actor_recorded": false,
+        "timestamp": "2026-10-21T15:29:24.384311",
+        "evidence_refs": [
+          {
+            "ref": "ancient_writing_and_modern_technologies_51831ac9",
+            "origin_group": "ancient_writing_and_modern_technologies_51831ac9",
+            "kind": "source_document"
+          },
+          {
+            "ref": "900 / number six",
+            "origin_group": "ancient_writing_and_modern_technologies_51831ac9",
+            "kind": "quote_fragment"
+          }
+        ],
+        "falsifier_state_at_decision": "absent",
+        "not_understood": "What is not understood is more basic than the value itself: which sign, in which published sign list, this number refers to. Indus sign lists number signs differently, and a bare '900' cannot be matched to a drawn sign from this record. What would change the picture: the source table re-extracted with its sign list named and the sign image attached - at which point the record would become a claim that could be checked against the corpus. Until then this is a stated gap, not a claim with evidence.",
+        "not_understood_recorded": true,
+        "source_pointer": "glossa-indus/claims/extracted_claims"
+      }
+    ],
+    "bundle": null,
+    "gate_records": {
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+        "content_hash": "b40117b17961e9daabd67622582668d4231458ceff373f8d6eec21d3d1a23cd0",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book."
+      },
+      "digestion_record": null,
+      "adverse_digestion": null
+    },
+    "anchor_annotation": null,
+    "priority_entries": [],
+    "completeness": {
+      "complete": false,
+      "missing": [
+        "falsifier_state",
+        "actor"
+      ],
+      "fields": {
+        "evidence_refs": true,
+        "origin_groups": true,
+        "falsifier_state": false,
+        "actor": false,
+        "timestamp": true
+      }
+    }
+  },
+  "lineage": {
+    "source_document": {
+      "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+      "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+      "path": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+      "role": "source_of_record",
+      "sha256": "3af26056574d7497928e4d8f2b68b881c9f33feb384bf140b26cd7fe58b0cc39",
+      "spec": null
+    },
+    "sources": [
+      {
+        "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+        "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+        "path": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+        "role": "source_of_record",
+        "sha256": "3af26056574d7497928e4d8f2b68b881c9f33feb384bf140b26cd7fe58b0cc39",
+        "spec": null
+      }
+    ],
+    "evidence_refs": [
+      "ancient_writing_and_modern_technologies_51831ac9"
+    ],
+    "evidence_column_summary": {
+      "studies": {
+        "columns": 10,
+        "cells": 1
+      },
+      "documents": {
+        "columns": 316,
+        "cells": 0
+      },
+      "research_checks": {
+        "columns": 31,
+        "cells": 0
+      },
+      "anchors": {
+        "columns": 287,
+        "cells": 0
+      },
+      "corpus_texts": {
+        "columns": 0,
+        "cells": 0
+      }
+    },
+    "sign_records": [],
+    "note": "every evidence item is shown with the lineage the record carries for it; an item with no lineage is never displayed as evidence"
+  },
+  "matrix_cells": [
+    {
+      "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+      "column": "055",
+      "column_class": "studies",
+      "relation": "opposes",
+      "rule": "R3",
+      "citations": [
+        "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+        "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001#first_check"
+      ]
+    }
+  ],
+  "supersession": {
+    "supersedes": null,
+    "superseded_by": []
+  }
+}

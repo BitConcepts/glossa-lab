@@ -1,0 +1,208 @@
+{
+  "steps": {
+    "P1": {
+      "pass": true,
+      "evidence": "home census 994 claims; strongest readings carry NOT IDENTIFIABLE; does-not-claim panel present"
+    },
+    "P2": {
+      "pass": true,
+      "evidence": "program status renders blocked items with blockers, GR-088-01 named"
+    },
+    "P3": {
+      "pass": true,
+      "evidence": "explorer filters by sign 145, opens GLI-IND-0000206, four labelled layers, sign position selects its statements"
+    },
+    "P4": {
+      "pass": true,
+      "evidence": "hypothesis comparison: no translation held; nonlinguistic position present; 12 NOT IDENTIFIABLE markers"
+    },
+    "P5": {
+      "pass": true,
+      "evidence": "falsifier-absent class is exactly 9; opened claim ancient_writing_and_modern_technologies_51831ac9_sign_val_0001 with its detail and lineage"
+    },
+    "P6": {
+      "pass": true,
+      "evidence": "submission accepted to staging: Candidate RDC-20261118171355-001 is in the staging queue at stage “staged”. Submission implies no approval, verification, or promotion."
+    },
+    "P7": {
+      "pass": true,
+      "evidence": "legacy runs marked not reproducible with missing pieces named; T405 run re-ran on scratch: Re-run of settling-20261116T034814Z-3681c4 · corpus identity: verified · record written to scratch only: /tmp/glossa-rerun-diymi5hg/rerun-record.json\nassigned_count\trecorded: 94\tre-run: 94\nassigned_sh"
+    },
+    "P8": {
+      "pass": true,
+      "evidence": "audit trail downloaded as claim-audit-trail-ancient_writing_and_modern_technologies_51831ac9_sign_val_0001.json (16718 bytes)"
+    }
+  },
+  "axe": {
+    "home": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": 8
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "status": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": 4
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "inscriptions": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": 4
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "label",
+        "impact": "critical",
+        "nodes": 2
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      },
+      {
+        "id": "select-name",
+        "impact": "critical",
+        "nodes": 2
+      }
+    ],
+    "hypotheses": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": 4
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      },
+      {
+        "id": "scrollable-region-focusable",
+        "impact": "serious",
+        "nodes": 1
+      }
+    ],
+    "evidence": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": 4
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      },
+      {
+        "id": "select-name",
+        "impact": "critical",
+        "nodes": 3
+      }
+    ],
+    "reproduction": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "contribute": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": 4
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "label",
+        "impact": "critical",
+        "nodes": 4
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ]
+  },
+  "keyboard": {
+    "stops": [
+      "button[section-status]: Program status",
+      "button[section-inscriptions]: Inscription explorer",
+      "button[section-hypotheses]: Hypothesis comparison",
+      "button[section-evidence]: Evidence inspection",
+      "button[section-reproduction]: Experiment reproduction",
+      "button[section-contribute]: Researcher contribution",
+      "button: Open Program status",
+      "button: Open Inscription explorer",
+      "button: Open Hypothesis comparison",
+      "button: Open Evidence inspection",
+      "button: Open Experiment reproduction",
+      "button: Open Researcher contribution",
+      "body: GGlossa LabEpistemic research workbenchP",
+      "button: ProgramIndus Script Decipherment▾Deciphe",
+      "button: ⌂Home",
+      "button: §Claims31",
+      "button: ✓Digestion13",
+      "button: ▤Evidence & sources",
+      "button: ▦Data",
+      "button: ◈Analysis",
+      "button: ⬡Experiments",
+      "button: ⬡System graphnew",
+      "button: ◎Discovery446",
+      "button: ↻Research loop"
+    ],
+    "nav_reachable": true
+  },
+  "candidate": "T404 dashboard-leg candidate: sign M044 carries the value ku in syllabic slots.",
+  "supplementary_pass": "axe home + keyboard measured in a supplementary pass on the same instance and build (the main driver's same-hash navigation could not reset the app section state); see t404 addendum."
+}

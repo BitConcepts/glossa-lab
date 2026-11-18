@@ -290,6 +290,24 @@ def _dedr_support(reading: str) -> str | None:
     return None
 
 
+def create_staged_candidate(fields: dict) -> dict:
+    """Create one staging candidate record, at creation state.
+
+    Record CREATION is this module's own act: the loop's mined
+    candidates are born here with their creation state, and the
+    Spec 094 Stage 4 census pins candidate-creation literals to
+    this module for exactly that reason. A human-submitted
+    candidate (the researcher dashboard's contribution surface,
+    Spec 095 T403) is created through this same function, so a
+    candidate enters the staging store the same way however it
+    arrives: born "staged", carrying its gate fields on the
+    record, with no standing implied and no approver recorded —
+    approval is a later, separate, named-human act performed
+    through the transition service.
+    """
+    return {**fields, "review_status": "staged"}
+
+
 # ---------------------------------------------------------------------------
 # ResearchLoop
 # ---------------------------------------------------------------------------

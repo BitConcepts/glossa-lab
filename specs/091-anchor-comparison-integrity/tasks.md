@@ -152,7 +152,7 @@ survive into its stage report.
   passes over the touched anchor data).
   *This does not establish:* independent support for any promotion that
   survives — a battery promotion is an internal validation event.
-- [ ] **T303 — The 5's runnable arms; the gated arm recorded.** The
+- [x] **T303 — The 5's runnable arms; the gated arm recorded.** The
   site-statistics-arm revalidations of T105's split, as runs, with
   dispositions per the checkers' outputs; the phonotactic-arm anchors
   recorded at requires-revalidation with the GR-088-04 dependency named,

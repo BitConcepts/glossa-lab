@@ -1,0 +1,931 @@
+{
+ "run": {
+  "run_id": "study-20261118T151605Z-4c5c8b",
+  "surface": "study",
+  "tool": "spec091_stage3_site_stats.py --execute",
+  "tool_version": "site-stats arm v1 (Spec 091 Stage 3, T303)",
+  "started": "2026-11-18T15:16:05Z",
+  "finished": "2026-11-18T15:16:06Z",
+  "key": {
+   "surface": "study",
+   "command": "spec091_stage3_site_stats.py --execute",
+   "tool_version": "site-stats arm v1 (Spec 091 Stage 3, T303)",
+   "input_pins": {
+    "spec": "091-anchor-comparison-integrity",
+    "stage": "stage-3-single-line",
+    "frozen_artifacts": {
+     "wp5_audit_sha256": "c1382017f44d63e7e811b71b77917d9e3bfb40849f95806987135bae895ea52a",
+     "t105_split_sha256": "ae787ea2148591300b64012164098a5450638d408901f06b1f54e4fd34956347",
+     "anchors_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+     "corpus_sha256": "62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e",
+     "phase69_lineage_sha256": "24ef7c5c2773328e6517dacf2ec19630c20974213b469a7ab5f3ae9e96eef21f",
+     "site_stats_v2_sha256": "1e407232a6592d2d6092e41cc3b4c52fdb75d19f72189ceed70d2cc3e1e4da25"
+    },
+    "runner_sha256": "e035d89b39cdd7987b0a283364fc83fae3fb76cf831b7b3b913bfff2132445fb"
+   },
+   "seed": "no-seed",
+   "code_version": "f44cef92ac243ed1327fe81aa44f2a4a3b0dae68",
+   "environment_class": "mini-server/linux"
+  },
+  "determinism_class": "deterministic"
+ },
+ "result": {
+  "population": [
+   "M042",
+   "M046",
+   "M108",
+   "M176",
+   "M342"
+  ],
+  "results": [
+   {
+    "sign": "M042",
+    "reading": "vaN",
+    "disposition_rule": "R5b_restored_reading",
+    "n_corpus": 13,
+    "table": {
+     "position_bins": [
+      "initial",
+      "medial",
+      "terminal"
+     ],
+     "sites_included": [
+      "Harappa",
+      "Mohenjo-daro"
+     ],
+     "rows": [
+      [
+       8,
+       0,
+       0
+      ],
+      [
+       3,
+       0,
+       0
+      ]
+     ],
+     "sites_excluded": [
+      {
+       "site": "Banawali",
+       "counts": [
+        1,
+        0,
+        0
+       ],
+       "total": 1
+      },
+      {
+       "site": "Chanhu-daro",
+       "counts": [
+        1,
+        0,
+        0
+       ],
+       "total": 1
+      },
+      {
+       "site": "Dholavira",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      },
+      {
+       "site": "Kalibangan",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      },
+      {
+       "site": "Lothal",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      },
+      {
+       "site": "Rakhigarhi",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      },
+      {
+       "site": "Surkotada",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      }
+     ],
+     "all_site_counts": {
+      "Banawali": [
+       1,
+       0,
+       0
+      ],
+      "Chanhu-daro": [
+       1,
+       0,
+       0
+      ],
+      "Dholavira": [
+       0,
+       0,
+       0
+      ],
+      "Harappa": [
+       8,
+       0,
+       0
+      ],
+      "Kalibangan": [
+       0,
+       0,
+       0
+      ],
+      "Lothal": [
+       0,
+       0,
+       0
+      ],
+      "Mohenjo-daro": [
+       3,
+       0,
+       0
+      ],
+      "Rakhigarhi": [
+       0,
+       0,
+       0
+      ],
+      "Surkotada": [
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "checker": {
+     "status": "INSUFFICIENT_DATA",
+     "method": "Pearson chi-square test of independence (no Yates correction); asymptotic p-value from the regularized upper incomplete gamma function",
+     "statistic": null,
+     "df": null,
+     "p_value": null,
+     "expected_counts": null,
+     "min_expected_count": null,
+     "sparse_table_warning": false,
+     "warnings": [],
+     "notes": [
+      "dropped column 1: column total is zero",
+      "dropped column 2: column total is zero",
+      "fewer than two usable rows or columns, or a grand total of zero, after zero-margin handling; a chi-square test of independence is not defined"
+     ],
+     "error": null,
+     "n_rows": 2,
+     "n_cols": 1,
+     "grand_total": 11,
+     "module_version": "site-stats-v2.0.0"
+    },
+    "outcome_kind": "insufficient_data",
+    "to_disposition": "insufficient_evidence"
+   },
+   {
+    "sign": "M046",
+    "reading": "kaL",
+    "disposition_rule": "R5b_restored_reading",
+    "n_corpus": 11,
+    "table": {
+     "position_bins": [
+      "initial",
+      "medial",
+      "terminal"
+     ],
+     "sites_included": [
+      "Harappa"
+     ],
+     "rows": [
+      [
+       4,
+       0,
+       0
+      ]
+     ],
+     "sites_excluded": [
+      {
+       "site": "Banawali",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      },
+      {
+       "site": "Chanhu-daro",
+       "counts": [
+        1,
+        0,
+        0
+       ],
+       "total": 1
+      },
+      {
+       "site": "Dholavira",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      },
+      {
+       "site": "Kalibangan",
+       "counts": [
+        1,
+        0,
+        0
+       ],
+       "total": 1
+      },
+      {
+       "site": "Lothal",
+       "counts": [
+        1,
+        0,
+        0
+       ],
+       "total": 1
+      },
+      {
+       "site": "Mohenjo-daro",
+       "counts": [
+        2,
+        0,
+        0
+       ],
+       "total": 2
+      },
+      {
+       "site": "Rakhigarhi",
+       "counts": [
+        2,
+        0,
+        0
+       ],
+       "total": 2
+      },
+      {
+       "site": "Surkotada",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      }
+     ],
+     "all_site_counts": {
+      "Banawali": [
+       0,
+       0,
+       0
+      ],
+      "Chanhu-daro": [
+       1,
+       0,
+       0
+      ],
+      "Dholavira": [
+       0,
+       0,
+       0
+      ],
+      "Harappa": [
+       4,
+       0,
+       0
+      ],
+      "Kalibangan": [
+       1,
+       0,
+       0
+      ],
+      "Lothal": [
+       1,
+       0,
+       0
+      ],
+      "Mohenjo-daro": [
+       2,
+       0,
+       0
+      ],
+      "Rakhigarhi": [
+       2,
+       0,
+       0
+      ],
+      "Surkotada": [
+       0,
+       0,
+       0
+      ]
+     }
+    },
+    "checker": {
+     "status": "INSUFFICIENT_DATA",
+     "method": "Pearson chi-square test of independence (no Yates correction); asymptotic p-value from the regularized upper incomplete gamma function",
+     "statistic": null,
+     "df": null,
+     "p_value": null,
+     "expected_counts": null,
+     "min_expected_count": null,
+     "sparse_table_warning": false,
+     "warnings": [],
+     "notes": [
+      "dropped column 1: column total is zero",
+      "dropped column 2: column total is zero",
+      "fewer than two usable rows or columns, or a grand total of zero, after zero-margin handling; a chi-square test of independence is not defined"
+     ],
+     "error": null,
+     "n_rows": 1,
+     "n_cols": 1,
+     "grand_total": 4,
+     "module_version": "site-stats-v2.0.0"
+    },
+    "outcome_kind": "insufficient_data",
+    "to_disposition": "insufficient_evidence"
+   },
+   {
+    "sign": "M108",
+    "reading": "kaL",
+    "disposition_rule": "R5b_restored_reading",
+    "n_corpus": 5,
+    "table": {
+     "position_bins": [
+      "initial",
+      "medial",
+      "terminal"
+     ],
+     "sites_included": [],
+     "rows": [],
+     "sites_excluded": [
+      {
+       "site": "Banawali",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      },
+      {
+       "site": "Chanhu-daro",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      },
+      {
+       "site": "Dholavira",
+       "counts": [
+        0,
+        1,
+        0
+       ],
+       "total": 1
+      },
+      {
+       "site": "Harappa",
+       "counts": [
+        0,
+        2,
+        0
+       ],
+       "total": 2
+      },
+      {
+       "site": "Kalibangan",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      },
+      {
+       "site": "Lothal",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      },
+      {
+       "site": "Mohenjo-daro",
+       "counts": [
+        0,
+        1,
+        0
+       ],
+       "total": 1
+      },
+      {
+       "site": "Rakhigarhi",
+       "counts": [
+        0,
+        0,
+        0
+       ],
+       "total": 0
+      },
+      {
+       "site": "Surkotada",
+       "counts": [
+        0,
+        1,
+        0
+       ],
+       "total": 1
+      }
+     ],
+     "all_site_counts": {
+      "Banawali": [
+       0,
+       0,
+       0
+      ],
+      "Chanhu-daro": [
+       0,
+       0,
+       0
+      ],
+      "Dholavira": [
+       0,
+       1,
+       0
+      ],
+      "Harappa": [
+       0,
+       2,
+       0
+      ],
+      "Kalibangan": [
+       0,
+       0,
+       0
+      ],
+      "Lothal": [
+       0,
+       0,
+       0
+      ],
+      "Mohenjo-daro": [
+       0,
+       1,
+       0
+      ],
+      "Rakhigarhi": [
+       0,
+       0,
+       0
+      ],
+      "Surkotada": [
+       0,
+       1,
+       0
+      ]
+     }
+    },
+    "checker": {
+     "status": "INSUFFICIENT_DATA",
+     "method": "Pearson chi-square test of independence (no Yates correction); asymptotic p-value from the regularized upper incomplete gamma function",
+     "statistic": null,
+     "df": null,
+     "p_value": null,
+     "expected_counts": null,
+     "min_expected_count": null,
+     "sparse_table_warning": false,
+     "warnings": [],
+     "notes": [
+      "empty table: no counts supplied"
+     ],
+     "error": null,
+     "n_rows": null,
+     "n_cols": null,
+     "grand_total": null,
+     "module_version": "site-stats-v2.0.0"
+    },
+    "outcome_kind": "insufficient_data",
+    "to_disposition": "insufficient_evidence"
+   },
+   {
+    "sign": "M176",
+    "reading": "an/aṇ",
+    "disposition_rule": "R5c_phase48_cited_as_support",
+    "n_corpus": 356,
+    "table": {
+     "position_bins": [
+      "initial",
+      "medial",
+      "terminal"
+     ],
+     "sites_included": [
+      "Banawali",
+      "Chanhu-daro",
+      "Dholavira",
+      "Harappa",
+      "Kalibangan",
+      "Lothal",
+      "Mohenjo-daro",
+      "Surkotada"
+     ],
+     "rows": [
+      [
+       2,
+       7,
+       0
+      ],
+      [
+       2,
+       14,
+       3
+      ],
+      [
+       1,
+       14,
+       6
+      ],
+      [
+       4,
+       74,
+       25
+      ],
+      [
+       0,
+       22,
+       3
+      ],
+      [
+       2,
+       20,
+       7
+      ],
+      [
+       2,
+       110,
+       21
+      ],
+      [
+       0,
+       12,
+       3
+      ]
+     ],
+     "sites_excluded": [
+      {
+       "site": "Rakhigarhi",
+       "counts": [
+        0,
+        2,
+        0
+       ],
+       "total": 2
+      }
+     ],
+     "all_site_counts": {
+      "Banawali": [
+       2,
+       7,
+       0
+      ],
+      "Chanhu-daro": [
+       2,
+       14,
+       3
+      ],
+      "Dholavira": [
+       1,
+       14,
+       6
+      ],
+      "Harappa": [
+       4,
+       74,
+       25
+      ],
+      "Kalibangan": [
+       0,
+       22,
+       3
+      ],
+      "Lothal": [
+       2,
+       20,
+       7
+      ],
+      "Mohenjo-daro": [
+       2,
+       110,
+       21
+      ],
+      "Rakhigarhi": [
+       0,
+       2,
+       0
+      ],
+      "Surkotada": [
+       0,
+       12,
+       3
+      ]
+     }
+    },
+    "checker": {
+     "status": "OK",
+     "method": "Pearson chi-square test of independence (no Yates correction); asymptotic p-value from the regularized upper incomplete gamma function",
+     "statistic": 22.858877313772798,
+     "df": 14,
+     "p_value": 0.0626051531789166,
+     "expected_counts": [
+      [
+       0.3305084745762712,
+       6.940677966101695,
+       1.728813559322034
+      ],
+      [
+       0.6977401129943502,
+       14.652542372881356,
+       3.6497175141242937
+      ],
+      [
+       0.7711864406779662,
+       16.194915254237287,
+       4.033898305084746
+      ],
+      [
+       3.7824858757062145,
+       79.4322033898305,
+       19.785310734463277
+      ],
+      [
+       0.9180790960451978,
+       19.279661016949152,
+       4.80225988700565
+      ],
+      [
+       1.0649717514124293,
+       22.364406779661017,
+       5.570621468926554
+      ],
+      [
+       4.8841807909604515,
+       102.5677966101695,
+       25.548022598870055
+      ],
+      [
+       0.5508474576271186,
+       11.567796610169491,
+       2.8813559322033897
+      ]
+     ],
+     "min_expected_count": 0.3305084745762712,
+     "sparse_table_warning": true,
+     "warnings": [
+      "sparse table: smallest expected count is 0.3305 (< 5); the asymptotic p-value may be inaccurate for this table"
+     ],
+     "notes": [],
+     "error": null,
+     "n_rows": 8,
+     "n_cols": 3,
+     "grand_total": 354,
+     "module_version": "site-stats-v2.0.0"
+    },
+    "outcome_kind": "difference_not_detected",
+    "to_disposition": "insufficient_evidence"
+   },
+   {
+    "sign": "M342",
+    "reading": "ay/ā",
+    "disposition_rule": "R5c_phase48_cited_as_support",
+    "n_corpus": 584,
+    "table": {
+     "position_bins": [
+      "initial",
+      "medial",
+      "terminal"
+     ],
+     "sites_included": [
+      "Banawali",
+      "Chanhu-daro",
+      "Dholavira",
+      "Harappa",
+      "Kalibangan",
+      "Lothal",
+      "Mohenjo-daro",
+      "Rakhigarhi",
+      "Surkotada"
+     ],
+     "rows": [
+      [
+       1,
+       17,
+       0
+      ],
+      [
+       0,
+       18,
+       2
+      ],
+      [
+       0,
+       25,
+       6
+      ],
+      [
+       2,
+       167,
+       17
+      ],
+      [
+       0,
+       37,
+       4
+      ],
+      [
+       4,
+       41,
+       3
+      ],
+      [
+       4,
+       170,
+       34
+      ],
+      [
+       0,
+       10,
+       2
+      ],
+      [
+       1,
+       17,
+       2
+      ]
+     ],
+     "sites_excluded": [],
+     "all_site_counts": {
+      "Banawali": [
+       1,
+       17,
+       0
+      ],
+      "Chanhu-daro": [
+       0,
+       18,
+       2
+      ],
+      "Dholavira": [
+       0,
+       25,
+       6
+      ],
+      "Harappa": [
+       2,
+       167,
+       17
+      ],
+      "Kalibangan": [
+       0,
+       37,
+       4
+      ],
+      "Lothal": [
+       4,
+       41,
+       3
+      ],
+      "Mohenjo-daro": [
+       4,
+       170,
+       34
+      ],
+      "Rakhigarhi": [
+       0,
+       10,
+       2
+      ],
+      "Surkotada": [
+       1,
+       17,
+       2
+      ]
+     }
+    },
+    "checker": {
+     "status": "OK",
+     "method": "Pearson chi-square test of independence (no Yates correction); asymptotic p-value from the regularized upper incomplete gamma function",
+     "statistic": 25.246836667200593,
+     "df": 16,
+     "p_value": 0.06559048567133662,
+     "expected_counts": [
+      [
+       0.3698630136986301,
+       15.472602739726028,
+       2.1575342465753424
+      ],
+      [
+       0.410958904109589,
+       17.19178082191781,
+       2.3972602739726026
+      ],
+      [
+       0.636986301369863,
+       26.647260273972602,
+       3.7157534246575343
+      ],
+      [
+       3.8219178082191783,
+       159.8835616438356,
+       22.294520547945204
+      ],
+      [
+       0.8424657534246576,
+       35.24315068493151,
+       4.914383561643835
+      ],
+      [
+       0.9863013698630136,
+       41.26027397260274,
+       5.7534246575342465
+      ],
+      [
+       4.273972602739726,
+       178.7945205479452,
+       24.931506849315067
+      ],
+      [
+       0.2465753424657534,
+       10.315068493150685,
+       1.4383561643835616
+      ],
+      [
+       0.410958904109589,
+       17.19178082191781,
+       2.3972602739726026
+      ]
+     ],
+     "min_expected_count": 0.2465753424657534,
+     "sparse_table_warning": true,
+     "warnings": [
+      "sparse table: smallest expected count is 0.2466 (< 5); the asymptotic p-value may be inaccurate for this table"
+     ],
+     "notes": [],
+     "error": null,
+     "n_rows": 9,
+     "n_cols": 3,
+     "grand_total": 584,
+     "module_version": "site-stats-v2.0.0"
+    },
+    "outcome_kind": "difference_not_detected",
+    "to_disposition": "insufficient_evidence"
+   }
+  ],
+  "census": {
+   "n_tested": 5,
+   "by_disposition": {
+    "insufficient_evidence": 5
+   },
+   "by_outcome_kind": {
+    "insufficient_data": 3,
+    "difference_not_detected": 2
+   },
+   "n_checker_ok": 2,
+   "n_checker_insufficient_data": 3
+  },
+  "phonotactic_arm": {
+   "required_for": [],
+   "gated_dispositions": [],
+   "dependency": "GR-088-04 — WP2: the phonotactic certification leg (the linguist-certified rule set for phonotactics_v2)",
+   "basis": "Spec 091 Stage 1 T105 determination (records/t105-checker-arm-split.json): the phonotactic arm is required for none of the five and none is undeterminable, so the gated set is empty, no anchor is recorded at requires_revalidation on this dependency by this leg, and no phonotactic verdict is produced for any anchor (C091-11)."
+  },
+  "acts": "specs/091-anchor-comparison-integrity/records/t303-reclassification-acts.json",
+  "acts_sha256": "0950ab83cbbfc42f0ba9f53f69a4562b6da9cd98ee6f744fda80df6f2996a6b9"
+ }
+}

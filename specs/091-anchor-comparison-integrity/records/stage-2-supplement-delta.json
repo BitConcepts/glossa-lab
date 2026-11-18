@@ -1,0 +1,1090 @@
+{
+ "delta_of": {
+  "t202_artifact": "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2_locators.json",
+  "t202_run_id": "study-20261117T105335Z-4d667e",
+  "supplement_artifact": "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2_locators_supplement.json",
+  "supplement_run_id": "study-20261117T134331Z-7ca68f"
+ },
+ "merge_rule": "read the T202 artifact and the supplement together; per entry per field, the supplement's outcome wins. The T202 artifact and its records are not modified.",
+ "summary": {
+  "n_entries": 184,
+  "phonetic_reading": {
+   "changed": 9,
+   "unchanged": 175
+  },
+  "semantic_reading": {
+   "changed": 0,
+   "unchanged": 184
+  },
+  "t202_census": {
+   "phonetic_reading": {
+    "located": 0,
+    "not_found": 184
+   },
+   "semantic_reading": {
+    "located": 0,
+    "not_found": 184
+   }
+  },
+  "supplement_census": {
+   "phonetic_reading": {
+    "located": 9,
+    "not_found": 175
+   },
+   "semantic_reading": {
+    "located": 0,
+    "not_found": 184
+   }
+  }
+ },
+ "changes": [
+  {
+   "sign": "M047",
+   "field": "phonetic_reading",
+   "from": "not_found",
+   "to": "located",
+   "locator": {
+    "work": "Parpola 1994, Deciphering the Indus Script (Cambridge University Press)",
+    "pinpoint": "\u00a710.4, pp. 194\u2013195 (the 'number' + 'fish' sequences and the doubled plain 'fish' sign), and Epilogue fig. 15.2 no. 1, p. 275",
+    "sign_scheme": "the plain 'fish' sign, identified pictorially in the work; tied to this entry by the phoneme compilation's iconic record for Parpola no. 47 ('plain fish') and the crosswalk",
+    "cited_value": "m\u012bn",
+    "evidence": "\u00a710.4 reads the '7' + 'fish' sequence e\u1e3bu-m\u012bn and ties the doubled plain 'fish' signs to the root m\u012bn ('to twinkle, of stars'); fig. 15.2 no. 1 gives the fish sign's shared phonetic shape as m\u012bn",
+    "verification": "candidate hit verified against the rendered page image of the held scan (not the OCR text alone)"
+   }
+  },
+  {
+   "sign": "M087",
+   "field": "phonetic_reading",
+   "from": "not_found",
+   "to": "located",
+   "locator": {
+    "work": "Parpola 1994, Deciphering the Indus Script (Cambridge University Press)",
+    "pinpoint": "\u00a713.2, pp. 230\u2013231, and Epilogue fig. 15.2 nos. 14\u201315, p. 276",
+    "sign_scheme": "the sign of 'two long vertical strokes' (the 'intermediate space' of fig. 15.2), identified pictorially in the work; tied to this entry by the phoneme compilation's iconic record for Parpola no. 87",
+    "cited_value": "ve\u1e37",
+    "evidence": "\u00a713.2: 'the phonetic shape ve\u1e37 / v\u0113\u1e37 has emerged as the shared component X in the compounds Muruku-X and X-m\u012bn', the sign being the 'two long vertical strokes' pictogram, whose rebus is ve\u1e37i 'intervening space'; fig. 15.2 nos. 14\u201315 give v\u0113\u1e37(i) for the same sign",
+    "verification": "candidate hit verified against the rendered page image of the held scan (not the OCR text alone)"
+   }
+  },
+  {
+   "sign": "M088",
+   "field": "phonetic_reading",
+   "from": "not_found",
+   "to": "located",
+   "locator": {
+    "work": "Parpola 1994, Deciphering the Indus Script (Cambridge University Press)",
+    "pinpoint": "\u00a710.4, p. 194 (the '3' + 'fish' sequence), and Epilogue fig. 15.2 no. 3, p. 275",
+    "sign_scheme": "the numeral sign '3' (three vertical strokes), identified in the work as the first member of the '3' + 'fish' sequence; tied to this entry by the phoneme compilation's iconic record for Parpola no. 88 ('3 vertical strokes')",
+    "cited_value": "mu(m)",
+    "evidence": "\u00a710.4: the '3' + 'fish' sequence 'yields in Dravidian mu-m-m\u012bn, (constellation of) three stars', mu- being 'the monomorphemic adjective form of the numeral 3'; fig. 15.2 no. 3 gives the component reading mu(m)",
+    "verification": "candidate hit verified against the rendered page image of the held scan (not the OCR text alone)"
+   }
+  },
+  {
+   "sign": "M091",
+   "field": "phonetic_reading",
+   "from": "not_found",
+   "to": "located",
+   "locator": {
+    "work": "Parpola 1994, Deciphering the Indus Script (Cambridge University Press)",
+    "pinpoint": "\u00a710.4, p. 194, and Epilogue fig. 15.2 no. 4, p. 275",
+    "sign_scheme": "the numeral sign '6' (six strokes), identified in the work as the first member of the '6' + 'fish' sequence; tied to this entry by the phoneme compilation's record for Parpola no. 91",
+    "cited_value": "aru",
+    "evidence": "\u00a710.4: 'The most frequent sequence [fish + 6] corresponds to the native name of the Pleiades in Old Tamil: a\u1e5fu-m\u012b\u1e49, literally (the constellation consisting of) six (visible) stars'; fig. 15.2 no. 4 gives (*c)a\u1e5fu + m\u012bn",
+    "verification": "candidate hit verified against the rendered page image of the held scan (not the OCR text alone)"
+   }
+  },
+  {
+   "sign": "M092",
+   "field": "phonetic_reading",
+   "from": "not_found",
+   "to": "located",
+   "locator": {
+    "work": "Parpola 1994, Deciphering the Indus Script (Cambridge University Press)",
+    "pinpoint": "\u00a710.4, p. 195, and Epilogue fig. 15.2 no. 5, p. 275",
+    "sign_scheme": "the numeral sign '7' (seven strokes), identified in the work as the first member of the '7' + 'fish' sequence; tied to this entry by the phoneme compilation's record for Parpola no. 92",
+    "cited_value": "elu",
+    "evidence": "\u00a710.4: the seal with 'the sole text 7 + fish' \u2014 'The latter sequence gives in Dravidian e\u1e3bu-m\u012bn, (constellation of) seven stars, which is the Old Tamil name of the Ursa Major'; fig. 15.2 no. 5 gives e\u1e3bu + m\u012bn",
+    "verification": "candidate hit verified against the rendered page image of the held scan (not the OCR text alone)"
+   }
+  },
+  {
+   "sign": "M175",
+   "field": "phonetic_reading",
+   "from": "not_found",
+   "to": "located",
+   "locator": {
+    "work": "Parpola 2010, A Dravidian solution to the Indus script problem (World Classical Tamil Conference lecture)",
+    "pinpoint": "p. 24 (the interpretation of the first sign of seal M-241, introduced as 'not included in my 1994 book')",
+    "sign_scheme": "the sign depicting the spinner's spindle, identified pictorially in the work; tied to this entry by the crosswalk provenance's recorded depiction for M175 ('spinner's spindle')",
+    "cited_value": "katir",
+    "evidence": "'It seems to depict the traditional Indian spinner's spindle... In Proto-Dravidian it was called katir, which is homophonous with the root katir, to shine, be radiant' \u2014 the work's rebus construction throughout attributes the depicted object's Dravidian name as the sign's value",
+    "verification": "born-digital text layer of the recovered PDF, read directly"
+   }
+  },
+  {
+   "sign": "M261",
+   "field": "phonetic_reading",
+   "from": "not_found",
+   "to": "located",
+   "locator": {
+    "work": "Parpola 1994, Deciphering the Indus Script (Cambridge University Press)",
+    "pinpoint": "\u00a713.1, p. 229, and Epilogue fig. 15.2 no. 11, p. 276",
+    "sign_scheme": "the sign of 'two intersecting circles', identified pictorially in the work; tied to this entry by the crosswalk provenance's recorded depiction for M261 ('two intersecting circles')",
+    "cited_value": "muruku",
+    "evidence": "\u00a713.1: 'strongly supports the interpretation that the sign of two intersecting circles engraved on many Harappan bangles denotes the Dravidian word muruku, which means both bangle and son, boy child'; fig. 15.2 no. 11 gives muruku for the ring(s)/bangle(s) sign",
+    "verification": "candidate hit verified against the rendered page image of the held scan (not the OCR text alone)"
+   }
+  },
+  {
+   "sign": "M281",
+   "field": "phonetic_reading",
+   "from": "not_found",
+   "to": "located",
+   "locator": {
+    "work": "Parpola 1994, Deciphering the Indus Script (Cambridge University Press)",
+    "pinpoint": "\u00a713.1, pp. 229\u2013230, and Epilogue fig. 15.2 no. 13, p. 276",
+    "sign_scheme": "the sign depicting the five-striped palm squirrel, identified pictorially in the work (\u00a77.2, fig. 7.1, as cited in \u00a713.1); tied to this entry by the crosswalk provenance's recorded depiction for M281 ('five-striped palm squirrel')",
+    "cited_value": "pi\u1e37\u1e37ai",
+    "evidence": "\u00a713.1 introduces the sign (in seal M-1202, after the 'two intersecting circles' sign) as 'depicting the five-striped palm squirrel' and gives the Tamil name a\u1e47il / a\u1e47i\u1e5f pi\u1e37\u1e37ai; p. 230 develops pi\u1e37\u1e37ai for the squirrel and the Muruku compounds; fig. 15.2 no. 13 gives muruku + pi\u1e37\u1e37ay for ring(s)/bangle(s) + palm squirrel",
+    "verification": "candidate hit verified against the rendered page image of the held scan (not the OCR text alone)"
+   }
+  },
+  {
+   "sign": "M311",
+   "field": "phonetic_reading",
+   "from": "not_found",
+   "to": "located",
+   "locator": {
+    "work": "Parpola 1994, Deciphering the Indus Script (Cambridge University Press)",
+    "pinpoint": "\u00a714.1, p. 240, and Epilogue fig. 15.2 no. 16, p. 276",
+    "sign_scheme": "the 'fig tree' sign (the three-branched fig tree; allographs at fig. 13.15), identified pictorially in the work; tied to this entry by the crosswalk provenance's recorded depiction for M311 ('fig tree (three-branched)')",
+    "cited_value": "va\u1e6da",
+    "evidence": "\u00a714.1: 'There are several reasons to think that this ordinary reading of the fig sign was va\u1e6da, banyan tree, the Indian fig, Ficus indica L.'; the section develops the va\u1e6da-m\u012bn 'star of the north' interpretation; fig. 15.2 no. 16 gives va\u1e6da + m\u012bn for fig tree + fish",
+    "verification": "candidate hit verified against the rendered page image of the held scan (not the OCR text alone)"
+   }
+  }
+ ],
+ "per_entry": [
+  {
+   "sign": "M001",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M002",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M003",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M004",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M005",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M006",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M007",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M008",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M009",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M010",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M011",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M012",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M013",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M014",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M015",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M016",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M017",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M018",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M019",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M020",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M021",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M022",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M023",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M024",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M025",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M026",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M027",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M028",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M029",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M030",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M031",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M032",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M033",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M034",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M035",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M036",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M037",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M038",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M039",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M040",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M041",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M042",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M043",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M044",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M045",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M046",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M047",
+   "phonetic_reading": "changed: not_found -> located",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M048",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M049",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M050",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M051",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M052",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M053",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M054",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M055",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M056",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M057",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M058",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M059",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M060",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M061",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M062",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M063",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M064",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M065",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M066",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M067",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M068",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M069",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M070",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M071",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M072",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M073",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M074",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M075",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M076",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M077",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M078",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M079",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M080",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M081",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M082",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M083",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M084",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M085",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M086",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M087",
+   "phonetic_reading": "changed: not_found -> located",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M088",
+   "phonetic_reading": "changed: not_found -> located",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M089",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M090",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M091",
+   "phonetic_reading": "changed: not_found -> located",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M092",
+   "phonetic_reading": "changed: not_found -> located",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M093",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M094",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M095",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M096",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M097",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M098",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M099",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M100",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M107",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M108",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M109",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M110",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M111",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M112",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M113",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M114",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M115",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M116",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M117",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M118",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M119",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M120",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M121",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M122",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M123",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M124",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M125",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M126",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M127",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M128",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M129",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M130",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M131",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M132",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M133",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M134",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M135",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M136",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M137",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M138",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M139",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M140",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M141",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M142",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M143",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M144",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M145",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M146",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M147",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M148",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M149",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M150",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M151",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M152",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M153",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M154",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M155",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M156",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M157",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M158",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M159",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M160",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M161",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M162",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M163",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M164",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M165",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M166",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M167",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M168",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M175",
+   "phonetic_reading": "changed: not_found -> located",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M176",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M202",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M211",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M220",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M221",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M222",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M233",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M249",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M261",
+   "phonetic_reading": "changed: not_found -> located",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M264",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M267",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M281",
+   "phonetic_reading": "changed: not_found -> located",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M293",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M305",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M311",
+   "phonetic_reading": "changed: not_found -> located",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M328",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M336",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M342",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M364",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M367",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  },
+  {
+   "sign": "M391",
+   "phonetic_reading": "unchanged",
+   "semantic_reading": "unchanged"
+  }
+ ]
+}

@@ -1,0 +1,1197 @@
+% Indus preprint v11 (draft) restyled to the format of the program's
+% RCPH paper (separator-counting-law main.tex, the Zenodo version of
+% record): article 11pt, 2.5cm margins, Computer Modern family,
+% plain bibliography. Content is the v11 draft's, word for word;
+% see FORMAT.md for the change list.
+\documentclass[11pt]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{calc} % for \real widths in the tables (content mechanics)
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newcounter{none} % for the tables' \LTcaptype{none} (content mechanics)
+% Latin Modern lacks three macron-below letters used in the text's
+% Tamil transliteration; compose them with the \b accent (active-char
+% definitions, no extra package needed).
+\catcode"1E49=\active \protected\defṉ{\b{n}}
+\catcode"1E5F=\active \protected\defṟ{\b{r}}
+\catcode"1E3B=\active \protected\defḻ{\b{l}}
+
+\title{A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar}
+\author{Tristen Kyle Pierson\\
+Glossa-Lab / Axiovex Systems, LLC\\
+Correspondence: \texttt{research@axiovexsystems.com}}
+\date{May 2026 (revised November 2026)}
+
+\begin{document}
+
+\maketitle
+
+DOI: \href{https://doi.org/10.5281/zenodo.20379070}{10.5281/zenodo.20379070}\\
+Version: Preprint v11 --- Not peer-reviewed
+
+The 161 readings named in the title are the set this paper reports on; the program's current candidate set is a strict core of 94 of those readings whose recorded history never passed through the program's original syllabic language-model simulation, and it is summarized in section 5, where the conclusion's statements are qualified accordingly.
+
+\begin{abstract}
+We propose and test a falsifiable computational decipherment hypothesis
+concerning the Indus Valley Script (IVS, ca.~2600--1900 BCE), which
+remains undeciphered in the absence of a bilingual text. Working from the
+Holdat LLC Indus Corpus V3 (1,670 seals, 9 sites, 390 distinct signs,
+7,002 sign tokens; Mahadevan M-numbers), we apply positional analysis,
+bigram/trigram collocational methods, DEDR rebus matching, and syllabic
+language-model simulation to construct a candidate anchor model for IVS
+sign readings. We find robust non-random positional structure
+(\textit{z}\,=\,10.3; no permutation in 2,000 exceeded the observed statistic (p \textless{} 0.001; 0 of the 2,000 permutations exceeded the observed statistic, so the plain estimate is 0/2,000 and the standard add-one estimate is (0+1)/(2,000+1) = 0.0005, the smallest non-zero value a test of this size can report)),
+a recurring three-slot positional pattern at the level of individual signs' positions. Whole inscriptions match the full pattern less often: in the grammar-match check, 5.1\% of seals matched fully and 38.4\% partially (§3.31). The positions are measured; the reading of the three slots as classifier, title, and name/case elements of an administrative vocabulary is this model's interpretation, not a result of the positional tests (§3.2). We also propose 161 candidate readings at HIGH or MEDIUM confidence. These readings are assigned to signs that together account for 90.96\% of the corpus's sign tokens (69.8\% of seals consist entirely of such signs). `Coverage' here means only that the model assigns a candidate reading to a sign; it does not mean the reading is verified. Four of the 161 readings are provisional (see §2.2); without them the figures are 157 readings and 90.75\% of tokens. The corpus itself is not publicly released (see §6), so corpus-level counts cannot yet be re-run by other researchers. A fish-sign isolation count finds 0 isolated fish signs among the 113 fish-bearing seals in the 1,670-seal corpus, across all 9 corpus sites (§3.5). That count is not fish-specific evidence: the corpus contains no single-sign inscriptions of any kind (the falsification suite), so no sign of any family can occur isolated in it, and §3.5 states the result at that strength. A separate search of the Gulf deposit catalog's text (Laursen 2010) found no fish-sign mentions at all, so it provides no counterexample to that pattern but also no confirmation of it; the two results count different units and are not combined (§3.19).
+We correct a prior sign-counting error: an earlier count of 268 H+M signs
+included 107 heuristic placeholders not meeting the stated evidence
+criteria. Of the 75 HIGH-confidence readings, the reading strings of 44 (59\%) also appear in Parpola (1994), the work whose framework guided this analysis --- appearances in his text, not a sign-by-sign check that he proposed the same reading for the same sign (see §3.22); the
+evidence is consistent with a Proto-Dravidian reading framework under the
+tested assumptions, though Dravidian superiority over proto-Munda has not
+been formally quantified. The program's internal consistency suite reported 59 of 59 checks passing (May 2026); on the October 2026 execution tree the changed suite reported 40 passed, 0 failed, 8 warnings (Appendix C). These are internal consistency checks, not external validation. This study does not claim epigraphic finality; it proposes a falsifiable computational model whose method and repository artefacts (scripts, study reports, and the anchor table) can be re-run and checked. The corpus-level counts in this paper cannot be re-run until the corpus itself is released; that limit is stated here, not only in §6, because most of the paper's numbers are corpus-level counts. The model's structural predictions and candidate phonetic readings can be tested against larger corpora and future archaeological discoveries. Its corpus-level counts cannot yet be re-run by other researchers, for the reason given above.
+\end{abstract}
+
+\section{Introduction}\label{introduction}
+
+\subsection{The Indus Valley Script
+Problem}\label{the-indus-valley-script-problem}
+
+The Indus Valley Civilization (IVC, ca. 2600--1900 BCE) produced several thousand inscribed objects --- stamp seals, copper tablets, potsherd graffiti, and the Dholavira signboard --- bearing a script of roughly 400 distinct signs in the standard catalogues (this paper's own corpus attests 390 of them; §2.1). Despite a century of scholarship, the script remains undeciphered. The primary obstacles are: (1)
+the absence of a bilingual text; (2) uncertainty about the underlying
+language; (3) short average inscription length (\textasciitilde4--5
+signs); and (4) limited corpus size relative to modern decipherment
+corpora.
+
+Competing hypotheses have proposed proto-Dravidian (Parpola 1994;
+Mahadevan 1977), proto-Munda (Witzel 1999), an Indo-Aryan language
+ancestral to Sanskrit (Jha \& Rajaram 2000 --- widely rejected), and a
+non-linguistic semasiographic system (Farmer, Sproat \& Witzel 2004). A registered test of the pattern that proposal denies --- that the system has dedicated sign sets for final position, and a fixed opening formula --- executed on a second corpus layer (the Shakti corpus, §2.1.1), is reported in §3.2.1.
+The Dravidian hypothesis is among the most extensively developed linguistic interpretations: the
+geographic distribution of Dravidian languages, archaeological
+continuity between IVC and later South Asian cultures, and a long tradition of applying the ``rebus principle'' (phonetic punning via sound-alike words) to IVS signs, beginning with Heras in the 1930s and developed most fully by Parpola. Individual rebus readings remain contested; none is treated as established in this paper.
+
+\subsection{Prior Computational
+Work}\label{prior-computational-work}
+
+Rao et al.~(2009, \emph{Science} 324:1165) reported that IVS sign entropy falls in the range of known linguistic systems; in their own words, their results ``increase the probability that the script represents language'' --- a probability increase, not a demonstration. That entropy work has been criticised (Sproat 2014) and defended (Rao et al.~2010); the question remains contested, and this paper does not rely on entropy as evidence that the script is a language.
+Mahadevan (1977) produced the standard sign concordance and M-number
+catalogue. Parpola (1994, 2010) assembled the most comprehensive
+Dravidian rebus decipherment. Wells \& Fuls (2015) produced an independent sign
+list and catalogue. This paper's claim is narrower than any priority claim: it reports a candidate model whose assigned readings cover 90.96\% of this corpus's tokens, with the sign-by-sign evidence record held in the repository named in §6. No literature search for comparable coverage claims is on record, and none is claimed here.
+
+\subsection{This Work}\label{this-work}
+
+We present a computational grammar and candidate anchor model (Glossa-Lab) with the following components and results:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A five-layer evidence hierarchy with explicit confidence standards
+  (HIGH/MEDIUM/LOW)
+\item
+  161 candidate readings at MEDIUM or HIGH confidence (90.96\% token coverage; 69.8\% of seals fully covered by HIGH-or-MEDIUM (H+M) candidates) --- the grammar-match study corrected the prior inflated count; the text-proximity mining study adds 4 provisional sibilant upgrades. 43 of the 161 readings are MEDIUM signs whose recorded evidence is the combined SA+DEDR type; §2.4 gives the bound that removing all 43 would imply (118 signs, 85.28\% of tokens), and states why a true SA-free headline cannot be computed from the records
+\item
+  A three-slot grammar model empirically derived from positional
+  statistics
+\item
+  Two signs assigned DEDR-backed candidate readings for which a Munda derivation was proposed but not established (see §4.2; the recorded basis is DEDR 1709 and DEDR 5388, not substrate evidence)
+\item
+  A fish-sign isolation count: 0 isolated among 113 fish-bearing seals across all 9 sites --- a count that follows from the corpus's containing no single-sign inscriptions at all (the falsification suite), so it is a fact about the corpus, not a fish-specific pattern (see §3.5); the Gulf catalog text search found no fish-sign mentions at all --- no counterexample, not a confirmation (see §3.19)
+\item
+  Correction of M267: genitive particle, not fish sign
+\item
+  A publish-ready anchor table covering all 161 H+M candidate readings
+  (107 prior heuristic placeholders removed by the grammar-match study). A DEDR citation is recorded in that table's DEDR column for 15 of the 161 signs; the other 146 of the 161 rows carry no entry in that column, and their support is of the other kinds stated row by row in the table's Basis column. No claim is made that every reading carries a DEDR citation. Three DEDR counts in this paper count three different recorded things, and they are not interchangeable: this count (entries in the anchor table's DEDR column); the combined evidence type SA+DEDR recorded in the status audit for 43 MEDIUM signs (§2.4), which records the route by which those readings were promoted --- in the audit file's own DEDR column, only 15 of those 43 signs carry an entry; and the DEDR entry numbers printed for individual signs in §3.3 and §3.27, which are taken from those signs' basis statements and study records and are not all recorded in either file's DEDR column.
+\item
+  Site repertoire divergence measured by KL divergence, with a bootstrap confidence interval for the most divergent pair (Mohenjo-daro--Rakhigarhi; see §3.14)
+\item
+  Tamil-Brahmi terminal phoneme comparison (4 of 7 strictly terminal signs match a Tamil-Brahmi terminal category; see §3.18 for the time-gap caveat)
+\item
+  Another group's scorecard study (Nair 2026, arXiv:2604.17828), listed here because §3.10 discusses it: it studies a separate digitization of the same published inscription assemblage (ICIT corpus) and does not test this paper's readings or grammar (see §3.10). It is not a component or a result of this work.
+\item
+  Parpola overlap count: the reading strings of 44 of the 75 HIGH-confidence readings appear in Parpola (1994) --- appearances in his text, not sign-by-sign agreement (see §3.22)
+\item
+  Mahadevan text-mining comparison: this program's mining found positional-grammar hits in the Mahadevan papers in its text corpus (per-paper hits in §3.23). These are one scholar's works, counted by this program; this is not independent validation
+\item
+  Gulf seal text search: no fish-sign mentions found in the Laursen (2010) Gulf deposit catalog text --- no counterexample to the compound-only pattern, and not independent confirmation of it (see §3.19)
+\item
+  Sibilant DEDR check: M330=can, M165=cul, M202=can, M198=co --- all four PROVISIONAL\_MEDIUM, all four DEDR-backed (see §§2.2, 3.27)
+\item
+  Expanded Meluhhan name matching: 25 Ur III names tested
+  --- no discriminative match; a larger corpus with contextual metadata
+  (the ICIT corpus is the named candidate) would be needed for personal
+  names
+\item
+  Decode-blocker plausibility check: the existing LOW readings of the 19 top blocking signs are phonotactically plausible. This is a methods check, not a result about the readings; the signs remain LOW. The check is counted in §3.30's 32-item tally as one of its items, listed for completeness; it is not evidence that the blocker readings are correct (see §§3.29--3.30)
+\item
+  Master evidence synthesis: 32 evidence items on this program's own labels --- 12 structural, 8 linguistic, 8 external, 4 decipherment --- mixing internal consistency checks with external comparisons (see §3.30)
+\item
+  Grammar self-consistency retest: 93.2\% on a sign-level check that uses different definitions from the grammar-match measure and is not comparable to it (see §3.31)
+\end{enumerate}
+
+\section{Data and Methods}\label{data-and-methods}
+
+\subsection{Corpus}\label{corpus}
+
+\textbf{Primary corpus}: Holdat LLC Indus Corpus v3 (Miller 2025). 7,002
+sign tokens, 1,670 seals, 9 sites: Mohenjo-daro (n=606), Harappa
+(n=492), Kalibangan (n=110), Dholavira (n=106), Lothal (n=124),
+Chanhu-daro (n=78), Surkotada (n=61), Banawali (n=60), Rakhigarhi
+(n=33). Sign encoding: Mahadevan M-numbers. This corpus covers the major excavated IVC sites. It consists of formal stamp seals from those sites; what share of the full published formal-seal assemblage its 1,670 seals represent is not measured in this paper, and no claim about that share is made.
+
+\textbf{Sign catalogue}: 390 distinct M-number signs attested in the corpus; the anchor table assigns readings to all 397 signs in the Mahadevan catalogue (the additional 7 --- M086, M088, M090, M091, M092, M093, M094 --- have zero corpus tokens and are included for catalogue completeness). M-numbers are labels, not a count: the 397 catalogue entries carry numbers running from M001 to M416, with 19 numbers unused, so a sign numbered above 397 (for example M402) is normal. The full sign-by-sign inventory, with each sign's corpus frequency, is the file \texttt{ANCHOR\_STATUS\_AUDIT.csv} in the repository. Sign frequencies fall off steeply, from a few very common signs to many rare ones. An earlier version of this paper reported a Zipf exponent of about 1.7 for this distribution and described it as consistent with a natural language writing system. That exponent is this program's own statistic on this corpus; no derivation of it has been published that a reader can check, and we no longer present it as evidence that the script is a language. Yadav et al. (2010), who published a Zipf--Mandelbrot fit for Indus sign frequencies (on a pruned subset, the EBUDS subset, of Mahadevan's 1977 corpus), state the limit themselves: the presence of such a distribution ``is not sufficient to declare a sequence as linguistic''. A later test of what a fit of this kind can show is reported in §2.1.1 below.
+
+\textbf{Crosswalk}: 25-entry Mahadevan\,--\,Parpola crosswalk
+(\texttt{research/indus/mahadevan\_parpola\_crosswalk.json}) for iconographic anchor validation.
+
+\textbf{Supplementary sources}: Crawford (2001), used only for the Saar/Dilmun seal comparanda; Hojlund \& Abu-Laban (2012), used only for the Failaka pictorial-fish observation in §3.5; Parpola (1994, 2010), iconographic readings.
+
+\subsubsection{What a Frequency-Curve Fit Can and Cannot Show (OSF registration 3pbwe)}\label{what-a-frequency-curve-fit-can-and-cannot-show-spec-068}
+
+We tested what a frequency-curve fit can show, under rules fixed and registered before the test was run (OSF registration 3pbwe). One fitting rule --- the Zipf--Mandelbrot rule frozen in advance by this program --- was applied to Indus sign counts and to four comparison systems. The Indus counts came from a different corpus from the one described above: the Shakti corpus, a restricted corpus in the ICIT line (3,045 analysable rows of documented lineage; 11,805 tokens; 557 distinct signs). On those counts the fit gave exponent $\alpha$ = 2.004 and fit error 0.1584 (error is the root-mean-square difference in log space; smaller is a closer fit). On a wider set of rows from the same corpus (documented plus corroborated) it gave $\alpha$ = 1.96 and error 0.1544. The comparison systems were Mesopotamian numerical signs (error 0.5335), heraldic charges from the Dering Roll (0.1839), a synthetic emblem process (median 0.2405), and Linear B (0.9229). Linear B is the one system in the set that is certainly writing, and it fitted the curve worst of the five. Under the rule fixed before the run, that result makes the comparison UNINFORMATIVE: these measures do not separate the one certain writing system from systems that are not writing, so a close Indus fit on them is evidence neither for nor against the script being language. The Shakti numbers are a measurement of the Shakti corpus only. They are not a measurement of the Holdat corpus used in this paper, and they do not confirm or correct any earlier exponent, including the earlier exponent of about 1.35 recorded in this program's files. \textbf{The four exponents mentioned in §2.1 and this section must not be compared with each other.} They were measured on different corpora, with different sign inventories and different fitting rules:
+
+\begin{center}
+\begin{tabular}{@{}p{0.24\linewidth} p{0.26\linewidth} p{0.42\linewidth}@{}}
+\toprule
+Exponent & Corpus & What it is \\
+\midrule
+about 1.7 & Holdat (this paper) & This program's own earlier statistic; derivation never published; withdrawn as evidence (§2.1) \\
+about 1.35 & an earlier ICIT-lineage layer & an earlier record in this program's files; not re-measured here \\
+2.004 (and 1.96 on the wider row set) & Shakti, documented-lineage rows & the registered fit under the frozen rule \\
+2.59 & pruned EBUDS subset of Mahadevan 1977 & Yadav et al.'s published Zipf--Mandelbrot parameter b \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+No ranking or agreement between any two of these numbers means anything. Two further limits of the frequency-curve test belong on the record. First, the comparison set contains one certain writing system (Linear B, counted as its 89 syllabogram types in the DAMOS transliterations, 47,292 tokens); the verdict is a verdict about this fitting method on these tables, in which the certain writing system happened to fit worst --- it is not a general proof that frequency curves can never carry information. Second, the fit is sensitive to corpus size: on half- and quarter-size samples of the same Shakti rows the exponent fell to about 1.82 and 1.63. The full record of the test --- rules fixed in advance, input tables, and outcome --- is in this repository at \texttt{specs/068-yadav-zipf-controls-successor/} (see \texttt{outcome.md} and the \texttt{data/} tables), registered before the run at OSF: \url{https://osf.io/3pbwe}. One identification note belongs on the record. The comparison systems named in this section are identified in the registered study's record (\texttt{specs/068-yadav-zipf-controls-successor/} --- \texttt{outcome.md} and the \texttt{data/} tables), which is where a reader will find the test's inputs; this paper gives no bibliography entry and no fuller bibliographic identification for the Dering Roll source, the Mesopotamian numerical-sign table, or DAMOS (the source of the Linear B transliterations), and the Shakti corpus and the ICIT line are likewise identified only through that record.
+
+\subsection{Evidence Hierarchy}\label{evidence-hierarchy}
+
+Sign readings are assigned to three primary confidence levels, with PROVISIONAL\_MEDIUM used as a flagged subcategory of MEDIUM:
+
+\textbf{HIGH (75 signs)}: Two or more of the following evidence criteria are met. The criteria are separate tests, but they are not independent of each other: all three are computed from the same corpus, and several from the same seals. (The iconographic criterion also draws on published Mahadevan and Parpola iconography and on DEDR for its rebus step; those are inputs to that criterion, not separate criteria in the list above.) - Iconographic match: the sign's shape is identified, following the published iconography of Mahadevan and Parpola, as depicting a known object whose Dravidian name yields the reading by the rebus principle (e.g., M045=yānai from elephant icon, DEDR 5175) - Distributional
+exclusivity: sign appears on one and only one motif type with lift ratio
+\textgreater{} 5.0 (e.g., M062=erutu exclusive to zebu bull seals) -
+Terminal marker evidence: sign appears in \textgreater95\% of cases as
+inscription-final, matching a known Dravidian case suffix (M305=ōṭu/comitative: 97.6\% of its tokens inscription-final)
+
+\textbf{MEDIUM (86 signs)}: Single strong evidence source: - DEDR rebus match with SA-consistency \textgreater{}= 0.15 from syllabic language model simulation (SA: the syllabic language model fitted by simulated annealing, §2.4; for how many signs carry SA in their evidence, and the bound it implies, see §2.4)
+- Positional profile matching a known morpheme class (INITIAL=title
+prefix, TERMINAL=case suffix) - Supported allograph of a HIGH/MEDIUM
+anchor by positional L1 distance \textless{} 0.2
+
+
+\textbf{PROVISIONAL\_MEDIUM (4 signs --- M330, M165, M202, M198)}: Promoted from LOW on a narrower basis than ordinary MEDIUM: at least 3 text-proximity hits in the mined literature (the text-proximity mining study), followed by a within-model check of the DEDR entry, the positional profile, and phonotactics (the sibilant DEDR check), in which a `strong' reference count means at least 4 hits --- a level M198 (3 hits) does not reach. All four signs remain PROVISIONAL\_MEDIUM. The sibilant DEDR check's labels CONFIRMED (for M330, M165, M202) and PROVISIONAL (for M198) are that check's internal labels; its own note states that CONFIRMED means only that the reading is phonologically plausible and has literature support, not that it is a HIGH-confidence reading, and no sign's category was changed by them. PROVISIONAL\_MEDIUM readings are
+\emph{included} within the MEDIUM count for coverage accounting but are flagged for
+expert review before any HIGH-confidence promotion. They are listed separately in Section 3.27. The text-proximity mining record does not specify the proximity window (how near a reading must appear to a sign's number to count as a hit), the OCR source and version for every mined text, or how ambiguous sign-number matches were resolved. The four promotions therefore rest on a count whose generating rule is only partly recorded; that is a further reason, beyond the absence of expert review, that all four signs remain PROVISIONAL\_MEDIUM.
+
+\textbf{LOW (236 signs)}: Heuristic assignment only: - Positional
+assignment (initial/medial/terminal class) - the allograph analysis
+resolution (positional profile match to an existing anchor) - Not used
+for coverage or ``H+M-candidate coverage'' computations
+
+\textbf{NOT COUNTED} toward coverage: signs at LOW confidence.
+
+The HIGH, MEDIUM, and LOW labels are rule-based categories defined by the criteria above. They are not calibrated probabilities: no measured error rate attaches to any label. The outcome of the criteria for each sign is recorded in the anchor table (\texttt{research/\allowbreak indus/\allowbreak anchor\_table.csv}, `Basis' column). The anchor table records one basis statement and one evidence-type label per sign. It does not record each §2.2 criterion as a separate pass/fail field, so questions of the form `which signs meet criterion X but not criterion Y' cannot always be answered from the records --- §2.4's SA bound is one place where that limit binds, and it is stated there. One limit of the DEDR criterion must be stated plainly. For each sign, the anchor table records only the DEDR candidate that was adopted. How many candidate readings were considered for a sign, which sound changes or reading transformations were allowed when matching, and which candidates were rejected were not recorded; and no multiple-comparison control across the roughly 390 signs and the Dravidian Etymological Dictionary was applied or recorded. A reader therefore cannot compute from our records how often a DEDR match of this quality would arise by chance. The checks that do bear on the wider risk are the corpus tests reported in this paper --- the held-out test (§2.4) and the phonological-exclusivity and polysemy-permutation null results (§§3.11, 3.13) --- not a correction to the DEDR search itself. Three of the criteria above are stated at the level this program's records support and no further: the iconographic-match criterion has no written coding protocol, coder-blinding step, or inter-coder reliability figure on record; `cases' in the terminal-marker criterion means the sign's corpus tokens; and the lift ratio in the exclusivity criterion is computed over the corpus's motif distribution, whose per-motif denominators are in the validation-recount record's working outputs rather than a published table. A reader cannot re-apply the iconographic or exclusivity criteria to a new sign from this paper alone. That limit applies to every HIGH sign, not only to the three discussed in §3.3: the audit file records the same evidence-type pair (iconographic + distributional) for all 75 HIGH signs, §3.3 prints selected rows for 12 of them, and no record gives a criterion-by-criterion pass/fail for any HIGH sign. A reader therefore cannot verify from this paper, or from the audit file, that any particular HIGH sign meets two of the three criteria in §2.2 as those criteria are worded; what can be verified is the recorded evidence-type pair.
+
+\subsection{Positional Analysis}\label{positional-analysis}
+
+For each sign, we compute: - \textbf{Positional profile}: fraction of
+tokens in INITIAL / MEDIAL / TERMINAL / SOLO positions - \textbf{Bigram
+collocates}: most frequent left and right neighbors - \textbf{L1
+distance} between positional profiles of candidate allograph pairs
+
+Positional analysis classifies signs by position only: INITIAL-dominant,
+TERMINAL-dominant, or MEDIAL. The semantic labels this model attaches to
+those classes --- INITIAL read as title prefixes or classifier-derived
+words, TERMINAL as case suffixes or proper-name terminals, MEDIAL as
+content words or personal-name syllables --- are the model's
+interpretation of the positional classes, not outputs of the positional
+statistics (§3.2).
+
+The headline positional statistic (z = 10.3) comes from the falsification suite's first test. We fit the three-slot grammar model to the real corpus (coefficient of determination $R^2$ = 0.9916) and to 2,000 copies of the corpus in which the signs inside each inscription were shuffled (mean $R^2$ = 0.4385, standard deviation 0.05347 --- the falsification-suite record's values before rounding). The z-score is the distance between the real value and the shuffled mean, measured in standard deviations: z = (0.9916 $-$ 0.4385) / 0.05347 = 10.344, printed as 10.3. No shuffled copy reached the real value. The same falsification suite also ran a held-out check: positional classes fitted on 1,176 seals predicted the classes of signs on 494 held-out seals with 97.7\% agreement, so the grammar model was not only fitted and scored on the same inscriptions. The held-out check behind the 97.7\% figure is: positional classes fitted on 1,176 seals, tested on 494 held-out seals, over the 87 signs attested in both parts; 85 of those 87 signs were assigned the same dominant class in both parts (INITIAL 64/64, MEDIAL 5/5, MIXED 13/15, TERMINAL 3/3), which is the 97.7\% printed above. The held-out split was by site, not a random selection of seals: the positional classes were fitted on the seals of the three largest sites (Mohenjo-daro 606, Harappa 492, Chanhu-daro 78 --- 1,176 seals in total) and tested on the seals of the remaining six sites (494). The rule is in the falsification-suite script (\texttt{backend/scripts/phase134\_falsification\_suite.py}); the record's `80/20' label for the split is approximate --- the actual shares are 70.4\% and 29.6\% --- and no random seed is involved, because no random choice was made. Because the split is by site, the check tests whether classes fitted at the large sites predict the classes of signs at other sites; it is not a random held-out sample of seals. The corpus contains no single-sign inscriptions (the falsification suite: 0 single-sign seals), so the SOLO positional class arises only as a profile category, not from one-sign texts. The permutation check behind z = 10.3 used 2,000 shuffled copies (§2.3); the falsification-suite record gives the count and the null moments but does not record the random seed or the shuffling code's inclusion rules, so the permutation cannot be re-run exactly from the record. The operative definition of this statistic --- what the grammar model fits, over which observations the R² is computed, and how inscriptions of different lengths enter the fit --- is the falsification-suite script (\texttt{backend/scripts/phase134\_falsification\_suite.py}). The falsification suite's JSON record reports the statistic's inputs and outputs (observed R², null mean and standard deviation, permutation count) but not the data matrix, and this section does not reproduce the script's procedure. The z-score can therefore be checked arithmetically from the printed inputs in this section (observed $R^2$ = 0.9916, null mean 0.4385, standard deviation 0.05347), but the fit itself can be re-run only from the script and the corpus.
+
+\subsection{Syllabic Language Model (SA
+Simulation)}\label{syllabic-language-model-sa-simulation}
+
+For signs without iconographic anchors, we run a simulation (SA: a syllabic language model fitted by simulated annealing) trained on Tamil/Dravidian syllable sequences, and propagate readings through the sign graph. The SA assigns a modal reading (most probable syllable) and a consistency score (fraction of contexts agreeing on the reading). Signs with SA consistency \textgreater{}= 0.15 and a DEDR entry matching the modal reading were promoted to MEDIUM. Two limits must be stated plainly. The 0.15 threshold is a working cut-off chosen by this program; it has never been calibrated against a known script, so its false-positive rate is unknown. And a later test inside this program (October 2026) put the SA machinery itself to a held-out test whose protocol, primary metric, and discrimination rule were fixed in advance in a protocol recorded in this repository before the runs (\texttt{specs/005-phase52-v2/spec.md}); no external or public registration of that test was filed. Its agreement on held-out anchors was 0.000, and control runs using a Sanskrit model and a scrambled model could not be told apart from it. On that record, SA agreement by itself carries no information about a sign's value. MEDIUM readings whose only support is SA consistency should therefore be read as unconfirmed candidates; the provenance of every anchor, including which readings have SA in their chain of support, is recorded in the repository (the anchor provenance register and its re-review). How much of the headline set this affects can be bounded from the audit file. No sign in the 161-set rests on SA alone: every sign whose evidence involves SA also carries the combined SA+DEDR evidence type. 43 MEDIUM signs, accounting for 398 corpus tokens, carry that combined evidence type in \texttt{ANCHOR\_STATUS\_AUDIT.csv}. The label records that a DEDR match was part of each sign's promotion route; it is not a count of entries in that file's DEDR column, where 15 of the 43 signs carry an entry and 28 do not. If all 43 were removed, 118 signs and 5,971 tokens (85.28\%) would remain. That is a bound, not a recomputed headline: the audit file does not record whether any of the 43 also meets a non-SA MEDIUM criterion (a positional profile or allograph support), so a true SA-free headline cannot be computed from the records. The limit is the status-audit table's: it records the evidence type by which each reading was promoted and cannot by itself determine a corrected headline; the strict core of 94 readings (§5) rests on the separate per-sign provenance audit, which records whether each reading's recorded history passed through the SA simulation. The 161 / 90.96\% headline therefore stands as the figure for the set as constituted, with this bound beside it. One part of the SA+DEDR criterion cannot be reconstructed from our records: the `consistency' score is described in the original sequence-analyser lineage as the fraction of a sign's contexts agreeing on its modal reading, but no record defines how a context is delimited, how contexts are weighted, or how ties are handled. The 0.15 threshold's status is as stated above: a working cut-off, never calibrated. What trained the SA must also be stated at the strength the records support. The records describe its training data only as Tamil/Dravidian syllable sequences, through the original sequence-analyser lineage of scripts and language-model files. No record we hold names a specific training corpus, a syllable-inventory source, or the size of the training data, so none is stated here: the SA's training set cannot be reconstructed from this paper or from the study records.
+
+\subsection{Substrate Analysis}\label{substrate-analysis}
+
+For signs resisting Dravidian decipherment (25 signs --- the 25 are listed in the substrate-screen record, \texttt{outputs/phase123\_munda\_substrate.json}, and are not printed in this paper), we check SA modals against: - Munda/Austroasiatic substrate vocabulary
+(Witzel 1999; Southworth 2005) - BMAC (Bactria-Margiana Archaeological
+Complex) substrate words (Lubotsky 2001) - Brahui cognates (Dravidian
+outlier, Balochistan) - Proto-Elamo-Dravidian forms (McAlpin 1981)
+
+Two signs were promoted to MEDIUM in this part of the work (M374 and M351; §§3.3, 4.2). In both cases the recorded basis is a Dravidian Etymological Dictionary entry (DEDR 1709 and DEDR 5388 respectively), reached through the Munda-substrate re-review. A Munda derivation was proposed for each, but no Munda source, sound correspondence, or borrowing pathway is established in our records for either, so neither promotion rests on substrate evidence. No general standard for what counts as a substrate match was fixed in advance; substrate proposals are therefore reported in this paper as proposals, not as a promotion route. Of the 25 signs checked, 2 resulted in candidate readings (M374 and M351; §§3.3, 4.2).
+
+\section{Results}\label{results}
+
+\subsection{Sign Anchor Summary}\label{sign-anchor-summary}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Confidence & Signs & Token coverage (\%) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+HIGH & 75 & 70.34\% (4,925 tokens) \\ MEDIUM (excluding provisional) & 82 & 20.41\% (1,429 tokens) \\ PROVISIONAL\_MEDIUM (counted within MEDIUM) & 4 & 0.21\% (15 tokens) \\ MEDIUM (including provisional) & 86 & 20.62\% (1,444 tokens) \\ LOW & 236 & 9.04\% (633 tokens) \\ \textbf{H+M total} & \textbf{161} & \textbf{90.96\%} \\
+\end{longtable}
+}
+
+\textit{Note: The confidence table covers all 397 Mahadevan catalogue signs (75 HIGH + 86 MEDIUM + 236 LOW); the corpus attests 390 of these. The 7 catalogue-only signs (zero corpus tokens) are included for completeness and do not affect token or seal coverage metrics. The MEDIUM count includes 4 PROVISIONAL\_MEDIUM signs (M330=\textit{can}, M165=\textit{cul}, M202=\textit{can}, M198=\textit{co}), included for coverage accounting but flagged for expert review before any HIGH-confidence promotion.}
+
+The 161 H+M anchors (75 HIGH + 86 MEDIUM) cover 6,369 of 7,002 corpus tokens (90.96\%). The remaining 633 tokens (9.04\%) have LOW-confidence readings only. Token counts by sign and category are recorded in \texttt{ANCHOR\_STATUS\_AUDIT.csv} in the repository, and the full anchor list is \texttt{research/\allowbreak indus/\allowbreak anchor\_table.csv}. The four PROVISIONAL\_MEDIUM signs (§2.2) account for 15 of the 6,369 tokens; without them, 157 anchors cover 6,354 tokens (90.75\%), a figure independently recounted. Counts are from \texttt{ANCHOR\_STATUS\_AUDIT.csv} and sum to the corpus total of 7,002 tokens. Note: a prior count of 268 included 107 heuristic placeholder assignments removed by the grammar-match study.
+
+\subsection{Grammar Model}\label{grammar-model}
+
+Statistical analysis of inscription structure identifies a three-slot pattern that is consistent at the level of individual signs' positions. Whole inscriptions match the full pattern less often: in the grammar-match check, 5.1\% of seals matched fully and 38.4\% partially (§3.31). `Consistent' in this paper refers to the sign-level regularity unless a sentence says otherwise:
+
+\begin{verbatim}
+[SLOT 1: INITIAL] – [SLOT 2: MEDIAL] – [SLOT 3: TERMINAL]
+\end{verbatim}
+
+Positional statistics establish the three positions and which signs favour each. The meanings attached to the positions below are this model's interpretation, not outputs of the statistics: we interpret Slot 1 as an animal classifier (from the seal motif), Slot 2 as a guild or group title, and Slot 3 as a personal-name ending and case marker. The pattern was tested against inscriptions with their signs shuffled; it was not tested against rival templates such as owner marks, commodity marks, or clan emblems, which could also produce fixed position patterns.
+
+\textbf{Slot 1 (INITIAL)}: Examples: - Unicorn seals: M211=kol (lord/unicorn, from
+kōl+rebus) - Zebu bull seals: M062=erutu (bull/ox), M073=kōṉ (king/bull)
+- Elephant seals: M045=yānai, M039=āṉai - Rhinoceros seals: M060=kāṇṭāmirukam (a descriptive compound gloss, `rhinoceros'; no DEDR entry is recorded for this sign --- its support is iconographic and distributional only, 20 tokens)
+
+\textbf{Slot 2 (MEDIAL)}: Examples: - M099=kol/koḷ (vessel/jar,
+guild-of-vessels) - M233=ūr (settlement, of-the-town) - M162=il/iḷ
+(house/dwelling) - M261=muruku (young man; 2 tokens only, from Parpola 1994 via this program's extraction from that source --- the further gloss `deity Murugan / guild-of-Murugan' is not supported by anything in our records and is withdrawn)
+
+\textbf{Slot 3 (TERMINAL)}: Examples: - M342=ay/ā (genitive terminal; the most frequent sign in the corpus, at 584
+tokens) - M176=an/aṇ (masculine suffix) - M367=am (neuter suffix) -
+M336=iṉ (locative case marker)
+
+Under this interpretation, an inscription would encode `the [animal-totem guild title] [person's name]'. The model predicts the \emph{position} of the name element only; it does not read any person's name (§3.9, §4.3). The pattern is comparable in function to a medieval European guild seal identifying a craftsman by occupation and personal name --- an analogy, not evidence.
+
+\subsubsection{The Farmer Pattern in a Second Corpus Layer
+(OSF registration 7cu23)}\label{the-farmer-pattern-in-a-second-corpus-layer-spec-052}
+
+Section 1.1 states the Farmer, Sproat \& Witzel (2004) proposal:
+that the Indus sign system is not writing, and shows no dedicated
+sign sets for particular positions and no fixed opening formula.
+That positional part of the proposal can be tested without taking
+any position on what the signs mean, and it was tested in this
+program under rules fixed and registered before the run (OSF registration 7cu23), on the
+Shakti corpus of §2.1.1 --- the same corpus layer as the frequency-curve test, in the ICIT line (3,045 sequences of documented lineage;
+11,805 tokens; 557 distinct signs; 90 signs frequent enough to
+classify). The battery was run twice and produced identical
+outputs. Both conditions of the pattern were found present.
+Seven signs are concentrated in inscription-final position at
+the frozen strength --- signs 034, 413, 501, 503, 692, 817 and
+820 --- where 999 permutations of the signs within each sequence
+produced not one such sign (chance level 0). And one opening
+pair, signs 400 followed by 740, recurs 179 times among the
+2,942 sequences of two or more signs, against a permutation
+chance level of 76 recurrences. A sensitivity run on the wider
+set of rows from the same corpus (5,131 rows) returned the same
+outcome on both conditions (nine final-position signs; the same
+opening pair, 235 recurrences against a chance level of 95). The
+registered outcome word is INCONSISTENT: the absence the
+proposal predicts is not found in this corpus layer.
+
+What this establishes is narrower than it may look, and the
+record states its limits at headline strength. It is not a
+verdict on the Farmer--Sproat--Witzel thesis, and it does not
+show that the script is writing: dedicated final signs and a
+fixed opening pair are positional facts, and §5's caution stands
+--- positional structure of this kind is produced by some
+non-linguistic marking systems as well. The Shakti layer is a
+compilation in the CISI tradition, a different lineage from the
+Soviet compilation in which the pattern was reported absent, and
+from the Holdat corpus of this paper; but its editions cover
+substantially the same excavated objects, so the result is
+robustness of the pattern across compilations, not an
+independent discovery on new material. One calibration fact
+belongs on the record: the test's strength band and frequency
+floor were calibrated against the earlier exhibited class of
+strong signs, which is a consistency property, not an
+independent derivation. The seven final-position signs' rates
+(0.750--0.967) sit clear of the next classifiable signs'
+(0.6216 and 0.6196), so the final-set result is the same at
+every strength threshold between those values; at a lower band
+the count would be nine, but the permutation null was not
+computed at that band, and no outcome there is claimed. The
+full record --- rules fixed in advance, the per-sign tables,
+and the outcome --- is in the repository at
+\texttt{specs/052-farmer-not-writing-soviet/} (see
+\texttt{outcome.md}), registered before the run at OSF:
+\url{https://osf.io/7cu23}.
+
+\subsection{Selected High-Confidence
+Readings}\label{selected-high-confidence-readings}
+
+\textbf{HIGH confidence (selected readings)}: HIGH is assigned when any two of the §2.2 criteria are met; it is not an iconography-only category. In this table, most rows rest substantially on iconography or motif exclusivity, but M342 and M176 rest substantially on their positional distributions (both signs are predominantly medial: M342 in 502 of its 584 tokens, 85.9\%; M176 in 275 of its 356, 77.2\%), and M261's row rests substantially on the published source behind its assignment (Parpola 1994, via the same extraction) --- which is not itself one of the §2.2 criteria; M261's HIGH status, like M342's and M176's, rests on the audit's recorded evidence pair, stated in the next sentences. The audit file records two evidence types for each of these three signs --- iconographic and distributional (\texttt{ANCHOR\_STATUS\_AUDIT.csv}, EvidenceType ICONOGRAPHIC+DISTRIBUTIONAL) --- and that recorded pair, not any single row of this table, is the basis of their HIGH status under the two-criterion rule in §2.2. Two cautions belong with that statement. The audit's two types are recorded as types, not scored criterion by criterion, and they do not map one-to-one onto the three criteria named in §2.2. And M176's terminal figure --- 68 of its 356 tokens inscription-final (19.1\%) --- is nowhere near §2.2's terminal-marker criterion (\textgreater95\%); its HIGH status rests on the audit's recorded evidence pair, stated here so that a reader applying §2.2 to this table alone is not misled.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll>{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5800}}@{}}
+\toprule\noalign{}
+Sign & Reading & DEDR & Basis \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M045 & yānai & 5175 & Elephant icon, Tamil yānai \\
+M062 & erutu & 820 & Exclusive to zebu bull (lift \textgreater{} 5.0) \\
+M073 & kōṉ & 2206 & Exclusive to zebu bull (lift \textgreater{} 5.0) \\
+M342 & ay/ā & --- & Candidate case suffix: 584 tokens, 70 of them inscription-final (12.0\%); the sign is predominantly medial (502 tokens, 85.9\%), and the case-suffix label is an interpretation of its distribution, not a demonstrated paradigm \\
+M176 & an/aṇ & 135 & Candidate masculine suffix: 356 tokens, 68 of them inscription-final (19.1\%); the sign is predominantly medial (275 tokens, 77.2\%), and the gender label is likewise an interpretation of distribution. HIGH on the audit's recorded iconographic + distributional evidence pair (see the note above); the 19.1\% figure is nowhere near the \textgreater95\% terminal-marker criterion \\
+M211 & kol & 2173 & Unicorn seals exclusively \\
+M125 & vil & 5407 & Bow iconography, Tamil vil (bow) \\
+M261 & muruku & 4988 & Wheel/spindle (2 tokens; the reading is \emph{muruku}, `young man' --- the further gloss `Tamil Murugan' is withdrawn, as in §3.2) \\
+M264 & peN & 4394 & Female figure, Tamil peN (woman) \\
+M328 & āl & 340 & Man figure, Tamil āl (man/person) \\
+M391 & ka/kaṇ & 1166 & Numeral stroke, Tamil kaṇ \\
+M059 & ēḷ & 912 & Seven strokes, Tamil ēḷ (seven) \\
+\end{longtable}
+}
+
+\textbf{MEDIUM confidence (substrate)}:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1200}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1600}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3700}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Sign
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reading
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+DEDR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Substrate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Basis
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M374 & kul & 1709 & DEDR 1709 (kulam, clan/lineage). & A Munda \emph{kul} has also been proposed by this program (in the Munda-substrate re-review); no Munda source for it is cited in our records, and the DEDR entry alone does not make the reading a Munda loan. \\
+M351 & vī & 5388 & DEDR 5388 (vī, seed). & A derivation from Munda \emph{bi} (seed/sprout) by a `bilabial shift' has been asserted in this program's notes; no regular sound correspondence or borrowing pathway has been shown, so the Munda derivation is unestablished. \\
+\end{longtable}
+}
+
+\textbf{MEDIUM confidence (positional)}:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1200}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1600}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.4200}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Sign
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reading
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+DEDR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Position
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Basis
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M072 & mā & 4751 & INITIAL & All 12 tokens INITIAL; mā=great; collocates
+peN/veL \\
+M149 & or & 987 & MEDIAL & MEDIAL between kōṉ and -an; oru=one/a
+certain \\
+M185 & pul & 4336 & MEDIAL & MEDIAL descriptor; pul (humble/grass) \\
+\end{longtable}
+}
+
+\subsection{Major Correction: M267 Is Not the Fish Sign}\label{major-correction-m267-not-fish}
+
+Version 6 of the anchor table assigned M267 (corpus frequency=400) as
+``mīn/fish.'' This was incorrect. M267 appears across all nine motif types with no iconographic specificity. The counts are the validation recount's (the distribution behind the chi-square printed below): unicorn 147 tokens, zebu bull 78, elephant 43, rhinoceros 26, buffalo 20, script only 34, geometric 19, tiger 17, gharial 16 --- 400 tokens in total, the sign's full corpus frequency. (Counts printed in earlier drafts --- unicorn 127, zebu 72, elephant 37, rhinoceros 25 --- came from the anchor file's basis note, do not match the test record's table, and are withdrawn; the chi-square below was never computed from them.) It is distributed at
+5.7\% of all tokens. The actual fish sign is M047 (frequency=13, P47 in
+Parpola's system), verified by crosswalk. M267 is a high-frequency functional/suffixal sign. Of its 400 occurrences, 324 (81.0\%) are MEDIAL, 59 TERMINAL, and 17 INITIAL; its most frequent right-hand neighbour is M099 (84 occurrences), which is the basis for describing its distribution as pre-title. Its distribution across seal motifs does not differ significantly from the counts expected if its 400 tokens were spread across the nine motif types in proportion to each type's overall share (chi-square = 12.98, p = 0.1124, 9 motif categories, 8 degrees of freedom; the full nine-motif count table is in the validation-recount record, \texttt{backend/reports/phase132\_validation\_report.json}), which is why a motif-bound reading such as `fish' fails and a grammatical-particle reading is preferred. (`Uniform' in the adversarial recheck's summary of this test is that record's shorthand for the same expected-count comparison.) Its current MEDIUM reading is iN/in (genitive particle). One limit of this test belongs on the record: the chi-square treats M267's 400 tokens as independent observations, but a motif is a property of a seal, not of a token. The validation-recount record does not state how many distinct seals the 400 tokens occur on, and no seal-level version of this test is on record, so the printed p-value should be read as a token-level result whose seal-level strength has not been measured. This correction is methodologically important: it demonstrates the risk of reading frequency alone as a phonetic indicator. The same warning applies to our own grammatical labels for M342 and M176 (§3.3), which also rest substantially on position and frequency and are stated there as candidates, not identifications.
+
+\subsection{Fish Sign Isolation
+ Test}\label{fish-sign-isolation-test}
+
+The fish-sign model this test was built on is Avishai Roif's,
+published in Roif (2025a, 2025b). In his model the fish sign is read
+/mi/ (m\={i}n, ``fish/star'') as a value and divine marker and as a
+guild/title marker (Roif 2025a); in the expanded treatment the
+fish sign's holder is a ``coastal controller'' --- a maritime
+guild leader --- and the fish, boat, and jar signs recur
+predominantly at port sites, including Lothal (Roif 2025b). The
+predictions this program tested --- a fish sign that functions as
+an initial/title marker and is never isolated, and fish signs as
+maritime markers rather than solitary quantity markers --- are
+Roif's published predictions. The measurements reported in this
+section and in \S3.19 (the counts, site tables, and verdicts) are
+this program's own, from our corpus work: we do not attribute
+our statistics to Roif, and his model is not ours.
+
+We tested whether fish signs appear in isolation anywhere in the formal stamp-seal corpus.
+Testing the full fish sign family --- M047, M049, M052, M053, M054, M055, M056, M145, the signs this program's Mahadevan--Parpola crosswalk file lists as fish-shaped --- across all 9 sites. This printed list is the family's citable form: the crosswalk file (\texttt{research/indus/mahadevan\_parpola\_crosswalk.json}) does not mark the family as a separate list.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+Site & Type & Fish seals & Isolated & Compound \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Lothal & coastal port & 6 & 0 (0\%) & 6 (100\%) \\
+Harappa & inland & 33 & 0 (0\%) & 33 (100\%) \\
+Mohenjo-daro & inland & 35 & 0 (0\%) & 35 (100\%) \\
+Dholavira & inland & 11 & 0 (0\%) & 11 (100\%) \\
+Kalibangan & inland & 13 & 0 (0\%) & 13 (100\%) \\
+Chanhu-daro & inland & 5 & 0 (0\%) & 5 (100\%) \\
+Banawali & inland & 4 & 0 (0\%) & 4 (100\%) \\
+Rakhigarhi & inland & 3 & 0 (0\%) & 3 (100\%) \\
+Surkotada & inland & 3 & 0 (0\%) & 3 (100\%) \\
+\textbf{Total} & & \textbf{113} & \textbf{0 (0\%)} & \textbf{113
+(100\%)} \\
+\end{longtable}
+}
+
+A fish sign counts as `isolated' if it is the only sign in its inscription; the count is of fish-bearing seals (113). One fact about this corpus governs what the count can show: the corpus contains no single-sign inscriptions of any kind (the falsification suite: 0 single-sign seals in 1,670), so no sign --- fish or otherwise --- can be isolated in it, and the fish count of 0 is therefore not a fish-specific result: it is that fact restated for the fish family. An earlier site-by-site count record gives its own conclusion as `UNTESTABLE' for the same reason. What the count establishes is only that fish signs occur in this corpus in multi-sign inscriptions --- as every sign in this corpus does. A test that could separate a fish-specific rule from that corpus-wide fact would need a corpus or an object class that contains single-sign inscriptions; this one does not. The fish sign is therefore never isolated in the formal stamp seal corpus, at any site, including Lothal (a major coastal site, where a large basin has traditionally been interpreted as a dock --- an interpretation some archaeologists dispute) --- and neither is any other sign. The supplemental file \texttt{fish\_sign\_compound\_context.csv} lists 27 compound occurrences with their contexts (13 for M047 and 14 for M001; M001 is not in the family list printed above, and that mismatch is on record and unresolved). It is not an occurrence-by-occurrence listing of all 113 fish-bearing seals, and earlier wording that described it as one is corrected here. The compound-only pattern holds at coastal and inland sites alike. That rules out a purely local, single-site habit; it does not by itself prove a scribal rule, because this corpus contains formal stamp seals only, and selection or object-type effects could produce the same pattern. This result is compatible with a range of interpretations of the fish sign's function; the present study does not adjudicate between them. What it establishes is a fact about this corpus --- 0 isolated fish signs among its 113 fish-bearing formal stamp seals --- and, because the corpus is one private collection of formal stamp seals only, not yet a fact about the Indus script at large, and, for the reason given above, it is not evidence of a fish-specific rule. The fish-family list printed above is the family's citable form; no record gives a published page or figure for each sign's fish-shaped classification in the crosswalk, and none is claimed here.
+
+A further, registered test of this family was executed in this
+programme on 22 October 2026, before the previous version of this
+paper was deposited (the study is held from publication): the
+positional behaviour of the fish family was examined sign by sign
+--- on Parpola's published list of fish signs, in ICIT numbering
+--- on a separate corpus (the Shakti corpus), under a contract,
+family list, and pass line all frozen before any fish sign was
+scored. (Two members of the frozen list could not be identified in
+that corpus's numbering, and one fell below the test's counting
+floor; those dispositions are part of the frozen record, not of
+its results.) Its results may be published only with citation of
+Roif (2025a, 2025b) --- the model under test is his, and he is
+cited throughout this section --- and with the programme owner's
+clearance of the specific publication; that clearance has not been
+given for publishing its results in this paper, so in this
+programme's reporting the study is named only as executed --- held
+under the Roif gate, and its results are not stated in this
+version. Nothing in this section or in §3.19 should be read as
+carrying its outcome in either direction. What this section
+presents therefore stands exactly as it did before that test was
+run: the compound-only pattern and the counts in this corpus,
+stated at the strength §3.5 gives them --- not a claim that the
+family has passed a registered test of its positional behaviour.
+
+A word on what 0 can and cannot show at these sizes. The binomial bounds printed in earlier drafts (about 2.6\% pooled; about 39\% at Lothal; about 63\% at the 3-seal sites) are withdrawn as estimates of a fish-sign isolation rate: they treat each fish-bearing seal as an independent chance to contain a single-sign inscription, and in this corpus there is no such chance, for any sign. The bounds remain correct as arithmetic for a corpus in which single-sign inscriptions occur. `Site-invariant' in this paper therefore means only that no site showed an exception --- not that every site's rate is tightly measured.
+
+A separate, weaker observation concerns pictures rather than script: Dilmun-style seals at Failaka Island (Hojlund \& Abu-Laban 2012) show fish in compound \emph{pictorial} contexts (human holding fish, fish attached to staffs), never as a solitary motif. This program's records do not tie the observation to specific catalogue numbers, figures, or pages in Hojlund \& Abu-Laban (2012); it is reported as a general observation from that volume, not as a checked count. Pictorial motifs are not Indus graphemes, and this is motif-level context only, not script evidence.
+
+\subsection{Seal Coverage
+Statistics}\label{seal-coverage-statistics}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Metric & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Total seals & 1,670 \\
+Fully covered by H+M candidate readings & 1,165 (69.8\%) \\
+Blocked by LOW-confidence signs & 505 (30.2\%) \\
+Blocked by unknown signs & 0 (0\%) \\
+\end{longtable}
+}
+
+No site-by-site coverage table for the 161-sign set exists: it was never computed, in this paper or in the program's records. For the earlier 157-sign set, the grammar-match record does give fully covered seals by site, from 55\% (Kalibangan) to 79\% (Surkotada); Rakhigarhi (n=33) was 64\% and Dholavira 72\% on that set. Nothing about the 161-set's distribution across sites should be inferred from the 157-set table.
+
+The remaining 505 seals not fully covered by H+M candidate readings contain at least one LOW-only sign (§3.6 table). Of these, 18 signs with corpus frequency 5--6 resist MEDIUM promotion entirely (Appendix B); together they account for 92 tokens. The blocking-sign record analyses them as a MEDIAL-position class; no record shows their distribution across sites or motif types, and at frequencies of 5--6 no distribution across 9 sites and 9 motif types could be `equal' in any case. Within the model they are personal-name syllable candidates; the statistics do not distinguish them from any other medial-only sign class (§3.9), and their assignment would require a larger corpus or a bilingual text.
+
+\subsection{Collocate Network and Formula Structure
+}\label{collocate-network-and-formula-structure-phase-142}
+
+From the full corpus (1,670 seals, 7,002 tokens), we extracted 2,647 distinct bigrams --- adjacent sign pairs within inscriptions, in reading order --- including 1,485 H+M-by-H+M bigrams; the full table is the supplemental file \texttt{formula\_bigram\_table.csv}. The dominant formula backbone is \textbf{M342·M176} (\emph{ay/ā}·\emph{an/aṇ}), which occurs 122 times, on 120 seals (7.2\% of corpus, PMI=2.43) --- the highest-frequency H+M-by-H+M bigram pair. (It is not the highest-PMI pair in the corpus; the highest PMI values belong to rare pairs with counts of 3--5.) The next cluster is M267·M099
+(\emph{iN/in}·\emph{kol/koḷ}, 84 occurrences on 82 seals), M099·M342 (81 occurrences on 80 seals), and
+M176·M099 (74 occurrences on 74 seals). 97 distinct formula types are identified, organised by INITIAL sign.
+
+Two terms used in this section are defined here. PMI is pointwise mutual information, in bits: $PMI(a, b) = \log_2 [ P(a, b) / (P(a) \cdot P(b)) ]$, where P(a, b) is the pair's share of all bigram tokens and P(a) and P(b) are the two signs' shares of all sign tokens (collocate-network script, \texttt{backend/scripts/phase142\_collocate\_network.py}). For the worked example in this section: M342·M176 occurs 122 times; M342 accounts for 584 of the corpus's 7,002 sign tokens and M176 for 356 (§3.3); the pair's share is taken over all bigram tokens in the collocate-network record: 5,332 bigram tokens --- the corpus's 7,002 sign tokens minus one for each of its 1,670 inscriptions. For this example, P(M342·M176) = 122/5,332, P(M342) = 584/7,002 and P(M176) = 356/7,002, and the printed PMI of 2.43 recomputes from those three fractions (\texttt{backend/reports/phase142\_collocate\_network.json}), which is also where the distinct-bigram counts above (2,647 in total; 1,485 H+M-by-H+M) are recorded. PMI values from this section use sign-token marginals, as defined above, and are not comparable to bigram-marginal PMI values in other work. A `formula type' is one INITIAL sign together with the seals whose inscriptions begin with it: the 97 types are the 97 distinct INITIAL signs that begin inscriptions in this corpus and carry a HIGH or MEDIUM reading (the collocate study's formula classification; the clusters built on them are the formula-clustering study's) --- which is why §3.12's clusters are organised by INITIAL sign. A seal belongs to a type by its first sign alone; its other signs need not carry HIGH or MEDIUM readings. Every seal in the corpus begins with one of these 97 signs, so the 97 types together cover all 1,670 seals --- not only the 1,165 seals that consist entirely of HIGH-or-MEDIUM signs (§3.6).
+
+Positional constraint test (the collocate study's positional-constraint arm) --- descriptive result only: in the raw counts, 17 of the 21 tested H+M signs have different collocate sets when they stand in INITIAL position from when the same signs stand in non-INITIAL positions. Whether that difference is more than chance is what the permutation test in §3.13 was for; its verdict was INCONCLUSIVE. The 17/21 figure is therefore a description of the counts, not evidence for or against position-specific collocates, and we do not use it as support for the grammar model. M267 is the strongest single case on the descriptive numbers: 324 of its 400 occurrences (81.0\%) are MEDIAL (§3.4).
+
+\subsection{Iconographic Cross-Encoding
+}\label{iconographic-cross-encoding-phase-143}
+
+We tested 394 INITIAL-sign $\times$ iconography pairs for enrichment. The 394 are the pairs attested together in the corpus that pass the iconographic cross-encoding script's filters: the inscription has more than one sign, its first sign is a HIGH or MEDIUM sign, that sign heads at least 5 such inscriptions, the icon type occurs on at least 5 seals in that set, and the expected count under independence is at least 1. Pairs that never occur together are not in the 394, so the family of tests is selected from the data, and the pair list itself exists only in the iconographic cross-encoding record's working outputs. The supplemental file \texttt{iconographic\_formula\_pairs.csv} contains the 15 strongest enriched pairs, in the iconographic cross-encoding record's order; it is not the full 394-pair table, and the full table --- including the 63 enriched pairs and the pairs that were not enriched --- exists only in the iconographic cross-encoding record's working outputs, not as a published file. The iconographic cross-encoding JSON record does not state the filters that produced the 394; the iconographic cross-encoding script does, and they are stated above. The Bonferroni denominator of 394 is therefore the count of attested, filter-passing pairs --- not the count of all sign $\times$ icon combinations that could have been tested --- and it cannot be re-derived from the published files, because the full pair list is not published. \textbf{63 pairs (16\%) are enriched in the iconographic cross-encoding record's own sense: their single-cell contribution (below) is above 1.0, with more seals observed than expected.} That count is not a Bonferroni pass count. \textbf{14 pairs stand at or above the Bonferroni threshold on that same statistic} ($\chi^2 \gtrsim$ 14.7; the fourteenth value is 15.0). The threshold is the critical value, at the Bonferroni-corrected level 0.05/394 $\approx$ 0.000127, of a chi-square distribution with one degree of freedom --- the degrees of freedom of a full $2\times2$ independence test, whose statistic the next paragraph defines. Because the printed single-cell contribution is one positive term of that full statistic, a pair reaching 14.7 on the contribution necessarily reaches it on the full $2\times2$ chi-square as well: the comparison is conservative, and the 14 passes hold for the full statistic too. The full $2\times2$ value for each pair is not printed, and is not recorded pair by pair. Of the 394 attested, filter-passing pairs, 63 had a single-cell contribution above 1.0, and 14 crossed the reported numerical threshold of approximately 14.7; neither count estimates the number of true associations. The chi-square printed for each pair is that pair's single-cell contribution, $\chi^2 = (O - E)^2 / E$, computed from the unrounded expected count $E$ --- the count expected if sign and icon were independent, from the pair's row and column totals (iconographic cross-encoding script). It is not a full $2\times2$ chi-square for the pair. The unrounded expected counts are on record for the first three rows (2.036, 2.874, 2.754); for M067 and M039 the record gives the expected counts to two decimals only (1.53, 2.16), so those two $\chi^2$ values do not recompute exactly from the printed table. For scale: the count expected by chance among 394 tests at an uncorrected 5\% level is 19.7 (394 $\times$ 0.05), and at the Bonferroni threshold the expected count under the null is about 0.05; neither figure converts the 63 into an estimate of genuinely significant pairs, because the 63 were not selected at the 5\% level. Strongest
+associations:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+INITIAL sign & Reading & Icon & Observed & Expected & chi-square \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M060 & kāṇṭāmirukam & rhinoceros & 20 & 2.04 & 158.5 \\
+M045 & yānai & elephant & 24 & 2.87 & 155.3 \\
+M016 & kaḷiṟu & elephant & 23 & 2.75 & 148.8 \\
+M067 & kōṭṭāṉ & rhinoceros & 15 & 1.53 & 118.9 \\ 
+M039 & āṉai & elephant & 18 & 2.16 & 116.5 \\
+\end{longtable}
+}
+
+These are the five largest associations in the iconographic cross-encoding record and in the supplemental file, in order. The next associations are M068 (maṟi, rhinoceros, $\chi^2$ = 103.0), M062 (erutu, zebu, 84.6) and M073 (kōṉ, zebu, 75.5); M059 (ēḷ/eḷ, unicorn, 66.9) ranks ninth. An earlier draft printed M062 and M059 as the fourth and fifth rows; no selection rule for that choice is on record, and the table is corrected to the record's order here.
+
+For the enriched subset of pairs --- above all the largest associations --- this shows that the inscription's INITIAL sign and the carved animal on the same seal are co-selected, not independent decorations. It shows nothing about the pairs that did not pass the threshold. It does not by itself show what either channel means: in particular, for signs whose reading was itself suggested by the animal motif, `the reading matches the animal' is circular and is not claimed here as validation. Whether the co-selection encodes professional identity is an interpretation (§4.1), not a result of this test.
+
+\subsubsection{Animal Signs at Inscription Openings
+(OSF registration cfe7z)}\label{animal-signs-at-inscription-openings-spec-074}
+
+Section 3.8 tests whether a seal's initial sign and its carved
+animal are chosen together. A related published claim about
+openings was tested separately, under rules fixed and
+registered before the run (OSF registration cfe7z): Hunt's claim that the animal signs are
+the signs that open inscriptions. The test measured the claim
+against the positional battery of the Shakti corpus (§3.2.1)
+--- not against this program's earlier framework. Of the battery's 31 opening-strong signs (the signs the Shakti battery of §3.2.1 classifies as concentrated in inscription-initial position at its frozen strength), 26 carry an identified kind in the published identification layer (the same layer used in §3.31.1), and 2 of the 26 are animal signs
+--- signs 226 and 241 in the Wells numbering the battery uses,
+both fish signs. That is a share of 0.0769, against an animal share of 0.0889 among the classified signs of the pooled comparison universe (the opening set together with the comparison inventory outside it; 8 animal signs of 90): animal signs appear among the opening-strong signs at
+no better than the base rate. The enrichment ratio is 0.8654 as
+published, and 0.9359 under the frozen formula's literal
+reading of the comparison set; both are below 1.0, and the
+Fisher exact test gives a one-sided p of 0.7345 under either
+reading, so the outcome does not rest on which denominator is
+used. Run the other way, none of the comparison inventory's six
+animal signs is opening-strong at all. A sensitivity run on the
+documented plus corroborated population returned the same word
+(ratio 0.8929, p = 0.7140), and two runs of the test returned
+byte-identical results. The registered outcome is NOT
+SUPPORTED. It is the first scored verdict on the animal half of
+Hunt's claim, in either direction; the wider claim stands
+partially supported on its positional half alone.
+
+The limits travel with the result. Depiction here is the
+field's published identification layer, not ground truth: an earlier census in this program found object-type
+labels diverging between compilations in 49\% of matched cases,
+and that caution applies in full. The corpus is in the ICIT
+line, so agreement with this program's earlier ICIT-lineage
+measurements is consistency within one tradition, not
+independent corroboration. And the fence the test itself sets
+stands: this result is about depiction and position in recorded
+data. It is not evidence that any sign marked identity, a
+guild, or goods --- and its negative is not a measurement
+against that reading either; it answers the enrichment question
+and nothing more. The full record is in the repository at
+\texttt{specs/074-hunt-opening-signs-repaired-surface/} (see
+\texttt{outcome.md}), registered before the run at OSF:
+\url{https://osf.io/cfe7z}.
+
+\subsection{Blocking Sign Analysis and Structural Ceiling
+}\label{blocking-sign-analysis-and-structural-ceiling-phase-144}
+
+All \textbf{top blocking signs} (those preventing H+M-complete coverage of the most seals) are 100\% MEDIAL (m\_rate=1.0, i\_rate=0.0,
+t\_rate=0.0). Within this model, a sign class that appears only in MEDIAL position is what personal-name syllables would look like; it is also what any medial-only sign class would look like, and the statistics alone do not distinguish the two. In an identity-encoding system: occupational titles (INITIAL) and case
+markers (TERMINAL) are recoverable from distributional statistics and
+iconographic anchors, but personal name components (MEDIAL) are
+arbitrary and unrecoverable without a bilingual text. The 30.2\% of seals not fully covered has not been resolved by the methods used here. That is a limit of the current method and corpus, not a proof that the ceiling is structural: the same blocking signs carry rich collocate context, and a larger corpus or a bilingual text could move it.
+
+\subsection{Cross-Corpus Structural Comparisons (with Nair 2026)}\label{cross-corpus-structural-validation-phase-145-nair-2026}
+
+Comparison with the CISI corpus (179 inscriptions, Parpola P-numbers, mayig digitization): the cross-corpus comparison record reports 87.08\% for the share of CISI inscriptions opening with an INITIAL-class sign. The number of multi-sign inscriptions behind that percentage, and the count opening with an INITIAL-class sign, are recorded nowhere --- not in the cross-corpus comparison report and not in any other record we hold --- so the percentage cannot be checked or recomputed, and we report it as an uncountable figure carried from that record, not as a verified result. CISI is the Corpus of Indus Seals and Inscriptions; neither it nor the mayig digitization has a bibliography entry, and this paper can give no fuller bibliographic identification for either from its records. The positional-class distributions of the two corpora differ substantially (KL divergence = 0.591; the cross-corpus comparison record itself rates structural agreement LOW --- for example, MEDIAL-class share is 68.75\% in CISI against 34.8\% in Holdat). Because the two corpora use different sign numberings and different coverage, we report the difference without explaining it away. The opening-sign figure (87.08\%, above) is the only quantity in this comparison that points the same way in both corpora, but because its numerator and denominator are not on record it is reported here as an uncountable carried figure, not as a point of agreement.
+
+Independent scorecard study (Nair 2026, arXiv:2604.17828): Applying a
+multi-metric discrimination framework to 1,916 deduplicated ICIT
+inscriptions (584 unique signs, 11,110 tokens), Nair reports a Zipf slope of $-1.49$ (a signed regression slope; the exponents in §2.1.1 use the opposite sign convention and a different fitting rule, and the two are not comparable), conditional entropy of 3.23 bits, and a permutation result of 0 exceedances in 1,000 trials (reported by Nair as percentile 0.000). He reports matching his administrative baseline on two of his four metrics; the fourth metric is not one this paper uses. Nair's corpus is a separate digitization (G-prefix ICIT coding) of the same published inscription assemblage, analysed with a different methodology; it is independent work, but it is not an independent body of inscriptions; his permutation
+test concerns within-inscription ordering, a different statistic from
+the falsification suite's positional test (\textit{z}\,=\,10.3; no permutation in 2,000 exceeded the observed statistic (p \textless{} 0.001; 0 of the 2,000 permutations exceeded the observed statistic, so the plain estimate is 0/2,000 and the standard add-one estimate is (0+1)/(2,000+1) = 0.0005, the smallest non-zero value a test of this size can report)). Nair's own conclusion is
+deliberately hedged: the Indus corpus occupies an intermediate
+position between his synthetic non-linguistic baselines, matches the
+administrative baseline on only two of four metrics, and, in his
+words, the study does not settle the linguistic question. One of Nair's four measures, his Zipf slope, is a frequency-curve fit of the kind tested in §2.1.1: on the frozen comparison reported there, that kind of fit did not separate writing from non-writing, so we do not use his slope --- any more than our own earlier figure --- as evidence about linguistic status. His results are consistent with non-random sequential structure in the Indus sign system; they do not test the positional grammar, the anchor readings, or the Dravidian hypothesis advanced here.
+
+\subsection{Phonological Exclusivity Test
+}\label{phonological-exclusivity-test-phase-146}
+
+A redesigned form of the test, using phonemes that occur in Dravidian but are absent from the Sanskrit inventory used in this test (ḷ U+1E37 retroflex lateral; ṟ U+1E5F alveolar trill; ṉ U+1E49 alveolar nasal; ḻ U+1E3B retroflex approximant). Results on the 157-sign H+M set: \textbf{0/157 readings contain the test's Sanskrit-side markers} (aspirated stops, palatal nasal ñ, visarga ḥ); \textbf{35/157 (22\%) contain Dravidian-side markers}. The test's recorded verdict is \textbf{INCONCLUSIVE}, and we report it as such: the share of readings carrying Dravidian-side markers (22\%) is below the rate the test's own null model expects (35\%; one-tailed binomial p = 0.9996 --- the upper tail, the probability of a count of 35 or more in 157 readings at the null rate 0.35, computed in the phonological-exclusivity script by a normal approximation; the observed count of 35 sits well below the null expectation of about 55, which is why the value is close to 1), and the readings tested were themselves chosen from Dravidian sources (DEDR), so an absence of Sanskrit-only sounds in them is partly built into how they were selected. This test does not establish Dravidian exclusivity. Both sound inventories used in this test are the test's own working lists, printed in full in this section and existing nowhere else in this program's records; no published Sanskrit or Dravidian phoneme-inventory source is cited, because none was used. The test's result (INCONCLUSIVE, §3.11) is therefore a result about these lists as much as about the readings.
+
+\emph{Note: this test was run on the 157-sign set (before the sibilant promotions). Its Dravidian-side markers are the four phonemes named above (ḷ, ṟ, ṉ, ḻ), as the phonological-exclusivity record applies them (the record also counts certain endings containing those phonemes). The four later sibilant additions (M330=can, M202=can, M165=cul, M198=co) contain none of those markers and none of the test's Sanskrit-side markers: c- is a valid Proto-Dravidian onset (Krishnamurti 2003) but is not Dravidian-exclusive --- Sanskrit also has c-initial words --- and it is not one of this test's markers. On the test's own definition, the figures for the current set are therefore 35/161 (21.7\%) readings with Dravidian-side markers and 0/161 with Sanskrit-side markers, under the same limits just stated. The 39/161 (24.2\%) figure printed in earlier drafts counted the four c-initial readings as Dravidian-side markers; that counting changed the test's definition and is withdrawn.} The reading set counted here is the same set whose phonotactic violation rate is 23.4\% (§3.18); nothing in this section's result offsets that rate.
+
+\subsection{Formula Semantic Clustering
+}\label{formula-semantic-clustering-phase-148}
+
+Grouping the 97 INITIAL-sign clusters --- the 97 distinct INITIAL signs that begin inscriptions in this corpus and carry a HIGH or MEDIUM reading, as defined in §3.7 --- by the semantic domain this model assigns to each cluster's proposed reading. A seal is grouped by its first sign alone, so the clusters together cover all 1,670 seals, and the seal counts below sum to 1,670; they are not counts over the 1,165 seals that consist entirely of HIGH-or-MEDIUM signs (§3.6), and no further size threshold is applied to the grouping:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+Domain & Clusters & Seals & \% corpus \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+UNRESOLVED & 51 & 845 & 50.6\% \\
+ANIMAL\_GUILD & 25 & 446 & 26.7\% \\
+MATERIAL & 6 & 145 & 8.7\% \\
+DEITY\_TITLE & 9 & 135 & 8.1\% \\
+CIVIC\_ROLE & 6 & 99 & 5.9\% \\ \end{longtable} }
+
+The domains are assigned from the proposed readings themselves, so the domain shares describe how this model's own readings are distributed; they cannot be evidence for the readings. In particular, the ANIMAL\_GUILD share (26.7\%) follows from the grouping rule and is not an independent finding about guilds.
+
+The domains draw on a shared pool of terminal signs, but no pair of signs dominates them: the most frequent terminal sign differs by domain (M367 in UNRESOLVED, M233 in ANIMAL\_GUILD, M051 in MATERIAL, M065 in DEITY\_TITLE, M099 in CIVIC\_ROLE), and neither M342 nor M176 heads any domain's terminal profile --- a measured fact about the model's own sign assignments, consistent with a common positional skeleton across the model's domains. Whether the domains were registers is not shown by this or any other test in this paper (see the note below). The
+ANIMAL\_GUILD domain (animal-named INITIAL signs paired with matching
+animal icons) accounts for 26.7\% of seals --- consistent with a
+totem-based guild identity system. CIVIC\_ROLE (ūr/settlement, pār/look, koḷ/vessel) and DEITY\_TITLE (vēl, nal, nēr) clusters are interpreted by this model as administrative and devotional groupings. No test in this paper shows that they functioned as registers. The per-cluster list (97 clusters, with each cluster's seals and terminal profile) is in the formula-clustering record (\texttt{backend/reports/phase148\_formula\_semantics.json}).
+
+\subsection{Polysemy Permutation Null
+}\label{polysemy-permutation-null-phase-150}
+
+A permutation null test (n=1,000 within-seal position shuffles; the polysemy-permutation script, \texttt{backend/scripts/phase150\_polysemy\_permutation.py}, fixes the random seed at 42 --- the polysemy-permutation record itself does not state the seed) was run against the collocate study's polysemy finding. Observed collocate divergence rate: 66.7\% of the 21 tested signs (listed in the supplemental file \texttt{polysemy\_divergence\_summary.csv}; the signs are those attested in more than one positional slot) show KL \textgreater{} 0.3 bits between INITIAL and non-INITIAL collocate profiles. Null distribution mean: 80.7\% (SD=0.088). The observed rate is \emph{below} the null mean (z = $-1.6$; one-tailed permutation p = 0.955). The test's recorded verdict is \textbf{INCONCLUSIVE}: on this measure, the real corpus does not show more position-specific collocate divergence than shuffled corpora, so that descriptive result (81\% of the tested signs show positionally distinct collocate sets) cannot be claimed as above-chance evidence. We report the test because it was run; it neither supports nor refutes the grammar model. The support for positional grammar in this paper rests on the falsification-suite tests (§2.3), not on this one.
+
+\subsection{Site Repertoire Divergence Bootstrap
+}\label{site-repertoire-divergence-bootstrap-phase-151}
+
+In this section, KL divergence compares two sites' sign repertoires: each site is represented by the distribution of its H+M sign tokens over the signs attested at that site. The measure is symmetric KL --- half the sum of the two one-way divergences, $D_{KL}(P|Q)$ and $D_{KL}(Q|P)$ --- in bits (log base 2), with Laplace smoothing (one count added for every sign in the pair's combined vocabulary), as defined in the site-divergence script (\texttt{backend/scripts/phase151\_site\_kl\_bootstrap.py}). The bootstrap resamples seals with replacement within each site, 1,000 resamples (the site-divergence script fixes the random seed at 42); a confidence interval was computed for the most divergent pair only. Neither the site-divergence record nor its script names the interval method (percentile, basic, or bias-corrected), so the printed interval is reported as recorded, without a method name. The KL divergence in §3.10 is a different quantity: a one-directional divergence, $D_{KL}(\text{Holdat}|\text{CISI})$, over the four positional-class shares, with 0.001 added to each share (the cross-corpus comparison script). The 36 observed site-pair values in this section are descriptive; intervals are printed for one pair only, so no family of interval claims is made.
+
+Bootstrap confidence intervals (n=1,000 resamples) were computed for the most divergent pair only. Key findings: Rakhigarhi (n=33) has the largest observed divergence against every other site in this corpus. All 36 observed site-pair values are in the site-divergence record (\texttt{backend/reports/phase151\_site\_kl\_bootstrap.json}); the largest is Mohenjo-daro--Rakhigarhi (0.509), and the next largest is also a Rakhigarhi pair (Harappa--Rakhigarhi, 0.481), so the `most divergent pair' named below can be checked against that record. Intervals were computed for that one pair only, so the ordering of the other pairs is descriptive, not interval-tested.
+A bootstrap confidence interval was computed for the most divergent pair: Mohenjo-daro vs Rakhigarhi KL=0.509, 95\% CI [0.483, 0.750]. The other Rakhigarhi pairs have observed KL values between 0.250 and 0.481 (Harappa 0.481, Kalibangan 0.350, Lothal 0.348, Dholavira 0.320, Chanhu-daro 0.291, Surkotada 0.290, Banawali 0.250); no confidence intervals for those pairs are on record, and the earlier draft's claim that five Rakhigarhi comparisons all have interval lower bounds above 0.3 is withdrawn. The large-site pair (Mohenjo-daro vs Harappa) shows KL=0.070 --- a small measured difference between the two repertoires. A shared scribal tradition is one possible explanation; corpus composition and object-type selection were not controlled for, and could produce the same small difference. Rakhigarhi has only 33 seals; resampling those 33 seals cannot add information about the site, so its distinctiveness should be read as a measured difference on a small sample, not as proof that the difference is not a small-sample effect.
+
+\subsection{Shu-ilishu Phonological Test
+}\label{shu-ilishu-phonological-test-phase-152}
+
+The Shu-ilishu seal (Ur III, c.2020 BCE) is the one external name this program has tested against: its owner is named ``Shu-ilishu'' (ŠU-i-li-šu) in the seal's Akkadian cuneiform inscription, and his title is ``interpreter of the Meluhha language.'' The name is Akkadian, the seal carries no Indus inscription that we read, and the test is therefore narrow: it asks only whether our candidate reading inventory contains signs for the sounds of his name. Testing the four phonological slots /su/, /i/, /li/, /shu/ against the 157 H+M readings as they stood before the sibilant promotions: 2/4 slots are covered (/i/ by the candidate signs the Shu-ilishu test record lists --- M267, M162, M336, M305, M045 --- of which M305's recorded reading, ōṭu/comitative, contains no /i/ sound; the record's slot list is reported here as recorded, and this mismatch is one reason the test's result is stated as inventory overlap only; /li/ by 4 signs including M162=il/iḷ). No seal in the corpus matched three or more of the four slots (candidate seals = 0). The sibilant /su/ phoneme is absent from the current H+M reading set. Result: NO\_SEAL\_MATCH --- partial inventory overlap only (2 of 4 slots covered; candidate seals = 0). The Shu-ilishu test record labels this outcome PARTIALLY\_SUPPORTED; we do not use that label, because every seal-level result of the test is zero and a label containing `supported' invites misreading even with a qualifier. The critical gap is coverage of /su/ and /shu/. The external facts in this section (the Ur III date, c. 2020 BCE; the title `interpreter of the Meluhha language'; the provenance recorded as `excavated at Ur, held at British Museum') are as recorded in the Shu-ilishu test record (\texttt{backend/reports/phase152\_shu\_ilishu.json}), which is the source this section relies on; no bibliography entry covers them. This test was run against the 157-sign H+M set before the sibilant additions. The sibilant DEDR check partially addressed the broader sibilant gap by adding M198=\emph{co} as PROVISIONAL\_MEDIUM, but it does not cover /su/ or /shu/. A larger corpus remains necessary for this external anchor battery. The inventory checked in this section is the same reading set whose phonotactic violation rate is 23.4\% (§3.18).
+
+\subsection{Sibilant Anchor Inventory
+}\label{sibilant-anchor-inventory-phase-153}
+
+A targeted audit of sibilant-initial Dravidian readings in the 157-sign H+M set --- the set as it stood at the time of the sibilant inventory, before the sibilant additions --- finds 6 signs whose readings begin with a ca-/ce-/ci-/co- sound (M025=cem, M078=cēr, M066=cōḻ, M028=cōḻ, M237=ce, M118=car). In the current 161-sign set the count is 10: the four PROVISIONAL\_MEDIUM additions are also c-initial (M330=can, M202=can, M165=cul, M198=co; §§3.25, 3.27). Earlier wording that presented the 6-sign count as the count for the `current' set is corrected here. An earlier count of 7 included M305, whose reading is ōṭu (the comitative suffix; §3.18) --- it has no sibilant-initial sound and is removed from this count. The sibilant-inventory record asserts a count of 7 without listing the signs; on the readings printed in this paper and recorded in the audit file, 6 is the checkable figure. The /su/ or
+/shu/ phoneme is not covered. 17 DEDR-attested Dravidian sibilant roots
+were identified as candidate readings for unanchored MEDIAL signs. The
+/su/ gap is targeted for the ICIT corpus expansion (5,318 inscriptions
+vs 1,670) --- a larger corpus provides more distributional evidence for low-frequency sign assignments. The 17 roots, with their DEDR numbers and glosses, are listed in the sibilant-inventory record (\texttt{backend/reports/phase153\_sibilant\_anchors.json}).
+
+\subsection{Vowel Harmony Methodology Resolution
+}\label{vowel-harmony-methodology-resolution-phase-154}
+
+The vowel-harmony warning is unresolved, and our own records disagree about it. Depending on the version of the test, the pass rate is 75.3\% (the validation recount: 476 of 632 decoded seals, against an 85\% threshold), 64.2\% on a stricter cross-reading version of the test, or 36.1\% (the vowel-harmony resolution study: 417 of the 1,154 seals checked \emph{passed}; 737 seals failed), where the recorded verdict flags an active concern. The 418 figure in that record is a count of word-internal (root) violations, not a count of seals --- a different unit, close to the 417 passing seals only by coincidence: 418 root violations plus 319 boundary violations are the violations counted across the 737 failing seals. That record's 418 root violations led it to suggest that some sign readings have the wrong vowel class. Two known sources of false violations exist --- slash-notation alternative readings (e.g., ``ay/ā'') and grammatical particles that follow words of any vowel class --- but they have not been shown to account for that result. We therefore withdraw the earlier description of the warning as a settled methodology artifact: vowel harmony is an open problem for the reading set, and root harmony within single morphemes is in any case not testable with the current toolkit without morphological segmentation. No one of these three procedures is currently the program's authoritative vowel-harmony test: the records disagree because the test was redefined between runs, and the full rule changes are not recorded for every version. The warning therefore stands as unresolved at every strength the three versions give (pass rates 75.3\%, 64.2\% and 36.1\%), and no reading in this paper is either cleared or condemned by the vowel-harmony test until one protocol is frozen and re-run on the current 161-sign set.
+
+\subsection{Tamil-Brahmi Terminal Comparison }\label{tamil-brahmi-terminal-cross-validation-phase-155}
+
+The terminal rate (t\_rate) is the share of a sign's tokens that are the last sign of a multi-sign inscription, on the Holdat corpus. H+M signs with strictly TERMINAL-dominant positional profiles (t\_rate \textgreater{}= 0.50): 7 signs. All seven, with their terminal rates and the Tamil-Brahmi comparison record's match decision, are: M233 = ūr (0.538, no match), M051 = pū/puḷ (0.515, no match), M065 = kuTam (0.545, matches the -am category), M305 = ōṭu/comitative (0.976, matches the -oṭu category), M125 = vil (0.561, matches the -il category), M249 = tii (0.959, no match), and M220 = al (0.984, matches the -al category). Testing these against the Tamil-Brahmi epigraphy terminal phoneme inventory (11 categories: -an/-aṉ, -ār/-ar, -ai, -iṉ/-in, -il, -ku/-kku, -um, -oṭu, -al/-āl, -am, -ām): 4/7 match (57\%). No published source for that 11-category inventory is cited in this paper or in the Tamil-Brahmi comparison record; the inventory is the test's own working list, and the match count can be checked against the record but not against an external authority. The non-matching signs (M233=ūr, M051=pū/puḷ, M249=tii) are content
+nouns that appear terminally in short inscriptions, not grammatical
+suffixes --- their terminal position is structural rather than morphological. (The Tamil-Brahmi comparison record gives these signs' terminal rates and match decisions but records no formula analysis behind this sentence; earlier wording here, `sole sign in a 2-sign formula', was incoherent as printed --- a sign cannot be the only sign in a 2-sign inscription --- and is withdrawn rather than replaced with a guess.) A second, broader count was made after seeing this result, adding further suffix signs; earlier drafts reported it as reaching 8 of the 11 categories. Its derivation is not fully recorded --- one sign named in the expansion (M220) was already in the original seven --- so it is not reported as a result here. The 4/7 result above is the only recorded result of this comparison. The 11-category Tamil-Brahmi terminal inventory used in the test is the list printed in this section; no published source for that inventory is cited in this paper or in the Tamil-Brahmi comparison record. Two cautions apply to the whole comparison: Tamil-Brahmi is roughly two thousand years later than the Indus material, so agreement can show only that the proposed endings are of kinds later attested in Dravidian epigraphy --- it cannot validate the readings; and the phonotactic violation rate under the stricter redefined test is 23.4\% (270 of 1,154 decoded seals, in the Tamil-Brahmi comparison), concentrated in high-frequency signs. No record supports excusing those violations as mostly short abbreviated seals, and we do not do so here. The signs driving that rate are recorded in the Tamil-Brahmi comparison record, Part C: M328 (53 violations), M211 (49), M176 (46) and M342 (45) --- three of them headline signs of this model. This finding applies to the reading set as a whole: it bears on the sibilant notes in §3.11 and on §3.15's slot check, which use the same set, and on the Tier-2 sentence in §5.
+
+\subsection{Gulf Seal Fish-Sign Test
+}\label{gulf-seal-fish-sign-test-phase-156}
+
+This test extends \S3.5 to the Gulf material. It tests the same
+published model of Avishai Roif (2025a, 2025b): the fish sign as a
+guild/title and maritime marker --- in his expanded treatment, the
+``coastal controller'' reading, with fish, boat, and jar signs
+recurring at port sites (Roif 2025b). On that model, fish signs in
+Gulf formal-seal contexts should likewise appear in compound,
+never as solitary markers. The Gulf counts and the verdict below
+are this program's own measurements.
+
+Validation path §4.5, item 2, was executed using Laursen (2010) \emph{Arabian
+Archaeology and Epigraphy} 21:96-134 and Mitchell (1986) in
+\emph{Bahrain Through the Ages}. The Gulf extension searched about 145,000 characters of extracted text in the two source files named in the Gulf-seal test record: the extracted text of Laursen (2010) and the extracted text of the Bahrain volume (Mitchell 1986). The record names those files and the hit counts, but it does not record the search terms used, any term list, or an enumeration of the 27 Indus-script contexts, so the search cannot be re-run from the record as it stands. That text search found no mention of an isolated fish sign --- and, to be precise about what a text search can show, no fish-sign mentions at all in the Laursen text (0 hits). An absence in catalogue prose is weaker evidence than inspection of the seal images, and we report it as such: the Gulf material provides no counterexample to the Holdat count, but it does not independently confirm it. Parpola's (1994) Appendix lists compounds ending in \emph{mīn} (4 attestations); an appendix of compounds cannot speak to isolated cases either way. The corpus result therefore stands on the Holdat count alone (0 isolated among 113 fish-bearing seals). The 27 Indus-script contexts in Laursen's catalog, in which likewise no isolated fish sign is reported, count a different unit (catalog contexts, not seals). They are not combined with the Holdat count, no combined figure is used anywhere in this paper, and the two results should always be cited separately: 0 isolated among 113 fish-bearing Holdat seals (§3.5), and no fish-sign mentions at all in the Laursen catalog text (this section). (For the registered follow-up test of this family and the condition under which it is reported, see the note closing the §3.5 test discussion.)
+
+\subsection{Wells \& Fuls (2015) Sign List Cross-Reference }\label{wells-2015-sign-list-cross-reference-phase-157}
+
+Mining Wells \& Fuls (2015) \emph{The Archaeology and Epigraphy of Indus
+Writing} (161 pages): 284 sign references, \textbf{96 Dravidian language
+claims}, 403-reference positional analysis appendix (Appendix II). On this program's text mining of Wells \& Fuls, the position this summary attributes to the book is compatible with a proto-Dravidian reading and with consistent sign positional classes; we cite this as our mining summary of the book, not as a quotation. (An earlier draft also claimed a Dholavira place-name convergence in two of Wells's sections; we could not locate that claim in our records and it is withdrawn.)
+
+\subsection{Mahadevan Terminal Ideograms + Grammar
+}\label{mahadevan-terminal-ideograms-grammar-phase-158}
+
+Mining Mahadevan (1982) \emph{Terminal Ideograms in the Indus Script}
+and Mahadevan (1986) \emph{Towards a Grammar of the Indus Texts}: the grammar paper contains 79 positional-class references and 61 passages matching our 3-slot model's slot terminology (classifier/title/suffix terms). These are terminology overlaps counted by this program's mining; they are not a count of passages shown, sign by sign, to agree with this model's slot definitions, and §3.23's per-paper counts use a different rule and must not be compared or added to them (see the reconciliation below). These counts and the four-decade mining counts in §3.23 are not the same measurement and must not be compared or added: The terminal-ideogram mining counted every positional-class reference in the grammar paper (79) and every passage matching the model's slot terminology (61), while the four-decade mining counted, per paper, only passages coded as grammar-support hits (8 for the same grammar paper). The two rules count overlapping material differently. The mining recorded no vowel-harmony references in the grammar paper (\texttt{vowel\_harmony\_refs} = 0). That is an absence in one mined paper; it says nothing about the status of the vowel-harmony question, which remains unresolved (§3.17).
+
+\subsection{Parpola 1994 Reading Overlap Count }\label{parpola-1994-reading-cross-validation-phase-159}
+
+Mining Parpola (1994) \emph{Deciphering the Indus Script} (1,566,507
+chars): \textbf{44/75 HIGH-confidence readings appear in Parpola's text} (59\%). This is not independent cross-validation: Parpola's framework guided the choice of readings (§7), so agreement with his book is partly expected by construction, and the count records appearances in his text, not a sign-by-sign check that he proposed the same reading for the same sign. We report it as a measure of how much of the HIGH set sits within the Parpola tradition. Two further counts from the same mining are withdrawn as evidence: the 6,869 `genitive/possessive' text hits (the recorded sample contexts are front matter and other noise, and the hits were never coded for relevance to M267) and the 47 `classifier/determinative' references (not located in the overlap-count record, and generic mentions would not support the specific INITIAL-slot model in any case).
+
+\subsection{Mahadevan Grammar Consistency, 1972--2018
+}\label{mahadevan-four-decade-grammar-consistency-phase-160}
+
+Mining the Mahadevan papers in this program's text corpus (the aggregate counts `10 papers, 1972--2018' and, in §3.24, `38 papers' are this program's own corpus counts and could not be tied to a verifiable external source): the papers actually mined record positional-grammar hits compatible with the 3-slot model --- Grammar of Indus Texts (1986): 8 hits; What Do We Know (1989): 7 hits; Terminal Ideograms (1982): 6 hits. These are one scholar's works across 1972--2018, not independent witnesses, and `consistent with' here means only that the mining found classifier/title/suffix terminology and positional classes of the kinds the model uses. The disclosure in this section --- that these are this program's own text-mining counts, internal outputs, not externally sourced figures --- applies equally to §§3.20--3.22 and §3.24. The akam-puram (2011) paper identifies a crescent-moon sign as an `outer city' marker at INITIAL position; this program's mining records that as compatible in position with our INITIAL class, but no sign-number mapping between that paper's sign and any sign in our inventory is printed or recorded, so no stronger consistency is claimed. Place Signs (1981) documents 10 settlement/ūr sign references in the mining count; that count does not by itself check this paper's specific M233=ūr assignment, and it is reported as a mining count only. Across these works --- one scholar's papers over 1972--2018 (46 years), not independent witnesses --- the mining found the same kinds of positional terminology throughout. For the record, the four-decade mining counts give per-paper hits for all ten papers mined: Grammar of Indus Texts (1986) 8; What Do We Know (1989) 7; Terminal Ideograms (1982) 6; Encyclopaedia (1994) 5; Place Signs (1981) 4; Akam-Puram (2011) 4; Toponyms (2018) 3; Bilingual Parallels (1972) 3; Murukan (1999) 2; Blue Neck (2008) 2.
+
+\subsection{Literature Extraction Ceiling
+}\label{literature-extraction-ceiling-phase-161162165}
+
+Systematic mining of Parpola (1994), 38 Mahadevan papers (1970--2018),
+and Wells \& Fuls (2015) for sign-reading proposals yielded \textbf{0 new direct
+M-number reading assignments} against the LOW-confidence sign set (240 signs at the time of that analysis; 236 in the current anchor table after 4 sibilant promotions). No new direct M-number reading assignments for the LOW set were found by this pipeline. That is a null result for this search method only: its recall has never been measured against a hand-checked list of known proposals, and the same mining did surface proposals for signs outside the LOW set, so the null should not be read as proof that the H+M set is at the frontier of published scholarship. It is consistent with that view, at the strength a single unbenchmarked search can support. The large majority of LOW signs carry placeholder readings for which this mining run found no proposed phonetic value in the literature it searched. Because the run's recall was never measured, that statement covers the searched literature as this pipeline read it --- not all available reference literature. The 18 signs in Appendix B resisting MEDIUM promotion (after M198 was promoted to PROVISIONAL\_MEDIUM in the sibilant DEDR check) may be personal-name syllable candidates; the statistics alone do not distinguish them from any other medial-only sign class (§3.9), and current methods did not resolve them. A bilingual text, or a corpus large enough to identify repeated name sequences, would be needed.
+The text-mining and positional pipeline used here did not advance the LOW-sign set further on this corpus. That is a statement about this pipeline, not about the material: rival-model comparison, expert coding, and image inspection remain open on the same corpus (§3.30), and the ICIT corpus (5,318 inscriptions vs 1,670) or a new archaeological find would add evidence of kinds this pipeline cannot supply.
+
+\subsection{Sibilant Exploratory Promotions
+}\label{sibilant-exploratory-promotions-phase-163}
+
+Mining all three reference sources specifically for sibilant-initial
+readings (ca-/ce-/ci-/co-/cu-) near sign references: 15 /cu/co/ca/
+candidates identified for LOW signs via text proximity analysis. Four signs promoted to PROVISIONAL\_MEDIUM status based on \textgreater{}=3 text-proximity hits in the mined literature (a hit means the proposed reading appears near the sign's number in OCR'd text; it is not a verified assignment of that reading to that sign): M165 (`cul', 4 Parpola references), M330 (`can', 4 Parpola
+references), M202 (`can', 4 Mahadevan references), M198 (`co', 3 Parpola references;
+upgraded to PROVISIONAL\_MEDIUM in the sibilant DEDR check). These are \textbf{exploratory} --- text proximity
+in OCR'd academic text does not guarantee a direct sign assignment; they
+require expert review. With these 4 additions: H+M = 161 (was 157),
+token coverage = 90.96\% (was 90.75\%), H+M-candidate seal coverage = 69.8\% (was 69.1\%).
+
+\subsection{Meluhhan Name Phonological Matching
+}\label{meluhhan-name-phonological-matching-phase-164}
+
+Testing 6 attested Meluhhan personal names from Mesopotamian cuneiform
+against corpus sign sequences: no strong matches (\textgreater{}=3/4 phonological
+slots) found in the 1,670-seal corpus. Partial matches (2/3 slots):
+Urgula (\emph{ur-gu-la}) --- 17 seals with M233(ūr) + ku-class + suffix;
+Nanna-a (\emph{nan-na-a}) --- 9 seals with nal/naN + genitive + suffix.
+These are below the confidence threshold for a personal name
+decipherment claim. The 1,670-seal corpus is insufficient --- ICIT (5,318 texts) would provide \textasciitilde3x more evidence for low-frequency MEDIAL sign sequences required for personal name identification. Per-name results are in the Meluhhan-name matching record (\texttt{backend/reports/phase164\_meluhhan\_names.json}).
+
+\subsection{Sibilant DEDR Check}\label{sibilant-dedr-cross-validation-phase-166}
+
+A within-model plausibility check of the four provisional MEDIUM sibilant upgrades: whether each proposed reading has a DEDR entry, a positional profile consistent with its class, and a form allowed by Proto-Dravidian phonotactics. This check uses the same framework that proposed the readings; it is not cross-validation and not independent confirmation. \textbf{Results}:
+M330=\emph{can} PROVISIONAL\_MEDIUM (DEDR 2322, \emph{*can-} `to do; matter, affair'; INITIAL position; 3 corpus tokens; 4 Parpola references); M165=\emph{cul} PROVISIONAL\_MEDIUM (DEDR 2700, \emph{*cul-} `whirl, depth'; MEDIAL position; 2 corpus tokens; 4 Parpola references); M202=\emph{can} PROVISIONAL\_MEDIUM (DEDR 2322; MEDIAL position; 4 corpus tokens; 4 Mahadevan references); M198=\emph{co} PROVISIONAL\_MEDIUM (DEDR 2816, \emph{*co-} `to say, speech'; INITIAL position; 6 corpus tokens; 3 references --- it met the \textgreater{}=3 promotion threshold used for those promotions but not the \textgreater{}=4 threshold the sibilant DEDR check uses for a `strong' reference count; all four signs remain PROVISIONAL\_MEDIUM on the same basis, and the difference in reference counts changes no sign's category). All four upgrades have DEDR backing --- a DEDR entry is recorded for each of them in the sibilant DEDR check record (the \texttt{dedr\_id} fields quoted in the Results sentence above) --- and Proto-Dravidian phonotactic validity (\emph{c}-initial is a valid Proto-Dravidian consonant onset; Krishnamurti 2003). (Neither file's DEDR column carries an entry for these four signs; in the status audit their evidence type is recorded as DEDR\_PROXIMITY.) The outcome is that all four assignments remain PROVISIONAL\_MEDIUM, unchanged: each reading is plausible within the model and none is verified as a published assignment of that reading to that sign. Expert review is required before any promotion. (The sibilant DEDR check record's label for this outcome, PROVISIONAL\_SUPPORTED\_WITHIN\_MODEL, is not used in this paper, for the same reason as in §3.15: every underlying assignment is unverified, and a label containing `supported' invites misreading.)
+
+\subsection{Expanded Meluhhan Name Matching
+}\label{expanded-meluhhan-name-matching-phase-167}
+
+Expanding the Meluhhan-name matching from 6 to 25 attested Ur III Meluhhan personal
+names (Parpola, Parpola \& Brunswig 1977; Steinkeller 1982; Potts 1994; Reade 2001; Kjaerum 1983) and testing phonological segment matching against all
+1,670 Holdat seals using the 161-anchor reading set. The matching algorithm was intentionally broad. In the expanded name-matching record (\texttt{backend/\allowbreak reports/\allowbreak phase167\_meluhhan\_names\_expanded.json}), each name is pre-split into syllable-like segments (for example, Apil-Adad as a / pil / a / tat); a seal counts as matching a name when at least 50\% of the name's segments are matched by the seal's decoded readings --- counted segment by segment, not as whole names --- and the record's `strong' band means at least 75\%. The record does not state a fuller rule for how a single segment counts as matched, and none is claimed here. All 25 names produced apparent `matches' at this threshold due to the prevalence of common short readings (\emph{ā}, \emph{kol}, \emph{il}) in the seal set decoded with the 161-anchor reading set (all 1,670 seals, as stated at the head of this section). \textbf{Effective
+result: NO\_DISCRIMINATIVE\_MATCH} --- consistent with the earlier name-matching result.
+Personal name decipherment using the current 1,670-seal corpus is not
+feasible. Identifying name-bearing seal sequences would require a larger corpus
+with contextual metadata than the current 1,670-seal corpus provides;
+the ICIT corpus (5,318 texts) is the named candidate for that test. This
+paper does not show that ICIT in particular is the only corpus that
+could serve, or that it would be sufficient.
+
+\subsection{Decode-Blocker Plausibility Check }\label{decode-blocker-statistical-analysis-phase-168}
+
+Statistical assessment of the top 19 decode-blocking LOW signs from
+the decode-blocker list (signs whose presence in a seal prevents full H+M coverage). Each
+blocker's existing LOW reading was assessed for: (1) phonotactic
+validity in Proto-Dravidian; (2) positional profile consistency;
+(3) sequence-analyser evidence where available.
+
+The 19 signs, with their corpus frequencies from the decode-blocker record, are: M270 (6 tokens) and M386 (6); and, at 5 tokens each, M183, M365, M412, M151, M304, M321, M357, M137, M239, M223, M254, M143, M345, M329, M190, M295 and M402 --- 97 tokens in total. The 19 are the 18 Appendix-B signs plus M412. The coverage figure below is therefore checkable from this page: 6,369 + 97 = 6,466 tokens, and 6,466 / 7,002 = 92.35\%. \textbf{Results}: 19/19
+blocker LOW readings are phonotactically plausible (all use valid
+Proto-Dravidian initial consonants). If these 19 blockers were promoted to MEDIUM, token coverage would rise from 90.96\% to an estimated 92.35\% --- a hypothetical figure, reported here only to size the blockers' effect. Note: the planned full-corpus SA run with 161 pinned anchors could not be executed (a constraint-initialisation incompatibility on the available platform), and the statistical assessment used instead does not substitute for it: it checks plausibility (valid Dravidian initial consonants, positional consistency) and nothing more. In light of the held-out test result on the SA machinery (§2.4), no SA-based verdict is claimed for these signs. \textbf{These 19
+signs remain at LOW confidence} --- phonotactic plausibility is a
+necessary but not sufficient condition for MEDIUM promotion. Individual
+DEDR cross-validation (as in the sibilant DEDR check) would be required for each.
+
+\subsection{Master Evidence Synthesis
+}\label{master-evidence-synthesis-phase-169}
+
+The updated evidence scorecard, incorporating the studies that followed the first scorecard.
+\textbf{Results}: 32 total evidence items (up from 23 in the first scorecard), in the master synthesis record's own categories: 12 STRUCTURAL, 8 LINGUISTIC, 8 EXTERNAL, 4 DECIPHERMENT. These ratings are assigned by this program, on labels defined by this program; the earlier draft's `79.8\% aggregate confidence score' is withdrawn, because no weighting rule for it was ever recorded, so the number carried no meaning. The items mix two different kinds of check --- internal consistency checks (which can show the model agrees with itself) and external comparisons (which can test it against something outside) --- and only the second kind is evidence about the world. The full per-item list, with each item's label, is in the master synthesis record (\texttt{backend/reports/phase169\_master\_synthesis.json}); it is not printed in this paper, and no single tally at the top labels is printed, because any such tally would mix the two kinds. Among the new items: Gulf seal text search (no fish-sign mentions found; no counterexample, not corroboration, §3.19), Wells \& Fuls (2015) mining summary (this program's text-mining summary of Wells \& Fuls's book, not a quotation and not a sign-by-sign check; the mining's coding rules and recall were not validated, §3.20), Mahadevan grammar text-mining comparison, Parpola 1994 reading overlap count, 44/75 = 59\%, literature extraction null (a null for this mining pipeline only, recall unmeasured, §3.24), sibilant DEDR check, adversarial challenge battery (an internal battery run by this program against its own claims; the 10 challenges, their pass criteria, and the caveat attached to each of the 6 caveated survivals are in the adversarial-recheck record and are not summarised here): of 10 challenges, 4 survived outright and 6 survived with caveats, none failed outright. That item is an internal consistency item, not an external comparison, and is counted with the internal items wherever §3.30's counts are used, M267 chi-square motif-independence, and blocker phonotactic plausibility (a plausibility check, listed for completeness; it is not evidence that the blocker readings are correct, §3.29). (Category counts as in the Results paragraph above: 12 STRUCTURAL, 8 LINGUISTIC, 8 EXTERNAL, 4 DECIPHERMENT --- printed once, there.)
+No further advance was found from the text-mining and positional methods of the later studies on the current 1,670-seal Holdat corpus and the published literature mined for them. That is a statement about those methods, not about the corpus: other approaches --- rival-model comparison, expert coding, image inspection --- remain open on the same material, and this program's own later re-audit of its anchors was itself an advance made on this corpus.
+
+\subsection{Grammar Variance Retest at 161 H+M
+}\label{grammar-variance-retest-phase-170}
+
+Retest of the grammar-match study's explained-variance metric with the
+updated 161 H+M anchor set (adds M330, M165, M202, M198). Method:
+for each H+M sign with \textgreater{}=3 corpus tokens (147/161 qualify), compute
+I/M/T positional rates and test whether the 3-slot grammar model
+(TERMINAL if T\textgreater{}=0.60, INITIAL if I\textgreater{}=0.50, MEDIAL if M\textgreater{}=0.65)
+correctly classifies the sign's dominant positional class. The grammar-variance retest record states the rules in the order TERMINAL, INITIAL, MEDIAL, else MIXED; it does not state what happens when a sign's rates satisfy more than one threshold, and that tie/overlap handling is not on record.
+\textbf{Results}: 137/147 signs (93.2\%) are classified by the thresholds into the positional class that is already their dominant class. This is a self-consistency check, not an accuracy measurement: the thresholds (TERMINAL if T\textgreater{}=0.60, INITIAL if I\textgreater{}=0.50, MEDIAL if M\textgreater{}=0.65 --- program conventions, with no sensitivity analysis on record) are applied to the same rates that define each sign's dominant class, so a high figure is expected by construction and the check can only catch internal contradictions. It is not comparable to the grammar-match study's figures, which measured how well the grammar pattern matched whole inscriptions: full match 5.1\% of seals and partial match 38.4\%, together 43.5\%. The grammar-match study's 44.3\% is a different quantity in the same record --- its sign-position accuracy (explained variance) --- not the sum of the full and partial rates. The two numbers measure different things, and neither confirms the other. The evidential weight for the grammar model rests on the falsification suite's permutation and held-out tests, not on this retest.
+
+\subsubsection{Depicted Kinds at Inscription Endings
+(OSF registration jv74f)}\label{depicted-kinds-at-inscription-endings-spec-075}
+
+The tests above classify signs by position alone. A further
+registered test asked whether what a sign depicts predicts
+whether it ends inscriptions (OSF registration jv74f). On the documented population of the
+Shakti corpus (3,045 analysable rows; 557 signs), each sign was
+assigned the kind its depiction carries in the published
+identification layer: human (53 signs; 978
+occurrences), animal (39; 1,179), object or goods (24; 2,159),
+or other (307; 7,006); a further 133 signs (481 occurrences)
+are recorded as unidentified and enter only as context. The remaining sign of the 557 is token 999, the one population sign with no published identity: its 2 occurrences are counted in the population totals, but the sign was never keyed or classed, and it enters no per-kind rate, ratio, or test. Each
+kind's rate of inscription-final occurrences was measured
+against a comparison rate drawn from the other identified kinds, matched to the kind's own signs by frequency band. No pooled verdict across kinds was
+computed; each kind stands on its own word, and the words are
+these. Human signs end inscriptions below the comparison rate
+(0.2526 against 0.3244; ratio 0.7785; Fisher exact two-sided
+p = $6.93 \times 10^{-6}$): NOT SUPPORTED. Animal signs
+likewise (0.2774 against 0.3112; ratio 0.8912; p = 0.0200):
+NOT SUPPORTED. Object-and-goods signs end inscriptions at well
+under half the comparison rate (0.1153 against 0.2844; ratio
+0.4055; p = $2.34 \times 10^{-67}$) --- the strongest departure in this study, and in the depleting direction: NOT SUPPORTED.
+Only 0.1579 of that kind's occurrences come from signs
+individually above the corpus-wide final rate (0.2579). The
+remaining kind, other, is INCONCLUSIVE: its signs end
+inscriptions slightly above the comparison rate (0.2900
+against 0.2686; ratio 1.0796; p = 0.0295), far below the
+design's 1.5 support threshold, and it narrowly misses a second
+frozen condition --- 0.4970 of its occurrences come from signs
+individually above the corpus-wide rate, against the required
+half. The family hypothesis --- that at least one identified
+kind is enriched at inscription endings --- therefore stands IN QUESTION: no kind returned SUPPORTED, and the family is not falsified, because its registered falsifier requires every kind to return NOT SUPPORTED, and the other kind is INCONCLUSIVE. Three sensitivity
+variants (borderline signs removed; contested rows included
+--- there are none in this classification, so that variant
+equals the primary exactly; and the wider documented plus
+corroborated population) returned the same four words, on
+substantially the same excavated objects, and two runs of the
+test returned byte-identical results. One sensitivity came
+close to a boundary: removing the borderline signs moves the
+other kind's ratio to 1.0043, just above the not-supported
+line, though its word is unchanged. The celestial kind has no
+members in this classification at all --- that layer carries
+zero such rows --- so this study returns no rate and no verdict for it; that emptiness is stated here because this section is where a reader would look for it.
+
+Three qualifications are part of the result, not footnotes to
+it. First, the keying from signs to depictions is many-to-one: 556 population signs key to 424 distinct rows of the identification layer (other 307 signs to 204 distinct depictions; human 53 to 39; animal 39 to 29; object-and-goods 24 to 19). On the record's recount, 199 of the 556 signs --- and 3,399 of 11,322 identified-kind occurrences (30.0\%) --- take their kind from a depiction shared with other signs. The exposure is largest
+for the human kind, 46.1\% of whose occurrences are pooled in
+this way (other 37.0\%, animal 25.3\%, object-and-goods
+2.7\%), and no frozen sensitivity separates the pooled signs;
+the human word carries that unstated exposure until such a
+sensitivity is run. Second, the study's thinness floor was set
+in distinct depictions but applied in population signs: in the
+floor's own unit the object-and-goods kind stands at 19
+distinct depictions, below the floor of 20. Its verdict stands
+as executed under the frozen text --- and it is the strongest
+in the atlas --- but a reader recounting in the floor's unit
+should know the floor was crossed in the other unit. Third,
+the four p-values above are per-kind and uncorrected: at a
+family level for four kinds ($\alpha$ = 0.0125) the human and
+object-and-goods differences pass, and the animal and other
+figures do not; no verdict word rests on a p-value --- the
+words rest on the ratio bands --- and ``significant'' for the
+other kind reads at the uncorrected level only.
+
+As with §3.8.1, depiction is the published identification
+layer, carrying the earlier census's caution (object-type
+labels diverging between compilations in 49\% of matched
+cases), and position is not meaning: no kind's word ---
+supported, not supported, or inconclusive --- says anything
+about what any sign meant, marked, or was for. The full
+record, with the per-sign tables, is in the repository at
+\texttt{specs/075-depicted-kind-endings-atlas/} (see
+\texttt{outcome.md} and its red-team addendum), registered
+before the run at OSF: \url{https://osf.io/jv74f}.
+
+
+\section{Discussion}\label{discussion}
+
+\subsection{Proposed Readings Under the Candidate Model}\label{proposed-readings-candidate-model}
+
+The three sequences below are illustrative sequences, built from the model's readings to show how the grammar is meant to be read. They are sign-number sequences; this paper does not tie them to identified, catalogued seals, and they should not be cited as transcriptions of specific seals.
+
+Under the grammar model, a typical seal reads as:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{M211 M099 M342} = \emph{kol-kol-ay} = ``the jar-guild lord''
+  (unicorn seal, formal guild title)
+\item
+  \textbf{M062 M342 M176} = \emph{erutu-ay-an} = ``the bull's man''
+  (zebu bull seal, personal name)
+\item
+  \textbf{M045 M176 M267 M328} = \emph{yānai-an-iN-āl} = ``the elephant
+  guild man's man'' (compound title)
+\end{itemize}
+
+Under the model --- and only under the model --- these inscriptions read as a directory of guild members rather than a commodity ledger; the two readings have not been separated by any test yet (§4.5 names a future one), and rival functions (ownership, clan, cultic, or commodity marking) are not ruled out. The translations above carry the uncertainty of every reading they use; the first, for example, depends on two different signs (M211 and M099) both being read kol. On repeated readings, the rule of this model is: homophony is permitted --- two different signs may carry the same reading --- whenever each sign's own evidence supports that reading, as with M211 and M099 here. Shared readings are common in the 161-set, but no audited count of them is on record, and none is claimed. The Arthaśāstra (a layered Sanskrit text whose core is usually placed in the last centuries BCE, roughly a millennium and a half after the end of the IVC period) documents Sanskrit superintendent titles of a broadly similar kind --- \emph{koṣṭhāgārādhyakṣa} (storehouse superintendent), \emph{nāvadhyakṣa} (ship superintendent). No word is shared with the proposed Dravidian readings, and the parallel is an analogy about administrative practice, not evidence of continuity, which remains speculative.
+
+\subsection{The Substrate Evidence}\label{the-substrate-evidence}
+
+Two signs (M374=kul, M351=vī, six tokens each) are assigned DEDR-backed candidate readings under the model, for which a Munda derivation was proposed but not established (see §3.3 for the limits of both; the recorded basis is DEDR 1709 and DEDR 5388, not substrate evidence). We record, as speculation and nothing more, the scenario they would fit if they were correct: a linguistically mixed IVC in which a Dravidian-writing administration absorbed loanwords from Munda-speaking communities. Two candidate signs cannot establish that scenario, and no claim about an administrative elite or about community structure is made on their basis. The Munda substrate in historical
+Dravidian and Indo-Aryan languages is well-attested (Witzel 1999;
+Southworth 2005). If the proposed readings are correct, this would suggest that such substrate influence predates later attested Munda vocabulary.
+
+\subsection{The 18 Signs Resisting MEDIUM Promotion}\label{the-18-signs-resisting-medium}
+
+Eighteen signs with corpus frequency 5--6 resist MEDIUM promotion under current methodology. Their modals
+from the syllabic LM are syllables without clear DEDR matches (e.g.,
+`o', `e', `pi', `du', `pit'). One reading of this pattern, which the model adopts, is that these signs are syllabic components of personal names --- in a system where personal-name syllables could be arbitrary, they would not be recoverable from distributional statistics alone. The statistics do not distinguish that reading from any other medial-only sign class (§3.9 above), so it is a preference of the model, not a finding. The limit stated here belongs to these distributional statistics, not to method in general: other evidence (repeated name sequences, external name matches) could separate the two, and none is available in this corpus.
+
+\subsection{Limitations}\label{limitations}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{No bilingual text}: All readings remain provisional until a bilingual inscription (IVS + Sumerian, Akkadian, or Sanskrit) is discovered. No numerical probability attaches to any individual reading; the confidence labels are rule-based categories (§2.2).
+\item
+  \textbf{Corpus size}: 7,002 tokens is small for linguistic reconstruction. High-frequency signs have more positional data than low-frequency signs, but frequency has not made their readings secure: the phonotactic violations are concentrated in high-frequency headline signs (§3.18), and the program's largest single correction was to a 400-token sign (§3.4). Low-frequency signs (the irresolvable 18) have too little data for either kind of check.
+\item
+  \textbf{Single corpus}: The Holdat corpus covers formal stamp seals
+  only. Copper tablets, potsherd graffiti, and the Dholavira signboard
+  require separate analysis.
+\item
+  \textbf{SA simulation}: The syllabic language model is described in this program's records as trained on modern Tamil material, but no record names the specific corpus, the syllable-inventory source, or the size of the training data, so the training set cannot be reconstructed (§2.4). Phonological drift over 4,000 years may introduce systematic errors, and the size of that risk cannot be assessed without the training specification.
+\item
+  \textbf{Confidence standards}: The MEDIUM threshold is a rule, not a measured standard: it has no known false-positive rate (§2.2), and it admits routes --- SA+DEDR agreement and, for four signs, literature text proximity --- whose error rates are likewise unmeasured. Some assigned LOW readings may be correct but lack sufficient support under the rule.
+\item
+  \textbf{Language-family baseline}: The present model tests Proto-Dravidian
+  compatibility more extensively than competing baselines. A formal comparison
+  against Proto-Munda, early Indo-Aryan, and language-neutral syllabic models
+  remains necessary before the linguistic interpretation can be treated as discriminative rather than merely compatible with Proto-Dravidian. For the record, the comparisons that do exist are mixed: a syllabic language-model comparison favoured Dravidian over Sanskrit on the 157-sign set (the falsification suite's language-model comparison), while a phonological-profile comparison of the HIGH anchors found Dravidian and Sanskrit fits equal and rated the question AMBIGUOUS (the falsification suite's phonological-profile comparison).
+\end{enumerate}
+
+\subsection{Validation Path}\label{validation-path}
+
+The candidate model is falsifiable in principle at the first of the following points. None of the three is an open test that can still be run on the data available today: the first requires a future discovery, the second has already been run and did not confirm the model, and the third has no discriminating prediction on record yet. The three points are stated so that a reader can see exactly what would have to happen, and what has already happened, at each. 1. \textbf{Discovery of
+a bilingual text}: Any Indus inscription alongside a known script
+(Sumerian, Akkadian, Elamite) at a Gulf trade site would allow direct
+validation of individual sign readings. 2. \textbf{Gulf material} (now complete): the Laursen (2010) Gulf Type seal catalog text and the Mitchell (1986) Bahrain volume text were searched. The search found no mention of an isolated fish sign in either text, and no fish-sign mentions at all in the Laursen text (§3.19 gives the source-specific statement), so the Gulf material provides no counterexample to the compound-only pattern --- and no confirmation of it either (§3.19). No verdict on a fish-specific compound-only rule is claimed: the Holdat count is 0 isolated among 113 fish-bearing seals in a corpus with no single-sign inscriptions at all (§3.5), and no extended verdict across both corpora is claimed. 3.
+\textbf{Radiocarbon-dated stratigraphic contexts}: a future test of this kind could separate the guild-identity interpretation from the commodity-tally model only if the two are first made to predict different things --- for example, different sign-sequence patterns in seals from a single dated layer. Consistent `guild' readings in one layer, on their own, would presuppose the readings and would support neither model over the other. No such discriminating prediction is yet on record, so this point is a direction for future work, not a falsification test of the present model.
+
+\section{Conclusion}\label{conclusion}
+
+We propose a computational grammar and candidate Proto-Dravidian anchor
+model for the Indus Valley Script. Its scripts, study reports and anchor
+table can be re-run and checked from the repository; its corpus-level
+counts cannot be re-run until the Holdat corpus is released (§6). The strongest findings, which can be stated with high confidence, are two: robust non-random positional structure (\textit{z}\,=\,10.3; no permutation in 2,000 exceeded the observed statistic (p \textless{} 0.001; 0 of the 2,000 permutations exceeded the observed statistic, so the plain estimate is 0/2,000 and the standard add-one estimate is (0+1)/(2,000+1) = 0.0005, the smallest non-zero value a test of this size can report) --- §2.3 defines the statistic), and the correction of the M267 misassignment (M267 is not the fish sign: it occurs across all motif types, §3.4). Two further structural results are stated at the strength their tests support: the fish-sign isolation count in the Holdat corpus (0 isolated among 113 fish-bearing seals --- a count that follows from the corpus's containing no single-sign inscriptions at all, and so is not a fish-specific pattern, §3.5; the Gulf extension is weaker, §3.19), and a recurring three-slot positional pattern whose positional classes are measured but whose semantic labels (classifier, title, name) are this model's interpretation (§3.2). The tier labels used in this conclusion are this program's claim-audit labels (\texttt{CLAIM\_AUDIT.md}), defined here because the paper uses them without defining them elsewhere: Tier 2 means a candidate linguistic interpretation --- supported by the program's own tests, not proven, and not measured against rival frameworks; Tier 3, used below, means speculative or provisional, requiring explicit caveats. The candidate Proto-Dravidian readings (161 H+M signs; 90.96\% token coverage --- assignment coverage in the sense of §2.2: the share of tokens whose sign carries a candidate reading, not a share of verified readings) are Tier~2 claims supported by multiple tests. Those tests are not independent of each other --- most are computed from the same corpus, and several from the same seals (§2.2) --- the HIGH/MEDIUM labels are rule-based categories with no measured error rate, and the set also carries the unresolved vowel-harmony warning and the 23.4\% phonotactic violation rate (§§3.17--3.18) --- a rate concentrated in high-frequency headline signs (M328, M211, M176 and M342 drive it, §3.18), not spread over rare or doubtful readings. The readings have not yet been externally reviewed.
+The Tier~2 statement above requires qualification in light of the program's October 2026 evidence audit, which re-graded the 94 readings of the program's strict core one by one, and in light of the revalidation work that audit called for, carried out in November 2026 and reported here. Of those 94, 6 are credited as independently supported, on a recorded dual line of support from outside this program that the audit took as recorded without re-verifying it against the primary publications; 65 are supported by the program's internal evidence only; 4 still require revalidation; 3 are pending expert adjudication (M222, M362, M398); and 16 rest on insufficient evidence. The audit originally left 37 readings requiring revalidation, because a load-bearing input to their grading had failed and their grades could not be trusted until the work was redone. 33 of the 37 have since been re-tested. The 28 readings whose promotions came from the program's early grading battery were re-run under a rebuilt battery with that battery's pass-by-default paths removed: 19 stand on the program's internal evidence only, and 9 fell to insufficient evidence (M328, M059, M162, M233, M336, M012, M305, M039, M077) --- including all three promotions the audit had found standing on default passes alone. The early battery's output was retired as evidence for all 28. One leg of the rebuilt battery could not be run: the etymological dataset that leg tests against is not in the program's holdings, so no reading in that re-run could earn that leg's credit, and the 28 dispositions are the outcomes under the inputs the program actually holds. The 5 readings that rested on a single site-statistics line were re-tested with the corrected site-statistics checker: for three of them (M042, M046, M108) the corpus holds too little data for the test to run at all; for the other two (M176 and M342) the test detected no difference (p = 0.063 and p = 0.066), and a non-detection, without a margin fixed in advance, cannot re-earn support --- so all five stand on insufficient evidence. Two of the five are this paper's headline signs (M342, the most frequent sign in the corpus, and M176); their readings and their places in the tables above are unchanged --- what changed is the grade the program's audit line assigns them, not the readings themselves. The 4 readings still requiring revalidation (M087, M165, M264, M311) rest on a comparison-table or literature import, for which an independent line has not been supplied; primary-source passages in the comparator's published texts have since been located for two of them (M087 and M311), which changes nothing about their standing until such a line exists. ``Supported by multiple tests,'' as used above of the 161, must therefore be read at the strength the audit gives those words: the tests are this program's own, and where the program has re-graded readings individually --- the strict core --- it now classes 71 of the 94 as supported at all, 6 of them on outside evidence and 65 on the program's internal evidence only; the remaining 23 still require revalidation, await expert adjudication, or rest on insufficient evidence. The audit graded the strict core only; it is not a re-grading of the 161 readings, and none of this falsifies any reading --- revalidation is a statement about a grade, not a verdict on the reading.
+
+A further test bears on the six readings credited as independently supported. Under this program's identifiability standard, a reading is identifiable only if some recorded observation fits it and excludes the rival constructions that could account for the same evidence --- a rival value of the same shape, or the sign carrying no phonetic value at all. The six were tested one by one against the evidence of record, and none of the six is identifiable at that standard: for each, a rival construction the record does not exclude accounts for the same observations. For two of them, a component is discriminated even though the value is not: for M047, the meaning `fish' is carried by observations a rival meaning must also explain, though the phonetic value follows only under the rebus assumption; for M202, the evidence discriminates a sibilant value from non-sibilant rivals, though not the value itself. Identifiability is a stricter test than support. The outcome does not disprove any of the six readings, and it does not change the support grades above; it records that the evidence behind even the program's best-supported readings does not, at present, single them out from their rivals.
+ Speculative
+interpretations --- guild-identity semantics, the two DEDR-backed readings for which a Munda derivation was proposed but not established,
+individual seal translations --- are Tier~3 claims requiring expert
+review and explicit caveats.
+
+This study does not claim epigraphic finality in the absence of a
+bilingual inscription. The corpus shows non-random positional structure of the kind a writing system produces and also of the kind some non-linguistic marking systems produce; the tests in this paper do not separate those two, and the frequency-curve evidence that might have spoken to the question was uninformative (§2.1.1). Proto-Dravidian remains the candidate framework explored here. The present tests do not establish its superiority to rival language-family or non-phonetic interpretations, and the recorded evidence does not uniquely identify the six readings credited with outside support. The ICIT corpus
+is the immediate
+priority for testing whether the candidate model generalises to a larger public corpus. All study reports, scripts, and the anchor table are available in the Glossa-Lab repository.
+
+\section{Data Availability}\label{data-availability}
+
+All sign readings, confidence levels, DEDR citations, basis statements, analysis scripts, and study reports are available in the Glossa-Lab repository (https://github.com/AXIOVEX/glossa-lab). This version of the paper is the deposited v11 text (version DOI: %%VERSION_DOI%%), prepared from the deposited v10 text (branch \texttt{preprint-v10-corrections-prep}, commit \texttt{47639918}, as deposited on Zenodo). Its text is identified by its version note (\texttt{v11\_version\_note\_DEPOSIT.md}), deposited with it, and by the revision commit at which the version's text was frozen: commit \texttt{bd921ec99828ce06e635865b710ce3ee2c152b85}. The supplemental files named in this paper (the anchor table, the status audit, and the CSV supplements in \texttt{research/indus/supplemental/}) are in the same repository; no separate archive copy of them exists yet. The anchor table is \texttt{research/\allowbreak indus/\allowbreak anchor\_table.csv}: it has 397 rows --- one for every sign in the Mahadevan catalogue --- of which 161 are the HIGH/MEDIUM rows this paper's headline claims rest on and the other 236 carry LOW readings; each row gives the sign's reading and basis, and a DEDR citation is recorded in the table's DEDR column on 15 rows, all of them among the 161; the full 397-sign inventory, with each sign's status and corpus frequency, is \texttt{glossa-corpus/\allowbreak indus/\allowbreak ANCHOR\_STATUS\_AUDIT.csv}; per-study results are in \texttt{backend/\allowbreak reports/}. Neither table is printed in this paper; both are in the repository. Both tables are the paper's central evidence. Selected rows from the anchor evidence are printed in this paper --- in §3.3 and in Appendix A --- as illustrations only; the complete tables are printed nowhere in this paper and are in the repository. A reader who wants to check any single reading should go to the anchor table itself, in the repository named in §6, rather than to the examples in §3.3. The Holdat LLC Indus Corpus v3 is not publicly available at time of writing. Because the Holdat corpus is not yet publicly released, full reproduction of corpus-level counts requires either access to that corpus under agreement or re-running the pipeline on a compatible public corpus after sign-code crosswalking. Supplemental datasets (fish-sign compound-context listing, iconographic formula enrichment table, formula bigram table, and positional grammar permutation summary) are available in \href{https://github.com/AXIOVEX/glossa-lab/tree/main/research/indus/supplemental}{\texttt{research/\allowbreak indus/\allowbreak supplemental/}}.
+
+\section{Acknowledgments}\label{acknowledgments}
+
+Mahadevan (1977) for the
+sign catalogue. Parpola (1994, 2010) for the Dravidian decipherment
+framework that grounds all readings. I thank G. Martini for discussion of later South Asian administrative vocabulary.
+Ashish Nair for the independent scorecard study (arXiv:2604.17828).
+Avishai Roif, as the source of the fish-sign model the tests in
+\S3.5 and \S3.19 were built on: the fish sign read /mi/ (m\={i}n)
+as a value/divine marker and guild/title marker, and the
+``coastal controller'' maritime-guild reading (Roif 2025a, 2025b).
+The model and its predictions are his; the measurements in those
+sections are this program's own.
+
+\textbf{AI Disclosure}: This research was conducted with AI-assisted
+computational tooling (Glossa-Lab pipeline, Warp/Oz agent). Analysis scripts, anchor tables, and study reports are available in the Glossa-Lab repository. The Holdat LLC Indus Corpus v3 is not publicly available; full corpus-level replication requires access to that corpus or a compatible public corpus such as ICIT after sign-code crosswalking. Statistical tests were designed, executed, and interpreted by the author; AI tooling was used for scripting, data management, and literature search --- including the text-mining counts reported in §§3.21--3.24 and the text-proximity hits behind the four PROVISIONAL\_MEDIUM promotions (§2.2). Those machine-produced counts were checked by the author against the study records at the level of totals and sampled contexts, not by a full hand recount, and no benchmark of the mining pipeline's recall or precision exists (§3.24). Model names, versions, prompts, and run settings for the mining steps were not archived with the study records; the counts are therefore reproducible from the records' outputs, not from a re-runnable specification. No AI tool assigned a confidence label, a DEDR candidate, or a verdict in this program: those were fixed by the rules and records cited at each step.
+
+\begin{thebibliography}{99}
+\bibitem{indusref1}
+  Burrow, T. \& Emeneau, M.B. (1984). \emph{A Dravidian Etymological
+  Dictionary} (2nd ed.). Oxford: Clarendon Press. {[}DEDR{]}
+\bibitem{indusref2}
+  Crawford, H. (2001). \emph{Early Dilmun Seals from Saar: Art and
+  Commerce in Bronze Age Bahrain}.
+\bibitem{indusref3}
+  Farmer, S., Sproat, R. \& Witzel, M. (2004). The Collapse of the
+  Indus-Script Thesis. \emph{Electronic Journal of Vedic Studies},
+  11(2), 19--57.
+\bibitem{indusref4}
+  Hojlund, F. \& Abu-Laban, A. (2012). \emph{Tell F6 on Failaka Island:
+  Kuwaiti-Danish Excavations 2008--2012}. Jutland Archaeological
+  Society.
+\bibitem{indusref5}
+  Jha \& Rajaram (2000). \emph{The Deciphered Indus Script}. New
+  Delhi: Aditya Prakashan.
+\bibitem{indusref6}
+  Lubotsky, A. (2001). The Indo-Iranian substratum. In C. Carpelan et
+  al.~(eds.), \emph{Early Contacts between Uralic and Indo-European}.
+  Helsinki: Suomalais-Ugrilainen Seura.
+\bibitem{indusref7}
+  Mahadevan, I. (1977). \emph{The Indus Script: Texts, Concordance and
+  Tables}. New Delhi: Archaeological Survey of India.
+\bibitem{indusref8}
+  Mahadevan, I. (1981). Place Signs in the Indus Script. In
+  \emph{Proceedings of the Fifth International Conference-Seminar of
+  Tamil Studies}, 1(2), 91--107. Madurai: International Association
+  of Tamil Research.
+\bibitem{indusref9}
+  Mahadevan, I. (1982). Terminal Ideograms in the Indus Script. In
+  G.~L. Possehl (ed.), \emph{Harappan Civilization}, 311--317. New
+  Delhi: Oxford \& IBH Publishing Co.
+\bibitem{indusref10}
+  Mahadevan, I. (1986). Towards a Grammar of the Indus Texts:
+  ``Intelligible to the Eye, if not to the Ears''. \emph{Tamil
+  Civilization}, 4(3\&4), 15--30.
+\bibitem{indusref11}
+  Mahadevan, I. (1989). What Do We Know about the Indus Script? Neti
+  neti (`not this nor that'). \emph{Journal of the Institute of Asian
+  Studies}, 7(1), 1--38.
+\bibitem{indusref12}
+  Mahadevan, I. (2011). The Indus Fish Swam in the Great Bath: A New
+  Solution to an Old Riddle. \emph{Bulletin of the Indus Research
+  Centre}, 2, 1--73. Chennai: Indus Research Centre, Roja Muthiah
+  Research Library.
+\bibitem{indusref13}
+  McAlpin, D.W. (1981). \emph{Proto-Elamo-Dravidian: The Evidence and
+  Its Implications}. Philadelphia: American Philosophical Society.
+\bibitem{indusref14}
+  Miller, W. (2025). Holdat LLC Indus Corpus v3. Dataset. Not publicly released at time of writing.
+\bibitem{indusref15}
+  Parpola, A. (1994). \emph{Deciphering the Indus Script}. Cambridge:
+  Cambridge University Press.
+\bibitem{indusref16}
+  Parpola, A. (2010). A Dravidian solution to the Indus script problem.
+  World Classical Tamil Conference lecture, Coimbatore, 25 June 2010.
+  Chennai: Central Institute of Classical Tamil.
+\bibitem{indusref17}
+  Nair, A. (2026). How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard. arXiv:2604.17828. [accessed 23 October 2026]
+\bibitem{indusref18}
+  Rao, R.P.N. et al.~(2009). A Markov model of the Indus Script.
+  \emph{PNAS}, 106(33), 13685--13690.
+\bibitem{indusref19}
+  Rao, R.P.N. et al.~(2009). Entropic Evidence for Linguistic Structure
+  in the Indus Script. \emph{Science}, 324(5931), 1165.
+\bibitem{indusref20}
+  Rao, R.P.N., Yadav, N., Vahia, M.N., Joglekar, H., Adhikari, R. \& Mahadevan, I. (2010). Entropy, the Indus Script, and Language: A Reply to R. Sproat. \emph{Computational Linguistics}, 36(4), 795--805. DOI: 10.1162/coli\_c\_00030.
+\bibitem{indusref21}
+  Roif, A. (2025a). \emph{Deciphering the Indus Valley Script: A
+  Phonetic-Mnemonic Akkadian Shorthand Approach}. Academia.edu,
+  published 12 June 2025.
+  \url{https://www.academia.edu/129921039/Deciphering_the_Indus_Valley_Script_A_Phonetic_Mnemonic_Akkadian_Shorthand_Approach}
+\bibitem{indusref22}
+  Roif, A. (2025b). \emph{Indus Valley Script deciphered --- From
+  Mythology to History using the Akkadian shorthand approach}.
+  Academia.edu, published 2 August 2025.
+  \url{https://www.academia.edu/143222807/Indus_Valley_Script_deciphered_From_Mythology_to_History_using_the_Akkadian_shorthand_approach}
+\bibitem{indusref23}
+  Southworth, F. (2005). \emph{Linguistic Archaeology of South Asia}.
+  London: Routledge.
+\bibitem{indusref24}
+  Sproat, R. (2014). A Statistical Comparison of Written Language and Nonlinguistic Symbol Systems. \emph{Language}, 90(2), 457--481. DOI: 10.1353/lan.2014.0031.
+\bibitem{indusref25}
+  Krishnamurti, Bh. (2003). \emph{The Dravidian Languages}. Cambridge:
+  Cambridge University Press.
+\bibitem{indusref26}
+  Laursen, S. (2010). The Westward Transmission of Indus Valley Sealing
+  Technology. \emph{Arabian Archaeology and Epigraphy}, 21, 96--134.
+\bibitem{indusref27}
+  Wells, B. \& Fuls, A. (2015). \emph{The Archaeology and Epigraphy of
+  Indus Writing}. Archaeopress.
+\bibitem{indusref28}
+  Yadav, N., Joglekar, H., Rao, R.P.N., Vahia, M.N., Adhikari, R. \&
+  Mahadevan, I. (2010). Statistical Analysis of the Indus Script Using
+  n-Grams. \emph{PLoS ONE}, 5(3), e9506. DOI:
+  10.1371/journal.pone.0009506.
+\bibitem{indusref29}
+  Witzel, M. (1999). Substrate Languages in Old Indo-Aryan.
+  \emph{Electronic Journal of Vedic Studies}, 5(1), 1--67.
+\bibitem{indusref30}
+  Kjaerum, P. (1983). \emph{Failaka/Dilmun: The Second Millennium
+  Settlements, Vol.~1: The Stamp and Cylinder Seals}. Aarhus:
+  Jutland Archaeological Society.
+\bibitem{indusref31}
+  Mitchell, T.C. (1986). Indus and other seals from the Gulf. In
+  H.A.H.\\ Al-Khalifa \& M. Rice (Eds.), \emph{Bahrain Through the
+  Ages: The Archaeology}. London: Kegan Paul International, pp.~278--282.
+\bibitem{indusref32}
+  Parpola, S., Parpola, A. \& Brunswig, R.H. (1977). The Melu\d{h}\d{h}a
+  village: evidence of acculturation of Harappan traders in late
+  third-millennium Mesopotamia? \emph{Journal of the Economic and
+  Social History of the Orient}, 20(2), 129--165.
+\bibitem{indusref33}
+  Potts, D.T. (1994). South and Central Asian elements at Tell Abraq
+  (Emirate of Umm al-Qaiwain, UAE), c.~2200--1000 BC. In
+  A. Parpola \& P. Koskikallio (Eds.), \emph{South Asian Archaeology
+  1993}. Helsinki: Suomalainen Tiedeakatemia, pp.~615--628.
+\bibitem{indusref34}
+  Reade, J.E. (2001). Assyrian king-lists, the royal tombs of Ur, and
+  Indus origins. \emph{Journal of Near Eastern Studies}, 60(1), 1--29.
+\bibitem{indusref35}
+  Steinkeller, P. (1982). On the identity of the toponym
+  L\'{U}.SU(.A). \emph{Journal of the American Oriental Society},
+  102(2), 299--309.
+\end{thebibliography}
+
+\appendix
+
+\section{Summary of New Munda-Substrate Re-Review
+Anchors}\label{appendix-a-summary-of-new-phase-128129-anchors}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2143}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2857}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2143}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Sign
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reading
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Confidence
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+DEDR
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Evidence
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M374 & kul & MEDIUM & 1709 & DEDR 1709 (kulam, clan/lineage); a Munda \emph{kul} proposed by this program (in the Munda-substrate re-review) has no Munda source cited in our records \\
+M351 & vī & MEDIUM & 5388 & DEDR 5388 (vī, seed); the asserted derivation from Munda \emph{bi} by a `bilabial shift' is unestablished \\
+M072 & mā & MEDIUM & 4751 & INITIAL-only (12/12 tokens); collocates peN,
+veL, comitative \\
+M149 & or & MEDIUM & 987 & MEDIAL; {[}kōṉ{]} -\textgreater{} or -\textgreater{} {[}an{]}; Dravidian
+oru=one/a certain \\
+M185 & pul & MEDIUM & 4336 & MEDIAL; descriptor before āl/man;
+pul=humble/grass \\
+\end{longtable}
+}
+
+\section{The 18 Irresolvable
+Signs}\label{appendix-b-the-18-irresolvable-signs}
+
+These 18 signs have corpus frequencies of 5 (sixteen signs) or 6 (M270, M386) --- 92 tokens in total, 1.31\% of corpus tokens --- appear in MEDIAL position in the blocking-sign analysis (personal-name slots in the model), have SA modals without DEDR matches, and resist substrate identification. The records give these signs' token counts (5 or 6 each, 92 in total), not the number of distinct seals each occurs on; a sign that occurred twice on one seal would block fewer seals than its token count. Together they therefore account for at most 92 of the 505 seals not fully covered by H+M candidate readings (\S3.6); the rest are blocked by other LOW signs.
+
+Signs: M183, M190, M223, M239, M254, M270, M295, M304, M321, M329,
+M345, M357, M365, M386, M137, M143, M151, M402. (M198 removed --- promoted to PROVISIONAL\_MEDIUM by the sibilant DEDR check.)
+
+\emph{Working hypothesis}: These are syllabic components of personal
+names --- arbitrary sound sequences used to encode individual names
+within the guild-identity system. Their decipherment requires either a
+bilingual text or a corpus large enough to identify repeated name
+sequences across related inscriptions.
+
+\section{Foundation Validation
+Summary}\label{appendix-c-foundation-validation-summary}
+
+Internal consistency suite (\texttt{backend/scripts/foundation\_check.py}): on the October 2026 execution tree, the changed suite reported 40 passed, 0 failed, 8 warnings. The earlier May 2026 result --- 59 checks, all passing --- belongs to the previous version of the suite and is recorded here as provenance, not as the current result. These are internal consistency checks, not external validation. Items from the May 2026 suite include: -
+Dravidian lift ratio: 3.13 (the early simulation study). In that study's syllabic language-model simulation run (the record is \texttt{outputs/phase44\_t3\_v3\_sa\_300k.json}), the Dravidian model's lift over its null was 0.4965 and the Sanskrit model's lift over its null was 0.1584, and the record's stored ratio of the two lifts is 3.1334, printed here as 3.13. It is a ratio of two lifts, not a lift above a null, and it is recorded here as provenance from the May 2026 suite only: the machinery behind it is the simulation machinery that a later held-out test found unable to separate its Dravidian model from Sanskrit and scrambled controls (§2.4), so this number is not evidence that Dravidian fits better than a rival language, and it does not qualify §4.4's statement that no formal comparison establishing Dravidian superiority has been run. - Contact zone
+HIGH anchors: supported within internal checks - Sign coverage: 397 M-numbers all
+addressed - Dashboard coverage metrics: guaranteed \textless{}=1.0 (no inflation) -
+Grammar model: the three positional classes are internally consistent under the suite's checks; the classifier/title/suffix meanings are the model's interpretation and are not checked by the suite - Fish sign isolation: 0 isolated among 113 fish-bearing corpus seals (the isolation counts); the corpus contains no single-sign inscriptions, so the count is not a fish-specific result (§3.5); the Gulf text search found no fish-sign mentions at all and contributes no denominator (see §3.19)
+- Sign accounting: 390 attested corpus signs; 397 Mahadevan catalogue signs; 7 catalogue-only signs with zero corpus tokens
+
+\emph{End of Preprint v11}\\
+\emph{Glossa-Lab, May 2026; revised November 2026}\\
+\emph{Word count: 21,748}
+
+\end{document}

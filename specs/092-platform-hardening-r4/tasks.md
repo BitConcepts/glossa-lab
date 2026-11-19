@@ -124,7 +124,7 @@
   record states).
   *This does not establish:* discharge — the five named runs are
   T302.
-- [ ] **T302 — Tray discharge + shape amendment.** Five consecutive
+- [x] **T302 — Tray discharge + shape amendment.** Five consecutive
   full-suite runs, named by run id, with zero tray teardown ERRORs;
   on discharge, the run-defs §5 amendment act recording the
   mechanism and the fixing stage (D-092-3). Claims: C092-9
@@ -152,7 +152,7 @@
   nor hand-deselects).
   *This does not establish:* that the test is fast — only that its
   cost is evidenced and its handling is machinery.
-- [ ] **T305 — Notifications ERROR battery.** 50 standalone
+- [x] **T305 — Notifications ERROR battery.** 50 standalone
   repetitions of the notifications module plus 3 full-suite-order
   runs, outcomes recorded; on reproduction, classification and (if a
   defect) a fix under T301's pattern; on no reproduction, the
@@ -163,7 +163,7 @@
 
 ## Closeout
 
-- [ ] **T401 — Closeout record.** Per-claim dispositions C092-1..14
+- [x] **T401 — Closeout record.** Per-claim dispositions C092-1..14
   at stage-evidence strength with stage/PR pointers; the standing
   gate profile restated verbatim from the gate's own output on the
   final tree; C092-14 verified by diff census over the spec's stage

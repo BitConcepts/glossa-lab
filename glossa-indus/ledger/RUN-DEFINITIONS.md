@@ -434,3 +434,34 @@ records (Stage 4); where a re-execution is itself
 recorded as a pair for junction, the C2 form is the
 registered shape of that pair. No freeze-gate code
 changes follow from this registration.
+
+## 11. Registered environment-scoped deselection — the phase392 determinism test (Spec 092)
+
+Registered at Spec 092 Stage 3 (T304), under §5's `suite`
+row as it stands — this section registers a deselection;
+it amends no rule, table, or vocabulary above, and no
+registered copy carries a table from it.
+
+The test `tests/test_phase392_q2_gate.py::
+test_pipeline_deterministic_under_seed` re-runs the
+phase392 Q2 gate pipeline (input matrix 588 samples × 12
+features; 199 bootstrap draws; 499 permutations) and
+asserts byte-identical outputs under a fixed seed. Its
+cost is intrinsic compute: profiled at Spec 092 Stage 3,
+the hot spot is the Bray–Curtis dissimilarity inside the
+PERMANOVA permutations, with no accidental quadratic
+blowup, retry loop, or unbounded wait; standalone it
+completes in ~49 s on the mini-server. On the Muse VM
+environment class (shared CPU, ~8 GB RAM, no swap) the
+same test was observed on 2026-11-05 to stall a
+full-suite enumeration for tens of minutes.
+
+The deselection: in any environment where the `CI`
+variable is unset, suite collection deselects this one
+test (wired in `backend/tests/conftest.py`), so a local
+enumeration neither stalls nor needs a hand-supplied
+deselect flag. The CI backend job, where `CI` is set,
+remains the authoritative run of the test. The
+deselection is environment-scoped and registered here
+only: no other test is deselected by it, and the test
+itself is unchanged.

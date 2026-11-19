@@ -85,6 +85,37 @@ _os.environ.setdefault("GLOSSA_OUTPUTS_DIR", str(_SUITE_OUTPUTS))
 
 from glossa_lab.main import create_app  # noqa: E402
 
+# ── Spec 092 T304 — registered environment-scoped deselection ────
+# The phase392 determinism test's cost is intrinsic compute
+# (profiled at Stage 3: ~49 s standalone on the mini-server, the
+# Bray-Curtis dissimilarity inside the PERMANOVA permutations)
+# and it stalls full-suite enumerations on constrained local
+# environments (observed 2026-11-05 on the Muse VM). It is
+# registered as an environment-scoped deselection in the run
+# definitions (glossa-indus/ledger/RUN-DEFINITIONS.md §11): where
+# the CI variable is unset, collection deselects this one test so
+# a local enumeration neither stalls nor needs a hand-supplied
+# flag; where CI is set, nothing is deselected and the CI backend
+# job runs the test as the authoritative enumeration.
+_PHASE392_DETERMINISM_SUFFIX = (
+    "test_phase392_q2_gate.py::test_pipeline_deterministic_under_seed"
+)
+
+
+def pytest_collection_modifyitems(config, items):
+    if _os.environ.get("CI"):
+        return
+    deselected = [
+        i for i in items if i.nodeid.endswith(_PHASE392_DETERMINISM_SUFFIX)
+    ]
+    if not deselected:
+        return
+    config.hook.pytest_deselected(items=deselected)
+    items[:] = [
+        i for i in items if not i.nodeid.endswith(_PHASE392_DETERMINISM_SUFFIX)
+    ]
+
+
 if _os.name == "nt":
     try:
         from _pytest import pathlib as _pp

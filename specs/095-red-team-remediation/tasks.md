@@ -164,7 +164,7 @@
   records/t403-dashboard-build-record-2026-11-18.md, screenshot
   set in records/t403-screenshots/. C095-12's build half is
   discharged in the build record's terms.)
-- [ ] **T404 — the audit package run.** Functional checklist,
+- [x] **T404 — the audit package run.** Functional checklist,
   eight-step new-researcher protocol, accessibility pass; scored
   against pre-fixed thresholds; failures filed with screenshots.
   (C095-13.)
@@ -177,6 +177,13 @@
   2026-11-18.md: protocol 8/8 (P1 met), A1 not met, A2 met.
   T404 remains unticked: the authenticated legs and the
   remediation-scope decision stand.)
+  (2026-11-19: the dedicated remediation stage remediated every
+  failed item and re-ran the package: PASS against the pre-fixed
+  thresholds, raw and corrected; the dashboard leg re-ran 8/8
+  with A1 and A2 met. C095-13 is discharged; the authenticated
+  legs carry as a named remainder to the standing Spec 083
+  proofs remainder. See
+  records/t404-remediation-stage-record-2026-11-19.md.)
 - [x] **T405 — the composed release gate.** Thirteen components,
   results recorded per candidate, exceptions only as recorded
   owner-approved entries; the planted RT-03-shape stale claim

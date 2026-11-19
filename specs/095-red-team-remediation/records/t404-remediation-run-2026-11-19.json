@@ -1,0 +1,257 @@
+{
+  "results": [
+    {
+      "section": "functional",
+      "item": "F01-project-crud",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "import=200 open=200 update=200 delete=200 reopen-after-delete=404"
+    },
+    {
+      "section": "functional",
+      "item": "F02-experiment-crud",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "create=201 open=200 update=200 (delete exercised in F02b)"
+    },
+    {
+      "section": "functional",
+      "item": "F02b-experiment-delete",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "delete=200 reopen-after-delete=404"
+    },
+    {
+      "section": "functional",
+      "item": "F03-corpus-inspect-import",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "catalogue GET=200, 39 entries; import attempt on cat-coptic -> 201 {'imported': True, 'corpus_id': 'ca0664fa07bc', 'name': 'Coptic Reference Corpus"
+    },
+    {
+      "section": "functional",
+      "item": "F04-run-experiment-job",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "job created and readable; status='pending'"
+    },
+    {
+      "section": "functional",
+      "item": "F10-concurrent-jobs",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "2 jobs created back-to-back and both readable"
+    },
+    {
+      "section": "functional",
+      "item": "F11-long-running-visibility",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "status observable across 6 polls over 12s: [{'status': 'pending', 'updated_at': '2026-11-19T22:17:23.213653+00:00'}, {'status': 'pending', 'updated_at': '2026-11-19T22:17:23.213653+00:00'}]"
+    },
+    {
+      "section": "functional",
+      "item": "F05-cancel-pause-job",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "pause -> 200"
+    },
+    {
+      "section": "functional",
+      "item": "F06-resume-job",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "resume after pause -> 200"
+    },
+    {
+      "section": "functional",
+      "item": "F08-generate-report",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "generate(template=fuls_nw_semitic) -> 200"
+    },
+    {
+      "section": "functional",
+      "item": "F09-export-formats",
+      "attempted": true,
+      "verdict": "FAIL",
+      "evidence": "project export -> 200, -1 bytes, payload type dict"
+    },
+    {
+      "section": "functional",
+      "item": "F12-malformed-input",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "invalid-json->422; wrong-types->422; missing-id->404; oversized-name->201; health-after->200"
+    },
+    {
+      "section": "functional",
+      "item": "F13-migration-rollback",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "ledger migration tests pass in the audit tree; rollback/restore definitions found: ['glossa_lab/ledger_intake.py:531:    # write can be rolled back (see rollback_migration below).', \"glossa_lab/ledger_intake.py:537:# Snapshot / rollback \u2014 the migration write path's recovery facility.\", 'glossa_lab/ledger_intake.py:627:def restore_snapshot(ledger_path: Path, snapshot_path: Path) -> None:', 'glossa_lab/ledger_intake.py:655:def rollback_migration(']"
+    },
+    {
+      "section": "functional",
+      "item": "F15-bundle-identity",
+      "attempted": true,
+      "verdict": "FAIL",
+      "evidence": "FileNotFoundError: [Errno 2] No such file or directory: '/home/tpierson/glossa-work/spec095-s4/audit-instance/frontend/dist/assets/index-8H0F3zWA.js'"
+    },
+    {
+      "section": "functional",
+      "item": "F07-restart-recovery",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "marker graph created -> 201 (id t404_restart_marker_26681); after backend restart GET -> 200"
+    },
+    {
+      "section": "protocol",
+      "item": "P1-arrive-from-public-page",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "tracker page status 200; onward app links found: ['https://github.com/BitConcepts/glossa-lab', 'https://github.com/BitConcepts/glossa-lab/tree/main/specs/075-depicted-kind-endings-atlas', 'https://github.com/BitConcepts/glossa-lab/tree/main/specs/074-hunt-opening-signs-repaired-surface']"
+    },
+    {
+      "section": "protocol",
+      "item": "P2-claims-and-non-claims",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "home presents a 'Standing position' panel: True; states the script is not deciphered: True"
+    },
+    {
+      "section": "accessibility",
+      "item": "A2-keyboard-nav",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "Tab walk reached primary destinations: ['Home', 'Claims', 'Data', 'Experiments', 'Settings']; first focused: ['ProgramIndus Script Decipherment\u25beDeciphe', '\u2302Home', '\u00a7Claims31', '\u2713Digestion13', '\u25a4Evidence & sources', '\u25a6Data', '\u25c8Analysis', '\u2b21Experiments']"
+    },
+    {
+      "section": "functional",
+      "item": "F14-refresh-state",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "claims view content identical across reload: True; url after reload: http://127.0.0.1:8417/#/claims"
+    },
+    {
+      "section": "protocol",
+      "item": "P3-inscription-and-evidence-trail",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "data view opened an entry: True; detail surface mentions evidence trail: True; data view text sample: 'G\\nGlossa Lab\\nEpistemic research workbench\\nPROGRAM\\nIndus Script Decipherment\\n\u25be\\nDecipher the Indus / Harappan script using'"
+    },
+    {
+      "section": "protocol",
+      "item": "P4-distinguish-kinds",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "claim surface labels found: ['falsifier', 'evidence', 'does not establish', 'hypothesis', 'transcription', 'observation']"
+    },
+    {
+      "section": "protocol",
+      "item": "P5-reproduce-one-result",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "experiment opened: True; run/reproduce affordance present: True; activated: True; surface after activation: 'G\\nGlossa Lab\\nEpistemic research workbench\\nPROGRAM\\nIndus Script Decipherment\\n\u25be\\nDecipher the Indus / Harappan script using computational metho'; list sample: 'G\\nGlossa Lab\\nEpistemic research workbench\\nPROGRAM\\nIndus Script Decipherment\\n\u25be\\nDecipher the Indus / H'"
+    },
+    {
+      "section": "protocol",
+      "item": "P6-submit-candidate-with-falsifier",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "form requires/mentions falsifier: True; fields filled: 2; submitted: True; surface after: 'G\\nGlossa Lab\\nEpistemic research workbench\\nPROGRAM\\nIndus Script Decipherment\\n\u25be\\nDecipher the Indus / Harappan script using computational metho'"
+    },
+    {
+      "section": "protocol",
+      "item": "P7-follow-adjudication",
+      "attempted": true,
+      "verdict": "FAIL",
+      "evidence": "candidate visible with its stage/status: False; context: ''"
+    },
+    {
+      "section": "protocol",
+      "item": "P8-export-audit-trail",
+      "attempted": true,
+      "verdict": "PASS",
+      "evidence": "export/download affordances on the surface: 912; downloaded Geez_syllabic_no-punctuation_statistics.docx (17299 bytes); view sample: 'G\\nGlossa Lab\\nEpistemic research workbench\\nPROGRAM\\nIndus Script Decipherment\\n\u25be\\nDecipher the Indus / H'"
+    }
+  ],
+  "axe": {
+    "Home": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "Claims": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "Data": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "Experiments": [
+      {
+        "id": "page-has-heading-one",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "Evidence & sources": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "Settings": [
+      {
+        "id": "page-has-heading-one",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ]
+  },
+  "scores": {
+    "functional_items_attempted": 15,
+    "functional_items_passed": 13,
+    "F1_coverage_ge_12_of_15": true,
+    "F2_outcome_ge_75pct": true,
+    "protocol_steps_passed": 7,
+    "P1_protocol_ge_6_of_8": true,
+    "axe_available": true,
+    "A1_zero_critical": true,
+    "A2_serious_le_3_and_keyboard": true,
+    "axe_critical": [],
+    "axe_serious": [],
+    "package_verdict": "PASS"
+  }
+}

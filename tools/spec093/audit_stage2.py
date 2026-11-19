@@ -32,6 +32,7 @@ import math
 import random
 import sys
 from collections import Counter, defaultdict
+from fractions import Fraction
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -165,43 +166,49 @@ def run_administration(rows_: list[dict]) -> dict:
                 best, best_val = c, val
         return best
 
-    def score(preds: list[str]) -> dict:
+    def score(preds: list[str]):
+        """Metrics in exact rational arithmetic, emitted
+        as floats, so this recomputation and any other
+        correct implementation agree bit-for-bit."""
         conf = {a: {p: 0 for p in labels} for a in labels}
         hits = 0
         for r, p in zip(test, preds):
             conf[r["y"]][p] += 1
             hits += (p == r["y"])
         n = len(test)
-        acc = hits / n
+        acc = Fraction(hits, n)
         rec = {}
         for c in labels:
             row_total = sum(conf[c].values())
-            rec[c] = conf[c][c] / row_total if row_total else 0.0
+            rec[c] = Fraction(conf[c][c], row_total) if row_total else Fraction(0)
         bal = sum(rec[c] for c in labels) / len(labels)
-        pe = sum(sum(conf[c].values()) * sum(conf[a][c] for a in labels)
-                 for c in labels) / (n * n)
-        kap = (1.0 if acc >= 1.0 else 0.0) if pe >= 1.0 else (acc - pe) / (1 - pe)
-        return {"n_held_out": n, "accuracy": acc,
-                "balanced_accuracy": bal, "kappa": kap,
-                "per_class_recall": {c: rec[c] for c in labels},
-                "confusion": conf}
+        pe = sum(Fraction(sum(conf[c].values())
+                          * sum(conf[a][c] for a in labels), n * n)
+                 for c in labels)
+        kap = (Fraction(1) if acc >= 1 else Fraction(0)) if pe >= 1 \
+            else (acc - pe) / (1 - pe)
+        return {"n_held_out": n, "accuracy": float(acc),
+                "balanced_accuracy": float(bal),
+                "kappa": float(kap),
+                "per_class_recall": {c: float(rec[c]) for c in labels},
+                "confusion": conf}, kap
 
-    m = score([classify(r) for r in test])
+    m, kap_exact = score([classify(r) for r in test])
     majority = max(labels, key=lambda c: (members[c], c))
-    maj = score([majority] * len(test))
+    maj, _ = score([majority] * len(test))
     return {"train_size": len(train), "held_out_size": len(test),
             "vocabulary_size": len(vocab), "metrics": m,
             "majority_rule": {"class": majority,
                               "accuracy": maj["accuracy"],
                               "balanced_accuracy": maj["balanced_accuracy"],
-                              "kappa": maj["kappa"]}}
+                              "kappa": maj["kappa"]}}, kap_exact
 
 
 def recompute(kind: str, field: str) -> dict:
     items = rows(field)
     adj, kept, excluded = adjudged(items)
     if kind == "administration":
-        body = run_administration(adj)
+        body, _kap = run_administration(adj)
         return {"spec": "093", "stage": "2", "task": "T202",
                 "kind": "administration", "field": field,
                 "population": len(items), "adjudged_classes": kept,
@@ -212,6 +219,7 @@ def recompute(kind: str, field: str) -> dict:
     base_labels = [by_id[i]["y"] for i in ids]
     rng = random.Random(CONTROL_SEED)
     kappas = []
+    kappas_exact = []
     for _ in range(N_PERMUTATIONS):
         labs = list(base_labels)
         rng.shuffle(labs)
@@ -220,14 +228,16 @@ def recompute(kind: str, field: str) -> dict:
             clone = dict(by_id[rid])
             clone["y"] = lab
             relabeled.append(clone)
-        kappas.append(run_administration(relabeled)["metrics"]["kappa"])
+        body, kap = run_administration(relabeled)
+        kappas.append(body["metrics"]["kappa"])
+        kappas_exact.append(kap)
     ordered = sorted(kappas)
     return {"spec": "093", "stage": "2", "task": "T202",
             "kind": "permutation-controls", "field": field,
             "adjudged_classes": kept, "adjudged_total": len(adj),
             "n_permutations": N_PERMUTATIONS, "kappa_values": kappas,
             "kappa_max": ordered[-1],
-            "kappa_mean": sum(kappas) / len(kappas),
+            "kappa_mean": float(sum(kappas_exact) / len(kappas_exact)),
             "kappa_p99_index197": ordered[P99_INDEX],
             "validity_ceiling": 0.10,
             "controls_valid": ordered[P99_INDEX] < 0.10}
@@ -263,7 +273,7 @@ def main(argv=None) -> int:
                             "filed": False, "match": False})
             all_match = False
             continue
-        header_pins = entry["record"]["run"].get("input_pins", {})
+        header_pins = entry["record"]["run"].get("key", {}).get("input_pins", {})
         header_pins_ok = (
             header_pins.get("snapshot", {}).get("sha256") == SNAPSHOT_SHA256
             and header_pins.get("join_pairs", {}).get("sha256") == JOIN_SHA256

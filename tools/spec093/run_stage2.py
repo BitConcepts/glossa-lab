@@ -47,6 +47,7 @@ import subprocess
 import sys
 from collections import Counter
 from datetime import datetime, timezone
+from fractions import Fraction
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -334,7 +335,14 @@ def predict(model: dict, item: dict) -> str:
     return best_label
 
 
-def metrics(test: list[dict], predictions: list[str], classes: list[str]) -> dict:
+def metrics(test: list[dict], predictions: list[str], classes: list[str]):
+    """Held-out metrics (freeze section 8), computed in
+    exact rational arithmetic and emitted as floats: two
+    independent implementations of the same mathematics
+    must agree on the emitted values bit-for-bit, which
+    float summation order does not guarantee (the first
+    execution's audit divergence, diagnosed in the stage
+    record). Returns (metrics dict, exact kappa)."""
     confusion: dict[str, dict[str, int]] = {
         a: {p: 0 for p in classes} for a in classes
     }
@@ -344,42 +352,44 @@ def metrics(test: list[dict], predictions: list[str], classes: list[str]) -> dic
         if pred == it["label"]:
             correct += 1
     n = len(test)
-    accuracy = correct / n
+    accuracy = Fraction(correct, n)
     recalls = {}
     for c in classes:
         actual = sum(confusion[c].values())
-        recalls[c] = confusion[c][c] / actual if actual else 0.0
+        recalls[c] = Fraction(confusion[c][c], actual) if actual else Fraction(0)
     balanced = sum(recalls[c] for c in classes) / len(classes)
-    pe = 0.0
-    for c in classes:
-        actual_total = sum(confusion[c].values())
-        pred_total = sum(confusion[a][c] for a in classes)
-        pe += (actual_total * pred_total) / (n * n)
-    if pe >= 1.0:
-        kappa = 1.0 if accuracy >= 1.0 else 0.0
+    pe = sum(
+        Fraction(sum(confusion[c].values())
+                 * sum(confusion[a][c] for a in classes), n * n)
+        for c in classes
+    )
+    if pe >= 1:
+        kappa = Fraction(1) if accuracy >= 1 else Fraction(0)
     else:
-        kappa = (accuracy - pe) / (1.0 - pe)
+        kappa = (accuracy - pe) / (1 - pe)
     return {
         "n_held_out": n,
-        "accuracy": accuracy,
-        "balanced_accuracy": balanced,
-        "kappa": kappa,
-        "per_class_recall": {c: recalls[c] for c in classes},
+        "accuracy": float(accuracy),
+        "balanced_accuracy": float(balanced),
+        "kappa": float(kappa),
+        "per_class_recall": {c: float(recalls[c]) for c in classes},
         "confusion": confusion,
-    }
+    }, kappa
 
 
-def administer(items: list[dict]) -> dict:
+def administer(items: list[dict]):
     """One full administration (freeze sections 4-6, 8)
     over adjudged items: split, fit, predict, metrics,
-    plus the majority-rule scale metrics."""
+    plus the majority-rule scale metrics. Returns
+    (result dict, exact kappa Fraction for the control
+    battery's exact mean)."""
     train, test = split(items)
     model = fit(train)
     predictions = [predict(model, it) for it in test]
-    m = metrics(test, predictions, model["classes"])
+    m, kappa_exact = metrics(test, predictions, model["classes"])
     majority = max(model["classes"],
                    key=lambda c: (model["class_counts"][c], c))
-    maj = metrics(test, [majority] * len(test), model["classes"])
+    maj, _ = metrics(test, [majority] * len(test), model["classes"])
     return {
         "train_size": len(train),
         "held_out_size": len(test),
@@ -391,7 +401,7 @@ def administer(items: list[dict]) -> dict:
             "balanced_accuracy": maj["balanced_accuracy"],
             "kappa": maj["kappa"],
         },
-    }
+    }, kappa_exact
 
 
 # ---------------------------------------------------------------------------
@@ -448,7 +458,7 @@ def run_field(field: str, store: Path) -> int:
         pins.update(verify_pins())
         items = population(field)
         adj, kept, excluded = adjudged(items, field)
-        outcome = administer(adj)
+        outcome, _kappa_exact = administer(adj)
         if outcome["held_out_size"] != FIELDS[field]["held_out_total"]:
             raise Refusal(
                 f"{field}: held-out total is {outcome['held_out_size']}, "
@@ -480,6 +490,7 @@ def run_controls(field: str, store: Path) -> int:
         labels_in_id_order = [by_id[i]["label"] for i in ids_sorted]
         rng = random.Random(CONTROL_SEED)
         kappas: list[float] = []
+        kappas_exact: list[Fraction] = []
         for _ in range(N_PERMUTATIONS):
             permuted = list(labels_in_id_order)
             rng.shuffle(permuted)
@@ -488,8 +499,9 @@ def run_controls(field: str, store: Path) -> int:
                 clone = dict(by_id[rid])
                 clone["label"] = lab
                 relabeled.append(clone)
-            outcome = administer(relabeled)
+            outcome, kappa_exact = administer(relabeled)
             kappas.append(outcome["metrics"]["kappa"])
+            kappas_exact.append(kappa_exact)
         ordered = sorted(kappas)
         return {
             "spec": "093", "stage": "2", "task": "T202",
@@ -499,7 +511,7 @@ def run_controls(field: str, store: Path) -> int:
             "n_permutations": N_PERMUTATIONS,
             "kappa_values": kappas,
             "kappa_max": ordered[-1],
-            "kappa_mean": sum(kappas) / len(kappas),
+            "kappa_mean": float(sum(kappas_exact) / len(kappas_exact)),
             "kappa_p99_index197": ordered[CONTROL_P99_INDEX],
             "validity_ceiling": CONTROL_VALIDITY_CEILING,
             "controls_valid": ordered[CONTROL_P99_INDEX] < CONTROL_VALIDITY_CEILING,

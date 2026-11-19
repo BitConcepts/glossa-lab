@@ -1,0 +1,205 @@
+{
+  "pin": "d5050e5a9671012df416e9c474c75aba41c07f8c",
+  "upstream": "https://github.com/moli-mandala/data",
+  "swh_directory": "ce6541aa7b96c31d0ea88e4a116e698e5fc187b9",
+  "files_placed": 15,
+  "files_missing": [],
+  "all_hashes_ok": true,
+  "dedr_new_sha256_ok": true,
+  "files": [
+    {
+      "path": "README.md",
+      "size": 3527,
+      "size_ok": true,
+      "blob_sha1": "291ae6fff0d04e9bca8c0b9aa36baeb7dcd0f6df",
+      "blob_sha1_ok": true,
+      "sha256": "dfef8bf42648e4934b055c81df32e63dba0686d83761ca4d8b55164deb98906d"
+    },
+    {
+      "path": "data/dedr/abbrevs.py",
+      "size": 8873,
+      "size_ok": true,
+      "blob_sha1": "efc508342a767c6a88ffd645165dd9a5318a8471",
+      "blob_sha1_ok": true,
+      "sha256": "3368a2bb6cc57ea05e0d77f3456c217e143fc54a9213da953f93e412c3b9a7a4"
+    },
+    {
+      "path": "data/dedr/dedr.csv",
+      "size": 5251799,
+      "size_ok": true,
+      "blob_sha1": "928c7338e148154a3cc30b10705b7810cf836dba",
+      "blob_sha1_ok": true,
+      "sha256": "1d91f819b9af2c530ba6688a089a775d4bd6bcaa7c8e30e90dacdcce3758943e"
+    },
+    {
+      "path": "data/dedr/dedr.pickle",
+      "size": 4266294,
+      "size_ok": true,
+      "blob_sha1": "d59272f0d975fd79b6deaafa58428b78d12a565b",
+      "blob_sha1_ok": true,
+      "sha256": "2b18af64e6d9a792e99debafb5dd419bc1b1738ebad1ff9f2be797389b42a5be"
+    },
+    {
+      "path": "data/dedr/dedr_new.csv",
+      "size": 5478240,
+      "size_ok": true,
+      "blob_sha1": "4f8411f19b9e3c2c0c235a24096d59d4afc558f1",
+      "blob_sha1_ok": true,
+      "sha256": "fbcc2b2d47c9be24338d846319de2b2c5a2ad4f45451274e3223bc63bc60cae0"
+    },
+    {
+      "path": "data/dedr/dedr_new_entry_oct2013_edited.sql",
+      "size": 8425279,
+      "size_ok": true,
+      "blob_sha1": "ac86809f942025318e9c97822ef27477441e198f",
+      "blob_sha1_ok": true,
+      "sha256": "f4912afa9b953a0817ac0e0852f4c9bd7567ef7c38fd73479959282f5a5fdfb0"
+    },
+    {
+      "path": "data/dedr/get_params.py",
+      "size": 634,
+      "size_ok": true,
+      "blob_sha1": "75489e04d756cd072bb5f5f82336faa57ef2063a",
+      "blob_sha1_ok": true,
+      "sha256": "80fbd3d4e4916740beecf68d55ecaf92ea544c640044817e71d2cbb8b88552a8"
+    },
+    {
+      "path": "data/dedr/params.csv",
+      "size": 82802,
+      "size_ok": true,
+      "blob_sha1": "ae87dc8d393443fd55bc63992247094a0caddc54",
+      "blob_sha1_ok": true,
+      "sha256": "6b9049af82b82a3b8c42dcd637341ac1a48978d46de2c287c7f1316140c2ed71"
+    },
+    {
+      "path": "data/dedr/parse.py",
+      "size": 9327,
+      "size_ok": true,
+      "blob_sha1": "9701706a870f5a507744ba7d77ad448152dc16e6",
+      "blob_sha1_ok": true,
+      "sha256": "3e8a74baa22b3ae6929ebf38346dec2359916fbe9bd93ce575799d40c6dba47b"
+    },
+    {
+      "path": "data/dedr/pdr.csv",
+      "size": 67311,
+      "size_ok": true,
+      "blob_sha1": "8cef0ec159a9d14ccea45c1431b61a5d65f81014",
+      "blob_sha1_ok": true,
+      "sha256": "95beb73b1f9c36d42ecb671df4d8bb01eea27641dffa802ca8c33e5343ceafa9"
+    },
+    {
+      "path": "cldf/Wordlist-metadata.json",
+      "size": 7355,
+      "size_ok": true,
+      "blob_sha1": "b6b2963bd1f903c15687dd72664d992b296d9005",
+      "blob_sha1_ok": true,
+      "sha256": "e904d3189e07ceabfab45f8bfd168a0333bd2f6068fc6531e2ffecaab2d29354"
+    },
+    {
+      "path": "cldf/forms.csv",
+      "size": 20702890,
+      "size_ok": true,
+      "blob_sha1": "1e914246cf927ac277b503f6178142b49a773332",
+      "blob_sha1_ok": true,
+      "sha256": "e6519e12d6ee73d09a45cdd776d020f07cc5ad8c867ec23ab7e03d30608064e7"
+    },
+    {
+      "path": "cldf/languages.csv",
+      "size": 34099,
+      "size_ok": true,
+      "blob_sha1": "afb7a0b9e95e10665d12aa0712183461e59a6caa",
+      "blob_sha1_ok": true,
+      "sha256": "744052640df8bd0fa48da60082ae6bc04c6b8dd2ac1af2f456cd0c7c2a3a9180"
+    },
+    {
+      "path": "cldf/parameters.csv",
+      "size": 2972505,
+      "size_ok": true,
+      "blob_sha1": "490d4e9f9fca1dc6dc7ba715b8fc0a084a126621",
+      "blob_sha1_ok": true,
+      "sha256": "68af4192760559d12e1aa6853f8f71725302deec707f920a97bb914ff8f1b715"
+    },
+    {
+      "path": "cldf/sources.bib",
+      "size": 43778,
+      "size_ok": true,
+      "blob_sha1": "3da58d2c37f621e3e71fb2ed453babc793f9281c",
+      "blob_sha1_ok": true,
+      "sha256": "8661b376628fa6f7ad89bbbb0bae0249401a89eaa36419577cb6f7421cafac30"
+    }
+  ],
+  "dedr_new_rows": 85374,
+  "distinct_params": 5623,
+  "distinct_language_tags": 89,
+  "all_rows_9_columns": true,
+  "battery_v2_entries": 85251,
+  "battery_v2_probes": {
+    "kalam": [
+      "pass",
+      "exact_match_5"
+    ],
+    "nal": [
+      "pass",
+      "exact_match_18"
+    ],
+    "kai": [
+      "pass",
+      "exact_match_116"
+    ],
+    "tiru": [
+      "pass",
+      "exact_match_3"
+    ],
+    "ko": [
+      "pass",
+      "exact_match_93"
+    ],
+    "mutalai": [
+      "pass",
+      "exact_match_1"
+    ]
+  },
+  "cldf_summary": {
+    "n_forms": 290071,
+    "n_languages": 615,
+    "n_parameters": 23131,
+    "families": {
+      "Eastern": 16,
+      "Insular": 9,
+      "Pashai": 23,
+      "S. Dravidian I": 40,
+      "Nuristani": 22,
+      "MIA": 41,
+      "Other": 52,
+      "Migratory": 22,
+      "Shinaic": 40,
+      "Munda": 15,
+      "E. Hindi": 15,
+      "Lahndic": 18,
+      "W. Pahari": 46,
+      "W. Hindi": 46,
+      "Kohistani": 11,
+      "Bihari": 22,
+      "OIA": 7,
+      "Chitrali": 6,
+      "Brahui": 1,
+      "Burushaski": 2,
+      "Punjabic": 17,
+      "Kunar": 5,
+      "Kashmiric": 6,
+      "Old Dravidian": 2,
+      "Gujaratic": 7,
+      "C. Dravidian": 10,
+      "C. Pahari": 4,
+      "S. Dravidian II": 23,
+      "Rajasthanic": 65,
+      "Halbic": 1,
+      "Sindhic": 9,
+      "Marathi-Konkani": 4,
+      "N. Dravidian": 3,
+      "Bhil": 3,
+      "E. Pahari": 1,
+      "Nihali": 1
+    }
+  }
+}

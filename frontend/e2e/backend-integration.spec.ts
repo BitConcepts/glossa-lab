@@ -328,6 +328,8 @@ test.describe("Corpora UI", () => {
   test("corpora page shows corpus cards", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Data").first().click();
+    // Data lands on Inscriptions; corpora live on their own tab.
+    await page.getByRole("button", { name: "Corpora", exact: true }).click();
     await page.waitForTimeout(1000);
     // Either shows corpora or "No corpora yet" message
     const hasCorpora = await page.locator("div").filter({ hasText: /corpus entries/i }).count() > 0;
@@ -338,6 +340,7 @@ test.describe("Corpora UI", () => {
   test("corpus card expands on click", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Data").first().click();
+    await page.getByRole("button", { name: "Corpora", exact: true }).click();
     await page.waitForTimeout(1500);
     // If there are corpus cards, click the first one
     const cards = page.locator("[style*='border: 1px solid'][style*='border-radius: 8px']");

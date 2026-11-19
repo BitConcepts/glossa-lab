@@ -130,9 +130,13 @@ async def test_process_one_reraises_claim_assertion_while_db_connected(tmp_path,
     must still fail loudly, not be converted into a clean stop."""
     db = Database(tmp_path / "live.db")
     await db.connect()
+    # A registered pipeline name: since the Spec 095 T404 dispatch
+    # gate, a job whose pipeline is not registered (the create
+    # default, "default") is deferred at peek and never reaches the
+    # claim this test exercises.
     await db.create_job(
         name="live-job",
-        pipeline="default",
+        pipeline="char_freq",
         created_at=datetime.now(timezone.utc).isoformat(),
     )
     monkeypatch.setattr(_engine, "_get_system_resources", lambda: (0.0, 999.0, None))

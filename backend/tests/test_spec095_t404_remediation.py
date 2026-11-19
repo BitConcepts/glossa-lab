@@ -7,6 +7,9 @@ Legs:
   - project create: POST /projects/import accepts a flat minimal body
     ({name, description}); the full bundle shape still works; an empty
     body still refuses.
+  - project update: PUT /projects/{id} merges a partial body against
+    the stored project (unsent fields keep their values); a create
+    without a label still refuses.
   - job pause/resume: a job whose pipeline is not registered stays
     pending (dispatch-deferred, reason stamped) instead of being
     claimed and failed within seconds, so pause/resume/cancel work on
@@ -61,6 +64,40 @@ def test_import_still_accepts_full_bundle(client):
 def test_import_refuses_body_without_any_label(client):
     resp = client.post("/api/v1/projects/import", json={"description": "no name"})
     assert resp.status_code == 422
+
+
+# ── Project update via PUT (merge semantics) ─────────────────────────────────
+
+
+def test_put_partial_update_merges_against_stored_project(client):
+    created = client.put(
+        "/api/v1/projects/remediation_merge_probe",
+        json={
+            "label": "Merge Probe",
+            "description": "original description",
+            "prompt_context": "original goals",
+            "question": "original question",
+        },
+    )
+    assert created.status_code == 200, created.text
+    updated = client.put(
+        "/api/v1/projects/remediation_merge_probe",
+        json={"description": "updated by a partial body"},
+    )
+    assert updated.status_code == 200, updated.text
+    body = updated.json()
+    assert body["description"] == "updated by a partial body"
+    assert body["label"] == "Merge Probe"
+    assert body["prompt_context"] == "original goals"
+    assert body["question"] == "original question"
+
+
+def test_put_create_without_label_refused(client):
+    resp = client.put(
+        "/api/v1/projects/remediation_labelless_probe",
+        json={"description": "no label anywhere"},
+    )
+    assert resp.status_code == 422, resp.text
 
 
 # ── Job dispatch deferral (pause / resume) ───────────────────────────────────

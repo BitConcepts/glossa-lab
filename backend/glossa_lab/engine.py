@@ -45,7 +45,16 @@ _GPU_PIPELINES = frozenset({"decipher", "distributional_decipherment"})
 # Anti-spam: log resource-wait messages at most once per N seconds
 _RESOURCE_LOG_INTERVAL_SEC = 60.0
 _last_resource_log: dict[str, float] = {}  # job_id -> last log timestamp
-_undispatchable: dict[str, str] = {}  # job_id -> unregistered pipeline name (dispatch-deferred)
+# Dispatch-deferred jobs, per database: db key -> {job_id -> pipeline}.
+# Keyed per database because the engine captures one Database per
+# lifespan and job ids are only unique within their own database.
+_undispatchable: dict[str, dict[str, str]] = {}
+
+
+def _deferred_for(db: Any) -> dict[str, str]:
+    path = getattr(db, "_path", None)
+    key = str(path) if path is not None else f"obj:{id(db)}"
+    return _undispatchable.setdefault(key, {})
 
 
 def _get_system_resources() -> tuple[float, float, float | None]:
@@ -219,8 +228,9 @@ async def _process_one_on(db: Any) -> bool:
     # Peek first (no claim) so we can run a resource check before committing.
     # Jobs already found undispatchable are excluded so they cannot starve
     # the dispatchable jobs queued behind them.
-    if _undispatchable:
-        next_job = await db.peek_next_pending_job(exclude_ids=sorted(_undispatchable))
+    deferred = _deferred_for(db)
+    if deferred:
+        next_job = await db.peek_next_pending_job(exclude_ids=sorted(deferred))
     else:
         next_job = await db.peek_next_pending_job()
     if next_job is None:
@@ -239,7 +249,7 @@ async def _process_one_on(db: Any) -> bool:
     pipeline = next_job.get("pipeline") or ""
     if pipeline not in _PIPELINES:
         jid = next_job["id"]
-        _undispatchable[jid] = pipeline
+        deferred[jid] = pipeline
         reason = (
             f"Pipeline '{pipeline}' is not registered on this instance; "
             "the job stays pending until it can be dispatched."
@@ -298,8 +308,8 @@ async def _process_one_on(db: Any) -> bool:
         pass
     _last_resource_log.pop(next_job["id"], None)
 
-    if _undispatchable:
-        job = await db.claim_pending_job(exclude_ids=sorted(_undispatchable))
+    if deferred:
+        job = await db.claim_pending_job(exclude_ids=sorted(deferred))
     else:
         job = await db.claim_pending_job()
     if job is None:

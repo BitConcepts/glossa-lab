@@ -117,7 +117,7 @@ export function ClaimsView({
   useEffect(() => {
     let cancelled = false;
     getDashboardContributions()
-      .then((r) => { if (!cancelled) setStaging(r.contributions); })
+      .then((r) => { if (!cancelled) setStaging(Array.isArray(r?.contributions) ? r.contributions : []); })
       .catch(() => { /* the queue's absence is not an error state for the register */ });
     return () => { cancelled = true; };
   }, []);

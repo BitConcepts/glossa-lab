@@ -67,35 +67,11 @@ def _check(report: lg.GateReport, prefix: str) -> lg.Check:
     return matches[0]
 
 
-_DIVERGENCE_RE = re.compile(
-    r"recorded (?:sidecar )?sha256 for (?P<hashed>\S+) does not match"
-    r"|(?:source|sidecar) (?P<missing>\S+) not found"
-)
-
-
-def _recorded_source_hash_divergences(root: Path) -> list[str]:
-    report = lg.run_gate(root, scope={"V1"})
-    arm = _check(report, "V1 recorded source hashes")
-    if arm.status != "FAIL":
-        return []
-    paths: list[str] = []
-    for ev in arm.evidence:
-        for match in _DIVERGENCE_RE.finditer(ev):
-            paths.append(match.group("hashed") or match.group("missing"))
-    return paths
-
-
-def _require_recorded_hashes(root: Path) -> None:
-    diverged = _recorded_source_hash_divergences(root)
-    if diverged:
-        pytest.skip(
-            "clean-tree precondition destroyed in this suite "
-            "process: the evidence-API tests rewrote source "
-            "files the ledger mirrors by hash ("
-            + ", ".join(sorted(set(diverged))[:4])
-            + "); the engine refuses over diverged sources "
-            "by design"
-        )
+# The clean-tree precondition guard that used to stand here
+# retired with the in-tree rewrites it guarded against
+# (Spec 092 T303): suite tests no longer rewrite the mirrored
+# sources, so these tests run unconditionally and fail loudly
+# if the tree ever diverges again.
 
 
 def _divergences(expected, actual, path: str, out: list[str]) -> None:
@@ -124,7 +100,6 @@ def _divergences(expected, actual, path: str, out: list[str]) -> None:
 
 @pytest.fixture(scope="module")
 def state() -> st.SettleState:
-    _require_recorded_hashes(ROOT)
     return st.load_state(ROOT)
 
 
@@ -360,7 +335,6 @@ def test_a_register_whose_stored_flags_disagree_is_refused(tmp_path):
     """A scratch tree whose anchors copy carries one flipped
     stored strict_set flag: recomputation and the stored
     flags disagree, and the run refuses (semantics §1)."""
-    _require_recorded_hashes(ROOT)
     for name in ("glossa-indus", "glossa-corpus", "reports"):
         target = tmp_path / name
         if (ROOT / name).is_dir():
@@ -465,7 +439,6 @@ def test_a_run_writes_only_its_run_record(state, canonical, tmp_path):
 
 
 def test_v9_settling_import_audit_passes_over_the_real_engine():
-    _require_recorded_hashes(ROOT)
     report = lg.run_gate(ROOT, scope={"V9"})
     audit = _check(report, "V9 no write path — settling/scenario import audit")
     assert audit.status == "PASS", audit.evidence

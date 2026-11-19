@@ -22,6 +22,7 @@ import csv
 import json
 import logging
 import math
+import os
 import re
 import time
 import urllib.parse
@@ -47,6 +48,18 @@ class _CycleTimeoutError(Exception):
 
 
 _REPO = Path(__file__).resolve().parents[3]
+
+
+def _partial_results_path() -> Path:
+    """Where the loop's partial-results file lands.
+
+    Defaults to the repo's ``outputs/`` dir. The test suite
+    points ``GLOSSA_OUTPUTS_DIR`` at a temp tree (Spec 092
+    T303) so a suite run never rewrites the live tree.
+    """
+    override = os.environ.get("GLOSSA_OUTPUTS_DIR")
+    base = Path(override) if override else _REPO / "outputs"
+    return base / "partial_loop_result.json"
 try:
     from glossa_lab.config import get_project_config as _get_cfg  # noqa: PLC0415
     _HOLDAT_CSV = _get_cfg().corpus_csv_path()
@@ -1429,7 +1442,7 @@ class ResearchLoop:
         """Write completed cycle syntheses to partial_loop_result.json."""
         if not self.cycle_analyses:
             return
-        partial_path = _REPO / "outputs" / "partial_loop_result.json"
+        partial_path = _partial_results_path()
         partial_path.parent.mkdir(parents=True, exist_ok=True)
         try:
             import json as _j  # noqa: PLC0415

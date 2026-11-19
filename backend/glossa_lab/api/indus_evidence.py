@@ -40,6 +40,7 @@ from __future__ import annotations
 import asyncio
 import ipaddress
 import json
+import os
 import logging
 import re
 import socket
@@ -68,6 +69,19 @@ _SWEEP_CFG    = _EVIDENCE_BASE / "config" / "sweep.yaml"
 _SWEEP_CANDS  = _EVIDENCE_BASE / "logs" / "sweep_candidates_latest.json"
 _RAW_UPLOADS  = _EVIDENCE_BASE / "raw" / "user_uploads"
 _SCRIPTS      = _EVIDENCE_BASE / "scripts"
+
+
+def _intake_scripts_dir() -> Path:
+    """Scripts dir for the intake pipeline runner.
+
+    Defaults to the repo's glossa-indus scripts. The test suite
+    points ``GLOSSA_INDUS_SCRIPTS_DIR`` at an isolated fixture
+    tree (Spec 092 T303) so a suite run never rewrites the live
+    tree: the scripts locate their base from their own path, so
+    a fixture copy writes only into the fixture tree.
+    """
+    override = os.environ.get("GLOSSA_INDUS_SCRIPTS_DIR")
+    return Path(override) if override else _SCRIPTS
 
 # ── Intake hardening (Leg C red team, findings C-05 / C-06) ──────────────────
 # Uploads and URL imports are the backend's untrusted-input boundary:
@@ -900,15 +914,16 @@ async def run_intake_pipeline(background_tasks: BackgroundTasks) -> dict[str, An
 
 def _run_full_intake() -> None:
     import subprocess  # noqa: PLC0415
-    intake = _SCRIPTS / "indus_intake.py"
-    claims = _SCRIPTS / "indus_claims.py"
+    scripts = _intake_scripts_dir()
+    intake = scripts / "indus_intake.py"
+    claims = scripts / "indus_claims.py"
     for script in (intake, claims):
         if not script.exists():
             continue
         try:
             args = [sys.executable, str(script)]
             if script.name == "indus_intake.py":
-                args += ["--scan", str(_RAW_UPLOADS)]
+                args += ["--scan", str(scripts.parent / "raw" / "user_uploads")]
             subprocess.run(args, capture_output=True, text=True, timeout=300)
         except Exception as exc:
             _log.warning("pipeline script %s failed: %s", script.name, exc)

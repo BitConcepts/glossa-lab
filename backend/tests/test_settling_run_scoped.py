@@ -54,7 +54,6 @@ from pathlib import Path
 
 import pytest
 
-from glossa_lab import ledger_gate as lg
 from glossa_lab import run_records as rr
 from glossa_lab import settling as st
 
@@ -67,35 +66,11 @@ SCENARIO = next(
 SCOPE_ARG = ",".join(SCENARIO["inputs"]["scope"])
 
 
-# ---------------------------------------------------------------------------
-# The clean-tree precondition (the canonical oracle's own)
-
-
-_DIVERGENCE_RE = re.compile(
-    r"recorded (?:sidecar )?sha256 for (?P<hashed>\S+) does not match"
-    r"|(?:source|sidecar) (?P<missing>\S+) not found"
-)
-
-
-def _require_recorded_hashes(root: Path) -> None:
-    report = lg.run_gate(root, scope={"V1"})
-    arm = next(
-        c for c in report.checks if c.name.startswith("V1 recorded")
-    )
-    if arm.status != "FAIL":
-        return
-    paths: list[str] = []
-    for ev in arm.evidence:
-        for match in _DIVERGENCE_RE.finditer(ev):
-            paths.append(match.group("hashed") or match.group("missing"))
-    pytest.skip(
-        "clean-tree precondition destroyed in this suite "
-        "process: the evidence-API tests rewrote source "
-        "files the ledger mirrors by hash ("
-        + ", ".join(sorted(set(paths))[:4])
-        + "); the engine refuses over diverged sources "
-        "by design"
-    )
+# The clean-tree precondition guard that used to stand here
+# retired with the in-tree rewrites it guarded against
+# (Spec 092 T303): suite tests no longer rewrite the mirrored
+# sources, so these tests run unconditionally and fail loudly
+# if the tree ever diverges again.
 
 
 # ---------------------------------------------------------------------------
@@ -113,7 +88,6 @@ def _mirror_root(
     inputs are symlinks; the run store is a real empty
     directory; the ledger / assignment-sets artifact are
     real copies where a test must write them."""
-    _require_recorded_hashes(ROOT)
     root = tmp_path / "root"
     root.mkdir(parents=True)
     for name in ("specs", "glossa-corpus", "reports"):
@@ -506,7 +480,6 @@ def test_an_unbound_assignment_sets_write_refuses(tmp_path):
 
 
 def test_verify_canonicals_reproduces_six_of_six_and_writes_nothing():
-    _require_recorded_hashes(ROOT)
     store = ROOT / st.RUN_STORE_REL
     before = {p.name: _sha256(p) for p in store.glob("*") if p.is_file()}
     proc = _cli(ROOT, "verify-canonicals")

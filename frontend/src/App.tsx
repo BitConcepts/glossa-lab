@@ -181,7 +181,7 @@ function MobileNavBar({
  * Service chip (FR-007 / C081-3): identity + observation time, never a
  * bare dot — app, version, host, and when this was last checked.
  */
-function ServiceChip({ onOpenStatus }: { onOpenStatus: () => void }) {
+function ServiceChip({ onOpenStatus, darkMode }: { onOpenStatus: () => void; darkMode: boolean }) {
   const cloud = useCloudSession();
   const [health, setHealth] = useState<StatusResponse | null>(null);
   const [checkedAt, setCheckedAt] = useState<Date | null>(null);
@@ -201,15 +201,15 @@ function ServiceChip({ onOpenStatus }: { onOpenStatus: () => void }) {
       title="Open Status — service identity and health"
       style={{
         display: "flex", alignItems: "center", gap: 8, padding: "5px 11px",
-        border: "1px solid #e5e7eb", borderRadius: 20, fontSize: 11,
-        color: "#64748b", background: "none", cursor: "pointer", whiteSpace: "nowrap",
+        border: `1px solid ${darkMode ? "#334155" : "#e5e7eb"}`, borderRadius: 20, fontSize: 11,
+        color: darkMode ? "#94a3b8" : "#64748b", background: "none", cursor: "pointer", whiteSpace: "nowrap",
       }}
     >
       <span style={{ width: 8, height: 8, borderRadius: "50%", background: health ? "#16a34a" : "#dc2626", flexShrink: 0 }} />
       <span>
         {health ? (
           <>
-            <b style={{ color: "#111827", fontWeight: 600 }}>
+            <b style={{ color: darkMode ? "#e2e8f0" : "#111827", fontWeight: 600 }}>
               {health.app ?? "Glossa Lab"} v{health.version}
             </b>
             {cloud.active && health.dataset
@@ -443,6 +443,14 @@ function AppContent() {
   }, [projCtx.loading, projCtx.activeProject]);
 
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
+  // Register-a-claim intent: the doorways on Home and on the Claims
+  // surface lead to the dashboard's contribution section, where a
+  // candidate is actually submitted to the staging queue.
+  const [dashOpen, setDashOpen] = useState<{ section: "contribute"; nonce: number } | undefined>(undefined);
+  const openContribute = () => {
+    setDashOpen({ section: "contribute", nonce: Date.now() });
+    goTo("researcher-dashboard");
+  };
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [aiPanelOpen, setAiPanelOpen] = useState(false);
   const [aiPanelWidth, setAiPanelWidth] = useState(320);
@@ -678,7 +686,7 @@ function AppContent() {
   const bg = darkMode ? "#0f172a" : "#f8fafc";
   const sideBg = darkMode ? "#0d1526" : "#1e3a5f";
   const sideText = "#c7d8f0";
-  const sideHdr = "#7a9bbf";
+  const sideHdr = darkMode ? "#7a9bbf" : "#a9c6e8";
   const activeBg = darkMode ? "rgba(37,99,235,0.25)" : "rgba(96,165,250,0.22)";
   const fg = darkMode ? "#e2e8f0" : "#111827";
   const border = darkMode ? "#334155" : "#e5e7eb";
@@ -741,7 +749,7 @@ function AppContent() {
         {item.chip && (
           <span style={{
             fontSize: 9, fontWeight: 700, padding: "1px 5px", borderRadius: 4,
-            background: "#16a34a", color: "#fff", flexShrink: 0,
+            background: "#15803d", color: "#fff", flexShrink: 0,
             textTransform: "uppercase", letterSpacing: 0.4,
           }}>
             {item.chip}
@@ -929,7 +937,7 @@ function AppContent() {
               ✦ AI assistant
             </button>
           )}
-          {!isMobile && <ServiceChip onOpenStatus={() => goTo("status")} />}
+          {!isMobile && <ServiceChip onOpenStatus={() => goTo("status")} darkMode={darkMode} />}
           <NotificationCenter />
           <button
             onClick={() => setDarkMode((d) => !d)}
@@ -960,8 +968,8 @@ function AppContent() {
               ) : (
                 <>
                   {tab === "programs" && <ProgramsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
-                  {tab === "home" && <ProgramHome darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
-                  {tab === "claims" && <ClaimsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
+                  {tab === "home" && <ProgramHome darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} onRegisterClaim={openContribute} />}
+                  {tab === "claims" && <ClaimsView darkMode={darkMode} onRegisterClaim={openContribute} />}
                   {tab === "digestion" && <DigestionBoard darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />}
                   {tab === "evidence" && <EvidenceSourcesView darkMode={darkMode} />}
                   {tab === "data" && <DataView darkMode={darkMode} />}
@@ -983,7 +991,7 @@ function AppContent() {
                     </div>
                   )}
                   {tab === "reports" && <ReportsView darkMode={darkMode} />}
-                  {tab === "researcher-dashboard" && <ResearcherDashboard darkMode={darkMode} />}
+                  {tab === "researcher-dashboard" && <ResearcherDashboard darkMode={darkMode} openSection={dashOpen} />}
                   {tab === "jobs" && <JobsView />}
                   {tab === "logs" && (
                     <LogsView darkMode={darkMode} onNavigate={(v) => goTo(v as Tab)} />

@@ -48,9 +48,20 @@ const STAGE_COLORS: Record<string, string> = {
   digested: "#15803d",
 };
 
+// The same five hues lifted for dark surfaces, where the light set
+// falls below readable contrast on the page and card backgrounds.
+const STAGE_COLORS_DARK: Record<string, string> = {
+  created: "#94a3b8",
+  checked: "#60a5fa",
+  explained: "#a78bfa",
+  accepted: "#f59e0b",
+  digested: "#4ade80",
+};
+
 /** Stage colours live in the lane-2 region alone (FR-029-10). */
-export function stageColor(stage: string | null | undefined): string {
-  return (stage && STAGE_COLORS[stage]) || "#64748b";
+export function stageColor(stage: string | null | undefined, dark = false): string {
+  const map = dark ? STAGE_COLORS_DARK : STAGE_COLORS;
+  return (stage && map[stage]) || (dark ? "#94a3b8" : "#64748b");
 }
 
 // ── The OD-4 legend ────────────────────────────────────────────────────────
@@ -59,10 +70,12 @@ export function StageLegend({
   fg,
   muted,
   border,
+  dark = false,
 }: {
   fg: string;
   muted: string;
   border: string;
+  dark?: boolean;
 }) {
   return (
     <div
@@ -83,7 +96,7 @@ export function StageLegend({
       <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
         {STAGE_NAMES.map((s) => (
           <div key={s} style={{ fontSize: 11, lineHeight: 1.45 }}>
-            <span style={{ fontWeight: 700, color: stageColor(s) }}>{s}</span>
+            <span style={{ fontWeight: 700, color: stageColor(s, dark) }}>{s}</span>
             <span style={{ color: muted }}> — {STAGE_DEFINITIONS[s]}.</span>
           </div>
         ))}

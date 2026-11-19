@@ -45,6 +45,7 @@ _GPU_PIPELINES = frozenset({"decipher", "distributional_decipherment"})
 # Anti-spam: log resource-wait messages at most once per N seconds
 _RESOURCE_LOG_INTERVAL_SEC = 60.0
 _last_resource_log: dict[str, float] = {}  # job_id -> last log timestamp
+_undispatchable: dict[str, str] = {}  # job_id -> unregistered pipeline name (dispatch-deferred)
 
 
 def _get_system_resources() -> tuple[float, float, float | None]:
@@ -216,8 +217,43 @@ async def _process_one_on(db: Any) -> bool:
     and retry, keeping the job in 'pending' until the machine is ready.
     """
     # Peek first (no claim) so we can run a resource check before committing.
-    next_job = await db.peek_next_pending_job()
+    # Jobs already found undispatchable are excluded so they cannot starve
+    # the dispatchable jobs queued behind them.
+    if _undispatchable:
+        next_job = await db.peek_next_pending_job(exclude_ids=sorted(_undispatchable))
+    else:
+        next_job = await db.peek_next_pending_job()
     if next_job is None:
+        return False
+
+    # Dispatch gate: a job whose pipeline is not registered can never run.
+    # Claiming it would fail it within seconds (the run raises "Unknown
+    # pipeline"), and a job that has already failed can no longer be
+    # paused, resumed or cancelled by its owner while it waits. Leave it
+    # pending instead, stamp the wait reason on its params (the Jobs panel
+    # surfaces it, as it does resource_wait), and exclude it from later
+    # peeks in this process. Pipeline registration completes when the
+    # engine starts, so a pipeline unknown now stays unknown for this
+    # process's lifetime; a restart re-evaluates every pending job.
+    _ensure_pipelines_loaded()
+    pipeline = next_job.get("pipeline") or ""
+    if pipeline not in _PIPELINES:
+        jid = next_job["id"]
+        _undispatchable[jid] = pipeline
+        reason = (
+            f"Pipeline '{pipeline}' is not registered on this instance; "
+            "the job stays pending until it can be dispatched."
+        )
+        logger.warning("Job %s deferred — %s", jid, reason)
+        try:
+            await db._conn.execute(  # noqa: SLF001
+                "UPDATE jobs SET params = json_set(params, '$.dispatch_wait', ?) "
+                "WHERE id = ?",
+                (reason[:200], jid),
+            )
+            await db._conn.commit()  # noqa: SLF001
+        except Exception:  # noqa: BLE001
+            pass
         return False
 
     # Resource gate
@@ -262,7 +298,10 @@ async def _process_one_on(db: Any) -> bool:
         pass
     _last_resource_log.pop(next_job["id"], None)
 
-    job = await db.claim_pending_job()
+    if _undispatchable:
+        job = await db.claim_pending_job(exclude_ids=sorted(_undispatchable))
+    else:
+        job = await db.claim_pending_job()
     if job is None:
         return False  # claimed between peek and claim (race) — harmless
 

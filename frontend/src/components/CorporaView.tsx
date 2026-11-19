@@ -659,7 +659,7 @@ function UploadPanel({ onCreated }: { onCreated: (t: TextResponse) => void }) {
 
 // ── World Language Corpus Catalogue Browser ─────────────────────────────────────────────
 
-function CatalogueBrowser({ onImported }: { onImported: () => void }) {
+function CatalogueBrowser({ onImported, darkMode = false }: { onImported: () => void; darkMode?: boolean }) {
   const { toast } = useToast();
   const [entries, setEntries] = useState<CorpusCatalogueEntry[]>([]);
   const [loading, setLoading] = useState(false);
@@ -719,7 +719,7 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
   }
 
   const scriptTypeColor: Record<string, string> = {
-    abjad: "#7c3aed", syllabary: "#059669", logosyllabic: "#d97706",
+    abjad: "#7c3aed", syllabary: "#047857", logosyllabic: "#d97706",
     logographic: "#dc2626", alphabet: "#2563eb", unknown: "#6b7280",
   };
   const scriptTypeLabel: Record<string, string> = {
@@ -739,7 +739,7 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
   return (
     <details style={{ marginBottom: "1.5rem" }}>
       <summary style={{ cursor: "pointer", fontWeight: 600, fontSize: 13, padding: "8px 0",
-        color: "#059669" }} onClick={() => entries.length === 0 && void load()}>
+        color: darkMode ? "#34d399" : "#047857" }} onClick={() => entries.length === 0 && void load()}>
         🌍 Browse World Language Corpus Catalogue
       </summary>
       <div style={{ marginTop: 10, padding: "1rem", border: "1px solid #d1fae5", borderRadius: 8, background: "#f0fdf4" }}>
@@ -750,7 +750,7 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
             style={{ ...inputStyle, width: 220 }} />
           {(["all", "undeciphered", "deciphered"] as const).map(f => (
             <button key={f} onClick={() => setFilterUD(f)}
-              style={{ ...btnSmall, background: filterUD === f ? "#059669" : undefined,
+              style={{ ...btnSmall, background: filterUD === f ? "#047857" : undefined,
                 color: filterUD === f ? "#fff" : undefined }}>
               {f === "all" ? "All" : f === "undeciphered" ? "🔓 Undeciphered" : "✓ Deciphered"}
             </button>
@@ -863,7 +863,10 @@ function CatalogueBrowser({ onImported }: { onImported: () => void }) {
   );
 }
 
-export function CorporaView({ onSelect }: { onSelect?: (id: string, name: string) => void }) {
+export function CorporaView({ onSelect, darkMode = false }: {
+  onSelect?: (id: string, name: string) => void;
+  darkMode?: boolean;
+}) {
   const [texts, setTexts] = useState<TextResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -884,7 +887,7 @@ export function CorporaView({ onSelect }: { onSelect?: (id: string, name: string
         <button onClick={load} style={{ ...btnPrimary, background: "#6b7280", padding: "4px 12px", fontSize: 12 }}>⟳ Refresh</button>
       </div>
       <UploadPanel onCreated={(t) => setTexts((prev) => [t, ...prev])} />
-      <CatalogueBrowser onImported={() => void load()} />
+      <CatalogueBrowser onImported={() => void load()} darkMode={darkMode} />
       {loading && <p style={{ color: "#6b7280", fontSize: 13 }}>Loading…</p>}
       {error && <p style={{ color: "#dc2626", fontSize: 13 }}>{error}</p>}
       {!loading && !error && texts.length === 0 && <p style={{ color: "#6b7280", fontSize: 13 }}>No corpora yet. Upload or import one above.</p>}

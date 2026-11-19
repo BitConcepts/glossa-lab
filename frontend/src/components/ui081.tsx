@@ -22,6 +22,7 @@ export interface Palette {
   faint: string;
   accent: string;
   accentSoft: string;
+  accentFg: string;
   inputBg: string;
 }
 
@@ -29,14 +30,14 @@ export function palette(dark: boolean): Palette {
   return dark
     ? {
         bg: "#0f172a", card: "#1e293b", border: "#334155", borderSoft: "#263449",
-        fg: "#e2e8f0", bad: "#f87171", muted: "#94a3b8", faint: "#64748b",
-        accent: "#60a5fa", accentSoft: "rgba(37,99,235,0.18)",
+        fg: "#e2e8f0", bad: "#f87171", muted: "#aebfd6", faint: "#94a3b8",
+        accent: "#60a5fa", accentSoft: "rgba(37,99,235,0.18)", accentFg: "#0f172a",
         inputBg: "#0f172a",
       }
     : {
         bg: "#f8fafc", card: "#ffffff", border: "#e5e7eb", borderSoft: "#eef1f5",
-        fg: "#111827", bad: "#b91c1c", muted: "#64748b", faint: "#94a3b8",
-        accent: "#2563eb", accentSoft: "#eff6ff",
+        fg: "#111827", bad: "#b91c1c", muted: "#4a5a6e", faint: "#5f7089",
+        accent: "#2563eb", accentSoft: "#eff6ff", accentFg: "#ffffff",
         inputBg: "#ffffff",
       };
 }
@@ -51,7 +52,7 @@ const CHIP_COLORS: Record<ChipTone, { bg: string; fg: string; border?: string }>
   warn:    { bg: "#fffbeb", fg: "#b45309" },
   neutral: { bg: "#f1f5f9", fg: "#475569" },
   contest: { bg: "#f5f3ff", fg: "#7c3aed", border: "1px solid #ddd6fe" },
-  line:    { bg: "none",    fg: "#64748b", border: "1px solid #e5e7eb" },
+  line:    { bg: "#e8edf3", fg: "#475569", border: "1px solid #cbd5e1" },
 };
 
 export function Chip({ tone, children }: { tone: ChipTone; children: ReactNode }) {
@@ -107,11 +108,11 @@ export function StageTrack({ stage }: { stage: string | null | undefined }) {
     <span style={{ display: "inline-flex", alignItems: "center", flexWrap: "wrap" }} data-testid="stage-track">
       {STAGE_NAMES.map((s, i) => (
         <span key={s} style={{ display: "inline-flex", alignItems: "center" }}>
-          {i > 0 && <span style={{ color: "#94a3b8", fontSize: 10, padding: "0 3px" }}>→</span>}
+          {i > 0 && <span style={{ color: "#5f7089", fontSize: 10, padding: "0 3px" }}>→</span>}
           <span style={{
             fontSize: 11, fontWeight: 600, padding: "3px 9px", borderRadius: 10,
             background: i === idx ? "#2563eb" : i < idx ? "#eff6ff" : "#f1f5f9",
-            color: i === idx ? "#fff" : i < idx ? "#2563eb" : "#94a3b8",
+            color: i === idx ? "#fff" : i < idx ? "#2563eb" : "#5f7089",
           }}>
             {s}
           </span>

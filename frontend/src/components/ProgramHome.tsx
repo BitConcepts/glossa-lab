@@ -74,9 +74,11 @@ type Route =
 export function ProgramHome({
   darkMode,
   onNavigate,
+  onRegisterClaim,
 }: {
   darkMode: boolean;
   onNavigate: (route: Route) => void;
+  onRegisterClaim: () => void;
 }) {
   const p = palette(darkMode);
   const { activeProject } = useProject();
@@ -191,7 +193,7 @@ export function ProgramHome({
             : activeProject?.description ?? "The active program."
         }
         primary={
-          <PrimaryButton onClick={() => onNavigate("claims")}>
+          <PrimaryButton onClick={onRegisterClaim}>
             + Register a claim
           </PrimaryButton>
         }
@@ -236,7 +238,7 @@ export function ProgramHome({
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 6 }}>
             {STAGE_NAMES.map((s) => (
               <span key={s} style={{ fontSize: 12.5 }}>
-                <span style={{ fontWeight: 700, color: stageColor(s) }}>{s}</span>
+                <span style={{ fontWeight: 700, color: stageColor(s, darkMode) }}>{s}</span>
                 <span style={{ color: p.muted }}>: {decipher.anchors.by_stage?.[s] ?? 0}</span>
               </span>
             ))}
@@ -250,7 +252,7 @@ export function ProgramHome({
             These counts are an index into the anchor records — how many records stand
             at each stage — not a measure of decipherment.
           </div>
-          <StageLegend fg={p.fg} muted={p.muted} border={p.border} />
+          <StageLegend fg={p.fg} muted={p.muted} border={p.border} dark={darkMode} />
         </div>
       ) : null}
 
@@ -329,7 +331,7 @@ export function ProgramHome({
                 fontSize: 26,
                 fontWeight: 600,
                 lineHeight: 1.15,
-                color: foundation ? (foundation.n_fail > 0 ? p.bad : "#15803d") : p.fg,
+                color: foundation ? (foundation.n_fail > 0 ? p.bad : (darkMode ? "#4ade80" : "#15803d")) : p.fg,
               }}
             >
               {foundation?.verdict ?? "—"}

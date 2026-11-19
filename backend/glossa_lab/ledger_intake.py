@@ -49,10 +49,12 @@ and are NOT migrated to canonical hashing.
 
 from __future__ import annotations
 
+import base64
 import hashlib
 import json
 import os
 import tempfile
+from datetime import datetime, timezone
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable, Optional
@@ -525,7 +527,154 @@ def write_ledger(
         raise ValueError("migration set contains duplicate fingerprints (D-B)")
     body = "".join(dump_entry(e) + "\n" for e in entries).encode("utf-8")
     ledger_path.parent.mkdir(parents=True, exist_ok=True)
+    # Every migration write first snapshots the state it replaces, so the
+    # write can be rolled back (see rollback_migration below).
+    snapshot_ledger(ledger_path)
     _verified_replace(ledger_path, body, old_bytes=b"")
+
+
+# ---------------------------------------------------------------------------
+# Snapshot / rollback — the migration write path's recovery facility.
+#
+# write_ledger is a one-way door by design (it refuses to replace a
+# non-empty ledger, and append_entry only extends). Before this facility
+# existed there was no way back from a migration write: no snapshot, no
+# restore. snapshot_ledger captures the ledger's exact bytes (or its
+# absence) as a self-contained manifest; restore_snapshot puts them back
+# under the same discipline the write path uses — the payload's digest
+# is verified before anything is written, the replace is atomic, and
+# the read-back is verified byte-for-byte. Snapshot digests are
+# RAW-byte SHA-256: the ledger is a generated artifact under the
+# byte-exact regime (see the module docstring), so what a restore must
+# reproduce is the bytes themselves.
+
+
+def _atomic_write_verified(path: Path, new_bytes: bytes) -> None:
+    """Atomically replace ``path`` with ``new_bytes`` and verify the
+    read-back byte-for-byte. Unlike :func:`_verified_replace` this does
+    not require the new bytes to extend the old — a restore may shrink
+    the file back to its pre-migration state."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=str(path.parent), prefix=".ledger-", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "wb") as fh:
+            fh.write(new_bytes)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+    if path.read_bytes() != new_bytes:
+        raise RuntimeError(
+            f"verified write failed for {path}: read-back does not "
+            "match the written bytes"
+        )
+
+
+def snapshot_ledger(
+    ledger_path: Path,
+    snapshot_path: Optional[Path] = None,
+) -> Path:
+    """Capture the ledger's current state as a snapshot manifest.
+
+    The manifest records whether the ledger existed, its size and its
+    raw-byte SHA-256, and embeds the bytes themselves (base64), so a
+    snapshot is one self-contained file that cannot be paired with the
+    wrong payload. Returns the snapshot's path.
+    """
+    data = ledger_path.read_bytes() if ledger_path.is_file() else None
+    if snapshot_path is None:
+        stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ")
+        snapshot_path = ledger_path.with_name(
+            f"{ledger_path.name}.snapshot-{stamp}.json"
+        )
+    manifest = {
+        "kind": "ledger-snapshot",
+        "ledger_name": ledger_path.name,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "existed": data is not None,
+        "size": len(data) if data is not None else 0,
+        "sha256": sha256_bytes(data) if data is not None else None,
+        "bytes_b64": (
+            base64.b64encode(data).decode("ascii") if data is not None else None
+        ),
+    }
+    _atomic_write_verified(
+        snapshot_path,
+        (json.dumps(manifest, indent=2, sort_keys=True) + "\n").encode("utf-8"),
+    )
+    return snapshot_path
+
+
+def _snapshot_bytes(manifest: dict[str, Any]) -> Optional[bytes]:
+    """Decode a snapshot manifest's payload, verifying size and digest."""
+    if manifest.get("kind") != "ledger-snapshot":
+        raise ValueError("not a ledger snapshot manifest")
+    if not manifest.get("existed"):
+        return None
+    data = base64.b64decode(str(manifest.get("bytes_b64") or ""), validate=True)
+    if len(data) != manifest.get("size"):
+        raise ValueError("snapshot payload size does not match its manifest")
+    if sha256_bytes(data) != manifest.get("sha256"):
+        raise ValueError("snapshot payload digest does not match its manifest")
+    return data
+
+
+def restore_snapshot(ledger_path: Path, snapshot_path: Path) -> None:
+    """Restore the ledger to the state a snapshot captured.
+
+    The payload's digest is verified against the manifest before
+    anything is written; a missing or corrupt snapshot refuses and
+    leaves the ledger untouched. A snapshot of an absent ledger
+    restores the absence. Restored bytes must parse as ledger lines
+    before they are written.
+    """
+    if not snapshot_path.is_file():
+        raise FileNotFoundError(f"ledger snapshot not found: {snapshot_path}")
+    manifest = json.loads(snapshot_path.read_text(encoding="utf-8"))
+    data = _snapshot_bytes(manifest)
+    if data is None:
+        if ledger_path.is_file():
+            ledger_path.unlink()
+        return
+    for line in data.decode("utf-8").splitlines():
+        if line.strip():
+            json.loads(line)
+    _atomic_write_verified(ledger_path, data)
+
+
+def list_snapshots(ledger_path: Path) -> list[Path]:
+    """All snapshots taken of this ledger, oldest first."""
+    return sorted(ledger_path.parent.glob(f"{ledger_path.name}.snapshot-*.json"))
+
+
+def rollback_migration(
+    root: Optional[Path] = None,
+    ledger_path: Optional[Path] = None,
+    snapshot_path: Optional[Path] = None,
+) -> Path:
+    """Roll the ledger back to a snapshot — by default the most recent
+    one taken of it. write_ledger snapshots the pre-state of every
+    migration write, so a migration's own rollback point always exists.
+    Returns the snapshot that was restored; refuses when none exists.
+    """
+    if ledger_path is None:
+        if root is None:
+            raise ValueError("rollback_migration needs a root or a ledger_path")
+        ledger_path = root / LEDGER_REL
+    if snapshot_path is None:
+        snapshots = list_snapshots(ledger_path)
+        if not snapshots:
+            raise FileNotFoundError(
+                f"no snapshot exists to roll back to for {ledger_path}"
+            )
+        snapshot_path = snapshots[-1]
+    restore_snapshot(ledger_path, snapshot_path)
+    return snapshot_path
 
 
 # ---------------------------------------------------------------------------

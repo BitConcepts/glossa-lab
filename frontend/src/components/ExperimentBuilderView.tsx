@@ -58,8 +58,8 @@ function ebTheme(dark: boolean) {
     panelBg:   dark ? "#0f172a" : "#f8fafc",
     panelBg2:  dark ? "#1e293b" : "#ffffff",
     text:      dark ? "#e2e8f0" : "#1e293b",
-    textMuted: dark ? "#94a3b8" : "#64748b",
-    textFaint: dark ? "#64748b" : "#94a3b8",
+    textMuted: dark ? "#94a3b8" : "#526179",
+    textFaint: dark ? "#94a3b8" : "#5a6b84",
     border:    dark ? "#1e293b" : "#e2e8f0",
     borderHov: dark ? "#334155" : "#cbd5e1",
     activeBg:  dark ? "#1e3a5f" : "#dbeafe",
@@ -1251,6 +1251,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
               ))}
             </div>
             {sortedFilteredExps.length === 0 && <div style={{ fontSize: 10, color: th.textFaint, fontStyle: "italic", padding: "4px 2px" }}>{palSearch ? "No matches." : "No graph experiments yet."}</div>}
+            <div role="grid" aria-label="Graph experiments">
             {sortedFilteredExps.map(e => {
               const active = activeExp?.id === e.id;
               const expRuns = getExpRuns(e.id);
@@ -1259,16 +1260,19 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
               const isStarred = starredExps.has(e.id ?? "");
               return (
                 <div key={e.id}
+                  role="row"
                   draggable
                   onDragStart={() => { draggedExpId.current = e.id; draggedNodeType.current = null; }}
                   onClick={() => void loadExp(e.id)}
                   title="Click to open · Drag to canvas to add as SubExperiment node"
-                  style={{ display: "flex", alignItems: "center", gap: 3, padding: "5px 6px", borderRadius: 5, marginBottom: 2, cursor: "pointer",
+                  style={{ padding: "5px 6px", borderRadius: 5, marginBottom: 2, cursor: "pointer",
                     background: active ? th.activeBg : isStarred ? (darkMode ? "#1a110a" : "#fffbeb") : "transparent",
                     border: `1px solid ${isRunning ? "#60a5fa60" : active ? "#7c3aed40" : isStarred ? "#f59e0b30" : "transparent"}` }}>
+                  <div role="gridcell" style={{ display: "flex", alignItems: "center", gap: 3 }}>
                   {/* Star / pin button */}
                   <button onClick={ev => { ev.stopPropagation(); toggleStarExp(e.id ?? ""); }}
                     title={isStarred ? "Unpin" : "Pin to top"}
+                    aria-label={isStarred ? "Unpin" : "Pin to top"}
                     style={{ border: "none", background: "none", cursor: "pointer", fontSize: 9, padding: 0, lineHeight: 1, flexShrink: 0,
                       color: isStarred ? "#f59e0b" : th.textFaint, opacity: isStarred ? 1 : 0.35 }}>
                     {isStarred ? "⭐" : "☆"}
@@ -1311,6 +1315,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                         <button
                           onClick={ev => { ev.stopPropagation(); if (!isRunning) void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }); }}
                           title={isRunning ? "Running…" : "Run now (queues automatically if GPU is busy)"}
+                          aria-label={isRunning ? "Running" : `Run ${e.name}`}
                           disabled={isRunning}
                           style={{ border: "none", background: "none", color: isRunning ? "#60a5fa" : "#22c55e",
                             cursor: isRunning ? "default" : "pointer", fontSize: 10, padding: "0 2px",
@@ -1321,6 +1326,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                           <button
                             onClick={ev => { ev.stopPropagation(); addToSeqQueue(e.id!); }}
                             title={isQueued ? "Already in queue" : "Add to sequential queue (runs after current GPU job)"}
+                            aria-label="Add to sequential queue"
                             style={{ border: "none", background: "none",
                               color: isQueued ? "#60a5fa" : th.textFaint,
                               cursor: "pointer", fontSize: 10, padding: "0 2px",
@@ -1333,6 +1339,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                           <button
                             onClick={ev => { ev.stopPropagation(); void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }, true); }}
                             title="Run + email recipients on completion"
+                            aria-label="Run and email recipients on completion"
                             style={{ border: "none", background: "none", color: "#7c3aed",
                               cursor: "pointer", fontSize: 10, padding: "0 2px",
                               lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>
@@ -1343,12 +1350,15 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                     );
                   })()}
                   <button onClick={ev => { ev.stopPropagation(); void doDeleteExp(e.id); }} title={deleteConfirm === e.id ? "Confirm?" : "Delete"}
+                    aria-label="Delete experiment"
                     style={{ border: "none", background: "none", color: deleteConfirm === e.id ? "#f87171" : th.textMuted, cursor: "pointer", fontSize: 10, padding: "0 3px", lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>
                     {deleteConfirm === e.id ? "!" : "×"}
                   </button>
+                  </div>
                 </div>
               );
             })}
+            </div>
           </div>
 
           {/* Inner resize divider — drag to adjust experiments list vs palette height */}

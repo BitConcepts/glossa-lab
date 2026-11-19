@@ -188,6 +188,25 @@ async def import_project(bundle: dict[str, Any]) -> dict[str, Any]:
         raise HTTPException(503, "Database not ready")
 
     proj = bundle.get("project")
+    if not proj:
+        # A flat minimal body ({name|label, description, ...}) is a valid
+        # minimal bundle: the project itself, with no linked entities.
+        # This endpoint is the surface's only project-create path, and a
+        # client holding just a name and a description must be able to
+        # create a project with it; the full bundle shape stays the way
+        # to import a project together with its linked entities.
+        flat_label = bundle.get("label") or bundle.get("name")
+        if flat_label:
+            proj = {
+                "label": flat_label,
+                "description": bundle.get("description", ""),
+                "prompt_context": bundle.get("prompt_context", ""),
+                "question": bundle.get("question", ""),
+                "standing_position": bundle.get("standing_position", ""),
+                "topic_ids": bundle.get("topic_ids", []),
+                "experiment_ids": bundle.get("experiment_ids", []),
+                "corpus_ids": bundle.get("corpus_ids", []),
+            }
     if not proj or not proj.get("label"):
         raise HTTPException(422, "Bundle must contain a project with a label")
 

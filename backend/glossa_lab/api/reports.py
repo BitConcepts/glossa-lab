@@ -32,6 +32,7 @@ logger = logging.getLogger("glossa_lab.api.reports")
 
 _REPO_ROOT    = Path(__file__).resolve().parent.parent.parent.parent
 _BACKEND_DIR  = _REPO_ROOT / "backend"
+_SCRIPTS_DIR  = _BACKEND_DIR / "scripts"
 _REPORTS_DIR  = _REPO_ROOT / "reports"
 _OUTPUTS_DIR  = _REPO_ROOT / "outputs"
 _ALIASES      = {"indus": str(_OUTPUTS_DIR / "real_indus_catalog_analysis.json")}
@@ -53,7 +54,7 @@ _REPORT_TEMPLATES: dict[str, dict[str, Any]] = {
         ),
         "script":      "generate_fuls_nw_semitic_report.py",
         "output_glob": "fuls_nw_semitic_report*.pdf",
-        "requires":    ["fuls_rtl_corrected*.json"],
+        "requires":    ["fuls_nw_semitic_benchmark*.json"],
         "category":    "Fuls Collaboration",
     },
     "geez_benchmark": {
@@ -99,6 +100,20 @@ _REPORT_TEMPLATES: dict[str, dict[str, Any]] = {
 }
 
 
+def _generator_script(tmpl: dict[str, Any]) -> Path | None:
+    """Locate a template's generator script.
+
+    The generator scripts live in backend/scripts/; the backend directory
+    itself is kept as a fallback for any script that still sits beside the
+    package. Returns None when the script is absent from both.
+    """
+    for base in (_SCRIPTS_DIR, _BACKEND_DIR):
+        candidate = base / tmpl["script"]
+        if candidate.exists():
+            return candidate
+    return None
+
+
 @router.get("/reports/templates")
 async def list_report_templates() -> list[dict[str, Any]]:
     """Return available PDF report templates."""
@@ -109,7 +124,7 @@ async def list_report_templates() -> list[dict[str, Any]]:
             "description": t["description"],
             "category":    t["category"],
             "requires":    t["requires"],
-            "ready":       all(
+            "ready":       _generator_script(t) is not None and all(
                 bool(list(_REPORTS_DIR.glob(req)) or list(_OUTPUTS_DIR.glob(req)))
                 for req in t["requires"]
             ),
@@ -138,8 +153,8 @@ async def generate_report(body: GenerateReportBody) -> dict[str, Any]:
                    f"Valid: {list(_REPORT_TEMPLATES)}"
         )
 
-    script_path = _BACKEND_DIR / tmpl["script"]
-    if not script_path.exists():
+    script_path = _generator_script(tmpl)
+    if script_path is None:
         raise HTTPException(
             status_code=503,
             detail=f"Report generator script not found: {tmpl['script']}"

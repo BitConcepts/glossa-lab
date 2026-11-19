@@ -133,7 +133,7 @@ function LibraryTab({ darkMode, cardBg, border, fg, muted, inputBg, inputBdr, to
           { label: "Encoded Models", value: hypos.filter(h => h.status !== "stub").length },
         ].map(s => (
           <div key={s.label} style={{ background: cardBg, border: `1px solid ${border}`, borderRadius: 9, padding: "12px 18px", minWidth: 140 }}>
-            <div style={{ fontSize: 22, fontWeight: 700, color: "#7c3aed" }}>{s.value}</div>
+            <div style={{ fontSize: 22, fontWeight: 700, color: darkMode ? "#a78bfa" : "#7c3aed" }}>{s.value}</div>
             <div style={{ fontSize: 11, color: muted, marginTop: 2 }}>{s.label}</div>
           </div>
         ))}
@@ -214,7 +214,7 @@ function LibraryTab({ darkMode, cardBg, border, fg, muted, inputBg, inputBdr, to
               <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4, flexShrink: 0 }}>
                 <span style={{ fontSize: 9, padding: "2px 7px", borderRadius: 8,
                   background: doc.claim_count > 0 ? "#7c3aed22" : "#f1f5f9",
-                  color: doc.claim_count > 0 ? "#7c3aed" : muted, fontWeight: 700 }}>
+                  color: doc.claim_count > 0 ? (darkMode ? "#c4b5fd" : "#7c3aed") : "#526179", fontWeight: 700 }}>
                   {doc.claim_count} claims
                 </span>
                 <span style={{ fontSize: 9, color: muted }}>{fmtBytes(doc.file_size_bytes)} · {fmtDate(doc.intake_date)}</span>

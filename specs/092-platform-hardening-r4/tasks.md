@@ -115,7 +115,7 @@
 
 ## Stage 3 — The test-harness remainder (PRs per leg: feat/092-s3-<leg>)
 
-- [ ] **T301 — Tray teardown: reproduce, root-cause, fix.** The ERROR
+- [x] **T301 — Tray teardown: reproduce, root-cause, fix.** The ERROR
   reproduced on demand; the mechanism stated in the stage record
   with the reproduction as evidence; the fix landed at the source
   (fixture/connection lifecycle). Claims: C092-9 (mechanism leg).

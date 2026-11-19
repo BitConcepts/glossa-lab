@@ -2,7 +2,7 @@
 and the legacy dry-run over the standing store (T104).
 
 T103's acceptance: the formats and the fold of
-`glossa_lab.run_records` (the machine copy of run-defs v2)
+`glossa_lab.run_records` (the machine copy of run-defs v3)
 are proven against the registered rules — 10,000
 same-second mints unique and format-conformant; header
 validation refuses a missing key component per surface and

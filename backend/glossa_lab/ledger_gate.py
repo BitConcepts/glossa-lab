@@ -37,7 +37,7 @@ recomputed data under the gate's own template copies),
 V11 run-binding (Spec 089 Stage 5: the run stores, their
 indexes, the junction store, and the run-produced
 artifacts checked under the gate's own registered copies
-of run-defs v2 — not imported from the run tooling —
+of run-defs v3 — not imported from the run tooling —
 for resolving producing bindings, quarantined citations,
 store census and index integrity, and junction
 completeness; the gate verifies junction reports and
@@ -4228,7 +4228,7 @@ def _v10_checks(
 
 # ---------------------------------------------------------------------------
 # V11 — run-binding (Spec 089 Stage 5, T502). The gate's
-# own registered copies of run-defs v2's checkable rules
+# own registered copies of run-defs v3's checkable rules
 # (glossa-indus/ledger/RUN-DEFINITIONS.md), deliberately
 # NOT imported from the run tooling (run_records,
 # run_junction): the header required-fields list, the
@@ -4236,14 +4236,14 @@ def _v10_checks(
 # vocabulary, the absence kinds, the index act forms and
 # fold refusals, and the legacy label. A deliberate
 # run-defs change is made in every copy in the same
-# motion (run-defs v2 §9); a change made in the tooling's
+# motion (run-defs v3 §9); a change made in the tooling's
 # copy only is exactly the divergence this class exists
 # to catch (C089-15). The gate verifies bindings,
 # citations, censuses, and junction completeness; it
 # never originates a junction analysis, appends an act,
 # or lifts a quarantine (D-089-2, C089-16).
 
-GATE_RUN_DEFS_VERSION = "run-defs v2"
+GATE_RUN_DEFS_VERSION = "run-defs v3"
 RUN_JUNCTIONS_REL = "glossa-indus/ledger/junctions"
 RUN_INDEX_NAME = "run-index.jsonl"
 RUN_SURFACES = ("settling", "experiment", "study", "suite")
@@ -4351,7 +4351,7 @@ class _V11Store:
 
     def _fold(self) -> None:
         """The gate's own fold of the index acts, under
-        run-defs v2 §7.1's refusal rules (registered
+        run-defs v3 §7.1's refusal rules (registered
         copies): refusals are collected as named failures,
         never raised, and a refused act changes no state —
         the same order the tooling's fold enforces."""
@@ -4397,7 +4397,7 @@ class _V11Store:
         if not legacy_id and not _RUN_ID_RE.match(run_id):
             self.fold_failures.append(
                 f"{where}: entry act run id {run_id!r} is "
-                "neither a run-defs v2 run id nor a legacy id"
+                "neither a run-defs v3 run id nor a legacy id"
             )
             return
         if not isinstance(act["record"], str) or not act["record"]:
@@ -4684,7 +4684,7 @@ class _V11Store:
 def _v11_discover_stores(root: Path) -> list[_V11Store]:
     """The guarded stores: the settling runs store, and
     every citation store — a spec's records/ directory
-    carrying a run index (run-defs v2 §1: the citing
+    carrying a run index (run-defs v3 §1: the citing
     spec's records/ is the suite/experiment surfaces'
     store of record)."""
     stores: list[_V11Store] = []
@@ -4707,7 +4707,7 @@ def _v11_header_failures(
     record: dict[str, Any], where: str
 ) -> list[str]:
     """Validate one run record's header under the gate's
-    registered copies of run-defs v2 §3.1/§4: the
+    registered copies of run-defs v3 §3.1/§4: the
     required fields, a registered surface, the run-id
     form, the key's full component set, a registered
     determinism class, and exactly one outcome (a result
@@ -4731,7 +4731,7 @@ def _v11_header_failures(
     if not isinstance(run_id, str) or not _RUN_ID_RE.match(run_id):
         failures.append(
             f"{where}: header run id {run_id!r} is not in "
-            "the run-defs v2 form "
+            "the run-defs v3 form "
             "<surface>-<yyyymmddThhmmssZ>-<6 lowercase hex>"
         )
     elif isinstance(surface, str) and run_id.split("-", 1)[0] != surface:
@@ -4961,13 +4961,13 @@ def _v11_checks(root: Path) -> list[Check]:
     if header_records:
         a_checked.append(
             f"{header_records} run record(s) carrying the "
-            "run-defs v2 header validate under the gate's "
+            "run-defs v3 header validate under the gate's "
             "registered copies"
         )
     checks.append(
         Check(
             "V11 run-binding — producing bindings resolve "
-            "(run-defs v2 copies)",
+            "(run-defs v3 copies)",
             "FAIL" if a_failures else "PASS",
             a_failures
             or a_checked
@@ -5113,7 +5113,7 @@ def _v11_checks(root: Path) -> list[Check]:
             ):
                 historical += 1
             elif run_id in store.departed:
-                # The run-defs v2 form: a generation that
+                # The run-defs v3 form: a generation that
                 # entered standing and later departed is
                 # accounted by its folded departure act,
                 # whose three accounting fields the fold
@@ -5319,7 +5319,7 @@ def _v11_checks(root: Path) -> list[Check]:
         "divergent); "
         f"{key_partial_entries} entered run(s) are "
         "key-partial (legacy) and pair with nothing, per "
-        "run-defs v2 §7.2",
+        "run-defs v3 §7.2",
         f"junction store: {len(reports)} report(s) on "
         "file"
         + (

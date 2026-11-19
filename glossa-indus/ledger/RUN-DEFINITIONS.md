@@ -1,4 +1,4 @@
-# Run definitions — `run-defs v2`
+# Run definitions — `run-defs v3`
 
 **Version note.** v1 was registered at Spec 089
 (run-scoped results), Stage 1, task T101. v2 (2026-11-05)
@@ -224,6 +224,31 @@ outside that confinement — a different test, a changed
 count, a failure rather than a teardown error — is not
 this shape.
 
+Mechanism and fixing stage, recorded at run-defs v3
+(Spec 092 Stage 3, T301): the error is the application
+lifespan's shutdown racing the engine loop. On app-context
+exit the lifespan closes the database while the engine
+loop — a fire-and-forget task — is still working a job;
+the loop's next store raised `sqlite3.ProgrammingError`
+("Cannot operate on a closed database"), the loop task
+ended on the unretrieved exception, and pytest attributed
+the session-fixture teardown error to the session's
+then-final test — in the registered instance a tray test;
+the tray tests themselves use no client and no database.
+The fixing stage is the engine shutdown-race work of
+2026-11-06/07 (PR #541, PR #544): the loop judges
+closed-database signals against its captured Database
+instance and stops cleanly, and `Database.close()` is
+tolerant. The regression battery is
+`backend/tests/test_engine_shutdown_race.py` — it fails
+on the pre-fix engine (2 of 3, the ProgrammingError
+surfacing) and passes on the fixed one. Discharged at
+Spec 092 Stage 3 (T302) on five consecutive full-suite
+runs with zero teardown ERRORs of this family (the runs
+are named in the stage record). The shape stays
+registered: a future divergence inside this confinement
+is read against this mechanism first.
+
 ## 6. Junction dispositions (vocabulary)
 
 A junction report (Stage 3) ends in exactly one
@@ -378,7 +403,7 @@ deliveries.
 ## 9. Amendment
 
 These definitions change only as a new version
-(`run-defs v2`, …), propagated to every registered copy —
+(`run-defs v3`, …), propagated to every registered copy —
 this document, the library's machine copy, and (from
 Stage 5) the gate's V11 copies — in the same motion. The
 comparability judgment row (§4) is the owner's, settled at

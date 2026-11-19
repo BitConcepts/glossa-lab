@@ -42,6 +42,47 @@ class _AuthedTestClient(_ImportedTestClient):
 _fastapi_testclient.TestClient = _AuthedTestClient
 TestClient = _AuthedTestClient
 
+# ── Spec 092 T303 — suite writes never land in the live tree ─────────
+# Two production paths write into the repo tree when exercised:
+# the intake pipeline runners (api/indus_evidence.py and
+# experiment_graph_indus_evidence.py) run the glossa-indus scripts
+# as subprocesses, and those scripts locate their base from their
+# own path; and the research loop's partial-results writer lands
+# in the repo's outputs/ dir. The suite therefore points
+# GLOSSA_INDUS_SCRIPTS_DIR at a fixture tree — its scripts are
+# symlinks to the real ones, its data dirs empty temp dirs, so a
+# pipeline run writes only into the fixture — and
+# GLOSSA_OUTPUTS_DIR at a temp outputs dir. Both seams default to
+# the repo paths when the variables are unset, so production
+# behaviour is unchanged.
+import shutil as _shutil
+import tempfile as _tempfile
+from pathlib import Path as _Path
+
+_SUITE_TMP = _Path(_tempfile.mkdtemp(prefix="glossa-suite-"))
+_FIXTURE_ROOT = _SUITE_TMP / "glossa-indus"
+_FIXTURE_SCRIPTS = _FIXTURE_ROOT / "scripts"
+_REAL_SCRIPTS = _Path(__file__).resolve().parents[2] / "glossa-indus" / "scripts"
+for _sub in (
+    "literature/documents",
+    "logs",
+    "raw/user_uploads",
+    "claims/extracted_claims",
+    "reports/claim_reports",
+):
+    (_FIXTURE_ROOT / _sub).mkdir(parents=True, exist_ok=True)
+_FIXTURE_SCRIPTS.mkdir(parents=True, exist_ok=True)
+for _name in ("indus_intake.py", "indus_claims.py"):
+    _dst = _FIXTURE_SCRIPTS / _name
+    try:
+        _dst.symlink_to(_REAL_SCRIPTS / _name)
+    except OSError:
+        _shutil.copyfile(_REAL_SCRIPTS / _name, _dst)
+_os.environ.setdefault("GLOSSA_INDUS_SCRIPTS_DIR", str(_FIXTURE_SCRIPTS))
+_SUITE_OUTPUTS = _SUITE_TMP / "outputs"
+_SUITE_OUTPUTS.mkdir(parents=True, exist_ok=True)
+_os.environ.setdefault("GLOSSA_OUTPUTS_DIR", str(_SUITE_OUTPUTS))
+
 from glossa_lab.main import create_app  # noqa: E402
 
 if _os.name == "nt":

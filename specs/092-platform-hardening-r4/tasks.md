@@ -132,7 +132,7 @@
   amendment landing through the definitions path).
   *This does not establish:* that no teardown flake of another family
   exists — only this family's closure, on the stated bar.
-- [ ] **T303 — In-tree rewrites eliminated.** The rewriting tests
+- [x] **T303 — In-tree rewrites eliminated.** The rewriting tests
   censused from a full run's S4 manifest; each moved to isolated
   inputs or temp-tree asserted outputs; the repo-root `outputs/`
   writer dispositioned; the clean-tree guard removed; a full-suite

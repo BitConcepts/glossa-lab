@@ -17,6 +17,7 @@ Port type added by this module:
 """
 from __future__ import annotations
 
+import os
 import re
 from pathlib import Path
 
@@ -28,6 +29,19 @@ _LIT_DOCS      = _EVIDENCE_BASE / "literature" / "documents"
 _CLAIMS_DIR    = _EVIDENCE_BASE / "claims" / "extracted_claims"
 _HYPO_MODELS   = _EVIDENCE_BASE / "hypotheses" / "models"
 _SCRIPTS       = _EVIDENCE_BASE / "scripts"
+
+
+def _intake_scripts_dir() -> Path:
+    """Scripts dir for the intake pipeline runner.
+
+    Defaults to the repo's glossa-indus scripts. The test suite
+    points ``GLOSSA_INDUS_SCRIPTS_DIR`` at an isolated fixture
+    tree (Spec 092 T303) so a suite run never rewrites the live
+    tree: the scripts locate their base from their own path, so
+    a fixture copy writes only into the fixture tree.
+    """
+    override = os.environ.get("GLOSSA_INDUS_SCRIPTS_DIR")
+    return Path(override) if override else _SCRIPTS
 
 
 # ── Node implementations ────────────────────────────────────────────────────
@@ -346,11 +360,12 @@ def _intake_runner(inputs: dict, params: dict) -> dict:
     import subprocess  # noqa: PLC0415
     import sys  # noqa: PLC0415
 
-    intake = _SCRIPTS / "indus_intake.py"
-    claims = _SCRIPTS / "indus_claims.py"
+    scripts = _intake_scripts_dir()
+    intake = scripts / "indus_intake.py"
+    claims = scripts / "indus_claims.py"
 
     results: list[dict] = []
-    for script, extra_args in [(intake, ["--scan", str(_EVIDENCE_BASE / "raw" / "user_uploads")]), (claims, [])]:
+    for script, extra_args in [(intake, ["--scan", str(scripts.parent / "raw" / "user_uploads")]), (claims, [])]:
         if not script.exists():
             results.append({"script": script.name, "status": "not_found"})
             continue

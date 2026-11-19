@@ -62,7 +62,6 @@ from pathlib import Path
 
 import pytest
 
-from glossa_lab import ledger_gate as lg
 from glossa_lab import run_junction as rj
 from glossa_lab import run_records as rr
 from glossa_lab import settling as st
@@ -752,44 +751,14 @@ def test_cli_refusals_are_named(tmp_path):
 
 
 # ---------------------------------------------------------------------------
-# T303 — the automatic trigger on the settling surface
-#
-# Mirror trees in test_settling_run_scoped.py's shape,
-# with the same clean-tree precondition guard: the
-# engine refuses over diverged sources by design, so a
-# suite process whose earlier tests rewrote mirrored
-# sources in-tree skips these with the cause named.
-
-
-_DIVERGENCE_RE = re.compile(
-    r"recorded (?:sidecar )?sha256 for (?P<hashed>\S+) does not match"
-    r"|(?:source|sidecar) (?P<missing>\S+) not found"
-)
-
-
-def _require_recorded_hashes(root: Path) -> None:
-    report = lg.run_gate(root, scope={"V1"})
-    arm = next(
-        c for c in report.checks if c.name.startswith("V1 recorded")
-    )
-    if arm.status != "FAIL":
-        return
-    paths: list[str] = []
-    for ev in arm.evidence:
-        for match in _DIVERGENCE_RE.finditer(ev):
-            paths.append(match.group("hashed") or match.group("missing"))
-    pytest.skip(
-        "clean-tree precondition destroyed in this suite "
-        "process: the evidence-API tests rewrote source "
-        "files the ledger mirrors by hash ("
-        + ", ".join(sorted(set(paths))[:4])
-        + "); the engine refuses over diverged sources "
-        "by design"
-    )
+# The clean-tree precondition guard that used to stand here
+# retired with the in-tree rewrites it guarded against
+# (Spec 092 T303): suite tests no longer rewrite the mirrored
+# sources, so these tests run unconditionally and fail loudly
+# if the tree ever diverges again.
 
 
 def _mirror_root(tmp_path: Path) -> Path:
-    _require_recorded_hashes(ROOT)
     root = tmp_path / "root"
     root.mkdir(parents=True)
     for name in ("specs", "glossa-corpus", "reports"):

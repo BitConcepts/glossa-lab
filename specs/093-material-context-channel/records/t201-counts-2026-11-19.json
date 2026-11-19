@@ -1,0 +1,196 @@
+{
+ "copresence_with_sequence": {
+  "accession_number": 0,
+  "artifact_type": 3085,
+  "current_holding": 0,
+  "material": 0,
+  "site_name": 966
+ },
+ "join_pairs": {
+  "keys": [
+   "area_section",
+   "cisi_object",
+   "excavation_idno",
+   "horizontal_mm",
+   "material_raw",
+   "period",
+   "site",
+   "text_id",
+   "thickness_mm",
+   "type",
+   "vertical_mm"
+  ],
+  "n": 179,
+  "path": "specs/093-material-context-channel/records/t103-join-pairs-v1.jsonl",
+  "sha256": "7107f738832a4e3b04cff91d81073212bc0f3a77afed6f0ccc3cee4fce621703"
+ },
+ "population_A_seq_site": {
+  "artifact_type_counts": {
+   "seal": 966
+  },
+  "by_source": {
+   "indusscript-m77": 966
+  },
+  "crosswalk_counts": {
+   "1.0": 966
+  },
+  "n": 966,
+  "rights_counts": {
+   "rmrl-research": 966
+  },
+  "scheme_counts": {
+   "Mahadevan1977": 966
+  },
+  "site_counts": {
+   "Chanhu-Daro": 7,
+   "Harappa": 110,
+   "Kalibangan": 1,
+   "Lothal": 3,
+   "Mohenjo-daro": 839,
+   "Sutkagen-Dor": 6
+  }
+ },
+ "population_B_joined": {
+  "area_section_counts": {
+   "--": 4,
+   "DK-": 16,
+   "DKB": 7,
+   "DKC": 9,
+   "DKD": 1,
+   "DKE": 6,
+   "DKG": 6,
+   "DKG. (N)": 17,
+   "DKG. (S)": 68,
+   "DKH": 1,
+   "HR-": 7,
+   "HRA": 5,
+   "HRB": 13,
+   "L-": 1,
+   "SD-": 5,
+   "SDBath Cells": 1,
+   "VS-": 1,
+   "VSA": 11
+  },
+  "area_section_present": 175,
+  "excavation_idno_distinct": 178,
+  "material_raw_counts": {
+   "-": 1,
+   "Clay": 1,
+   "Faience": 1,
+   "Steatite": 176
+  },
+  "material_raw_present": 178,
+  "n_pairs": 179,
+  "period_counts": {
+   "-": 86,
+   "Early": 2,
+   "Intermediate": 44,
+   "Late": 47
+  },
+  "site_counts": {
+   "Mohenjo-daro": 179
+  },
+  "snapshot_side": {
+   "artifact_type": {
+    "seal": 179
+   },
+   "holding_present": 0,
+   "material_present": 0,
+   "site_name_present": 0,
+   "source": {
+    "mayig-cisi": 179
+   }
+  },
+  "text_records_found": 179,
+  "text_records_with_graphemes": 179,
+  "type_counts": {
+   "SEAL:S": 179
+  }
+ },
+ "seq_no_site_by_source": {
+  "indusscript-m77": 1940,
+  "mayig-cisi": 179
+ },
+ "sequence_population": {
+  "by_source": {
+   "indusscript-m77": 2906,
+   "mayig-cisi": 179
+  },
+  "n": 3085
+ },
+ "sequence_population_fields": {
+  "accession_number": {
+   "distinct": 0,
+   "present": 0,
+   "top": {}
+  },
+  "artifact_type": {
+   "distinct": 1,
+   "present": 3085,
+   "top": {
+    "seal": 3085
+   }
+  },
+  "crosswalk_coverage": {
+   "distinct": 24,
+   "present": 3085,
+   "top": {
+    "0.0": 64,
+    "0.143": 11,
+    "0.167": 9,
+    "0.2": 10,
+    "0.25": 11,
+    "0.286": 8,
+    "0.333": 18,
+    "0.375": 8,
+    "0.4": 10,
+    "0.5": 10,
+    "0.667": 2,
+    "1.0": 2907
+   }
+  },
+  "current_holding": {
+   "distinct": 0,
+   "present": 0,
+   "top": {}
+  },
+  "material": {
+   "distinct": 0,
+   "present": 0,
+   "top": {}
+  },
+  "rights_status": {
+   "distinct": 2,
+   "present": 3085,
+   "top": {
+    "MIT": 179,
+    "rmrl-research": 2906
+   }
+  },
+  "sign_id_scheme": {
+   "distinct": 2,
+   "present": 3085,
+   "top": {
+    "Mahadevan1977": 2906,
+    "Parpola1982": 179
+   }
+  },
+  "site_name": {
+   "distinct": 6,
+   "present": 966,
+   "top": {
+    "Chanhu-Daro": 7,
+    "Harappa": 110,
+    "Kalibangan": 1,
+    "Lothal": 3,
+    "Mohenjo-daro": 839,
+    "Sutkagen-Dor": 6
+   }
+  }
+ },
+ "snapshot": {
+  "path": "glossa-corpus/indus/exports/indus_research.jsonl",
+  "rows": 15508,
+  "sha256": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
+ }
+}

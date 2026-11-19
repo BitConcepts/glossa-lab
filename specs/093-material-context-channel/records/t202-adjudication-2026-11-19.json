@@ -1,0 +1,56 @@
+{
+ "bar": {
+  "balanced_accuracy": 0.85,
+  "kappa": 0.8
+ },
+ "c093_1_standing": "INDEPENDENT IN PART",
+ "fields": {
+  "artifact type": {
+   "forcing_counts": "3,085 sequence-bearing records carrying exactly 1 distinct value ('seal'); the join concurs ('SEAL:S', 179 of 179)",
+   "outcome": "NOT ADMINISTERED"
+  },
+  "find-context": {
+   "accuracy": 0.42857142857142855,
+   "administration_run": "study-20261119T190218Z-3b0101",
+   "balanced_accuracy": 0.15,
+   "control_kappa_p99": 0.1322314049586777,
+   "controls_run": "study-20261119T190257Z-cdc1e1",
+   "controls_valid": false,
+   "held_out_n": 35,
+   "kappa": -0.1308562197092084,
+   "outcome": "NOT YET"
+  },
+  "holding/provenance": {
+   "forcing_counts": "sequence and holding copresence in the pinned snapshot: 0 records; the join pairs carry no holding on either side",
+   "outcome": "NOT ADMINISTERED"
+  },
+  "material class": {
+   "forcing_counts": "adjudged classes 1 (Steatite 176); Clay 1 and Faience 1 under the class floor; 1 empty of 179 joined pairs",
+   "outcome": "NOT ADMINISTERED"
+  },
+  "site": {
+   "accuracy": 0.8767605633802817,
+   "administration_run": "study-20261119T190159Z-e493a7",
+   "balanced_accuracy": 0.5091754195339853,
+   "control_kappa_p99": 0.08512299882858258,
+   "controls_run": "study-20261119T190237Z-02e03b",
+   "controls_valid": true,
+   "held_out_n": 284,
+   "kappa": 0.02967590784849668,
+   "outcome": "NOT RECOVERED"
+  }
+ },
+ "not_administered_or_not_yet_fields": [
+  "material class",
+  "artifact type",
+  "holding/provenance",
+  "find-context"
+ ],
+ "not_recovered_fields": [
+  "site"
+ ],
+ "recovered_fields": [],
+ "spec": "093",
+ "stage": "2",
+ "task": "T202"
+}

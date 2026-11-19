@@ -11,6 +11,9 @@ test.describe("Corpora view structure", () => {
     await page.goto("/");
     // Use getByTitle to scope to sidebar nav button
     await page.getByTitle("Data").first().click();
+    // The Data view lands on its inscriptions index; corpora are the
+    // second peer tab.
+    await page.getByRole("button", { name: "Corpora", exact: true }).click();
     await expect(page.getByRole("heading", { name: "Corpora" })).toBeVisible();
   });
 

@@ -355,8 +355,8 @@ function InscriptionsSection({ p }: { p: Palette }) {
         <CardTitle p={p}>Filters</CardTitle>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
           <div style={{ flex: "1 1 160px" }}>
-            <label style={labelStyle}>Site</label>
-            <select style={inputStyle(p)} value={site} onChange={(e) => { setSite(e.target.value); setOffset(0); }} data-testid="filter-site">
+            <label style={labelStyle} htmlFor="dash-filter-site">Site</label>
+            <select id="dash-filter-site" style={inputStyle(p)} value={site} onChange={(e) => { setSite(e.target.value); setOffset(0); }} data-testid="filter-site">
               <option value="">any site</option>
               {Object.entries(list.data?.facets.sites ?? {}).map(([s, n]) => (
                 <option key={s} value={s}>{s} ({n})</option>
@@ -364,8 +364,8 @@ function InscriptionsSection({ p }: { p: Palette }) {
             </select>
           </div>
           <div style={{ flex: "1 1 160px" }}>
-            <label style={labelStyle}>Object class</label>
-            <select style={inputStyle(p)} value={objectClass} onChange={(e) => { setObjectClass(e.target.value); setOffset(0); }}>
+            <label style={labelStyle} htmlFor="dash-filter-class">Object class</label>
+            <select id="dash-filter-class" style={inputStyle(p)} value={objectClass} onChange={(e) => { setObjectClass(e.target.value); setOffset(0); }}>
               <option value="">any class</option>
               {Object.entries(list.data?.facets.object_classes ?? {}).map(([s, n]) => (
                 <option key={s} value={s}>{s} ({n})</option>
@@ -373,16 +373,16 @@ function InscriptionsSection({ p }: { p: Palette }) {
             </select>
           </div>
           <div style={{ flex: "1 1 140px" }}>
-            <label style={labelStyle}>Sign present (as recorded)</label>
-            <input style={inputStyle(p)} value={sign} onChange={(e) => { setSign(e.target.value); setOffset(0); }} placeholder="e.g. 145" data-testid="filter-sign" />
+            <label style={labelStyle} htmlFor="dash-filter-sign">Sign present (as recorded)</label>
+            <input id="dash-filter-sign" style={inputStyle(p)} value={sign} onChange={(e) => { setSign(e.target.value); setOffset(0); }} placeholder="e.g. 145" data-testid="filter-sign" />
           </div>
           <div style={{ flex: "0 1 110px" }}>
-            <label style={labelStyle}>Min length</label>
-            <input style={inputStyle(p)} value={lenMin} inputMode="numeric" onChange={(e) => { setLenMin(e.target.value); setOffset(0); }} />
+            <label style={labelStyle} htmlFor="dash-filter-lenmin">Min length</label>
+            <input id="dash-filter-lenmin" style={inputStyle(p)} value={lenMin} inputMode="numeric" onChange={(e) => { setLenMin(e.target.value); setOffset(0); }} />
           </div>
           <div style={{ flex: "0 1 110px" }}>
-            <label style={labelStyle}>Max length</label>
-            <input style={inputStyle(p)} value={lenMax} inputMode="numeric" onChange={(e) => { setLenMax(e.target.value); setOffset(0); }} />
+            <label style={labelStyle} htmlFor="dash-filter-lenmax">Max length</label>
+            <input id="dash-filter-lenmax" style={inputStyle(p)} value={lenMax} inputMode="numeric" onChange={(e) => { setLenMax(e.target.value); setOffset(0); }} />
           </div>
         </div>
       </Card>
@@ -610,9 +610,9 @@ function HypothesesSection({ p }: { p: Palette }) {
           Rival readings, sign by sign
         </CardTitle>
         <div style={{ maxWidth: 260, marginBottom: 10 }}>
-          <input style={inputStyle(p)} value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter by sign or reading" data-testid="reading-filter" />
+          <input style={inputStyle(p)} value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter by sign or reading" aria-label="Filter by sign or reading" data-testid="reading-filter" />
         </div>
-        <div style={{ maxHeight: 480, overflow: "auto" }}>
+        <div style={{ maxHeight: 480, overflow: "auto" }} tabIndex={0} role="region" aria-label="Rival readings, sign by sign">
           {readings.map((r) => (
             <div key={r.sign} style={{ fontSize: 13, padding: "5px 0", borderTop: `1px solid ${p.borderSoft}` }}>
               <strong>{r.sign}</strong> — “{r.reading ?? "no reading recorded"}”{" "}
@@ -690,8 +690,8 @@ function EvidenceSection({ p }: { p: Palette }) {
         </CardTitle>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
           <div style={{ flex: "1 1 150px" }}>
-            <label style={labelStyle}>Standing</label>
-            <select style={inputStyle(p)} value={standing} onChange={(e) => { setStanding(e.target.value); setOffset(0); }} data-testid="claim-standing">
+            <label style={labelStyle} htmlFor="dash-claim-standing">Standing</label>
+            <select id="dash-claim-standing" style={inputStyle(p)} value={standing} onChange={(e) => { setStanding(e.target.value); setOffset(0); }} data-testid="claim-standing">
               <option value="">any standing</option>
               {["draft", "untested", "partially_supported", "strongly_supported", "partially_falsified", "contradicted", "unsupported", "superseded"].map((s) => (
                 <option key={s} value={s}>{s}</option>
@@ -699,27 +699,27 @@ function EvidenceSection({ p }: { p: Palette }) {
             </select>
           </div>
           <div style={{ flex: "1 1 130px" }}>
-            <label style={labelStyle}>Study</label>
-            <select style={inputStyle(p)} value={study} onChange={(e) => { setStudy(e.target.value); setOffset(0); }}>
+            <label style={labelStyle} htmlFor="dash-claim-study">Study</label>
+            <select id="dash-claim-study" style={inputStyle(p)} value={study} onChange={(e) => { setStudy(e.target.value); setOffset(0); }}>
               <option value="">any study</option>
               {(matrix.data?.study_columns ?? []).map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
           </div>
           <div style={{ flex: "1 1 130px" }}>
-            <label style={labelStyle}>Sign</label>
-            <input style={inputStyle(p)} value={sign} onChange={(e) => { setSign(e.target.value); setOffset(0); }} placeholder="e.g. M044" />
+            <label style={labelStyle} htmlFor="dash-claim-sign">Sign</label>
+            <input id="dash-claim-sign" style={inputStyle(p)} value={sign} onChange={(e) => { setSign(e.target.value); setOffset(0); }} placeholder="e.g. M044" />
           </div>
           <div style={{ flex: "1 1 150px" }}>
-            <label style={labelStyle}>Falsifier</label>
-            <select style={inputStyle(p)} value={falsifier} onChange={(e) => { setFalsifier(e.target.value); setOffset(0); }} data-testid="claim-falsifier">
+            <label style={labelStyle} htmlFor="dash-claim-falsifier">Falsifier</label>
+            <select id="dash-claim-falsifier" style={inputStyle(p)} value={falsifier} onChange={(e) => { setFalsifier(e.target.value); setOffset(0); }} data-testid="claim-falsifier">
               <option value="">present or absent</option>
               <option value="present">present</option>
               <option value="absent">absent — the gap class</option>
             </select>
           </div>
           <div style={{ flex: "1 1 200px" }}>
-            <label style={labelStyle}>Search</label>
-            <input style={inputStyle(p)} value={q} onChange={(e) => { setQ(e.target.value); setOffset(0); }} placeholder="statement or claim id" />
+            <label style={labelStyle} htmlFor="dash-claim-search">Search</label>
+            <input id="dash-claim-search" style={inputStyle(p)} value={q} onChange={(e) => { setQ(e.target.value); setOffset(0); }} placeholder="statement or claim id" />
           </div>
         </div>
         <StateNote p={p} error={claims.error} loading={claims.loading} />
@@ -1002,29 +1002,29 @@ function ContributeSection({ p }: { p: Palette }) {
         </CardTitle>
         <div style={{ display: "grid", gap: 10 }}>
           <div>
-            <label style={labelStyle}>Statement (the candidate reading or claim)</label>
-            <textarea style={{ ...inputStyle(p), minHeight: 54 }} value={statement} onChange={(e) => setStatement(e.target.value)} data-testid="contrib-statement" />
+            <label style={labelStyle} htmlFor="contrib-statement">Statement (the candidate reading or claim)</label>
+            <textarea id="contrib-statement" style={{ ...inputStyle(p), minHeight: 54 }} value={statement} onChange={(e) => setStatement(e.target.value)} data-testid="contrib-statement" />
           </div>
           <div>
-            <label style={labelStyle}>Falsifier — required; the form cannot submit without it</label>
-            <textarea style={{ ...inputStyle(p), minHeight: 44 }} value={falsifier} onChange={(e) => setFalsifier(e.target.value)} data-testid="contrib-falsifier" />
+            <label style={labelStyle} htmlFor="contrib-falsifier">Falsifier — required; the form cannot submit without it</label>
+            <textarea id="contrib-falsifier" style={{ ...inputStyle(p), minHeight: 44 }} value={falsifier} onChange={(e) => setFalsifier(e.target.value)} data-testid="contrib-falsifier" />
           </div>
           <div>
-            <label style={labelStyle}>Evidence references, picked from the record (claim ids, anchor signs, or run ids, comma-separated)</label>
-            <input style={inputStyle(p)} value={refs} onChange={(e) => setRefs(e.target.value)} placeholder="e.g. M044" data-testid="contrib-refs" />
+            <label style={labelStyle} htmlFor="contrib-refs">Evidence references, picked from the record (claim ids, anchor signs, or run ids, comma-separated)</label>
+            <input id="contrib-refs" style={inputStyle(p)} value={refs} onChange={(e) => setRefs(e.target.value)} placeholder="e.g. M044" data-testid="contrib-refs" />
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <div style={{ flex: "1 1 220px" }}>
-              <label style={labelStyle}>What this does not establish</label>
-              <input style={inputStyle(p)} value={doesNot} onChange={(e) => setDoesNot(e.target.value)} />
+              <label style={labelStyle} htmlFor="contrib-doesnot">What this does not establish</label>
+              <input id="contrib-doesnot" style={inputStyle(p)} value={doesNot} onChange={(e) => setDoesNot(e.target.value)} />
             </div>
             <div style={{ flex: "1 1 160px" }}>
-              <label style={labelStyle}>Subject sign (from the record)</label>
-              <input style={inputStyle(p)} value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="e.g. M044" />
+              <label style={labelStyle} htmlFor="contrib-subject">Subject sign (from the record)</label>
+              <input id="contrib-subject" style={inputStyle(p)} value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="e.g. M044" />
             </div>
             <div style={{ flex: "1 1 200px" }}>
-              <label style={labelStyle}>Your name (the named submitter)</label>
-              <input style={inputStyle(p)} value={submitter} onChange={(e) => setSubmitter(e.target.value)} data-testid="contrib-submitter" />
+              <label style={labelStyle} htmlFor="contrib-submitter">Your name (the named submitter)</label>
+              <input id="contrib-submitter" style={inputStyle(p)} value={submitter} onChange={(e) => setSubmitter(e.target.value)} data-testid="contrib-submitter" />
             </div>
           </div>
           <div>
@@ -1064,9 +1064,22 @@ function ContributeSection({ p }: { p: Palette }) {
 
 // ── Shell ────────────────────────────────────────────────────────────
 
-export function ResearcherDashboard({ darkMode }: { darkMode: boolean }) {
+export function ResearcherDashboard({
+  darkMode,
+  openSection,
+}: {
+  darkMode: boolean;
+  // A navigation intent from elsewhere in the app (for example the
+  // register-a-claim doorways on Home and on the Claims surface):
+  // when the nonce changes, the dashboard opens at the named section.
+  openSection?: { section: Section; nonce: number };
+}) {
   const p = palette(darkMode);
   const [section, setSection] = useState<Section>("home");
+  useEffect(() => {
+    if (openSection) setSection(openSection.section);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [openSection?.nonce]);
   return (
     <div data-testid="researcher-dashboard" style={{ maxWidth: 1180, margin: "0 auto", width: "100%" }}>
       <PageHead

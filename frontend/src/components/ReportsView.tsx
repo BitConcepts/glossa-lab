@@ -4,7 +4,7 @@
  *
  * Reports are what the program said; the ledger is what it did. The
  * reports list is the instance's report catalog presented as
- * title / state / meta / Open; the study register (the program
+ * title / state / meta / Open / Download; the study register (the program
  * record's own list, PR #443 endpoint) and the program-items list
  * ride below it. The Ledger tab states the ledger's terms and where
  * the record lives — this instance exposes no ledger endpoint, so no
@@ -48,7 +48,12 @@ function fmtSize(b: number): string {
       : `${b} B`;
 }
 
-function ReportRow({ p, r, onOpen }: { p: Palette; r: CatalogReport; onOpen: (r: CatalogReport) => void }) {
+function ReportRow({ p, r, onOpen, onDownload }: {
+  p: Palette;
+  r: CatalogReport;
+  onOpen: (r: CatalogReport) => void;
+  onDownload: (r: CatalogReport) => void;
+}) {
   return (
     <RowItem p={p}>
       <div style={{ flex: 1, minWidth: 0 }}>
@@ -61,6 +66,7 @@ function ReportRow({ p, r, onOpen }: { p: Palette; r: CatalogReport; onOpen: (r:
           {r.relative_path} · {fmtSize(r.size_bytes)} · updated {fmtDateTimeCompact(r.updated_at)}
         </RowMeta>
       </div>
+      <SmallButton onClick={() => onDownload(r)}>Download</SmallButton>
       <SmallButton onClick={() => onOpen(r)}>Open</SmallButton>
     </RowItem>
   );
@@ -113,6 +119,27 @@ export function ReportsView({ darkMode }: { darkMode: boolean }) {
     window.addEventListener("glossa:reports_highlight", handler);
     return () => window.removeEventListener("glossa:reports_highlight", handler);
   }, []);
+
+  // Download the report file itself (the audit trail is only an audit
+  // trail if the artifact can leave the app). Fetched as a blob and
+  // saved under the report's own name; if the fetch fails, fall back
+  // to opening the file URL so the user still reaches the artifact.
+  const handleDownload = async (r: CatalogReport) => {
+    const url = getReportDownloadUrl(r.id);
+    try {
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error(`download answered ${resp.status}`);
+      const blob = await resp.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = objectUrl;
+      a.download = r.name;
+      a.click();
+      URL.revokeObjectURL(objectUrl);
+    } catch {
+      window.open(url, "_blank", "noopener");
+    }
+  };
 
   const handleOpen = (r: CatalogReport) => {
     const url = getReportDownloadUrl(r.id);
@@ -248,7 +275,7 @@ export function ReportsView({ darkMode }: { darkMode: boolean }) {
             {!loading && !error && visible.length > 0 && (
               <div>
                 {visible.map((r) => (
-                  <ReportRow key={r.relative_path} p={p} r={r} onOpen={handleOpen} />
+                  <ReportRow key={r.relative_path} p={p} r={r} onOpen={handleOpen} onDownload={(rep) => void handleDownload(rep)} />
                 ))}
               </div>
             )}

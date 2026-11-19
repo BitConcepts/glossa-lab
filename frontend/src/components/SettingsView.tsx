@@ -226,10 +226,10 @@ function PythonEnvSection() {
 // here changes it for the program everywhere; a tool setting never
 // touches a program's record.
 
-function GroupTitle({ children }: { children: ReactNode }) {
+function GroupTitle({ children, dark = false }: { children: ReactNode; dark?: boolean }) {
   return (
     <h3 style={{
-      margin: "26px 0 4px", fontSize: 12, fontWeight: 700, color: "#2563eb",
+      margin: "26px 0 4px", fontSize: 12, fontWeight: 700, color: dark ? "#60a5fa" : "#2563eb",
       textTransform: "uppercase", letterSpacing: 0.8,
     }}>
       {children}
@@ -237,17 +237,18 @@ function GroupTitle({ children }: { children: ReactNode }) {
   );
 }
 
-function SettingRow({ name, state, children }: {
+function SettingRow({ name, state, children, dark = false }: {
   name: string;
   state?: ReactNode;
   children?: ReactNode;
+  dark?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <div style={{ borderBottom: "1px solid #eef1f5", padding: "10px 0" }}>
+    <div style={{ borderBottom: `1px solid ${dark ? "#1e293b" : "#eef1f5"}`, padding: "10px 0" }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
-        <span style={{ fontSize: 13, fontWeight: 600, color: "#111827", minWidth: 170 }}>{name}</span>
-        <span style={{ fontSize: 12, color: "#6b7280", flex: "1 1 260px" }}>{state}</span>
+        <span style={{ fontSize: 13, fontWeight: 600, color: dark ? "#e2e8f0" : "#111827", minWidth: 170 }}>{name}</span>
+        <span style={{ fontSize: 12, color: dark ? "#94a3b8" : "#6b7280", flex: "1 1 260px" }}>{state}</span>
         {children && (
           <button
             onClick={() => setOpen((v) => !v)}
@@ -323,9 +324,9 @@ export function SettingsView({ darkMode = true }: { darkMode?: boolean }) {
       </p>
 
       {/* ═══ TOOL — SERVICE ═══ */}
-      <GroupTitle>Tool — service</GroupTitle>
+      <GroupTitle dark={darkMode}>Tool — service</GroupTitle>
 
-      <SettingRow name="API token" state="The credential this app sends the backend (Spec 082)">
+      <SettingRow dark={darkMode} name="API token" state="The credential this app sends the backend (Spec 082)">
         <ApiTokenField darkMode={darkMode} />
       </SettingRow>
 
@@ -351,32 +352,32 @@ export function SettingsView({ darkMode = true }: { darkMode?: boolean }) {
       />
 
       {/* ═══ TOOL — ENVIRONMENT & AI ═══ */}
-      <GroupTitle>Tool — environment &amp; AI</GroupTitle>
+      <GroupTitle dark={darkMode}>Tool — environment &amp; AI</GroupTitle>
 
-      <SettingRow name="AI providers" state="Which providers this install can call, and their keys">
+      <SettingRow dark={darkMode} name="AI providers" state="Which providers this install can call, and their keys">
         <ProvidersPanel />
       </SettingRow>
-      <SettingRow name="Model assignments" state="Which model does which job in this install">
+      <SettingRow dark={darkMode} name="Model assignments" state="Which model does which job in this install">
         <ModelAssignmentsPanel />
       </SettingRow>
-      <SettingRow name="Model hub" state="Local models available to this install">
+      <SettingRow dark={darkMode} name="Model hub" state="Local models available to this install">
         <ModelHubPanel />
       </SettingRow>
-      <SettingRow name="AI behavior" state="How the assistant's action proposals are approved">
+      <SettingRow dark={darkMode} name="AI behavior" state="How the assistant's action proposals are approved">
         <AutoApproveSetting />
       </SettingRow>
-      <SettingRow name="Python environment" state="The backend's virtual environment on this machine">
+      <SettingRow dark={darkMode} name="Python environment" state="The backend's virtual environment on this machine">
         <PythonEnvSection />
       </SettingRow>
-      <SettingRow name="Notifications" state="What this install sends, and where">
+      <SettingRow dark={darkMode} name="Notifications" state="What this install sends, and where">
         <NotificationsPanel />
       </SettingRow>
-      <SettingRow name="Cache" state="Clearing run state stored by this install">
+      <SettingRow dark={darkMode} name="Cache" state="Clearing run state stored by this install">
         <JobCacheSection />
       </SettingRow>
 
       {/* ═══ PROGRAM ═══ */}
-      <GroupTitle>Program — {programName}</GroupTitle>
+      <GroupTitle dark={darkMode}>Program — {programName}</GroupTitle>
 
       {!activeProject && (
         <p style={{ ...hintTextStyle, marginTop: 8 }}>

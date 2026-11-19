@@ -43,9 +43,13 @@ test.describe("Program home (Spec 081)", () => {
     ).toBeVisible();
   });
 
-  test("the one primary action opens the claims surface", async ({ page }) => {
+  test("the one primary action opens the candidate submission form", async ({ page }) => {
     await page.getByRole("button", { name: "+ Register a claim" }).click();
-    await expect(page).toHaveURL(/#\/claims/);
+    await expect(page).toHaveURL(/#\/researcher-dashboard/);
+    await expect(page.getByTestId("contrib-statement")).toBeVisible({
+      timeout: 20_000,
+    });
+    await expect(page.getByTestId("contrib-falsifier")).toBeVisible();
   });
 
   test("the digestion doorway opens the board", async ({ page }) => {

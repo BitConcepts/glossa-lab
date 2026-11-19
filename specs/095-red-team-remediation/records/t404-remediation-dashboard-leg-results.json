@@ -1,0 +1,150 @@
+{
+  "steps": {
+    "P1": {
+      "pass": true,
+      "evidence": "home census 994 claims; does-not-claim panel present; strongest readings carry NOT IDENTIFIABLE: True"
+    },
+    "P2": {
+      "pass": true,
+      "evidence": "program status renders blocked items with blockers; GR-088-01 named"
+    },
+    "P3": {
+      "pass": true,
+      "evidence": "explorer filters by sign 145 (25 inscription ids in the filtered render); opened GLI-IND-0000206; labelled layers found: ['Observation', 'Transcription', 'Hypothesis', 'Claim']; sign position 1 selects its statements (Position 2: sign 145 shown)"
+    },
+    "P4": {
+      "pass": true,
+      "evidence": "hypothesis comparison: no translation held stated; nonlinguistic position present; 12 NOT IDENTIFIABLE markers on the surface"
+    },
+    "P5": {
+      "pass": true,
+      "evidence": "falsifier-absent class is exactly 9; opened claim ancient_writing_and_modern_technologies_51831ac9_sign_val_0001 (row: ancient_writing_and_modern_technologies_51831ac9_sign_val_0001 \u2014 Sign value: 900\u2026) with its detail and lineage"
+    },
+    "P6": {
+      "pass": true,
+      "evidence": "submission accepted (Candidate RDC-20261119222801-001 is in the staging queue at stage \u201cstaged\u201d. Submission implies no approval, verification); store check on outputs/anchor_staging.json: statement occurs 1 time(s), candidate id occurs 1 time(s), matching entries 1, stage None"
+    },
+    "P7": {
+      "pass": true,
+      "evidence": "legacy runs marked not reproducible with missing pieces named: True; re-run of settling-20261116T034814Z-3681c4: corpus identity verified: True; assigned_count recorded 94 vs re-run 94; assigned_share identical: True"
+    },
+    "P7-capability": {
+      "pass": true,
+      "evidence": "candidate visible on the claims register with its stage: True; context: 'ge shown is its standing in that queue.\\nT404 remediation candidate: sign M044 carries the value ku in syllabic slots.\\nstage: staged \u00b7 status: staged \u00b7 submitted by T404 Remediation Audit\\nFalsifier: A verified syllabic context in which M044 '"
+    },
+    "P8": {
+      "pass": true,
+      "evidence": "audit trail downloaded as claim-audit-trail-ancient_writing_and_modern_technologies_51831ac9_sign_val_0001.json (16720 bytes); ledger_row present: True; claim id matches the opened claim: True; statement matches the record: True"
+    }
+  },
+  "axe": {
+    "home": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "status": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "inscriptions": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "hypotheses": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "evidence": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "contribute": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ],
+    "reproduction": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "nodes": 1
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 5
+      }
+    ]
+  },
+  "keyboard": {
+    "stops_after_section_home": [
+      "section-status",
+      "section-inscriptions",
+      "section-hypotheses",
+      "section-evidence",
+      "section-reproduction",
+      "section-contribute"
+    ],
+    "section_tabs_traverse_in_order": true
+  },
+  "f15_identity": {
+    "pass": true,
+    "evidence": "served asset index-CMTPoxDr.js (1348317 bytes) is byte-identical to the instance dist asset (1348317 bytes)",
+    "asset": "index-CMTPoxDr.js"
+  },
+  "scores": {
+    "protocol_steps_passed": 8,
+    "P1_protocol_ge_6_of_8": true,
+    "A1_zero_critical": true,
+    "A2_serious_le_3_and_keyboard": true,
+    "axe_critical": [],
+    "axe_serious": []
+  }
+}

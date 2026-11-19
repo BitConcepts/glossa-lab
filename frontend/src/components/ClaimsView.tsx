@@ -16,10 +16,12 @@
  * Registration: a claim enters this register by registering its
  * source in Evidence & sources, where extraction states the
  * falsifier the claim stands or falls by; a claim without one
- * cannot be entered. There is no direct-entry form, because the
- * register's records are extracted claims with their source
- * record — the doorway below states this rather than faking a
- * write path the API does not have.
+ * cannot be entered. Nothing is typed directly into the register.
+ * The doorway above leads to the one candidate write path the
+ * program has: the researcher dashboard's contribution form,
+ * which stages a candidate (with its falsifier) for adjudication.
+ * Candidates in that queue are shown on this surface, labelled as
+ * candidates, so their adjudication can be followed from here.
  *
  * Since Spec 081 step 6 this surface carries the Spec 029 source
  * pin that IndusEvidenceView's claims tab carried before it
@@ -27,10 +29,13 @@
  */
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import {
+  getDashboardClaim,
+  getDashboardContributions,
   getProgramClaimTrail,
   listProgramClaims,
   listProgramHypotheses,
   type ClaimTrail,
+  type DashboardContribution,
   type IndusClaim,
   type IndusHypothesisModel,
 } from "../api";
@@ -44,7 +49,6 @@ import {
   MissingAct,
   PageHead,
   PrimaryButton,
-  QuietButton,
   StageChip,
   StageTrack,
   fmtDayTime,
@@ -53,14 +57,12 @@ import {
   type ChipTone,
 } from "./ui081";
 
-type Route = "evidence";
-
 export function ClaimsView({
   darkMode,
-  onNavigate,
+  onRegisterClaim,
 }: {
   darkMode: boolean;
-  onNavigate: (route: Route) => void;
+  onRegisterClaim: () => void;
 }) {
   const p = palette(darkMode);
   const { activeProject } = useProject();
@@ -73,10 +75,10 @@ export function ClaimsView({
   const [filter, setFilter] = useState<string>("all");
   const [query, setQuery] = useState("");
   const [compact, setCompact] = useState(false);
-  const [showRegister, setShowRegister] = useState(false);
   const [selected, setSelected] = useState<IndusClaim | null>(null);
   const [trail, setTrail] = useState<ClaimTrail | null>(null);
   const [trailError, setTrailError] = useState<string | null>(null);
+  const [staging, setStaging] = useState<DashboardContribution[]>([]);
 
   useEffect(() => {
     if (!programId) return;
@@ -107,6 +109,18 @@ export function ClaimsView({
       .catch(() => { /* hypotheses are a fold-in; their absence is not an error state */ });
     return () => { cancelled = true; };
   }, [programId]);
+
+  // Candidates in the staging queue (submitted through the researcher
+  // dashboard, awaiting adjudication) — shown on this surface, labelled
+  // as candidates, so a submitter can follow a candidate's standing
+  // from the register it may one day enter.
+  useEffect(() => {
+    let cancelled = false;
+    getDashboardContributions()
+      .then((r) => { if (!cancelled) setStaging(Array.isArray(r?.contributions) ? r.contributions : []); })
+      .catch(() => { /* the queue's absence is not an error state for the register */ });
+    return () => { cancelled = true; };
+  }, []);
 
   useEffect(() => {
     if (!selected || !programId) {
@@ -193,7 +207,7 @@ export function ClaimsView({
           "five stages: created, checked, explained, accepted, digested."
         }
         primary={
-          <PrimaryButton onClick={() => setShowRegister((s) => !s)}>
+          <PrimaryButton onClick={onRegisterClaim}>
             + Register a claim
           </PrimaryButton>
         }
@@ -202,21 +216,28 @@ export function ClaimsView({
       {/* Spec 083 (T027): the dataset identity this register is reading. */}
       <DatasetChipRow />
 
-      {showRegister && (
+      {staging.length > 0 && (
         <Card p={p} style={{ padding: 16, marginBottom: 14 }}>
           <div style={{ fontSize: 13.5, fontWeight: 600, color: p.fg, marginBottom: 4 }}>
-            How a claim enters this register
+            Candidates in the staging queue
           </div>
-          <div style={{ fontSize: 12.5, color: p.muted, lineHeight: 1.55, marginBottom: 10 }}>
-            A claim is registered by registering its source in Evidence &amp; sources:
-            extraction reads the source and states each claim with the falsifier it
-            stands or falls by. Claims are never typed in directly — a register entry
-            without its source and its falsifier would be a claim this program could
-            not check, so the register does not offer one.
+          <div style={{ fontSize: 12.5, color: p.muted, lineHeight: 1.55, marginBottom: 6 }}>
+            Submitted through the researcher dashboard and awaiting adjudication.
+            A candidate is not a register claim: it enters this register only if
+            adjudication accepts it. The stage shown is its standing in that queue.
           </div>
-          <QuietButton onClick={() => onNavigate("evidence")}>
-            Open Evidence &amp; sources →
-          </QuietButton>
+          {staging.map((c) => (
+            <div
+              key={c.contribution_id}
+              style={{ padding: "7px 0", borderTop: `1px solid ${p.borderSoft}`, fontSize: 12.5 }}
+            >
+              <div style={{ color: p.fg }}>{c.statement}</div>
+              <div style={{ color: p.muted, marginTop: 2 }}>
+                {`stage: ${c.stage ?? c.review_status} · status: ${c.review_status} · submitted by ${c.submitted_by}`}
+              </div>
+              <div style={{ color: p.muted }}>{`Falsifier: ${c.falsifier}`}</div>
+            </div>
+          ))}
         </Card>
       )}
 
@@ -273,7 +294,7 @@ export function ClaimsView({
       {/* Spec 029 Phase E2 (E2.1; OD-4): the stage legend sits above
           the claim list on this surface — carried from the retired
           IndusEvidenceView claims tab with the step-6 pin move. */}
-      <StageLegend fg={p.fg} muted={p.muted} border={p.border} />
+      <StageLegend fg={p.fg} muted={p.muted} border={p.border} dark={darkMode} />
 
       {error ? (
         <div style={{ fontSize: 12.5, color: p.bad }}>{`This instance states: ${error}`}</div>
@@ -401,7 +422,7 @@ function filterChipStyle(
     padding: "5px 11px", borderRadius: 999, fontSize: 12, fontFamily: "inherit",
     border: `1px solid ${active ? p.accent : p.border}`,
     background: active ? p.accent : "transparent",
-    color: active ? "#fff" : p.fg,
+    color: active ? p.accentFg : p.fg,
     cursor: "pointer", fontWeight: active ? 700 : 500,
   };
 }
@@ -426,6 +447,22 @@ function ClaimDetail({
   const score = claim.lane1_score ?? claim.aee_score ?? null;
   const transitions = trail?.stage_transitions ?? [];
   const evidenceRefs = trail?.evidence ?? [];
+
+  // The claim's does-not-establish boundary, read from its ledger
+  // record (the same record the dashboard's evidence surface reads).
+  // A claim with no ledger record there simply has no recorded
+  // boundary, and the card below says so.
+  const [dne, setDne] = useState<string | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    setDne(null);
+    getDashboardClaim(claim.claim_id)
+      .then((d) => {
+        if (!cancelled && d.does_not_establish?.trim()) setDne(d.does_not_establish);
+      })
+      .catch(() => { /* no ledger record on that surface — stated on the card */ });
+    return () => { cancelled = true; };
+  }, [claim.claim_id]);
 
   const laneHead: CSSProperties = {
     fontSize: 12, fontWeight: 700, color: p.fg, marginBottom: 8,
@@ -458,7 +495,7 @@ function ClaimDetail({
 
       {/* The OD-4 legend rides on the detail too — the claim surface
           keeps its reader aid wherever a claim is being read. */}
-      <StageLegend fg={p.fg} muted={p.muted} border={p.border} />
+      <StageLegend fg={p.fg} muted={p.muted} border={p.border} dark={darkMode} />
 
       <Card p={p} style={{ padding: 16, marginBottom: 14 }}>
         <div style={laneHead}>Falsifier</div>
@@ -469,6 +506,24 @@ function ClaimDetail({
           {claim.falsification_condition?.trim()
             ? claim.falsification_condition
             : "No falsifier recorded — this claim cannot be settled until one is stated."}
+        </div>
+      </Card>
+
+      <Card p={p} style={{ padding: 16, marginBottom: 14 }}>
+        <div style={laneHead}>What this does not establish</div>
+        <div style={{ fontSize: 13, color: p.fg, lineHeight: 1.6 }}>
+          {dne ??
+            "No does-not-establish statement is recorded for this claim. Until one " +
+            "is, its boundary is the falsifier above: the claim reaches exactly as " +
+            "far as that test, and no further."}
+        </div>
+        <div style={{ fontSize: 12.5, color: p.muted, marginTop: 10, lineHeight: 1.55 }}>
+          The kinds of statement this program keeps apart: an observation records
+          what is on the object; a transcription records its sign sequence; a
+          hypothesis proposes a reading of it; a claim is a hypothesis stated with
+          the falsifier it stands or falls by. This entry is a claim (recorded
+          type: {claim.claim_type}), not an observation or a transcription — those
+          layers live with the inscription itself.
         </div>
       </Card>
 

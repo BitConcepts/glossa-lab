@@ -1201,12 +1201,22 @@ class Database:
         )
         await self._conn.commit()
 
-    async def claim_pending_job(self) -> dict[str, Any] | None:
-        """Atomically claim the oldest pending job."""
+    async def claim_pending_job(
+        self, exclude_ids: list[str] | None = None
+    ) -> dict[str, Any] | None:
+        """Atomically claim the oldest pending job.
+
+        *exclude_ids* names pending jobs to skip (the engine passes the
+        jobs it has found undispatchable, so they are never claimed).
+        """
         assert self._conn
-        cursor = await self._conn.execute(
-            "SELECT * FROM jobs WHERE status = 'pending' ORDER BY created_at ASC LIMIT 1"
-        )
+        sql = "SELECT * FROM jobs WHERE status = 'pending'"
+        params: list[Any] = []
+        if exclude_ids:
+            sql += f" AND id NOT IN ({', '.join('?' for _ in exclude_ids)})"
+            params = list(exclude_ids)
+        sql += " ORDER BY created_at ASC LIMIT 1"
+        cursor = await self._conn.execute(sql, params)
         row = await cursor.fetchone()
         if row is None:
             return None
@@ -1214,17 +1224,23 @@ class Database:
         await self.update_job_status(job["id"], "running")
         return job
 
-    async def peek_next_pending_job(self) -> dict[str, Any] | None:
+    async def peek_next_pending_job(
+        self, exclude_ids: list[str] | None = None
+    ) -> dict[str, Any] | None:
         """Return the oldest pending job WITHOUT claiming it (no status change).
 
         Used by the resource-aware scheduler to inspect what would be run next
         so it can check whether sufficient CPU/RAM/VRAM are available before
-        committing to the claim.
+        committing to the claim. *exclude_ids* names pending jobs to skip.
         """
         assert self._conn
-        cursor = await self._conn.execute(
-            "SELECT * FROM jobs WHERE status = 'pending' ORDER BY created_at ASC LIMIT 1"
-        )
+        sql = "SELECT * FROM jobs WHERE status = 'pending'"
+        params: list[Any] = []
+        if exclude_ids:
+            sql += f" AND id NOT IN ({', '.join('?' for _ in exclude_ids)})"
+            params = list(exclude_ids)
+        sql += " ORDER BY created_at ASC LIMIT 1"
+        cursor = await self._conn.execute(sql, params)
         row = await cursor.fetchone()
         return self._row_to_dict(row) if row else None
 

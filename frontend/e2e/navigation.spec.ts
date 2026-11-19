@@ -127,9 +127,14 @@ test.describe("Program-space navigation", () => {
       .toBeVisible({ timeout: 5000 });
   });
 
-  test("clicking Data shows the Corpora view", async ({ page }) => {
+  test("clicking Data lands on Inscriptions and reaches Corpora by its tab", async ({ page }) => {
     await page.goto("/");
     await page.getByTitle("Data").first().click();
+    // Data's landing is the inscription-level entry (Spec 095 T404
+    // remediation, protocol step P3): the canonical export's
+    // inscriptions, one click from any inscription's own record.
+    await expect(page.getByText("Inscriptions — the canonical export")).toBeVisible();
+    await page.getByRole("button", { name: "Corpora", exact: true }).click();
     await expect(page.getByRole("heading", { name: "Corpora" })).toBeVisible();
   });
 

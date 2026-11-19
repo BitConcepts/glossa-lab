@@ -57,17 +57,21 @@ test.describe("Claims register (Spec 081 step 3)", () => {
     await expect(h).toContainText("Not yet sharp");
   });
 
-  test("the register-a-claim doorway states how claims enter", async ({
+  test("the register-a-claim doorway opens the candidate submission form", async ({
     page,
   }) => {
     await page
       .getByRole("button", { name: "+ Register a claim" })
       .click();
+    await expect(page).toHaveURL(/#\/researcher-dashboard/);
+    await expect(page.getByTestId("contrib-statement")).toBeVisible({
+      timeout: 20_000,
+    });
+    // The form states the boundary on its face: a candidate lands in
+    // the staging queue for adjudication, never directly in the
+    // register.
     await expect(
-      page.getByText("How a claim enters this register"),
-    ).toBeVisible();
-    await expect(
-      page.getByText(/Claims are never typed in directly/),
+      page.getByText(/candidate lands in the staging queue/),
     ).toBeVisible();
   });
 });

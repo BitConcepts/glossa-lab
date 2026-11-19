@@ -32,7 +32,10 @@ router = APIRouter(prefix="/api/v1/projects", tags=["projects"])
 
 
 class ProjectBody(BaseModel):
-    label: str
+    # Optional at the schema level so a partial update body reaches
+    # the handler, which merges it against the existing project; a
+    # create without a label is refused there with the reason.
+    label: str = ""
     description: str = ""
     prompt_context: str = ""
     # Spec 081: the question the program tests (UI: switcher + program home).
@@ -98,19 +101,52 @@ async def upsert_project(
     actor = actor_from_request(request)
     existing = await db.get_project(project_id)
     stamp = actor.stamp() if actor is not None else None
+    if existing is not None:
+        # Update: merge the body against the stored project. A field
+        # the caller sent wins; a field not sent keeps its stored
+        # value, so a partial update (the description alone, say)
+        # cannot silently clear the rest of the record.
+        sent = body.model_fields_set
+
+        def pick(field: str, fallback):
+            return getattr(body, field) if field in sent else fallback
+
+        label = pick("label", existing.get("label", ""))
+        description = pick("description", existing.get("description", ""))
+        prompt_context = pick("prompt_context", existing.get("prompt_context", ""))
+        question = pick("question", existing.get("question", ""))
+        standing_position = pick("standing_position", existing.get("standing_position", ""))
+        topic_ids = pick("topic_ids", existing.get("topic_ids", []))
+        experiment_ids = pick("experiment_ids", existing.get("experiment_ids", []))
+        corpus_ids = pick("corpus_ids", existing.get("corpus_ids", []))
+        is_active = pick("is_active", bool(existing.get("is_active", False)))
+        slug = body.slug if "slug" in sent else (existing.get("slug") or None)
+    else:
+        if not body.label.strip():
+            raise HTTPException(422, "A project needs a label")
+        label = body.label
+        description = body.description
+        prompt_context = body.prompt_context
+        question = body.question
+        standing_position = body.standing_position
+        topic_ids = body.topic_ids
+        experiment_ids = body.experiment_ids
+        corpus_ids = body.corpus_ids
+        is_active = body.is_active
+        slug = body.slug or None
     return _decorate(await db.upsert_project(
         project_id=project_id,
-        label=body.label,
-        description=body.description,
-        prompt_context=body.prompt_context,
-        question=body.question,
-        standing_position=body.standing_position,
-        topic_ids=body.topic_ids,
-        experiment_ids=body.experiment_ids,
-        corpus_ids=body.corpus_ids,
-        is_active=body.is_active,
+        label=label,
+        description=description,
+        prompt_context=prompt_context,
+        question=question,
+        standing_position=standing_position,
+        topic_ids=topic_ids,
+        experiment_ids=experiment_ids,
+        corpus_ids=corpus_ids,
+        is_active=is_active,
         created_at=now,
-        slug=body.slug or None,
+        slug=slug,
         created_by=stamp if existing is None else None,
         modified_by=stamp,
     ))
@@ -188,6 +224,25 @@ async def import_project(bundle: dict[str, Any]) -> dict[str, Any]:
         raise HTTPException(503, "Database not ready")
 
     proj = bundle.get("project")
+    if not proj:
+        # A flat minimal body ({name|label, description, ...}) is a valid
+        # minimal bundle: the project itself, with no linked entities.
+        # This endpoint is the surface's only project-create path, and a
+        # client holding just a name and a description must be able to
+        # create a project with it; the full bundle shape stays the way
+        # to import a project together with its linked entities.
+        flat_label = bundle.get("label") or bundle.get("name")
+        if flat_label:
+            proj = {
+                "label": flat_label,
+                "description": bundle.get("description", ""),
+                "prompt_context": bundle.get("prompt_context", ""),
+                "question": bundle.get("question", ""),
+                "standing_position": bundle.get("standing_position", ""),
+                "topic_ids": bundle.get("topic_ids", []),
+                "experiment_ids": bundle.get("experiment_ids", []),
+                "corpus_ids": bundle.get("corpus_ids", []),
+            }
     if not proj or not proj.get("label"):
         raise HTTPException(422, "Bundle must contain a project with a label")
 

@@ -142,7 +142,7 @@
   *This does not establish:* that the manifest machinery retires — it
   remains the detection instrument; what retires is the routine
   restore.
-- [ ] **T304 — phase392 profile + registered outcome.** The stall
+- [x] **T304 — phase392 profile + registered outcome.** The stall
   profiled on the VM, the profile artifact filed with the stage
   record; D-092-4's branch applied: a pathology fixed and in-budget
   local completion proven, or the environment-scoped deselection

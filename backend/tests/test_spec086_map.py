@@ -353,10 +353,19 @@ def test_builder_refuses_a_stale_matrix(map_tree: Path) -> None:
 def test_builder_refuses_a_run_pinned_to_another_build(
     map_tree: Path,
 ) -> None:
-    run_path = next((map_tree / "glossa-indus/ledger/runs").glob("*.json"))
-    run = json.loads(run_path.read_text(encoding="utf-8"))
-    run["pins"]["ledger"]["sha256"] = "0" * 64
-    run_path.write_text(json.dumps(run), encoding="utf-8")
+    # Every pinned run record in the fixture is re-pinned to a
+    # foreign build. (Corrupting only the first glob hit made
+    # the outcome filesystem-order-dependent: the builder
+    # carries only candidate/scenario/result-shaped records,
+    # and a glob that landed on any other record corrupted a
+    # record the builder never loads, so no refusal could
+    # fire.)
+    for run_path in (map_tree / "glossa-indus/ledger/runs").glob("*.json"):
+        run = json.loads(run_path.read_text(encoding="utf-8"))
+        ledger_pin = (run.get("pins") or {}).get("ledger") or {}
+        if ledger_pin.get("sha256"):
+            ledger_pin["sha256"] = "0" * 64
+            run_path.write_text(json.dumps(run), encoding="utf-8")
     with pytest.raises(mp.MapBuildError, match="different build"):
         mp.build_map(map_tree)
 

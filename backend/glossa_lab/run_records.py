@@ -1,6 +1,6 @@
 """Spec 089 Stage 1 — the run-record library (T102).
 
-The machine copy of **run-defs v2**
+The machine copy of **run-defs v3**
 (`glossa-indus/ledger/RUN-DEFINITIONS.md`): execution-minted
 run ids (D-089-1), the run-record header, run-key v1
 comparability (D-089-4), the per-store run index (entry /
@@ -14,7 +14,7 @@ compute and check in memory and write nothing.
 surfaces' runners (settling adoption is Stage 2; the
 junction tool is Stage 3). This module reads no store of
 record and imports no ledger write path. Its write entry
-point is named in run-defs v2 §9 as owed to the gate's
+point is named in run-defs v3 §9 as owed to the gate's
 writer census when V11 lands (Stage 5's registration act);
 it writes run stores and their indexes only, never a gated
 generated artifact.
@@ -30,7 +30,7 @@ validate, collision-refusing verified write, index
 `entry` act). These join `append_act` as write entry
 points owed to the same Stage 5 census registration.
 The builders stay pure; the writers take the store
-directory from the caller (run-defs v2 names each
+directory from the caller (run-defs v3 names each
 surface's store of record in its surface table) and
 read no store but the one they are writing.
 
@@ -55,21 +55,21 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Iterable, Optional
 
-RUN_DEFS_VERSION = "run-defs v2"
+RUN_DEFS_VERSION = "run-defs v3"
 
-#: The registered no-seed marker (run-defs v2 §4.2): a
+#: The registered no-seed marker (run-defs v3 §4.2): a
 #: surface with no seed records this string, never an
 #: omitted component.
 NO_SEED = "no-seed"
 
-#: The legacy label, verbatim (run-defs v2 §7.2).
+#: The legacy label, verbatim (run-defs v3 §7.2).
 LEGACY_LABEL = "legacy — key partial"
 
-#: The closed absence-kind list (run-defs v2 §3.2).
+#: The closed absence-kind list (run-defs v3 §3.2).
 ABSENCE_KINDS = ("empty", "refused", "crashed")
 
 #: The registered junction disposition vocabulary
-#: (run-defs v2 §6).
+#: (run-defs v3 §6).
 DISPOSITIONS = (
     "explained-by-named-difference",
     "not-comparable",
@@ -77,10 +77,10 @@ DISPOSITIONS = (
     "unexplained",
 )
 
-#: The registered adjudication outcomes (run-defs v2 §7.1).
+#: The registered adjudication outcomes (run-defs v3 §7.1).
 ADJUDICATION_STATES = ("quarantine-lifted", "quarantine-confirmed")
 
-#: The closed index act-kind list (run-defs v2 §7.1), in
+#: The closed index act-kind list (run-defs v3 §7.1), in
 #: the act table's order. `departure` is v2's addition:
 #: the departed-generation accounting.
 ACT_KINDS = (
@@ -95,7 +95,7 @@ _COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 #: run-key v1's components, in registered order
-#: (run-defs v2 §4).
+#: (run-defs v3 §4).
 KEY_COMPONENTS = (
     "surface",
     "command",
@@ -121,7 +121,7 @@ CONSTITUTIVE_COMPONENTS = (
 #: The registered determinism classes.
 DETERMINISM_CLASSES = ("deterministic", "named-nondeterministic")
 
-#: The surface registry (run-defs v2 §1 + §5): the closed
+#: The surface registry (run-defs v3 §1 + §5): the closed
 #: list, each surface's determinism registration, and its
 #: registered nondeterminism shape names. The `experiment`
 #: surface's class is per-graph: the header must carry the
@@ -155,7 +155,7 @@ _STAMP_RE = re.compile(r"^\d{8}T\d{6}Z$")
 _ISO_UTC_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 
 #: The registered components a settling legacy record does
-#: not carry and cannot recover (run-defs v2 §7.2).
+#: not carry and cannot recover (run-defs v3 §7.2).
 SETTLING_LEGACY_MISSING = (
     "command",
     "tool_version",
@@ -169,7 +169,7 @@ SETTLING_LEGACY_MISSING = (
 
 class RunRecordError(ValueError):
     """A run id, header, record, or index act violates
-    run-defs v2. Raised loudly: a malformed run artifact is
+    run-defs v3. Raised loudly: a malformed run artifact is
     a defect to repair at the source, never to write
     around."""
 
@@ -232,7 +232,7 @@ def _default_rand_hex() -> str:
 class _Minter:
     """Remembers the ids it has issued and redraws on
     collision, so one minter never issues the same id
-    twice (run-defs v2 §2). The cross-process half of the
+    twice (run-defs v3 §2). The cross-process half of the
     uniqueness rule is the store write path's collision
     refusal (Stage 2), not the mint."""
 
@@ -281,7 +281,7 @@ def mint_run_id(
 
 
 def mint_junction_id(*, now: Optional[datetime] = None) -> str:
-    """Mint a junction id (run-defs v2 §7.1); the junction
+    """Mint a junction id (run-defs v3 §7.1); the junction
     tool (Stage 3) is the minter of record."""
     return _JUNCTION_MINTER.mint("junction", now)
 
@@ -440,7 +440,7 @@ def build_header(
     determinism_class: Optional[str] = None,
     minter: Optional[_Minter] = None,
 ) -> dict[str, Any]:
-    """Build and validate a run-record header (run-defs v2
+    """Build and validate a run-record header (run-defs v3
     §3.1). With no `run_id`, one is minted at the execution
     start the caller passes as `started` — the executing
     tool mints at start, before results exist (D-089-1);
@@ -495,7 +495,7 @@ def build_header(
 
 
 def validate_header(header: Any) -> dict[str, Any]:
-    """Validate a run-record header against run-defs v2
+    """Validate a run-record header against run-defs v3
     §3.1: identity, stamps, the full key, and the surface's
     registered determinism class."""
     if not isinstance(header, dict):
@@ -571,7 +571,7 @@ def build_record(
 ) -> dict[str, Any]:
     """Compose a run record from a validated header and
     exactly one outcome: a result block, or an absence
-    block (run-defs v2 §3)."""
+    block (run-defs v3 §3)."""
     validate_header(header)
     if (result is _MISSING) == (absence is None):
         raise RunRecordError(
@@ -770,7 +770,7 @@ def _apply_adjudication(state: IndexState, act: dict[str, Any]) -> None:
 
 
 def _apply_departure(state: IndexState, act: dict[str, Any]) -> None:
-    """The departed-generation accounting (run-defs v2
+    """The departed-generation accounting (run-defs v3
     §7.1): a generation that entered standing and later
     departed the store is accounted by this appended act,
     carrying the superseding commit, the record's final
@@ -839,7 +839,7 @@ _ACT_APPLIERS = {
 
 def apply_act(state: IndexState, act: Any) -> IndexState:
     """Apply one index act to a folded state, with every
-    registered refusal (run-defs v2 §7.1). Mutates and
+    registered refusal (run-defs v3 §7.1). Mutates and
     returns `state`."""
     if not isinstance(act, dict):
         raise RunRecordError(f"index act must be an object, got {act!r}")
@@ -910,7 +910,7 @@ def append_act(index_path: Path, act: dict[str, Any]) -> IndexState:
 def legacy_run_id(store_rel_path: str) -> str:
     """Derive a legacy id from a record's store-relative
     path: `legacy:` + the path with its final suffix
-    removed (run-defs v2 §7.2). A pure function of the
+    removed (run-defs v3 §7.2). A pure function of the
     path — stable across calls."""
     normalized = store_rel_path.replace("\\", "/")
     path = Path(normalized)
@@ -966,7 +966,7 @@ def departure_act(
 ) -> dict[str, Any]:
     """The `departure` act accounting one entered
     generation whose record has departed the store
-    (run-defs v2 §7.1): the accounting fields a departed
+    (run-defs v3 §7.1): the accounting fields a departed
     generation entered after departing carries on its
     entry, carried here on an appended act because the
     entry — entered standing — is immutable. Pure: the
@@ -991,7 +991,7 @@ def enumerate_legacy_entries(
     """Enumerate legacy entry acts over a run store's
     standing pre-spec records (sorted by filename). The
     legacy population is the pre-spec records — the ones
-    carrying no run header (run-defs v2 §7.2); since
+    carrying no run header (run-defs v3 §7.2); since
     Stage 2 the store also holds post-spec records under
     their own headers (scenario runs, materialization
     records, absence records), which are entered by
@@ -1000,13 +1000,13 @@ def enumerate_legacy_entries(
     (the population rule stated at Spec 089 Stage 5,
     when the first materialization record landed in the
     store). Read-only: the records are opened, never
-    written. In run-defs v2 the settling store is the
+    written. In run-defs v3 the settling store is the
     only store with a registered recovery; other surfaces
     refuse until their adoption stages register one."""
     if surface != "settling":
         raise RunRecordError(
             f"no legacy recovery is registered for surface "
-            f"{surface!r} in run-defs v2"
+            f"{surface!r} in run-defs v3"
         )
     store = Path(store_dir)
     acts: list[dict[str, Any]] = []
@@ -1034,7 +1034,7 @@ def enumerate_legacy_entries(
 # a caller-named store, under its run id, with the index
 # `entry` act. The settling store keeps its Stage 2 writer
 # in settling.py; this is the same discipline for the
-# stores run-defs v2 §1 names for the suite and experiment
+# stores run-defs v3 §1 names for the suite and experiment
 # surfaces (the citing record's own directory).
 
 
@@ -1045,7 +1045,7 @@ def _dump_record(record: dict[str, Any]) -> bytes:
 
 def run_record_filename(record: dict[str, Any]) -> str:
     """The store filename for a run record: its run id,
-    never content (run-defs v2 §2)."""
+    never content (run-defs v3 §2)."""
     header = record.get("run") if isinstance(record, dict) else None
     if not isinstance(header, dict) or not header.get("run_id"):
         raise RunRecordError(
@@ -1073,7 +1073,7 @@ def write_run_record(store_dir: Path, record: dict[str, Any]) -> Path:
         raise RunRecordError(
             f"run record write refused: {target} already "
             "exists — an id collision is a named refusal, "
-            "never an overwrite (run-defs v2 §2)"
+            "never an overwrite (run-defs v3 §2)"
         )
     payload = _dump_record(record)
     target.write_bytes(payload)
@@ -1399,7 +1399,7 @@ def build_suite_record(
     result: dict[str, Any],
     tree: dict[str, Any],
 ) -> dict[str, Any]:
-    """Compose one suite light record (run-defs v2 §1 +
+    """Compose one suite light record (run-defs v3 §1 +
     §4.1): the header, the parsed result block, and the
     tree block beside the header — the tree SHA + dirty
     flag the run measured, and the finalized rewrite
@@ -1509,7 +1509,7 @@ def build_job_citation_record(
     summary: Optional[dict[str, Any]] = None,
 ) -> dict[str, Any]:
     """Compose the citation record for one backend job
-    (run-defs v2 §1, §4.1). Pure: the caller reads the job
+    (run-defs v3 §1, §4.1). Pure: the caller reads the job
     (+ results, + the graph record where the job names
     one) through the backend API and passes them in.
 

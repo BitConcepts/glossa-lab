@@ -20,7 +20,7 @@ stage — covered by the last test, read-only):
 - ephemeral (in-memory) and headerless records are
   refused by the write path and never land;
 - a refused execution and a crashed execution each
-  leave the absence record run-defs v2 §3.2 prescribes
+  leave the absence record run-defs v3 §3.2 prescribes
   (kind refused / crashed), with an index entry, and no
   result block;
 - materialize-sets is a run: the artifact names its
@@ -521,7 +521,7 @@ def test_the_standing_store_index_covers_the_pair_by_legacy_entries():
     # departed the standing store at the Spec 093 intake
     # replay (2026-11-05): its entries stand in the folded
     # index, and its departure is accounted by departure
-    # acts (run-defs v2 §7.1) whose blob hashes name the
+    # acts (run-defs v3 §7.1) whose blob hashes name the
     # pair's preserved fixture bytes
     # (tests/fixtures/legacy_t405_pair/).
     fixtures = (

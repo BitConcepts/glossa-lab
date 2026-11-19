@@ -209,7 +209,13 @@
   second-targets/ directory, with success criteria and a
   falsifier fixed there; execution is a separately
   commissioned study — see the Stage 5 scoping record.)
-- [ ] **T503 — closeout.** The register re-checked against
+- [x] **T503 — closeout.** The register re-checked against
   C095-1 (no duplicate worked twice, no NEW item lost); every
   claim discharged or carried as a named remainder; the closeout
   record filed in this directory.
+  (2026-11-19: closeout executed after the T404 remediation
+  stage passed on re-run. The register re-checked against
+  C095-1: dispositions intact (23 + 18 + 2 = 43), no duplicate
+  worked twice, no NEW item lost. All seventeen claims
+  discharged; four remainders accounted for by name in the
+  closeout record — records/t503-closeout-record-2026-11-19.md.)

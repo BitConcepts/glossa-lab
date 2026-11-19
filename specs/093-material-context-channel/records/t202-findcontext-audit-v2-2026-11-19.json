@@ -1,0 +1,31 @@
+{
+ "audit": "independent recomputation (audit_stage2_findcontext_v2.py)",
+ "audited": [
+  {
+   "field": "find-context",
+   "filed": true,
+   "header_pins_ok": true,
+   "kind": "administration",
+   "match": true,
+   "record_file": "study-20261119T202359Z-72b357.json",
+   "result_matches_recomputation": true,
+   "run_id": "study-20261119T202359Z-72b357"
+  },
+  {
+   "field": "find-context",
+   "filed": true,
+   "header_pins_ok": true,
+   "kind": "permutation-controls",
+   "match": true,
+   "record_file": "study-20261119T202434Z-6d1f2a.json",
+   "result_matches_recomputation": true,
+   "run_id": "study-20261119T202434Z-6d1f2a"
+  }
+ ],
+ "data_pins_verified_in_tree": true,
+ "spec": "093",
+ "stage": "2",
+ "task": "T202-successor",
+ "unexpected_successor_runs": [],
+ "verdict": "AGREE"
+}

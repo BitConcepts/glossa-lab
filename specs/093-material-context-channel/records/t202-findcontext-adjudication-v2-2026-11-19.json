@@ -1,0 +1,67 @@
+{
+ "bar": {
+  "balanced_accuracy": 0.85,
+  "kappa": 0.8
+ },
+ "c093_1_standing": "INDEPENDENT IN PART",
+ "fallen_fields": [],
+ "fields": {
+  "artifact type": {
+   "forcing_counts": "3,085 sequence-bearing records carrying exactly 1 distinct value ('seal'); the join concurs ('SEAL:S', 179 of 179)",
+   "outcome": "NOT ADMINISTERED",
+   "source": "freeze v1 adjudication (unchanged)"
+  },
+  "find-context": {
+   "adjudged_total": 125,
+   "administration_run": "study-20261119T202359Z-72b357",
+   "balanced_accuracy_mean": 0.185548128342246,
+   "control_kappa_mean_max": 0.12070407268540037,
+   "control_kappa_mean_p99": 0.11059774131179755,
+   "controls_run": "study-20261119T202434Z-6d1f2a",
+   "controls_valid": false,
+   "kappa_mean": -0.046815503178409115,
+   "n_folds": 5,
+   "n_repeats": 10,
+   "outcome": "NOT YET"
+  },
+  "holding/provenance": {
+   "forcing_counts": "sequence and holding copresence in the pinned snapshot: 0 records; the join pairs carry no holding on either side",
+   "outcome": "NOT ADMINISTERED",
+   "source": "freeze v1 adjudication (unchanged)"
+  },
+  "material class": {
+   "forcing_counts": "adjudged classes 1 (Steatite 176); Clay 1 and Faience 1 under the class floor; 1 empty of 179 joined pairs",
+   "outcome": "NOT ADMINISTERED",
+   "source": "freeze v1 adjudication (unchanged)"
+  },
+  "site": {
+   "accuracy": 0.8767605633802817,
+   "administration_run": "study-20261119T190159Z-e493a7",
+   "balanced_accuracy": 0.5091754195339853,
+   "control_kappa_p99": 0.08512299882858258,
+   "controls_run": "study-20261119T190237Z-02e03b",
+   "controls_valid": true,
+   "held_out_n": 284,
+   "kappa": 0.02967590784849668,
+   "outcome": "NOT RECOVERED",
+   "source": "freeze v1 adjudication (unchanged)"
+  }
+ },
+ "freeze": "v2",
+ "not_administered_or_not_yet_fields": [
+  "material class",
+  "artifact type",
+  "holding/provenance",
+  "find-context"
+ ],
+ "not_recovered_fields": [
+  "site"
+ ],
+ "recovered_fields": [],
+ "spec": "093",
+ "stage": "2",
+ "surviving_fields": [
+  "site"
+ ],
+ "task": "T202-successor"
+}

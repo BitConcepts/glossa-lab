@@ -1,0 +1,51 @@
+{
+ "audit": "independent recomputation (audit_stage2.py)",
+ "audited": [
+  {
+   "field": "find-context",
+   "filed": true,
+   "header_pins_ok": true,
+   "kind": "administration",
+   "match": true,
+   "record_file": "study-20261119T190218Z-3b0101.json",
+   "result_matches_recomputation": true,
+   "run_id": "study-20261119T190218Z-3b0101"
+  },
+  {
+   "field": "site",
+   "filed": true,
+   "header_pins_ok": true,
+   "kind": "administration",
+   "match": true,
+   "record_file": "study-20261119T190159Z-e493a7.json",
+   "result_matches_recomputation": true,
+   "run_id": "study-20261119T190159Z-e493a7"
+  },
+  {
+   "field": "find-context",
+   "filed": true,
+   "header_pins_ok": true,
+   "kind": "permutation-controls",
+   "match": true,
+   "record_file": "study-20261119T190257Z-cdc1e1.json",
+   "result_matches_recomputation": true,
+   "run_id": "study-20261119T190257Z-cdc1e1"
+  },
+  {
+   "field": "site",
+   "filed": true,
+   "header_pins_ok": true,
+   "kind": "permutation-controls",
+   "match": true,
+   "record_file": "study-20261119T190237Z-02e03b.json",
+   "result_matches_recomputation": true,
+   "run_id": "study-20261119T190237Z-02e03b"
+  }
+ ],
+ "data_pins_verified_in_tree": true,
+ "spec": "093",
+ "stage": "2",
+ "task": "T202",
+ "unexpected_stage2_runs": [],
+ "verdict": "AGREE"
+}

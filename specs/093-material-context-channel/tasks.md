@@ -73,7 +73,7 @@ block ratification (Stage 0, T003).
 
 ## Stage 2 — Channel independence
 
-- [ ] **T201 — Channel definition.** The material-context
+- [x] **T201 — Channel definition.** The material-context
   projection is defined against G1 §2.1's state: the
   per-object tuple under Stage 1's vocabularies, the
   named population, and the bookkeeping feature set the
@@ -81,8 +81,8 @@ block ratification (Stage 0, T003).
   can implement from the definition alone. Acceptance:
   **human-as-oracle**. *This does not establish:* that
   the channel is independent — that is T202's question,
-  and this task only makes it askable.
-- [ ] **T202 — Freeze, administration, and standing.**
+  and this task only makes it askable. **Completion (2026-11-19):** definition filed at `records/t201-channel-definition-2026-11-19.md`; populations P-seq 3,085 / P-site 966 / P-join 179 counted from the pinned files by `tools/spec093/stage2_counts.py` (output `records/t201-counts-2026-11-19.json`); bookkeeping set bounded to source system, sign-id scheme, rights status, crosswalk coverage.
+- [x] **T202 — Freeze, administration, and standing.**
   The freeze is committed (fields, features, bars,
   controls, floors); the per-field prediction
   administration runs as Spec 089 runs; an independent
@@ -92,7 +92,7 @@ block ratification (Stage 0, T003).
   bar). *This does not establish:* that the surviving
   fields say anything about any reading — independence
   is about projections, and §5's vocabulary is the whole
-  of what this task may conclude.
+  of what this task may conclude. **Completion (2026-11-19):** freeze v1 committed before any computation (`records/t202-freeze-v1.md`); site administered and NOT RECOVERED (κ 0.0297 against the 0.80 bar, controls valid); find context NOT YET (control battery's 99th-percentile κ 0.1322 at or above the 0.10 validity ceiling — the obstruction, named); material class, artifact type, and holding/provenance NOT ADMINISTERED at the freeze's floors, forcing counts stated. Independent audit verdict AGREE; C093-1's standing recorded as INDEPENDENT IN PART in `records/stage2-record-2026-11-19.md`, site the surviving field.
 
 ## Stage 3 — Comparanda register
 

@@ -1,0 +1,85 @@
+{
+ "run": {
+  "run_id": "study-20261119T190159Z-e493a7",
+  "surface": "study",
+  "tool": "run_stage2.py",
+  "tool_version": "1.0.0",
+  "started": "2026-11-19T19:01:59Z",
+  "finished": "2026-11-19T19:02:18Z",
+  "key": {
+   "surface": "study",
+   "command": "run-field --field site",
+   "tool_version": "1.0.0",
+   "input_pins": {
+    "spec": "093",
+    "stage": "2",
+    "freeze_record": "specs/093-material-context-channel/records/t202-freeze-v1.md",
+    "freeze_record_sha256": "075b5124171db8ab04d657cd5a85842db93e0fef29cc1a7717a61fd4f4b644d2",
+    "definition_record": "specs/093-material-context-channel/records/t201-channel-definition-2026-11-19.md",
+    "definition_record_sha256": "deaa5a71f26ac5eb7e2e089767388458dbaf922fe974f59bfcaa762186bdb641",
+    "counts_record": "specs/093-material-context-channel/records/t201-counts-2026-11-19.json",
+    "counts_record_sha256": "15e2cef667872868a4ba3145677aecc7b818dcbf8cf3ccc13a9d6aff532df3b8",
+    "snapshot": {
+     "path": "glossa-corpus/indus/exports/indus_research.jsonl",
+     "sha256": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
+    },
+    "join_pairs": {
+     "path": "specs/093-material-context-channel/records/t103-join-pairs-v1.jsonl",
+     "sha256": "7107f738832a4e3b04cff91d81073212bc0f3a77afed6f0ccc3cee4fce621703"
+    }
+   },
+   "seed": 20261119,
+   "code_version": "eacd6f60d25176e3c706b51aefc5b80233252144",
+   "environment_class": "mini-server/linux"
+  },
+  "determinism_class": "deterministic"
+ },
+ "result": {
+  "spec": "093",
+  "stage": "2",
+  "task": "T202",
+  "kind": "administration",
+  "field": "site",
+  "population": 966,
+  "adjudged_classes": {
+   "Harappa": 110,
+   "Mohenjo-daro": 839
+  },
+  "excluded_classes": {
+   "Chanhu-Daro": 7,
+   "Kalibangan": 1,
+   "Lothal": 3,
+   "Sutkagen-Dor": 6
+  },
+  "adjudged_total": 949,
+  "train_size": 665,
+  "held_out_size": 284,
+  "vocabulary_size": 618,
+  "metrics": {
+   "n_held_out": 284,
+   "accuracy": 0.8767605633802817,
+   "balanced_accuracy": 0.5091754195339853,
+   "kappa": 0.02967590784849668,
+   "per_class_recall": {
+    "Harappa": 0.030303030303030304,
+    "Mohenjo-daro": 0.9880478087649402
+   },
+   "confusion": {
+    "Harappa": {
+     "Harappa": 1,
+     "Mohenjo-daro": 32
+    },
+    "Mohenjo-daro": {
+     "Harappa": 3,
+     "Mohenjo-daro": 248
+    }
+   }
+  },
+  "majority_rule": {
+   "class": "Mohenjo-daro",
+   "accuracy": 0.8838028169014085,
+   "balanced_accuracy": 0.5,
+   "kappa": 0.0
+  }
+ }
+}

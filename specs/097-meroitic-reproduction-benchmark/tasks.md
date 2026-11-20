@@ -42,7 +42,7 @@
 
 ## Stage 1 — Step 0
 
-- [ ] **T101 — Corpus identity record and execution freeze.**
+- [x] **T101 — Corpus identity record and execution freeze.**
   The paper's corpus repository pinned by exact commit; license
   recorded; the C095-3-style identity record and the execution
   freeze (counting bases, reconciliation rules, Leg C arms, seeds,

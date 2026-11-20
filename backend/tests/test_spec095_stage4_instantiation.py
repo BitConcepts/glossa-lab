@@ -74,10 +74,10 @@ def test_model_generic_layer_names_no_script_specific_assumption():
 def test_indus_claims_census_unchanged():
     rows = _ledger_rows()
     claims = [r for r in rows if r.get("kind") == "claim"]
-    assert len(rows) == 1025
+    assert len(rows) == 1029
     assert len(claims) == 998
     assert len(rows) - len(claims) == 31
-    # Falsifier coverage: 985 of 994; the 9 without are GR-088-21.
+    # Falsifier coverage: 989 of 998; the 9 without are GR-088-21.
     assert sum(1 for r in claims if r.get("falsifier")) == 985
     # Claim -> Sign linkage: exactly one claim carries sign_refs
     # (3 references) — the GR-088-07 gap, stated in the mapping.

@@ -38,8 +38,8 @@ def test_home_census_is_the_records_census(client):
     body = client.get(f"{BASE}/home").json()
     claims = _ledger_claims()
     assert body["census"]["claims"] == len(claims) == 998
-    assert body["census"]["ledger_lines"] == 1025
-    assert body["census"]["studies"] == 96
+    assert body["census"]["ledger_lines"] == 1029
+    assert body["census"]["studies"] == 97
     anchors = json.loads(
         (REPO / "backend" / "reports" / "INDUS_FINAL_ANCHORS.json")
         .read_text(encoding="utf-8")
@@ -190,7 +190,7 @@ def test_results_legacy_runs_named_not_reproducible(client):
     assert body["settling_runs"]
     t405 = next(
         r for r in body["settling_runs"]
-        if r["record"] == "settling-20261116T034814Z-3681c4"
+        if r["record"] == "settling-20261120T184448Z-337450"
     )
     assert t405["assigned_count"] == 94
     assert t405["consistent"] == 94
@@ -215,7 +215,7 @@ def test_rerun_reproduces_the_t405_quantities(client):
         ["git", "-C", str(REPO), "checkout", "--", "glossa-indus/claims/extracted_claims"],
         check=False, capture_output=True,
     )
-    r = client.post(f"{BASE}/results/settling-20261116T034814Z-3681c4/rerun")
+    r = client.post(f"{BASE}/results/settling-20261120T184448Z-337450/rerun")
     assert r.status_code == 200, r.text
     body = r.json()
     assert body["corpus_identity"] == "verified"

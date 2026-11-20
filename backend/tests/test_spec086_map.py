@@ -216,7 +216,7 @@ def test_header_contract_q3(built) -> None:
     as_of = h["as_of"]
     assert as_of["ledger_sha256"] == li.sha256_file(ROOT / li.LEDGER_REL)
     assert as_of["map_defs"] == "map-defs v1"
-    assert as_of["ledger_lines"] == 1025
+    assert as_of["ledger_lines"] == 1029
 
 
 def test_sections_census(built) -> None:
@@ -226,19 +226,19 @@ def test_sections_census(built) -> None:
         kinds[el["kind"]] = kinds.get(el["kind"], 0) + 1
     assert kinds["claim"] == 998
     assert kinds.get("corpus_texts", 0) == 0
-    assert sum(kinds.values()) == 1638
+    assert sum(kinds.values()) == 1642
     rels = {}
     for edge in data["edges"]:
         rels[edge["rel"]] = rels.get(edge["rel"], 0) + 1
-    assert rels == {"supports": 1510, "opposes": 7}
+    assert rels == {"supports": 1514, "opposes": 7}
     assert len(data["loads"]) == 998
     system = data["system"]
     assert system["falsifier_census"]["covered"] == 989
     assert system["falsifier_census"]["total"] == 998
     assert system["aee_state_census"] == {
         "with_state": 0,
-        "without_state": 994,
-        "total": 994,
+        "without_state": 998,
+        "total": 998,
     }
     assert system["claim_population"]["no_stage_recorded"] == 24
 
@@ -390,7 +390,7 @@ def test_api_sections_serve_the_artifact(client) -> None:
     assert system["sign_inventory"]["frame_scope"] == 286
     matrix = client.get("/api/v1/indus-map/matrix").json()["matrix"]
     assert matrix["coverage"]["cells_by_relation"] == {
-        "supports": 1510,
+        "supports": 1514,
         "opposes": 7,
         "constrains": 0,
     }

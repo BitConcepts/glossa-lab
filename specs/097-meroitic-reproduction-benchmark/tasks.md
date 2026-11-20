@@ -95,13 +95,13 @@
   campaign execution. Claims: C097-7..C097-11. Acceptance:
   **record** (the design is on file and the claims are in the
   ledger before Stage 4.1 work begins).
-- [ ] **T402 — Corpus completion.** The canonical corpus build
+- [x] **T402 — Corpus completion.** The canonical corpus build
   with per-text provenance; every openly licensed source
   acquired or gap-named; counts reconciled against the REM
   totals. Claims: C097-7. Acceptance: **record + test** (the
   completion record's held/acquired/gap account is complete
   against its own search account).
-- [ ] **T403 — Anchor inventory freeze v1.** Every anchor with
+- [x] **T403 — Anchor inventory freeze v1.** Every anchor with
   form, proposed reading, evidence class, source, and licensed
   use; the development / held-out split hash-pinned in the
   freeze. Claims: C097-8. Acceptance: **record**.

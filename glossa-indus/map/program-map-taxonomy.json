@@ -516,6 +516,11 @@
       "spec_dir": "095-red-team-remediation",
       "domain": "Program infrastructure",
       "subdomain": "Governance, lifecycle & generated layers"
+    },
+    {
+      "spec_dir": "096-eteocypriot-program",
+      "domain": "Program infrastructure",
+      "subdomain": "Governance, lifecycle & generated layers"
     }
   ],
   "extracted_documents": [

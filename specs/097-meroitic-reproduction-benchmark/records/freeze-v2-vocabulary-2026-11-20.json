@@ -1,0 +1,5310 @@
+[
+ {
+  "form": "abr",
+  "norm": "abr",
+  "gloss": "man",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 114-115"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 17
+ },
+ {
+  "form": "br",
+  "norm": "br",
+  "gloss": "man",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 114-115"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 17
+ },
+ {
+  "form": "kdi",
+  "norm": "kdi",
+  "gloss": "woman",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 7, 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "pp. 3, 5"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 16
+ },
+ {
+  "form": "kadi",
+  "norm": "kadi",
+  "gloss": "woman",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 7, 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "pp. 3, 5"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 16
+ },
+ {
+  "form": "asr",
+  "norm": "asr",
+  "gloss": "meat, animal",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 118"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "sr",
+  "norm": "sr",
+  "gloss": "meat, animal",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 118"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "at",
+  "norm": "at",
+  "gloss": "bread",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 118-119"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ato",
+  "norm": "ato",
+  "gloss": "water",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 6, 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 119-120"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 75
+ },
+ {
+  "form": "ate",
+  "norm": "ate",
+  "gloss": "water",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 6, 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 119-120"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 75
+ },
+ {
+  "form": "kdite",
+  "norm": "kdite",
+  "gloss": "sister",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 4, 7, 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 128"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "kdise",
+  "norm": "kdise",
+  "gloss": "sister",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 4, 7, 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 128"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ked",
+  "norm": "ked",
+  "gloss": "kill, slay",
+  "confidence": "certain",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 128-130"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 62
+ },
+ {
+  "form": "kede",
+  "norm": "kede",
+  "gloss": "kill, slay",
+  "confidence": "certain",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 128-130"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 62
+ },
+ {
+  "form": "l-",
+  "norm": "l",
+  "gloss": "give",
+  "confidence": "certain",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 7, 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 130-132"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 70
+ },
+ {
+  "form": "l",
+  "norm": "l",
+  "gloss": "give",
+  "confidence": "certain",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 7, 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 130-132"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 70
+ },
+ {
+  "form": "lẖ",
+  "norm": "lx",
+  "gloss": "great, elder",
+  "confidence": "certain",
+  "category": "adjective",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 132"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "lh",
+  "norm": "lx",
+  "gloss": "great, elder",
+  "confidence": "certain",
+  "category": "adjective",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 132"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "lx",
+  "norm": "lx",
+  "gloss": "great, elder",
+  "confidence": "certain",
+  "category": "adjective",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 132"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "laẖ",
+  "norm": "lax",
+  "gloss": "great, elder",
+  "confidence": "certain",
+  "category": "adjective",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 132"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "mẖe",
+  "norm": "mxe",
+  "gloss": "abundant, plenty",
+  "confidence": "certain",
+  "category": "adjective",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 133"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "mhe",
+  "norm": "mxe",
+  "gloss": "abundant, plenty",
+  "confidence": "certain",
+  "category": "adjective",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 133"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "mḫe",
+  "norm": "mxe",
+  "gloss": "abundant, plenty",
+  "confidence": "certain",
+  "category": "adjective",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 133"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "mlo",
+  "norm": "mlo",
+  "gloss": "good",
+  "confidence": "certain",
+  "category": "adjective",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 6"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 133-134"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 97
+ },
+ {
+  "form": "mte",
+  "norm": "mte",
+  "gloss": "child",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 6"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 134"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "mse",
+  "norm": "mse",
+  "gloss": "child",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 6"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 134"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "mete",
+  "norm": "mete",
+  "gloss": "child",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 6"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 134"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "sem",
+  "norm": "sem",
+  "gloss": "wife",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 139"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "sm",
+  "norm": "sm",
+  "gloss": "wife",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 139"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ste",
+  "norm": "ste",
+  "gloss": "mother (tutor)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 140"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "sete",
+  "norm": "sete",
+  "gloss": "mother (tutor)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 140"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "st",
+  "norm": "st",
+  "gloss": "foot, feet",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 139"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 46
+ },
+ {
+  "form": "tre-",
+  "norm": "tre",
+  "gloss": "offer",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 8-9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 143-144"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tre",
+  "norm": "tre",
+  "gloss": "offer",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 8-9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 143-144"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "wide",
+  "norm": "wide",
+  "gloss": "brother",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 144"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "wi",
+  "norm": "wi",
+  "gloss": "brother",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 144"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "mk",
+  "norm": "mk",
+  "gloss": "god, deity",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 7"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 6"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 153"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "mkdi",
+  "norm": "mkdi",
+  "gloss": "goddess",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 7"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tedḫe",
+  "norm": "tedxe",
+  "gloss": "born of (mother)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System",
+    "publication": "Cambridge University Press",
+    "pages": "p. 14 (Filiation)"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 120"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tdḫe",
+  "norm": "tdxe",
+  "gloss": "born of (mother)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System",
+    "publication": "Cambridge University Press",
+    "pages": "p. 14 (Filiation)"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 120"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "edḫe",
+  "norm": "edxe",
+  "gloss": "born of (mother)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System",
+    "publication": "Cambridge University Press",
+    "pages": "p. 14 (Filiation)"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 120"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "dḫe",
+  "norm": "dxe",
+  "gloss": "born of (mother)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System",
+    "publication": "Cambridge University Press",
+    "pages": "p. 14 (Filiation)"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 120"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "yedḫe",
+  "norm": "yedxe",
+  "gloss": "born of (mother)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System",
+    "publication": "Cambridge University Press",
+    "pages": "p. 14 (Filiation)"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 120"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tedhe",
+  "norm": "tedxe",
+  "gloss": "born of (mother)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System",
+    "publication": "Cambridge University Press",
+    "pages": "p. 14 (Filiation)"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 120"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "terike",
+  "norm": "terike",
+  "gloss": "begotten by (father)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System",
+    "publication": "Cambridge University Press",
+    "pages": "p. 14 (Filiation)"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 122-123"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "erike",
+  "norm": "erike",
+  "gloss": "begotten by (father)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System",
+    "publication": "Cambridge University Press",
+    "pages": "p. 14 (Filiation)"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 122-123"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "yerike",
+  "norm": "yerike",
+  "gloss": "begotten by (father)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System",
+    "publication": "Cambridge University Press",
+    "pages": "p. 14 (Filiation)"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 122-123"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "yetmde",
+  "norm": "yetmde",
+  "gloss": "relative (nephew, niece)",
+  "confidence": "certain",
+  "category": "kinship",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 8"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 147"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ar",
+  "norm": "ar",
+  "gloss": "boy, son",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 115-116"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "or",
+  "norm": "or",
+  "gloss": "boy, son",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 115-116"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "are-",
+  "norm": "are",
+  "gloss": "take, receive (seize)",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "pp. 3, 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 116-117"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "are",
+  "norm": "are",
+  "gloss": "take, receive (seize)",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "pp. 3, 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 116-117"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "erk-",
+  "norm": "erk",
+  "gloss": "take, receive (seize)",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "pp. 3, 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 116-117"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "dm-",
+  "norm": "dm",
+  "gloss": "take, receive",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 122"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "dm",
+  "norm": "dm",
+  "gloss": "take, receive",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 122"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "dime",
+  "norm": "dime",
+  "gloss": "cow",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 120-121"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ḫre",
+  "norm": "xre",
+  "gloss": "meal, food (eat)",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "pp. 3, 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 125"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 55
+ },
+ {
+  "form": "ḫr-",
+  "norm": "xr",
+  "gloss": "meal, food (eat)",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "pp. 3, 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 125"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 55
+ },
+ {
+  "form": "hre",
+  "norm": "xre",
+  "gloss": "meal, food (eat)",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "pp. 3, 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 125"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 55
+ },
+ {
+  "form": "xre",
+  "norm": "xre",
+  "gloss": "meal, food (eat)",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "pp. 3, 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 125"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 55
+ },
+ {
+  "form": "ḫlbi",
+  "norm": "xlbi",
+  "gloss": "bull, ox",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 123-124"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "hlbi",
+  "norm": "xlbi",
+  "gloss": "bull, ox",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 123-124"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "xlbi",
+  "norm": "xlbi",
+  "gloss": "bull, ox",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 123-124"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pwrite",
+  "norm": "pwrite",
+  "gloss": "life",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 7, 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 135-136"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tke-",
+  "norm": "tke",
+  "gloss": "love, revere",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 141-142"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tke",
+  "norm": "tke",
+  "gloss": "love, revere",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 141-142"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "wle",
+  "norm": "wle",
+  "gloss": "dog",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "pp. 3, 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 145"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 21
+ },
+ {
+  "form": "yer",
+  "norm": "yer",
+  "gloss": "milk",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "pp. 3, 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 146"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "aroẖe-",
+  "norm": "aroxe",
+  "gloss": "protect",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 117"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "arohe",
+  "norm": "aroxe",
+  "gloss": "protect",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 117"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "aroẖe",
+  "norm": "aroxe",
+  "gloss": "protect",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 117"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "nse",
+  "norm": "nse",
+  "gloss": "sacrifice",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 135"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ns",
+  "norm": "ns",
+  "gloss": "sacrifice",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 135"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "sdk",
+  "norm": "sdk",
+  "gloss": "journey",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 3"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 138"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 99"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "sḫi",
+  "norm": "sxi",
+  "gloss": "small",
+  "confidence": "probable",
+  "category": "adjective",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 139"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 15
+ },
+ {
+  "form": "shi",
+  "norm": "sxi",
+  "gloss": "small",
+  "confidence": "probable",
+  "category": "adjective",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 139"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 15
+ },
+ {
+  "form": "sxi",
+  "norm": "sxi",
+  "gloss": "small",
+  "confidence": "probable",
+  "category": "adjective",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 139"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 15
+ },
+ {
+  "form": "tbo",
+  "norm": "tbo",
+  "gloss": "two, second",
+  "confidence": "probable",
+  "category": "number",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 140"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 101"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 12
+ },
+ {
+  "form": "tbe",
+  "norm": "tbe",
+  "gloss": "two, second",
+  "confidence": "probable",
+  "category": "number",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 140"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 101"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 12
+ },
+ {
+  "form": "teneke",
+  "norm": "teneke",
+  "gloss": "west",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 141"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "yireqe",
+  "norm": "yireqe",
+  "gloss": "south",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 147"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 102"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "yereqe",
+  "norm": "yereqe",
+  "gloss": "south",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 147"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 102"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "yirewke",
+  "norm": "yirewke",
+  "gloss": "east",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 147"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 102"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ẖr",
+  "norm": "xr",
+  "gloss": "north",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 126"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 95"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "hr",
+  "norm": "xr",
+  "gloss": "north",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 126"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 95"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ẖrw",
+  "norm": "xrw",
+  "gloss": "north",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 126"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 95"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "kelw",
+  "norm": "kelw",
+  "gloss": "and, also",
+  "confidence": "probable",
+  "category": "other",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 86"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 103"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "kelwe",
+  "norm": "kelwe",
+  "gloss": "and, also",
+  "confidence": "probable",
+  "category": "other",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 86"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 103"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "abese",
+  "norm": "abese",
+  "gloss": "gazelle",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 411 (addendum)"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "pp. 102-103"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pete",
+  "norm": "pete",
+  "gloss": "snake",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 411 (addendum)"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 103"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "abore",
+  "norm": "abore",
+  "gloss": "elephant",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 370-371"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 103"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ms",
+  "norm": "ms",
+  "gloss": "sun (god)",
+  "confidence": "probable",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 192-193, 371-372"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 72
+ },
+ {
+  "form": "mash",
+  "norm": "masx",
+  "gloss": "sun (god)",
+  "confidence": "probable",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 192-193, 371-372"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 72
+ },
+ {
+  "form": "mš",
+  "norm": "ms",
+  "gloss": "sun (god)",
+  "confidence": "probable",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 192-193, 371-372"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 72
+ },
+ {
+  "form": "mos",
+  "norm": "mos",
+  "gloss": "sun (god)",
+  "confidence": "probable",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 192-193, 371-372"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": 72
+ },
+ {
+  "form": "nob",
+  "norm": "nob",
+  "gloss": "slave; Nubian",
+  "confidence": "probable",
+  "category": "people",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2011,
+    "title": "Recent Research on Meroitic, the Ancient Language of Sudan",
+    "publication": "ITYOPIS 1: 10-24",
+    "pages": "p. 16"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "qore",
+  "norm": "qore",
+  "gloss": "ruler, king",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 136"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "qor",
+  "norm": "qor",
+  "gloss": "ruler, king",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 136"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "qr",
+  "norm": "qr",
+  "gloss": "ruler, king",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "p. 136"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ktke",
+  "norm": "ktke",
+  "gloss": "queen-mother (Candace)",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 8-9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "kdke",
+  "norm": "kdke",
+  "gloss": "queen-mother (Candace)",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 8-9"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pqr",
+  "norm": "pqr",
+  "gloss": "prince, crown prince",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 8-9"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pqore",
+  "norm": "pqore",
+  "gloss": "prince, crown prince",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 8-9"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ant",
+  "norm": "ant",
+  "gloss": "priest, prophet",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 7-9"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 99"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "at",
+  "norm": "at",
+  "gloss": "priest, prophet",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 7-9"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 99"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "apote",
+  "norm": "apote",
+  "gloss": "envoy",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 8-9"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 19"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 11"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "apete",
+  "norm": "apete",
+  "gloss": "envoy",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 8-9"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 19"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 11"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "epote",
+  "norm": "epote",
+  "gloss": "envoy",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 8-9"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 19"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 11"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pelmos",
+  "norm": "pelmos",
+  "gloss": "general (strategos)",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 18"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 22"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "plmos",
+  "norm": "plmos",
+  "gloss": "general (strategos)",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 18"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 22"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pelamos",
+  "norm": "pelamos",
+  "gloss": "general (strategos)",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 18"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 22"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "ssor",
+  "norm": "ssor",
+  "gloss": "scribe",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "sesor",
+  "norm": "sesor",
+  "gloss": "scribe",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tewiseti",
+  "norm": "tewiseti",
+  "gloss": "adoration",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 9, 22"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tewisti",
+  "norm": "tewisti",
+  "gloss": "adoration",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 9, 22"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "nbr",
+  "norm": "nbr",
+  "gloss": "gold",
+  "confidence": "certain",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "wos",
+  "norm": "wos",
+  "gloss": "Isis",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 10"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 8"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 23, 34"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "wosi",
+  "norm": "wosi",
+  "gloss": "Isis",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 10"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 8"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 23, 34"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "sorey",
+  "norm": "sorey",
+  "gloss": "Osiris",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 10"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 11"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "asori",
+  "norm": "asori",
+  "gloss": "Osiris",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 10"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 11"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "sori",
+  "norm": "sori",
+  "gloss": "Osiris",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 10"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 11"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "asorey",
+  "norm": "asorey",
+  "gloss": "Osiris",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 10"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 11"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "amni",
+  "norm": "amni",
+  "gloss": "Amun",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 4"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2011,
+    "title": "Recent Research on Meroitic, the Ancient Language of Sudan",
+    "publication": "ITYOPIS 1: 10-24",
+    "pages": "p. 13"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "mni",
+  "norm": "mni",
+  "gloss": "Amun",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 4"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2011,
+    "title": "Recent Research on Meroitic, the Ancient Language of Sudan",
+    "publication": "ITYOPIS 1: 10-24",
+    "pages": "p. 13"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "amn",
+  "norm": "amn",
+  "gloss": "Amun",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 4"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2011,
+    "title": "Recent Research on Meroitic, the Ancient Language of Sudan",
+    "publication": "ITYOPIS 1: 10-24",
+    "pages": "p. 13"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "amnpte",
+  "norm": "amnpte",
+  "gloss": "Amun of Napata",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 8"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "amnp",
+  "norm": "amnp",
+  "gloss": "Amun of Napata",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 8"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "mnp",
+  "norm": "mnp",
+  "gloss": "Amun of Napata",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 8"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "apedemk",
+  "norm": "apedemk",
+  "gloss": "Apedemak (lion god)",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2011,
+    "title": "Recent Research on Meroitic, the Ancient Language of Sudan",
+    "publication": "ITYOPIS 1: 10-24",
+    "pages": "p. 16"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 5"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "apdmk",
+  "norm": "apdmk",
+  "gloss": "Apedemak (lion god)",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2011,
+    "title": "Recent Research on Meroitic, the Ancient Language of Sudan",
+    "publication": "ITYOPIS 1: 10-24",
+    "pages": "p. 16"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 5"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pdmk",
+  "norm": "pdmk",
+  "gloss": "Apedemak (lion god)",
+  "confidence": "certain",
+  "category": "deity",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2011,
+    "title": "Recent Research on Meroitic, the Ancient Language of Sudan",
+    "publication": "ITYOPIS 1: 10-24",
+    "pages": "p. 16"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2004,
+    "title": "The Linguistic Position of Meroitic",
+    "publication": "ARKAMANI Sudan Electronic Journal of Archaeology and Anthropology",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 5"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "bedewe",
+  "norm": "bedewe",
+  "gloss": "Meroe",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 6"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 8"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "medewe",
+  "norm": "medewe",
+  "gloss": "Meroe",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 6"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 8"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "bedewi",
+  "norm": "bedewi",
+  "gloss": "Meroe",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 6"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 8"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "medewi",
+  "norm": "medewi",
+  "gloss": "Meroe",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 6"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 8"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tolkte",
+  "norm": "tolkte",
+  "gloss": "Naga (city)",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 6"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "qoreti",
+  "norm": "qoreti",
+  "gloss": "Qurta (city)",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 5"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "akine",
+  "norm": "akine",
+  "gloss": "Lower Nubia",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 20"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "akin",
+  "norm": "akin",
+  "gloss": "Lower Nubia",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 20"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "qo",
+  "norm": "qo",
+  "gloss": "this (demonstrative)",
+  "confidence": "certain",
+  "category": "other",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2016,
+    "title": "Meroitic",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 8"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 93"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "peseto",
+  "norm": "peseto",
+  "gloss": "viceroy",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 18, 20"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   },
+   {
+    "author": "Penn Museum",
+    "year": null,
+    "title": "Karanog, Wealthy Capital of a Lower Nubian Province",
+    "publication": "Expedition Magazine",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pesto",
+  "norm": "pesto",
+  "gloss": "viceroy",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 18, 20"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   },
+   {
+    "author": "Penn Museum",
+    "year": null,
+    "title": "Karanog, Wealthy Capital of a Lower Nubian Province",
+    "publication": "Expedition Magazine",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "peste",
+  "norm": "peste",
+  "gloss": "viceroy",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 18, 20"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   },
+   {
+    "author": "Penn Museum",
+    "year": null,
+    "title": "Karanog, Wealthy Capital of a Lower Nubian Province",
+    "publication": "Expedition Magazine",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pesate",
+  "norm": "pesate",
+  "gloss": "viceroy",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "pp. 18, 20"
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   },
+   {
+    "author": "Penn Museum",
+    "year": null,
+    "title": "Karanog, Wealthy Capital of a Lower Nubian Province",
+    "publication": "Expedition Magazine",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "perite",
+  "norm": "perite",
+  "gloss": "agent (administrator)",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 22"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic script",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "prite",
+  "norm": "prite",
+  "gloss": "agent (administrator)",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 22"
+   },
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic script",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "beloloke",
+  "norm": "beloloke",
+  "gloss": "priest (a rank)",
+  "confidence": "probable",
+  "category": "title",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "belileke",
+  "norm": "belileke",
+  "gloss": "priest (a rank)",
+  "confidence": "probable",
+  "category": "title",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "beleleke",
+  "norm": "beleleke",
+  "gloss": "priest (a rank)",
+  "confidence": "probable",
+  "category": "title",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "arome",
+  "norm": "arome",
+  "gloss": "Rome",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 11"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 19"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "areme",
+  "norm": "areme",
+  "gloss": "Rome",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 11"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 19"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "arme",
+  "norm": "arme",
+  "gloss": "Rome",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 11"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 19"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "atiye",
+  "norm": "atiye",
+  "gloss": "Sedeinga",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 20"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "atiyete",
+  "norm": "atiyete",
+  "gloss": "Sedeinga",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 20"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "npte",
+  "norm": "npte",
+  "gloss": "Napata",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "napate",
+  "norm": "napate",
+  "gloss": "Napata",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "npt",
+  "norm": "npt",
+  "gloss": "Napata",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 23"
+   },
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pilqe",
+  "norm": "pilqe",
+  "gloss": "Philae",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 8, 34"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pileqe",
+  "norm": "pileqe",
+  "gloss": "Philae",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 8, 34"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pilqo",
+  "norm": "pilqo",
+  "gloss": "Philae",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 8, 34"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pilaqe",
+  "norm": "pilaqe",
+  "gloss": "Philae",
+  "confidence": "certain",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 8, 34"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pẖrs",
+  "norm": "pxrs",
+  "gloss": "Faras (Pachoras)",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 62, 82"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "phrs",
+  "norm": "pxrs",
+  "gloss": "Faras (Pachoras)",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 62, 82"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pakharas",
+  "norm": "pakxaras",
+  "gloss": "Faras (Pachoras)",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 62, 82"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pakhoras",
+  "norm": "pakxoras",
+  "gloss": "Faras (Pachoras)",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 62, 82"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pedeme",
+  "norm": "pedeme",
+  "gloss": "Qasr Ibrim (Primis)",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Trismegistos (KU Leuven)",
+    "year": 2026,
+    "title": "Trismegistos Places, record 1916: Qasr Ibrim (Primis / Pedeme)",
+    "publication": "Trismegistos database",
+    "pages": null
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "pezeme",
+  "norm": "pezeme",
+  "gloss": "Qasr Ibrim (Primis)",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Trismegistos (KU Leuven)",
+    "year": 2026,
+    "title": "Trismegistos Places, record 1916: Qasr Ibrim (Primis / Pedeme)",
+    "publication": "Trismegistos database",
+    "pages": null
+   },
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "p. 55"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "kisri",
+  "norm": "kisri",
+  "gloss": "Caesar (Roman emperor)",
+  "confidence": "certain",
+  "category": "title",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2022,
+    "title": "Meroitic Writing",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 9"
+   },
+   {
+    "author": "Claude Rilly and Alex de Voogt",
+    "year": 2012,
+    "title": "The Meroitic Language and Writing System, ch. 1 (publisher excerpt, pp. 1-10)",
+    "publication": "Cambridge University Press",
+    "pages": "p. 9"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "adb",
+  "norm": "adb",
+  "gloss": "land, territory",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 18"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "adebe",
+  "norm": "adebe",
+  "gloss": "land, territory",
+  "confidence": "probable",
+  "category": "noun",
+  "sources": [
+   {
+    "author": "Josefine Kuckertz",
+    "year": 2021,
+    "title": "Meroe and Egypt",
+    "publication": "UCLA Encyclopedia of Egyptology",
+    "pages": "p. 18"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "qes",
+  "norm": "qes",
+  "gloss": "Kush",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "qos",
+  "norm": "qos",
+  "gloss": "Kush",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "qesw",
+  "norm": "qesw",
+  "gloss": "Kush",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "Wikipedia contributors",
+    "year": 2026,
+    "title": "Meroitic language (Vocabulary section)",
+    "publication": "Wikipedia",
+    "pages": null
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tkk",
+  "norm": "tkk",
+  "gloss": "plunder, pillage",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 77-78, 142-143"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 102"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tk-",
+  "norm": "tk",
+  "gloss": "plunder, pillage",
+  "confidence": "probable",
+  "category": "verb",
+  "sources": [
+   {
+    "author": "Claude Rilly",
+    "year": 2010,
+    "title": "Le méroïtique et sa famille linguistique",
+    "publication": "Peeters (Afrique et Langage 14), pages as reported in Lipiński 2011",
+    "pages": "pp. 77-78, 142-143"
+   },
+   {
+    "author": "Edward Lipiński",
+    "year": 2011,
+    "title": "Meroitic (Review article) [review of Rilly 2010]",
+    "publication": "Rocznik Orientalistyczny 64(2): 87-104",
+    "pages": "p. 102"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "sye",
+  "norm": "sye",
+  "gloss": "Sai (island)",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 65, 82"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "saye",
+  "norm": "saye",
+  "gloss": "Sai (island)",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 65, 82"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "shaye",
+  "norm": "sxaye",
+  "gloss": "Sai (island)",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 65, 82"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tebwe",
+  "norm": "tebwe",
+  "gloss": "Abaton (Philae)",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 62, 82"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "tebawe",
+  "norm": "tebawe",
+  "gloss": "Abaton (Philae)",
+  "confidence": "probable",
+  "category": "place",
+  "sources": [
+   {
+    "author": "F. Ll. Griffith",
+    "year": 1911,
+    "title": "Karanog: The Meroitic Inscriptions of Shablul and Karanog",
+    "publication": "University Museum, Philadelphia (Eckley B. Coxe Jr. Expedition to Nubia VI)",
+    "pages": "pp. 62, 82"
+   }
+  ],
+  "origin": "gold_lexicon_ccby",
+  "concept": null
+ },
+ {
+  "form": "nobow",
+  "norm": "nobow",
+  "gloss": "The meaning of this term is uncertain. Possibilities include:",
+  "confidence": "wiktionary",
+  "category": "noun",
+  "sources": [
+   {
+    "source": "Wiktionary (CC BY-SA 4.0), entry 'nobow', https://en.wiktionary.org/wiki/nobow#Meroitic; references on page: Meeks, Dimitri (1973), Liste des mots méroïtiques ayant une signification connue ou supposée, Meroitic Newsletter / Bulletin d'informations méroïtiques № 13, pages 3–20"
+   }
+  ],
+  "origin": "wiktionary_ccbysa",
+  "concept": null
+ },
+ {
+  "form": "yeto",
+  "norm": "yeto",
+  "gloss": "alternative form of 𐦠𐦶 (ato, “water”)",
+  "confidence": "wiktionary",
+  "category": "noun",
+  "sources": [
+   {
+    "source": "Wiktionary (CC BY-SA 4.0), entry '𐦤𐦡𐦶', https://en.wiktionary.org/wiki/𐦤𐦡𐦶#Meroitic; references on page: Meeks, Dimitri (1973), Liste des mots méroïtiques ayant une signification connue ou supposée, Meroitic Newsletter / Bulletin d'informations méroïtiques № 13, pages 3–20"
+   }
+  ],
+  "origin": "wiktionary_ccbysa",
+  "concept": null
+ },
+ {
+  "form": "plsn",
+  "norm": "plsn",
+  "gloss": "a title",
+  "confidence": "wiktionary",
+  "category": "noun",
+  "sources": [
+   {
+    "source": "Wiktionary (CC BY-SA 4.0), entry '𐦧𐦬𐦯𐦩', https://en.wiktionary.org/wiki/𐦧𐦬𐦯𐦩#Meroitic; references on page: Rowan, Kirsty (2006), Meroitic—A Phonological Investigation, Ann Arbor: ProQuest Dissertations Publishing, page 46 | Rilly, Claude; de Voogt, Alex (2012), The Meroitic Language and Writing System, New York: Cambridge University Press, ISBN, page 115 | Meeks, Dimitri (1973), Liste des mots méroïtiques ayant une signification connue ou supposée, Meroitic Newsletter / Bulletin d'informations méroïtiques № 13, pages 3–20"
+   }
+  ],
+  "origin": "wiktionary_ccbysa",
+  "concept": null
+ }
+]

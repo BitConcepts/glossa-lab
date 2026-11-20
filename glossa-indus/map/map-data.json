@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 994,
+  "claims_total": 998,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 970,
+   "draft": 974,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
-   "ledger_lines": 1025,
-   "ledger_date": "2026-11-15",
+   "ledger_sha256": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
+   "ledger_lines": 1029,
+   "ledger_date": "2026-11-20",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "c879e3b4798f75ad390d1d49f246383388880dd29212357691086871f88ecb20",
+   "matrix_sha256": "e6cfcef192f705959ee6a6f59420e84ce184037ba314e5ded3d8e68c51b5cf9e",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-   "assignment_sets_sha256": "aa4e47abd1c53e3362d592239ef1b539d05cd35fe68c233962175d022ea19f1c",
-   "comparison_sha256": "3bfc0c521a9fbd7852a9864403cc87e127d72454102d982ab4ec88bf01d310cc",
-   "settling_canonical_sha256": "28c9a6f128a4fc48889ac1e6c777b919f3c6154179c3eabb84709480d66fefa5"
+   "assignment_sets_sha256": "9f9a949300fe3c482d87aaac05e4b8227a31baa4189d9750fc7f076b0f0e4501",
+   "comparison_sha256": "e8e4f991787be96f9c643878d99763bef67de8b660cd1e2aa4c986f78717a6ee",
+   "settling_canonical_sha256": "5d43f6d06b4b1531cf6829fd98df2b88974f551e18f8df3cc6c5d7935371175c"
   }
  },
  "elements": [
@@ -8018,6 +8018,38 @@
    "kind": "claim",
    "id": "095-red-team-remediation/C095-7",
    "statement": "The claims-ledger gate carries a check class that flags, at intake, the six contamination shapes of record (a source-derived value labelled independent; a self-labelling derivative presented as source data; a translation or reading column presented as corpus data; a derived result presented as independent confirmation; the same data under two source identities; a summary or delivery presented as the underlying record), and the class re-detects the six historical instances of record (the GR-088-01, GR-088-11, GR-088-16 and GR-088-29 family) from their records in its acceptance fixtures. This does not establish: that flagged intakes are substantively wrong; the class flags provenance shape for adjudication, it does not rule on content.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "096-eteocypriot-program/C096-4",
+   "statement": "The study reports its own thinness honestly. Every outcome of the pilot is stated with its precision basis (Standards Part II), and any leg below its registered floor is recorded TOO THIN, including closures at freeze under floors that cannot be instantiated against the frozen census. This does not establish: that any outcome so reported is substantively correct; the claim governs the study's reporting, not its results.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "096-eteocypriot-program/C096-1",
+   "statement": "The alignment procedure is validated by known answers. Under the registered alignment assumptions (A1 strict segment-parallel; A2 name-anchored free alignment), the frozen alignment procedure recovers the bilingual name correspondences of the development set (preregistration P1: both ICS 196 correspondences and at least one Androkles correspondence, at segment level, with no name information supplied to the procedure beyond the Greek texts themselves). This does not establish: that any Eteocypriot word is understood; E1 tests the procedure against Greek-side ground truth only.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "096-eteocypriot-program/C096-3",
+   "statement": "Surviving candidates are identifiable or are reported as not. Every E2 survivor's standing is set by its E3 rival-construction record (P3): a survivor with an equally consistent incompatible rival is recorded NOT IDENTIFIABLE, whatever its E2 score, and no survivor is scored SUPPORTED without a completed rival-construction record. This does not establish: that a NOT IDENTIFIABLE candidate is false (Standards Part III, rule 5).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "096-eteocypriot-program/C096-2",
+   "statement": "At least one development-set candidate predicts held-out material. At least one registered morpheme or recurring-ending candidate, developed only on the development set, meets P2's success side (its registered held-out occurrence floor at its registered positions). This does not establish: that a surviving candidate's proposed meaning is correct — survival is a prediction result; meaning requires E3 and adjudication.",
    "status": "draft",
    "stage": "created",
    "population": "bundle"
@@ -27123,6 +27155,50 @@
    ]
   },
   {
+   "from": "spec.md",
+   "to": "096-eteocypriot-program/C096-1",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "096-eteocypriot-program/C096-1",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "096-eteocypriot-program/C096-2",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "096-eteocypriot-program/C096-2",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "096-eteocypriot-program/C096-3",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "096-eteocypriot-program/C096-3",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "096-eteocypriot-program/C096-4",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "096-eteocypriot-program/C096-4",
+    "spec.md"
+   ]
+  },
+  {
    "from": "055",
    "to": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "rel": "opposes",
@@ -32255,6 +32331,26 @@
    "constrains": 0
   },
   "095-red-team-remediation/C095-7": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "096-eteocypriot-program/C096-4": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "096-eteocypriot-program/C096-1": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "096-eteocypriot-program/C096-3": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "096-eteocypriot-program/C096-2": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -38222,6 +38318,30 @@
    },
    {
     "id": "095-red-team-remediation/C095-7",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "096-eteocypriot-program/C096-4",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "096-eteocypriot-program/C096-1",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "096-eteocypriot-program/C096-3",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "096-eteocypriot-program/C096-2",
     "population": "bundle",
     "status": "draft",
     "stage": "created"
@@ -57329,6 +57449,50 @@
     ]
    },
    {
+    "row": "096-eteocypriot-program/C096-1",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "096-eteocypriot-program/C096-1",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "096-eteocypriot-program/C096-2",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "096-eteocypriot-program/C096-2",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "096-eteocypriot-program/C096-3",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "096-eteocypriot-program/C096-3",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "096-eteocypriot-program/C096-4",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "096-eteocypriot-program/C096-4",
+     "spec.md"
+    ]
+   },
+   {
     "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
     "column": "055",
     "column_class": "studies",
@@ -57496,8 +57660,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 994,
-   "rows_with_cells": 980,
+   "rows_total": 998,
+   "rows_with_cells": 984,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -57855,30 +58019,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1517,
+   "cells_total": 1521,
    "cells_by_relation": {
-    "supports": 1510,
+    "supports": 1514,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1510,
+    "documents": 1514,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 985,
-    "total": 994,
+    "covered": 989,
+    "total": 998,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 971,
-      "total": 971
+      "covered": 975,
+      "total": 975
      }
     }
    },
@@ -62923,8 +63087,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 994,
-   "rows_with_cells": 980,
+   "rows_total": 998,
+   "rows_with_cells": 984,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -63282,15 +63446,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1517,
+   "cells_total": 1521,
    "cells_by_relation": {
-    "supports": 1510,
+    "supports": 1514,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1510,
+    "documents": 1514,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -63359,7 +63523,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 970,
+    "draft": 974,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -63369,26 +63533,26 @@
    },
    "by_stage": {
     "checked": 3,
-    "created": 959,
+    "created": 963,
     "explained": 8
    },
    "no_stage_recorded": 24,
    "by_population": {
-    "bundle": 971,
+    "bundle": 975,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 985,
-   "total": 994,
+   "covered": 989,
+   "total": 998,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 971,
-     "total": 971
+     "covered": 975,
+     "total": 975
     }
    },
    "gap_claims": [
@@ -63405,8 +63569,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 994,
-   "total": 994
+   "without_state": 998,
+   "total": 998
   },
   "unresolved": {
    "sign_mentions": [
@@ -64892,7 +65056,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "settling-20261116T034814Z-3681c4",
+      "record": "settling-20261120T184448Z-337450",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -64906,7 +65070,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "settling-20261116T034819Z-8203db",
+      "record": "settling-20261120T184451Z-658fe3",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -160974,6 +161138,346 @@
     },
     "sign_records": []
    }
+  },
+  "096-eteocypriot-program/C096-4": {
+   "id": "096-eteocypriot-program/C096-4",
+   "statement": "The study reports its own thinness honestly. Every outcome of the pilot is stated with its precision basis (Standards Part II), and any leg below its registered floor is recorded TOO THIN, including closures at freeze under floors that cannot be instantiated against the frozen census. This does not establish: that any outcome so reported is substantively correct; the claim governs the study's reporting, not its results.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "A result is reported without its precision basis, or a below-floor leg is scored as a result."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C096-4",
+     "document_id": null,
+     "path": "specs/096-eteocypriot-program/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b1313ba2f84cb1ce0093f5c45a6bccbd0c226fba6f3b2becf6d59273e819cbcb",
+     "spec": "096-eteocypriot-program"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "096-eteocypriot-program/C096-4",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "096-eteocypriot-program/C096-4",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C096-4",
+     "document_id": null,
+     "path": "specs/096-eteocypriot-program/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b1313ba2f84cb1ce0093f5c45a6bccbd0c226fba6f3b2becf6d59273e819cbcb",
+     "spec": "096-eteocypriot-program"
+    },
+    "sign_records": []
+   }
+  },
+  "096-eteocypriot-program/C096-1": {
+   "id": "096-eteocypriot-program/C096-1",
+   "statement": "The alignment procedure is validated by known answers. Under the registered alignment assumptions (A1 strict segment-parallel; A2 name-anchored free alignment), the frozen alignment procedure recovers the bilingual name correspondences of the development set (preregistration P1: both ICS 196 correspondences and at least one Androkles correspondence, at segment level, with no name information supplied to the procedure beyond the Greek texts themselves). This does not establish: that any Eteocypriot word is understood; E1 tests the procedure against Greek-side ground truth only.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "P1 fails under both A1 and A2 — the procedure is not validated, and E2 does not run."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C096-1",
+     "document_id": null,
+     "path": "specs/096-eteocypriot-program/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b1313ba2f84cb1ce0093f5c45a6bccbd0c226fba6f3b2becf6d59273e819cbcb",
+     "spec": "096-eteocypriot-program"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "096-eteocypriot-program/C096-1",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "096-eteocypriot-program/C096-1",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C096-1",
+     "document_id": null,
+     "path": "specs/096-eteocypriot-program/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b1313ba2f84cb1ce0093f5c45a6bccbd0c226fba6f3b2becf6d59273e819cbcb",
+     "spec": "096-eteocypriot-program"
+    },
+    "sign_records": []
+   }
+  },
+  "096-eteocypriot-program/C096-3": {
+   "id": "096-eteocypriot-program/C096-3",
+   "statement": "Surviving candidates are identifiable or are reported as not. Every E2 survivor's standing is set by its E3 rival-construction record (P3): a survivor with an equally consistent incompatible rival is recorded NOT IDENTIFIABLE, whatever its E2 score, and no survivor is scored SUPPORTED without a completed rival-construction record. This does not establish: that a NOT IDENTIFIABLE candidate is false (Standards Part III, rule 5).",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "A survivor is scored SUPPORTED with no rival-construction record, or with an equally consistent rival unrecorded as NOT IDENTIFIABLE."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C096-3",
+     "document_id": null,
+     "path": "specs/096-eteocypriot-program/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b1313ba2f84cb1ce0093f5c45a6bccbd0c226fba6f3b2becf6d59273e819cbcb",
+     "spec": "096-eteocypriot-program"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "096-eteocypriot-program/C096-3",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "096-eteocypriot-program/C096-3",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C096-3",
+     "document_id": null,
+     "path": "specs/096-eteocypriot-program/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b1313ba2f84cb1ce0093f5c45a6bccbd0c226fba6f3b2becf6d59273e819cbcb",
+     "spec": "096-eteocypriot-program"
+    },
+    "sign_records": []
+   }
+  },
+  "096-eteocypriot-program/C096-2": {
+   "id": "096-eteocypriot-program/C096-2",
+   "statement": "At least one development-set candidate predicts held-out material. At least one registered morpheme or recurring-ending candidate, developed only on the development set, meets P2's success side (its registered held-out occurrence floor at its registered positions). This does not establish: that a surviving candidate's proposed meaning is correct — survival is a prediction result; meaning requires E3 and adjudication.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "Every registered candidate is NOT SUPPORTED or TOO THIN at scoring."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C096-2",
+     "document_id": null,
+     "path": "specs/096-eteocypriot-program/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b1313ba2f84cb1ce0093f5c45a6bccbd0c226fba6f3b2becf6d59273e819cbcb",
+     "spec": "096-eteocypriot-program"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "096-eteocypriot-program/C096-2",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "096-eteocypriot-program/C096-2",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C096-2",
+     "document_id": null,
+     "path": "specs/096-eteocypriot-program/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "b1313ba2f84cb1ce0093f5c45a6bccbd0c226fba6f3b2becf6d59273e819cbcb",
+     "spec": "096-eteocypriot-program"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -160981,7 +161485,7 @@
   "semantics": "glossa-settle-1",
   "assignment_sets": {
    "record": "glossa-indus/ledger/assignment-sets.json",
-   "sha256": "aa4e47abd1c53e3362d592239ef1b539d05cd35fe68c233962175d022ea19f1c",
+   "sha256": "9f9a949300fe3c482d87aaac05e4b8227a31baa4189d9750fc7f076b0f0e4501",
    "register": {
     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
@@ -161025,15 +161529,15 @@
   },
   "runs": [
    {
-    "record": "settling-20261116T034814Z-3681c4",
+    "record": "settling-20261120T184448Z-337450",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
-      "lines": 1025
+      "sha256": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
+      "lines": 1029
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -161084,15 +161588,15 @@
     }
    },
    {
-    "record": "settling-20261116T034819Z-8203db",
+    "record": "settling-20261120T184451Z-658fe3",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
-      "lines": 1025
+      "sha256": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
+      "lines": 1029
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -161147,7 +161651,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "3bfc0c521a9fbd7852a9864403cc87e127d72454102d982ab4ec88bf01d310cc",
+   "sha256": "e8e4f991787be96f9c643878d99763bef67de8b660cd1e2aa4c986f78717a6ee",
    "result": {
     "claims_compared": [
      {
@@ -161395,7 +161899,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "28c9a6f128a4fc48889ac1e6c777b919f3c6154179c3eabb84709480d66fefa5",
+   "sha256": "5d43f6d06b4b1531cf6829fd98df2b88974f551e18f8df3cc6c5d7935371175c",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -161730,8 +162234,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 994,
-   "claims_untouched_by_any_run": 993,
+   "claims_total": 998,
+   "claims_untouched_by_any_run": 997,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

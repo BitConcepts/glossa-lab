@@ -1,0 +1,164 @@
+[
+ {
+  "form": "soreyi",
+  "dev_occurrences": 137,
+  "route": "theonym_context_BD",
+  "candidate_reading": "cult or offering term (theonym-adjacent)",
+  "funerary_share": 1.0,
+  "final_share": 0.044,
+  "initial_share": 0.007,
+  "numeral_adjacency": 0.0,
+  "filiation_adjacency": 0.0,
+  "identifiability": {
+   "min_count_met": true,
+   "discriminating_dimension": "stratum and position profile vs proper-name rival (name-slot/filiation behaviour) and vs grammatical-formative rival (cross-stratum uniformity)",
+   "name_rival_survives": false,
+   "verdict": "IDENTIFIABLE (provisional, for blind test)"
+  },
+  "frozen_prediction": {
+   "expected_strata": [
+    "funerary"
+   ],
+   "funerary_share_range": [
+    0.75,
+    1.0
+   ],
+   "min_heldout_texts": 3
+  }
+ },
+ {
+  "form": "asoreyi",
+  "dev_occurrences": 23,
+  "route": "theonym_context_BD",
+  "candidate_reading": "cult or offering term (theonym-adjacent)",
+  "funerary_share": 1.0,
+  "final_share": 0.087,
+  "initial_share": 0.043,
+  "numeral_adjacency": 0.0,
+  "filiation_adjacency": 0.0,
+  "identifiability": {
+   "min_count_met": true,
+   "discriminating_dimension": "stratum and position profile vs proper-name rival (name-slot/filiation behaviour) and vs grammatical-formative rival (cross-stratum uniformity)",
+   "name_rival_survives": false,
+   "verdict": "IDENTIFIABLE (provisional, for blind test)"
+  },
+  "frozen_prediction": {
+   "expected_strata": [
+    "funerary"
+   ],
+   "funerary_share_range": [
+    0.75,
+    1.0
+   ],
+   "min_heldout_texts": 3
+  }
+ },
+ {
+  "form": "xolkete",
+  "dev_occurrences": 23,
+  "route": "formula_slot_B",
+  "candidate_reading": "closing evaluative term of the funerary formula",
+  "funerary_share": 1.0,
+  "final_share": 0.696,
+  "initial_share": 0.043,
+  "numeral_adjacency": 0.0,
+  "filiation_adjacency": 0.0,
+  "identifiability": {
+   "min_count_met": true,
+   "discriminating_dimension": "stratum and position profile vs proper-name rival (name-slot/filiation behaviour) and vs grammatical-formative rival (cross-stratum uniformity)",
+   "name_rival_survives": false,
+   "verdict": "IDENTIFIABLE (provisional, for blind test)"
+  },
+  "frozen_prediction": {
+   "expected_strata": [
+    "funerary"
+   ],
+   "funerary_share_range": [
+    0.75,
+    1.0
+   ],
+   "min_heldout_texts": 3
+  }
+ },
+ {
+  "form": "pxolkete",
+  "dev_occurrences": 20,
+  "route": "theonym_context_BD",
+  "candidate_reading": "cult or offering term (theonym-adjacent)",
+  "funerary_share": 1.0,
+  "final_share": 0.4,
+  "initial_share": 0.0,
+  "numeral_adjacency": 0.0,
+  "filiation_adjacency": 0.0,
+  "identifiability": {
+   "min_count_met": true,
+   "discriminating_dimension": "stratum and position profile vs proper-name rival (name-slot/filiation behaviour) and vs grammatical-formative rival (cross-stratum uniformity)",
+   "name_rival_survives": false,
+   "verdict": "IDENTIFIABLE (provisional, for blind test)"
+  },
+  "frozen_prediction": {
+   "expected_strata": [
+    "funerary"
+   ],
+   "funerary_share_range": [
+    0.75,
+    1.0
+   ],
+   "min_heldout_texts": 3
+  }
+ },
+ {
+  "form": "xolkte",
+  "dev_occurrences": 16,
+  "route": "formula_slot_B",
+  "candidate_reading": "closing evaluative term of the funerary formula",
+  "funerary_share": 1.0,
+  "final_share": 0.625,
+  "initial_share": 0.0,
+  "numeral_adjacency": 0.0,
+  "filiation_adjacency": 0.0,
+  "identifiability": {
+   "min_count_met": true,
+   "discriminating_dimension": "stratum and position profile vs proper-name rival (name-slot/filiation behaviour) and vs grammatical-formative rival (cross-stratum uniformity)",
+   "name_rival_survives": false,
+   "verdict": "IDENTIFIABLE (provisional, for blind test)"
+  },
+  "frozen_prediction": {
+   "expected_strata": [
+    "funerary"
+   ],
+   "funerary_share_range": [
+    0.75,
+    1.0
+   ],
+   "min_heldout_texts": 3
+  }
+ },
+ {
+  "form": "wisi",
+  "dev_occurrences": 10,
+  "route": "formula_slot_B",
+  "candidate_reading": "invocation element of the funerary formula",
+  "funerary_share": 1.0,
+  "final_share": 0.0,
+  "initial_share": 0.9,
+  "numeral_adjacency": 0.0,
+  "filiation_adjacency": 0.0,
+  "identifiability": {
+   "min_count_met": true,
+   "discriminating_dimension": "stratum and position profile vs proper-name rival (name-slot/filiation behaviour) and vs grammatical-formative rival (cross-stratum uniformity)",
+   "name_rival_survives": false,
+   "verdict": "IDENTIFIABLE (provisional, for blind test)"
+  },
+  "frozen_prediction": {
+   "expected_strata": [
+    "funerary"
+   ],
+   "funerary_share_range": [
+    0.75,
+    1.0
+   ],
+   "min_heldout_texts": 3
+  }
+ }
+]

@@ -1,0 +1,127 @@
+{
+ "run": "eteocypriot-e1",
+ "date": "2026-11-20",
+ "program": "Spec 096 - Eteocypriot Program",
+ "freeze": "records/freeze-record-2026-11-20.md",
+ "corpus_file_sha256_verified": "5077285e8eac4b21785ca29cb151d47407f780998d85fa1eea27ef9d7e04f2dd",
+ "development_pins": {
+  "ICS196": "959c2796c3ef1dabc509db38488cfc0efa209a36c2fe4d6233baef8abe0d65d0",
+  "ANDROKLES-A": "fca9630563718d0f9f55cbbeb8c2ecca88737766e1f3c16077ee2c459d0744e4",
+  "ANDROKLES-B": "1c8d2cb98afefa42a7dc5a670b386d4e84b5f9270bb940eb969c384603e271fb"
+ },
+ "held_out_records_loaded": 0,
+ "ics196_segments": [
+  "a-na",
+  "ma-to-ri",
+  "u-mi-e-sa-i",
+  "mu-ku-la-i",
+  "la-sa-na",
+  "a-ri-si-to-no-se",
+  "a-ra-to-wa-na-ka-so-ko-o-se",
+  "ke-ra-ke-re-tu-lo-se",
+  "ta-ka-na-?-?-so-ti",
+  "a-lo",
+  "ka-i-li-po-ti"
+ ],
+ "greek_words": [
+  "Ἡ",
+  "πόλις",
+  "ἡ",
+  "Ἀμαθουσίων",
+  "Ἀρίστωνα",
+  "Ἀριστώνακτος",
+  "εὐπατρίδην"
+ ],
+ "ground_truth": [
+  {
+   "greek_word": "Ἀρίστωνα",
+   "greek_word_index": 5,
+   "segment_index": 6
+  },
+  {
+   "greek_word": "Ἀριστώνακτος",
+   "greek_word_index": 6,
+   "segment_index": 7
+  }
+ ],
+ "legs": {
+  "ics196": {
+   "names": [
+    {
+     "greek_word": "Ἀρίστωνα",
+     "greek_word_index": 5,
+     "derived_spelling": "a-ri-si-to-na",
+     "lccs_by_segment": [
+      1,
+      1,
+      0,
+      0,
+      1,
+      4,
+      1,
+      0,
+      1,
+      1,
+      0
+     ],
+     "ground_truth_segment": 6,
+     "A1_partner_segment": 5,
+     "A1_recovered": false,
+     "A2_partner_segment": 6,
+     "A2_lccs": 4,
+     "A2_recovered": true
+    },
+    {
+     "greek_word": "Ἀριστώνακτος",
+     "greek_word_index": 6,
+     "derived_spelling": "a-ri-si-to-na-ka-to-so",
+     "lccs_by_segment": [
+      1,
+      1,
+      0,
+      0,
+      1,
+      4,
+      2,
+      0,
+      1,
+      1,
+      1
+     ],
+     "ground_truth_segment": 7,
+     "A1_partner_segment": 6,
+     "A1_recovered": false,
+     "A2_partner_segment": 6,
+     "A2_lccs": 4,
+     "A2_recovered": false
+    }
+   ],
+   "A1_recovered_count": 0,
+   "A2_recovered_count": 1,
+   "names_total": 2,
+   "both_recovered_under_at_least_one_assumption": false
+  },
+  "androkles": {
+   "names": [
+    {
+     "inscription": "ANDROKLES-A",
+     "eteocypriot_segments_held": 0,
+     "administrable": false
+    },
+    {
+     "inscription": "ANDROKLES-B",
+     "eteocypriot_segments_held": 0,
+     "administrable": false
+    }
+   ],
+   "administrable": false,
+   "floor_F_E1b": "NOT MET (freeze section 6); leg TOO THIN at freeze"
+  }
+ },
+ "P1": {
+  "ics196_leg_passes": false,
+  "androkles_leg_passes": false,
+  "P1_passes_as_registered": false,
+  "basis": "P1 requires both ICS 196 correspondences and at least one Androkles correspondence recovered under at least one assumption; the Androkles leg is TOO THIN at freeze (F-E1b) and the ICS 196 leg is scored above."
+ }
+}

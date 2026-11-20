@@ -78,7 +78,7 @@ def test_indus_claims_census_unchanged():
     assert len(claims) == 998
     assert len(rows) - len(claims) == 31
     # Falsifier coverage: 989 of 998; the 9 without are GR-088-21.
-    assert sum(1 for r in claims if r.get("falsifier")) == 985
+    assert sum(1 for r in claims if r.get("falsifier")) == 989
     # Claim -> Sign linkage: exactly one claim carries sign_refs
     # (3 references) — the GR-088-07 gap, stated in the mapping.
     with_refs = [r for r in claims if r.get("sign_refs")]

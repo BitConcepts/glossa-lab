@@ -71,3 +71,22 @@ registration steps are re-applied cleanly on top of whatever has
 landed; nothing is force-pushed; a conflict that cannot be
 resolved without dropping the other program's entries holds the
 pull request and is reported, never resolved by deletion.
+
+## Stage 4 — the decipherment campaign (added 2026-11-20)
+
+The owner's direction of 2026-11-20 makes decipherment the
+program's aim, with the benchmark as its foundation. Stage 4 is
+preregistered in full (records/decipherment-campaign-design-2026-11-20.md)
+before execution: corpus completion against the REM totals with
+every gap named; the anchor inventory frozen with evidence
+classes; the affiliation question adjudicated between the
+registered rivals R1 (Northern East Sudanic), R2 (Afroasiatic)
+and R3 (isolate/null) by tests with permutation baselines, never
+assumed; candidate readings generated only from licensed routes
+and scored only after the identifiability protocol, with
+SUPPORTED reserved for readings that also pass the blind
+held-out test on sealed inscriptions; and an expert-verification
+stage prepared as a design for the owner's approval, with no
+outreach under any earlier stage. Each stage lands as its own
+pull request under the same discipline as Stages 0–3, on
+tower-compute.

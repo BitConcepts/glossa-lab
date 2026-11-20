@@ -1,0 +1,124 @@
+{
+  "claims": [
+    {
+      "boundary": [],
+      "conflicts_with": [],
+      "depends_on": [],
+      "evidence": [
+        {
+          "description": "The campaign design's corpus-completion section (records/decipherment-campaign-design-2026-11-20.md section 2) and the REM totals it cites from Rilly 2016 (UCLA Encyclopedia of Egyptology).",
+          "direction": "supports",
+          "kind": "asserted",
+          "ref": "spec.md",
+          "source_quality": "unknown"
+        }
+      ],
+      "falsification_tests": [
+        "An openly licensed Meroitic source, named in the completion record's own search account, that the corpus neither acquired nor gap-named with cause; or a corpus text whose provenance entry lacks a source or a license state."
+      ],
+      "id": "C097-7",
+      "kind": "requirement",
+      "source_ref": "spec.md",
+      "stage": "created",
+      "status": "draft",
+      "text": "Corpus completion is exhaustive over lawful sources and names every gap: the campaign's corpus stage consolidates everything lawfully held into one canonical build with a per-text provenance register, acquires every further openly licensed machine-readable Meroitic source (pinned and license-recorded as step 0 was), and names every remaining gap against the REM totals (some 1,300 published texts; roughly 900 further known texts unpublished in the REM); no purchase and no outreach is made to close a gap.",
+      "uncertainty": "insufficient_evidence"
+    },
+    {
+      "boundary": [],
+      "conflicts_with": [],
+      "depends_on": [],
+      "evidence": [
+        {
+          "description": "The campaign design's anchor-inventory section (section 3): five evidence classes with the use each licenses.",
+          "direction": "supports",
+          "kind": "asserted",
+          "ref": "spec.md",
+          "source_quality": "unknown"
+        }
+      ],
+      "falsification_tests": [
+        "A scored candidate whose cited anchor is absent from the freeze in force at its scoring; or a frozen anchor with no evidence class or no source."
+      ],
+      "id": "C097-8",
+      "kind": "requirement",
+      "source_ref": "spec.md",
+      "stage": "created",
+      "status": "draft",
+      "text": "Every anchor in the frozen inventory carries its evidence class, and readings cite only frozen anchors: the anchor inventory is frozen as a versioned record; each anchor states its form, proposed reading, evidence class (A name correspondences, B formula structure, C numerals, D Egyptian loanwords and titles, E contextually pinned common words), source, and the use the class licenses; a candidate reading depending on an unfrozen anchor is out of scope until a new freeze version admits it.",
+      "uncertainty": "insufficient_evidence"
+    },
+    {
+      "boundary": [],
+      "conflicts_with": [],
+      "depends_on": [],
+      "evidence": [
+        {
+          "description": "The campaign design's affiliation section (section 4): rivals R1/R2/R3 with registered tests and falsifiers.",
+          "direction": "supports",
+          "kind": "asserted",
+          "ref": "spec.md",
+          "source_quality": "unknown"
+        }
+      ],
+      "falsification_tests": [
+        "A candidate generated from a family's comparative material before that family's rival passed its registered tests; or an affiliation verdict recorded without its tests' outputs."
+      ],
+      "id": "C097-9",
+      "kind": "requirement",
+      "source_ref": "spec.md",
+      "stage": "created",
+      "status": "draft",
+      "text": "Affiliation is adjudicated between registered rivals, never assumed: the affiliation question is carried as R1 Northern East Sudanic (Rilly), R2 Afroasiatic (Rowan; Lipinski), and R3 the isolate/null rival, each with the registered tests and falsifiers of the campaign design (correspondence and formative regularity against permutation baselines for R1; the phonotactic restriction and vocabulary tests for R2; R3 supported exactly when both fail); comparative candidate generation draws only on the family an adjudicated verdict licenses.",
+      "uncertainty": "insufficient_evidence"
+    },
+    {
+      "boundary": [],
+      "conflicts_with": [],
+      "depends_on": [],
+      "evidence": [
+        {
+          "description": "The campaign design's candidate-reading section (section 5): the identifiability protocol and the sealed held-out test.",
+          "direction": "supports",
+          "kind": "asserted",
+          "ref": "spec.md",
+          "source_quality": "unknown"
+        }
+      ],
+      "falsification_tests": [
+        "A SUPPORTED score whose record lacks the identifiability showing or the held-out result; or a held-out set opened before its readings were frozen."
+      ],
+      "id": "C097-10",
+      "kind": "requirement",
+      "source_ref": "spec.md",
+      "stage": "created",
+      "status": "draft",
+      "text": "No reading is scored SUPPORTED without the identifiability protocol and the blind held-out test: a candidate reading is scored only after (1) its predictions are shown to differ from every named rival's on an observable dimension, (2) the discriminating observations occur in the corpus at the registered minimum count, and (3) no equally simple rival survives; failing any leg, the candidate is recorded NOT IDENTIFIABLE. SUPPORTED additionally requires the reading, frozen in writing on the development set, to pass its registered predictions on the sealed held-out inscriptions, opened once.",
+      "uncertainty": "insufficient_evidence"
+    },
+    {
+      "boundary": [],
+      "conflicts_with": [],
+      "depends_on": [],
+      "evidence": [
+        {
+          "description": "The campaign design's expert-verification section (section 6): design only, owner-gated, no outreach.",
+          "direction": "supports",
+          "kind": "asserted",
+          "ref": "spec.md",
+          "source_quality": "unknown"
+        }
+      ],
+      "falsification_tests": [
+        "Any external contact made in the campaign's name before the owner's approval of the verification package; or a record that treats a specialist's silence as assent."
+      ],
+      "id": "C097-11",
+      "kind": "requirement",
+      "source_ref": "spec.md",
+      "stage": "created",
+      "status": "draft",
+      "text": "Expert verification is designed and owner-gated, never improvised: the expert-verification stage is prepared as a design (panel drawn from the REM and Sudanese-epigraphy specialist community; frozen records as the review material; per-item confirm / challenge-with-cause / no-position instrument; silence recorded as silence) and executes only on the owner's separate approval; no outreach of any kind is made under the campaign's earlier stages.",
+      "uncertainty": "insufficient_evidence"
+    }
+  ]
+}

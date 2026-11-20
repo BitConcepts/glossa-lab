@@ -867,7 +867,7 @@ def test_map_legs_live_and_pass_on_a_clean_map_tree(map_scratch):
     assert v6.status == "PASS"
     assert "287 register records, 94 of them strict" in "\n".join(v6.evidence)
     v4 = _check(report, "V4 relation-carrying citations")
-    assert "map edge census: supports 1510, opposes 7, constrains 0" in (
+    assert "map edge census: supports 1514, opposes 7, constrains 0" in (
         "\n".join(v4.evidence)
     )
 
@@ -1109,7 +1109,7 @@ def test_v10_legs_live_and_pass_on_a_program_map_tree(pm_scratch):
     assert all(c.status == "PASS" for c in checks)
     census = "\n".join(checks[1].evidence)
     assert "998 claim nodes" in census
-    assert "96 study nodes" in census
+    assert "97 study nodes" in census
     finds_evidence = "\n".join(checks[2].evidence)
     assert "bundle_less_study 28" in finds_evidence
     assert "restricted_node 1" in finds_evidence

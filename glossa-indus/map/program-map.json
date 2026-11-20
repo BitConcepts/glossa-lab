@@ -4,14 +4,14 @@
    "by_class": {
     "closed_other": 1,
     "negative": 6,
-    "open": 985,
+    "open": 989,
     "positive": 2
    },
    "by_population": {
-    "bundle": 971,
+    "bundle": 975,
     "extracted": 23
    },
-   "total": 994
+   "total": 998
   },
   "domains": {
    "Anchors & readings": {
@@ -69,19 +69,19 @@
     }
    },
    "Program infrastructure": {
-    "claims": 254,
+    "claims": 258,
     "claims_by_class": {
      "closed_other": 1,
      "negative": 0,
-     "open": 253,
+     "open": 257,
      "positive": 0
     },
     "restricted_studies": 0,
-    "studies": 23,
+    "studies": 24,
     "studies_by_class": {
      "closed_other": 0,
      "negative": 0,
-     "open": 17,
+     "open": 18,
      "positive": 0,
      "unjudged": 6
     }
@@ -117,8 +117,8 @@
     "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
     "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001"
    ],
-   "present": 985,
-   "total": 994
+   "present": 989,
+   "total": 998
   },
   "judgment_call_studies": [],
   "multi_spec_claims": [
@@ -171,12 +171,12 @@
    "by_class": {
     "closed_other": 0,
     "negative": 0,
-    "open": 67,
+    "open": 68,
     "positive": 0,
     "unjudged": 28
    },
    "restricted": 1,
-   "total": 96
+   "total": 97
   },
   "unjudged_studies": [
    "001-glossa-lab-baseline",
@@ -13808,6 +13808,62 @@
    },
    {
     "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "096-eteocypriot-program/C096-1",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "096-eteocypriot-program",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "096-eteocypriot-program/C096-2",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "096-eteocypriot-program",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "096-eteocypriot-program/C096-3",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "096-eteocypriot-program",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Program infrastructure",
+    "falsifier_present": true,
+    "id": "096-eteocypriot-program/C096-4",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "096-eteocypriot-program",
+    "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
     "document": "ancient_writing_and_modern_technologies_51831ac9",
     "domain": "Claim families by study line",
     "falsifier_present": false,
@@ -15658,14 +15714,30 @@
     },
     "restricted": false,
     "subdomain": "Governance, lifecycle & generated layers"
+   },
+   {
+    "class": "open",
+    "domain": "Program infrastructure",
+    "id": "096-eteocypriot-program",
+    "judgment_call": false,
+    "kind": "study",
+    "member_counts": {
+     "closed_other": 0,
+     "negative": 0,
+     "open": 4,
+     "positive": 0,
+     "total": 4
+    },
+    "restricted": false,
+    "subdomain": "Governance, lifecycle & generated layers"
    }
   ]
  },
  "stamp": {
-  "ledger_latest_entry_date": "2026-11-15",
-  "ledger_lines": 1025,
+  "ledger_latest_entry_date": "2026-11-20",
+  "ledger_lines": 1029,
   "ledger_schema": "ledger-schema v1",
-  "ledger_sha256": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
+  "ledger_sha256": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
   "program_map_defs": "program-map-defs v1",
   "program_map_taxonomy": "program-map-taxonomy v1"
  },

@@ -3,9 +3,9 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl",
  "generated_by": "tools/ledger/generate_matrix.py (backend/glossa_lab/matrix_generate.py)",
  "as_of": {
-  "ledger_sha256": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
-  "ledger_lines": 1025,
-  "ledger_date": "2026-11-15",
+  "ledger_sha256": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
+  "ledger_lines": 1029,
+  "ledger_date": "2026-11-20",
   "ledger_schema": "ledger-schema v1",
   "matrix_defs": "matrix-defs v1"
  },
@@ -5970,6 +5970,30 @@
   },
   {
    "id": "095-red-team-remediation/C095-7",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "096-eteocypriot-program/C096-4",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "096-eteocypriot-program/C096-1",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "096-eteocypriot-program/C096-3",
+   "population": "bundle",
+   "status": "draft",
+   "stage": "created"
+  },
+  {
+   "id": "096-eteocypriot-program/C096-2",
    "population": "bundle",
    "status": "draft",
    "stage": "created"
@@ -25077,6 +25101,50 @@
    ]
   },
   {
+   "row": "096-eteocypriot-program/C096-1",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "096-eteocypriot-program/C096-1",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "096-eteocypriot-program/C096-2",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "096-eteocypriot-program/C096-2",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "096-eteocypriot-program/C096-3",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "096-eteocypriot-program/C096-3",
+    "spec.md"
+   ]
+  },
+  {
+   "row": "096-eteocypriot-program/C096-4",
+   "column": "spec.md",
+   "column_class": "documents",
+   "relation": "supports",
+   "rule": "R2",
+   "citations": [
+    "096-eteocypriot-program/C096-4",
+    "spec.md"
+   ]
+  },
+  {
    "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "column": "055",
    "column_class": "studies",
@@ -25244,8 +25312,8 @@
   }
  ],
  "coverage": {
-  "rows_total": 994,
-  "rows_with_cells": 980,
+  "rows_total": 998,
+  "rows_with_cells": 984,
   "empty_rows": [
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
    "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -25603,30 +25671,30 @@
    ],
    "corpus_texts": []
   },
-  "cells_total": 1517,
+  "cells_total": 1521,
   "cells_by_relation": {
-   "supports": 1510,
+   "supports": 1514,
    "opposes": 7,
    "constrains": 0
   },
   "cells_by_class": {
    "studies": 7,
-   "documents": 1510,
+   "documents": 1514,
    "research_checks": 0,
    "anchors": 0,
    "corpus_texts": 0
   },
   "falsifier_coverage": {
-   "covered": 985,
-   "total": 994,
+   "covered": 989,
+   "total": 998,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 971,
-     "total": 971
+     "covered": 975,
+     "total": 975
     }
    }
   },

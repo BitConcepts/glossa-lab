@@ -14262,3 +14262,43 @@ after Spec 094's build stages in the adopted queue.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-20 - Spec 096 adopted: Eteocypriot program, claims intake discharged in the adoption PR
+
+Spec 096 (the Eteocypriot program) is adopted. The owner
+directed on 2026-11-20 that the Eteocypriot work stand as its
+own program, founded on the Spec 095 Stage 5 scoping record of
+2026-11-17, which stands unedited as provenance. The package
+carries claims C096-1..C096-4, re-expressing the
+preregistration draft's EC-D1..EC-D4 with the same falsifiers
+and bounds, under decisions D-096-1..D-096-5.
+
+C096-1..C096-4 were appended through the importer (4 appended,
+0 already canonical), the settling chain was refreshed in the
+standing order (verify-canonicals 6/6 before any pin moved; the
+T405 pair re-executed as settling-20261120T184448Z-337450 and
+settling-20261120T184451Z-658fe3 with result blocks byte-equal
+to the superseded generations; the superseded pair departed
+under the D-D rule, accounted by run-defs v3 departure acts),
+and the generated layers were regenerated in dependency order.
+The ledger stands at 1,029 lines (from 1,025), 998 program
+claims (from 994), SHA-256
+`09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53`
+(from `b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100`).
+
+Every census pin in the test suites was re-set from the
+regenerated artifacts' actuals. The ledger gate on the final
+tree reads in both modes: full
+mode 29 PASS / 0 FAIL / 1 NOT-RUN; --regen 32 PASS / 0 FAIL /
+0 NOT-RUN. The program also stands in the live platform: the
+project `eteocypriot_program` was created through the project
+API and read back, the Indus project untouched and still
+active; the platform's claim surfaces and spec register reflect
+the program when the serving checkout is next updated to the
+merged main, and the corpus catalogue carries no Eteocypriot
+entry and no create route, both recorded in the adoption
+record. All execution ran on the mini-server under the owner's
+standing execution-home rule.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

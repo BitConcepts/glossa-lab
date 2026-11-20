@@ -1,0 +1,148 @@
+{
+ "claims": [
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The founding scoping's step-0 gate (specs/095-red-team-remediation/second-targets/meroitic-benchmark-scoping-2026-11-17.md section 2) and this spec's Stage 1 task T101.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "A benchmark result dated before the step-0 identity record; a corpus file, authors' embedding, or authors' code file found in this repository's tree or history; or an identity record whose pin does not resolve to the commit the computations used."
+   ],
+   "id": "C096-1",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Nothing computes before the corpus is pinned and its licensing is on the record: no benchmark computation runs before the paper's corpus repository is pinned by exact commit, its license (or its absence) is recorded, and a C095-3-style identity record for the pinned corpus is filed under this spec; the corpus is held in custody and is never committed to this repository or redistributed, and only the program's own code and derived aggregate statistics are published. This does not establish: that the corpus is the one the paper's authors used for every count; only that the benchmark's inputs are exactly the pinned ones, named.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The founding scoping's Leg A criteria and the paper's Table 1, Table 2 and section 5.3 counts, fixed before execution.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "A published count for which the outcome record shows neither an exact reproduction nor a named, traced cause; or a counting basis in the outcome record that is absent from the execution freeze."
+   ],
+   "id": "C096-2",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Leg A reproduces the published census or names each divergence's cause: each of the ten published counts (Table 1: 193, 897, 302, 708; section 5.3: 871, 1,729, 99,338, 1,868, 17,257, 782,761) and each Table 2 dictionary size (26, 18, 15, 14, 9, 6, 3) is either reproduced exactly from the pinned corpus under a counting basis stated before the count was taken, or reported as diverged with the traced cause (counting basis, repository state, or material never published) named on the record. This does not establish: that a reproduced count validates the paper's downstream claims; a census match is a statement about the corpus and the counting, not about decipherment.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The fixture module backend/glossa_lab/data/meroitic.py (19 signs, ME rank order, E-for-/o/ convention) and the founding scoping's Leg B criteria.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "The outcome record reports criterion (i) met while an attested sign outside the reconciled 19 goes unnamed; reports the rho without its computation basis; or lacks the archived positional distributions."
+   ],
+   "id": "C096-3",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Leg B tests the fixture's sign inventory against the published corpus: the corpus's attested sign set is compared against the fixture's 19 signs after explicit reconciliation of the paper's E-for-/o/ convention (and a dotted-variant fold stated in the freeze); computed frequency ranks are compared against the fixture's ME rank order at the fixed Spearman rho 0.90 bar; and positional (initial/medial/final) distributions are computed and archived either way. This does not establish: that a mismatch impeaches the fixture's use as an inventory for other purposes; the leg measures the fixture's stated frequency-rank convention against this corpus, and a divergence is a finding about that convention's fit to the 2025 corpus, not about Meroitic sign values, which are not in question.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The paper's sections 6 and 6.2 headlines and the founding scoping's Leg C criteria, fixed before execution.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "A headline reported outside its band without the leg being reported as not reproduced; a run index with a gap against the frozen settings grid; or a seeded (training) dictionary scored as unseen."
+   ],
+   "id": "C096-4",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "Leg C reproduces the alignment headlines in their fixed bands, with attempts accounted: under the paper's hyperparameters and the freeze's two arms, unseen-dictionary precision at 10 equals 0 percent, training-dictionary accuracy sits in the at-most-25 percent band, and the numerals dictionary is best or tied at 100 dimensions; every alignment attempt, including failures, appears in the run index. This does not establish: anything about whether Meroitic can be deciphered by alignment; the leg tests whether the paper's published headlines reproduce, and the paper's own reading of its 0 percent unseen result stands as the paper's, not this program's.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "The founding scoping's falsifier (section 4.5 of the scoping; stage-5 scoping record section 3), fixed before execution.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "An outcome record whose verdict does not follow from its own per-count table under the stated rule; or a verdict of NOT REPRODUCED (or REPRODUCED) that the per-leg verdicts do not support."
+   ],
+   "id": "C096-5",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "The falsifier is applied as fixed, not as convenient: the outcome record applies the scoping's falsifier verbatim; if Leg A fails on a majority of its counts with divergences tracing to the published corpus or the paper's stated methods, the premise is falsified and the outcome is NOT REPRODUCED; a step-0 failure gives NOT EXECUTABLE AS SCOPED; otherwise each leg carries its own verdict exactly as its criteria read. This does not establish: a judgment on the paper's scholarship beyond reproducibility; a NOT REPRODUCED outcome under this falsifier is a statement about the published record's completeness for reproduction, stated as such.",
+   "uncertainty": "insufficient_evidence"
+  },
+  {
+   "boundary": [],
+   "conflicts_with": [],
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Claim C095-16's transfer bound, carried into this program unchanged by the owner's 2026-11-20 placement direction.",
+     "direction": "supports",
+     "kind": "asserted",
+     "ref": "spec.md",
+     "source_quality": "unknown"
+    }
+   ],
+   "falsification_tests": [
+    "An Indus record whose text, standing, or count changes citing this benchmark as its basis; or a transfer claim filed under this spec's claim ids."
+   ],
+   "id": "C096-6",
+   "kind": "requirement",
+   "source_ref": "spec.md",
+   "stage": "created",
+   "status": "draft",
+   "text": "No outcome of this benchmark moves any other program record: no verdict, count, or statistic produced under this spec changes any Indus claim, anchor, standing, or fixture of record; the deciphered Meroitic sign values validate no Indus method; and any transfer claim to another script is a separate claim, in that script's own package, with its own falsifier. This does not establish: that transfer is impossible; only that this benchmark does not perform it.",
+   "uncertainty": "insufficient_evidence"
+  }
+ ]
+}

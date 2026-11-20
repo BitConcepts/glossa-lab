@@ -44,18 +44,18 @@
 
 ## Stage 2 — Registered analysis (D-096-3)
 
-- [ ] **T201 — E1 driver and run.** The driver implements the
+- [x] **T201 — E1 driver and run.** The driver implements the
   frozen procedure exactly, verifies the corpus pin
   fail-closed, and files its run record verbatim.
-- [ ] **T202 — E2/E3 as the freeze provides.** E2 only on its
+- [x] **T202 — E2/E3 as the freeze provides.** E2 only on its
   precondition and floor; E3 only for survivors; the held-out
   seal is broken only by the preregistration's own procedure.
 
 ## Stage 3 — Outcome and adjudication package (D-096-3, D-096-5)
 
-- [ ] **T301 — outcome record.** Per-claim verdicts with
+- [x] **T301 — outcome record.** Per-claim verdicts with
   precision basis, read from the run records; sensitivities
   dispositioned.
-- [ ] **T302 — adjudication package preparation.** Prepared
+- [x] **T302 — adjudication package preparation.** Prepared
   for the named human approver if the outcome warrants it; no
   external contact (D-096-5).

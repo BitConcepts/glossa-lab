@@ -233,7 +233,7 @@ def test_sections_census(built) -> None:
     assert rels == {"supports": 1510, "opposes": 7}
     assert len(data["loads"]) == 998
     system = data["system"]
-    assert system["falsifier_census"]["covered"] == 985
+    assert system["falsifier_census"]["covered"] == 989
     assert system["falsifier_census"]["total"] == 998
     assert system["aee_state_census"] == {
         "with_state": 0,
@@ -295,7 +295,7 @@ def test_settling_section_opens_on_the_stored_comparison(built) -> None:
     assert result["per_claim_divergences"] == []
     assert len(settling["canonicals"]["scenarios"]) == 5
     assert settling["reach"]["s_r3"]["status"] == "UNMEASURED"
-    assert settling["reach"]["claims_untouched_by_any_run"] == 993
+    assert settling["reach"]["claims_untouched_by_any_run"] == 997
     assert settling["label"] == mp.SETTLING_LABEL
 
 

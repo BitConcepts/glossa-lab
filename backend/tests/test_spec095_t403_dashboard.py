@@ -79,7 +79,7 @@ def test_falsifier_absent_class_is_exactly_the_gap(client):
         body["falsifier_census"]["gap_claims"]
     )
     present = client.get(f"{BASE}/claims", params={"falsifier": "present"}).json()
-    assert present["total"] == 985
+    assert present["total"] == 989
 
 
 def test_sign_filter_matches_both_record_name_forms(client):

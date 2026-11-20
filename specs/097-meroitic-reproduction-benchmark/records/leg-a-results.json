@@ -1,0 +1,265 @@
+{
+ "counts": {
+  "per_file": {
+   "MilletExamples.txt": {
+    "data_lines": 931,
+    "lines_with_translation": 296,
+    "lines_with_category": 399,
+    "multiword_meroitic": 362,
+    "singleword_meroitic": 569,
+    "distinct_meroitic_fields": 855,
+    "expanded_forms": 966,
+    "distinct_expanded_forms": 877
+   },
+   "RillyExamples.txt": {
+    "data_lines": 23,
+    "lines_with_translation": 13,
+    "lines_with_category": 11,
+    "multiword_meroitic": 11,
+    "singleword_meroitic": 12,
+    "distinct_meroitic_fields": 23,
+    "expanded_forms": 30,
+    "distinct_expanded_forms": 30
+   },
+   "LobbanVocabList.txt": {
+    "data_lines": 195,
+    "lines_with_translation": 175,
+    "lines_with_category": 120,
+    "multiword_meroitic": 3,
+    "singleword_meroitic": 192,
+    "distinct_meroitic_fields": 193,
+    "expanded_forms": 278,
+    "distinct_expanded_forms": 268
+   },
+   "Kalabsha_Millet.txt": {
+    "data_lines": 10,
+    "lines_with_translation": 8,
+    "lines_with_category": 0,
+    "multiword_meroitic": 10,
+    "singleword_meroitic": 0,
+    "distinct_meroitic_fields": 10,
+    "expanded_forms": 10,
+    "distinct_expanded_forms": 10
+   }
+  },
+  "narrative_data_lines": 3,
+  "combos": {
+   "M+R+L data": 1149,
+   "M+R data": 954,
+   "M data": 931,
+   "M+R+L+narr": 1152,
+   "M+R+L+K+narr": 1162,
+   "M+R+L+K": 1159,
+   "M multiword + R multiword": 373,
+   "M+R multiword": 373,
+   "M+R+L multiword": 376,
+   "M+R translated": 309,
+   "M+R+L translated": 484,
+   "M translated": 296,
+   "M distinct fields": 855,
+   "M+R distinct": 878,
+   "M+R+L distinct": 1071
+  },
+  "targets": {
+   "phrases_table1": 897,
+   "phrases_pre_augment": 871
+  },
+  "mero_corpus": {
+   "lines": 18090,
+   "distinct_lines": 17995,
+   "tokens_ws": 756028,
+   "tokens_dot_split": 782750,
+   "tokens_dot_dash_split": 782750,
+   "tokens_fullclean_split": 782750,
+   "types_ws": 1868,
+   "types_dot_split": 1825,
+   "types_dot_dash_split": 1825,
+   "types_fullclean_split": 1819
+  },
+  "dicts": {
+   "nouns": {
+    "file": "nouns_mr-eg.txt",
+    "lines": 26
+   },
+   "names": {
+    "file": "names_mr-eg.txt",
+    "lines": 22
+   },
+   "numbers": {
+    "file": "num_mr-eg.dict",
+    "lines": 15
+   },
+   "verbs": {
+    "file": "verb_mr-eg.txt",
+    "lines": 14
+   },
+   "titularies": {
+    "file": "titularies_mr-eg.dict",
+    "lines": 9
+   },
+   "adj_adv": {
+    "file": "adj_mr-eg.txt",
+    "lines": 6
+   },
+   "prepositions": {
+    "file": "prep_mr-eg.txt",
+    "lines": 3
+   },
+   "combined_file": {
+    "lines": 59,
+    "names_section_if_nums15_nouns26": 18
+   }
+  },
+  "table2_targets": {
+   "nouns": 26,
+   "names": 18,
+   "numbers": 15,
+   "verbs": 14,
+   "titularies": 9,
+   "adj_adv": 6,
+   "prepositions": 3
+  }
+ },
+ "followup": {
+  "union_M_R": 878,
+  "union_M_R_L": 1058,
+  "union_M_R_K": 887,
+  "union_M_R_L_K": 1067,
+  "overlap_R_in_M": 0,
+  "overlap_L_in_MR": 13,
+  "union_expanded_M_R": 907,
+  "union_expanded_M_R_L": 1158,
+  "union_M_R_L_K_narr": 1070,
+  "lines_M_R_L_K_narr_dedup_within": 1084,
+  "names_standalone_pairs": [
+   "SEr\twsjr",
+   "SEri\twsjr",
+   "aSEreyi\twsjr",
+   "aSEri\twsjr",
+   "aSy\tꜣs.t",
+   "adb\ttꜣ",
+   "amni\tjmn",
+   "miym\tmꜥm",
+   "mnEte\tjmn",
+   "mni\tjmn",
+   "mnis\tjmn",
+   "nEbEw\tnḥsy",
+   "nlote\tmꜥm",
+   "shEreyi\twsjr",
+   "wES\tꜣs.t",
+   "wESi\tꜣs.t",
+   "wESs\tꜣs.t",
+   "wESslw\tꜣs.t",
+   "wESte\tꜣs.t",
+   "wEs\tꜣs.t",
+   "woshslw\tꜣs.t",
+   "ws\tꜣs.t"
+  ],
+  "names_combined_pairs": [
+   "SEr\twsjr",
+   "SEreyi\twsjr",
+   "SEri\twsjr",
+   "aSEreyi\twsjr",
+   "aSEri\twsjr",
+   "aSy\tꜣs.t",
+   "adb\ttꜣ",
+   "amni\tjmn",
+   "mnEte\tjmn",
+   "mni\tjmn",
+   "mnis\tjmn",
+   "nEbEw\tnḥsy",
+   "wES\tꜣs.t",
+   "wESi\tꜣs.t",
+   "wESslw\tꜣs.t",
+   "wEStE\tꜣs.t",
+   "wEs\tꜣs.t",
+   "ws\tꜣs.t"
+  ],
+  "names_in_standalone_not_combined": [
+   "miym\tmꜥm",
+   "nlote\tmꜥm",
+   "shEreyi\twsjr",
+   "wESs\tꜣs.t",
+   "wESte\tꜣs.t",
+   "woshslw\tꜣs.t"
+  ],
+  "names_in_combined_not_standalone": [
+   "SEreyi\twsjr",
+   "wEStE\tꜣs.t"
+  ],
+  "tokens_regex_word": 782761,
+  "tokens_dot_split_keep_digits": 782750,
+  "tokens_dot_split_alpha": 774758,
+  "non_dot_punct_in_tokens": {
+   "?": 7,
+   ",": 4,
+   "…": 23,
+   "|": 1
+  },
+  "tokens_containing_dot": 38781,
+  "dot_count_total": 41925,
+  "line_token_len_min": 1,
+  "line_token_len_max": 698,
+  "lines_with_1_token": 3,
+  "lines_with_le5_tokens": 2942
+ },
+ "cleaned_bases": {
+  "basic_MR": 874,
+  "basic_MRK": 882,
+  "basic_MRKN": 885,
+  "basic_M": 851,
+  "basic_MR_lines_not_dedup": 954,
+  "basic_MRK_lines": 964,
+  "basic_MRKN_lines": 967,
+  "strip_MR": 868,
+  "strip_MRK": 876,
+  "strip_MRKN": 879,
+  "strip_M": 845,
+  "strip_MR_lines_not_dedup": 954,
+  "strip_MRK_lines": 964,
+  "strip_MRKN_lines": 967,
+  "join_MR": 861,
+  "join_MRK": 869,
+  "join_MRKN": 872,
+  "join_M": 838,
+  "join_MR_lines_not_dedup": 954,
+  "join_MRK_lines": 964,
+  "join_MRKN_lines": 967
+ },
+ "final_checks": {
+  "types_wordchar_mero_corpus": 1808,
+  "M_lines_with_semicolon": 28,
+  "M_plus_R_minus_semicolon_lines": 921,
+  "M_translated_or_multiword": 501,
+  "MR_translated_or_multiword": 514,
+  "MRL_translated_or_multiword": 689,
+  "M_excl_singleword_notrans": 501,
+  "MR_excl_singleword_notrans": 514,
+  "M_distinct_fields_excl_pure_vocab": 480,
+  "MR_distinct_cleaned_fields": 874,
+  "MRL_distinct_cleaned_fields": 1053,
+  "MR_distinct_cleaned_fields_nospace": 846
+ },
+ "targets": {
+  "A1": 193,
+  "A2": 897,
+  "A3": 302,
+  "A4": 708,
+  "A5": 871,
+  "A6": 1729,
+  "A7": 99338,
+  "A8": 1868,
+  "A9": 17257,
+  "A10": 782761,
+  "table2": {
+   "nouns": 26,
+   "names": 18,
+   "numbers": 15,
+   "verbs": 14,
+   "titularies": 9,
+   "adj_adv": 6,
+   "prepositions": 3
+  }
+ },
+ "venue_note": "computed on the mini-server 2026-11-20; grounding re-run on tower-compute the same day reproduced every value"
+}

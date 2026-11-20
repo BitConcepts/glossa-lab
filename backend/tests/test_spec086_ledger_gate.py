@@ -166,7 +166,7 @@ def test_gate_passes_clean_tree():
         assert any(n.startswith(cls) for n in names), cls
     v4 = _check(report, "V4 relation-carrying")
     assert v4.status == "PASS"
-    assert "1517 matrix cells" in v4.evidence[0]
+    assert "1521 matrix cells" in v4.evidence[0]
 
 
 def test_precondition_names_an_altered_extracted_claims_file(scratch):
@@ -855,12 +855,12 @@ def test_map_legs_live_and_pass_on_a_clean_map_tree(map_scratch):
     assert report.ok, report.render()
     v2 = _check(report, "V2 count equivalence — claims by status: ledger == map header")
     assert v2.status == "PASS"
-    assert "994 claims counted across 8 statuses" in "\n".join(v2.evidence)
+    assert "998 claims counted across 8 statuses" in "\n".join(v2.evidence)
     v5_full = _checks(report, "V5 map recomputation")[1]
     assert v5_full.name.endswith("(map-defs v1 copies)")
     assert v5_full.status == "PASS"
     census = "\n".join(v5_full.evidence)
-    assert "1517 map edges by relation" in census
+    assert "1521 map edges by relation" in census
     assert "UNPROVEN on the live population: corpus_texts" in census
     assert "UNPROVEN on the live population: constrains" in census
     v6 = _check(report, "V6 anchor shares — map header leg")
@@ -1108,7 +1108,7 @@ def test_v10_legs_live_and_pass_on_a_program_map_tree(pm_scratch):
     assert len(checks) == 5
     assert all(c.status == "PASS" for c in checks)
     census = "\n".join(checks[1].evidence)
-    assert "994 claim nodes" in census
+    assert "998 claim nodes" in census
     assert "96 study nodes" in census
     finds_evidence = "\n".join(checks[2].evidence)
     assert "bundle_less_study 28" in finds_evidence

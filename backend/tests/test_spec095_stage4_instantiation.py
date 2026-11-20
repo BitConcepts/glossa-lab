@@ -75,7 +75,7 @@ def test_indus_claims_census_unchanged():
     rows = _ledger_rows()
     claims = [r for r in rows if r.get("kind") == "claim"]
     assert len(rows) == 1025
-    assert len(claims) == 994
+    assert len(claims) == 998
     assert len(rows) - len(claims) == 31
     # Falsifier coverage: 985 of 994; the 9 without are GR-088-21.
     assert sum(1 for r in claims if r.get("falsifier")) == 985
@@ -109,7 +109,7 @@ def test_indus_corpus_registry_unchanged():
 
 def test_indus_matrix_census_unchanged():
     matrix = json.loads((ROOT / "glossa-indus" / "matrix" / "matrix.json").read_text(encoding="utf-8"))
-    assert len(matrix["rows"]) == 994
+    assert len(matrix["rows"]) == 998
     assert len(matrix["columns"]) == 644
 
 

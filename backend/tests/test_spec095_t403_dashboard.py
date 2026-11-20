@@ -37,7 +37,7 @@ def _ledger_claims() -> list[dict]:
 def test_home_census_is_the_records_census(client):
     body = client.get(f"{BASE}/home").json()
     claims = _ledger_claims()
-    assert body["census"]["claims"] == len(claims) == 994
+    assert body["census"]["claims"] == len(claims) == 998
     assert body["census"]["ledger_lines"] == 1025
     assert body["census"]["studies"] == 96
     anchors = json.loads(
@@ -116,7 +116,7 @@ def test_claim_export_is_the_records(client):
 
 def test_matrix_overview_matches_the_map(client):
     body = client.get(f"{BASE}/matrix").json()
-    assert body["rows_total"] == 994
+    assert body["rows_total"] == 998
     assert body["columns_by_class"] == {
         "studies": 10, "documents": 316, "research_checks": 31, "anchors": 287,
     }

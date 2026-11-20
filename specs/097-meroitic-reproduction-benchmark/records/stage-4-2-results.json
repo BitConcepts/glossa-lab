@@ -1,0 +1,189 @@
+{
+ "vocab_R1_attested": {
+  "S": 4,
+  "of_concepts": 12,
+  "p": 0.032596740325967405,
+  "per_concept": {
+   "12": false,
+   "15": false,
+   "16": false,
+   "17": false,
+   "21": true,
+   "46": true,
+   "55": false,
+   "62": false,
+   "70": false,
+   "72": true,
+   "75": true,
+   "97": false
+  },
+  "pass": false
+ },
+ "vocab_R2_afroasiatic": {
+  "S": 1,
+  "of_concepts": 12,
+  "p": 0.824017598240176,
+  "per_concept": {
+   "12": false,
+   "15": false,
+   "16": false,
+   "17": false,
+   "21": false,
+   "46": true,
+   "55": false,
+   "62": false,
+   "70": false,
+   "72": false,
+   "75": false,
+   "97": false
+  },
+  "pass": false
+ },
+ "phonotactic_R2": {
+  "meroitic_rate": 0.3151573922124422,
+  "pairs": 13406,
+  "shuffle_p": 0.47365263473652636,
+  "nes_reference_rate": 0.3037542662116041,
+  "pass": false
+ },
+ "formative_R1_leg": {
+  "formatives_with_nes_and_attestation>=20": 5,
+  "detail": [
+   {
+    "form": "-l",
+    "nes_comparandum_in_apparatus": true,
+    "dev_token_attestations": 438
+   },
+   {
+    "form": "-leb",
+    "nes_comparandum_in_apparatus": true,
+    "dev_token_attestations": 130
+   },
+   {
+    "form": "-b-",
+    "nes_comparandum_in_apparatus": true,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "-se",
+    "nes_comparandum_in_apparatus": true,
+    "dev_token_attestations": 19
+   },
+   {
+    "form": "(juxtaposition)",
+    "nes_comparandum_in_apparatus": true,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "-te",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 809
+   },
+   {
+    "form": "-yte",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 12
+   },
+   {
+    "form": "-ke",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 160
+   },
+   {
+    "form": "-i",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 2365
+   },
+   {
+    "form": "-o",
+    "nes_comparandum_in_apparatus": true,
+    "dev_token_attestations": 722
+   },
+   {
+    "form": "-lowi",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 450
+   },
+   {
+    "form": "-wi",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 1025
+   },
+   {
+    "form": "-kwi",
+    "nes_comparandum_in_apparatus": true,
+    "dev_token_attestations": 32
+   },
+   {
+    "form": "qo-wi",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "-\u1e2b(e)",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "-b\u1e2b(e)",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "-te (imperative)",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "-kete",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 200
+   },
+   {
+    "form": "p-",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "ps-",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "-w",
+    "nes_comparandum_in_apparatus": true,
+    "dev_token_attestations": 159
+   },
+   {
+    "form": "m-",
+    "nes_comparandum_in_apparatus": true,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "-se (each)",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "ted\u1e2be",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "terike",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 0
+   },
+   {
+    "form": "yetmde",
+    "nes_comparandum_in_apparatus": false,
+    "dev_token_attestations": 1
+   }
+  ],
+  "pass": true
+ },
+ "words_basis": 12863,
+ "R1_supported": false,
+ "R2_supported": false,
+ "verdict": "UNDECIDABLE AT THIS POWER (R3 not displaced)"
+}

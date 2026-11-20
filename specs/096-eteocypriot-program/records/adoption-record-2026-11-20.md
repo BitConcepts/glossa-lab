@@ -79,6 +79,15 @@ The settling chain was refreshed in the standing precedent order
   SHA-256 `75712e1ee5b77b57aabecef9ba8c0d5389b5a1e415ef8c24bb182accbdd25f8e`;
   settling runs carried: 2).
 
+Every census pin in the test suites was re-set from the
+regenerated artifacts' actuals (claims 994 -> 998, bundle
+971 -> 975, open 985 -> 989, draft 970 -> 974, studies 96 -> 97,
+Program infrastructure studies 23 -> 24, falsifier-present
+985 -> 989, claims untouched by any run 993 -> 997, matrix
+cells and map edges 1517 -> 1521, map edge census supports
+1510 -> 1514, dashboard e2e census 994 -> 998), per the standing
+intake-refresh discipline.
+
 The ledger gate on the final tree, both modes, run standalone:
 **default 29 PASS / 0 FAIL / 1 NOT-RUN (RESULT: PASS)** and
 **--regen 32 PASS / 0 FAIL / 0 NOT-RUN (RESULT: PASS)**. (The

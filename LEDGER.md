@@ -14286,7 +14286,9 @@ claims (from 994), SHA-256
 `09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53`
 (from `b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100`).
 
-The ledger gate on the final tree reads in both modes: full
+Every census pin in the test suites was re-set from the
+regenerated artifacts' actuals. The ledger gate on the final
+tree reads in both modes: full
 mode 29 PASS / 0 FAIL / 1 NOT-RUN; --regen 32 PASS / 0 FAIL /
 0 NOT-RUN. The program also stands in the live platform: the
 project `eteocypriot_program` was created through the project

@@ -29,14 +29,14 @@
 
 ## Stage 1 — Corpus assembly and freeze (D-096-3)
 
-- [ ] **T101 — corpus-availability survey.** Every item of the
+- [x] **T101 — corpus-availability survey.** Every item of the
   preregistration draft §3.1 resolved or carried as a named
   gap, per inscription, in the freeze record.
-- [ ] **T102 — corpus intake and identity record.** The held
+- [x] **T102 — corpus intake and identity record.** The held
   corpus filed at `corpus/corpus.json` under a C095-3 identity
   record: per-inscription SHA-256 pins, counting basis,
   normalization rules, licensing basis.
-- [ ] **T103 — freeze.** Census, split, signary frame, frozen
+- [x] **T103 — freeze.** Census, split, signary frame, frozen
   E1 procedure, rival alignment assumptions, floors
   instantiated (closures at freeze recorded as TOO THIN where
   a floor cannot be met), step-0 closure check. Committed

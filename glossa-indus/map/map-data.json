@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 998,
+  "claims_total": 1004,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 974,
+   "draft": 980,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
-   "ledger_lines": 1029,
+   "ledger_sha256": "72af0bc682e3387c44e3dd1f40fbdda5f249f4b21c87bba2967d71e678145ad5",
+   "ledger_lines": 1035,
    "ledger_date": "2026-11-20",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "e6cfcef192f705959ee6a6f59420e84ce184037ba314e5ded3d8e68c51b5cf9e",
+   "matrix_sha256": "25fe2c7c6fd710e56dbfe00f1b13d789b0fddd9643fb894520abf6aec95d981b",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-   "assignment_sets_sha256": "9f9a949300fe3c482d87aaac05e4b8227a31baa4189d9750fc7f076b0f0e4501",
-   "comparison_sha256": "e8e4f991787be96f9c643878d99763bef67de8b660cd1e2aa4c986f78717a6ee",
-   "settling_canonical_sha256": "5d43f6d06b4b1531cf6829fd98df2b88974f551e18f8df3cc6c5d7935371175c"
+   "assignment_sets_sha256": "19be42847a33b24e238cf841cf06aa1844d9257c111fcfd2c4551404bdba059b",
+   "comparison_sha256": "e87df368a6d28d5d7791abf01df9b336f5eb938386b7fd4acad561950c3879c9",
+   "settling_canonical_sha256": "f351031abe70ecb1d0cdb1749e64d3e86f82f732e193a1e60541f015bc82ff7d"
   }
  },
  "elements": [
@@ -8050,6 +8050,54 @@
    "kind": "claim",
    "id": "096-eteocypriot-program/C096-2",
    "statement": "At least one development-set candidate predicts held-out material. At least one registered morpheme or recurring-ending candidate, developed only on the development set, meets P2's success side (its registered held-out occurrence floor at its registered positions). This does not establish: that a surviving candidate's proposed meaning is correct — survival is a prediction result; meaning requires E3 and adjudication.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "097-meroitic-reproduction-benchmark/C097-2",
+   "statement": "Leg A reproduces the published census or names each divergence's cause: each of the ten published counts (Table 1: 193, 897, 302, 708; section 5.3: 871, 1,729, 99,338, 1,868, 17,257, 782,761) and each Table 2 dictionary size (26, 18, 15, 14, 9, 6, 3) is either reproduced exactly from the pinned corpus under a counting basis stated before the count was taken, or reported as diverged with the traced cause (counting basis, repository state, or material never published) named on the record. This does not establish: that a reproduced count validates the paper's downstream claims; a census match is a statement about the corpus and the counting, not about decipherment.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "097-meroitic-reproduction-benchmark/C097-5",
+   "statement": "The falsifier is applied as fixed, not as convenient: the outcome record applies the scoping's falsifier verbatim; if Leg A fails on a majority of its counts with divergences tracing to the published corpus or the paper's stated methods, the premise is falsified and the outcome is NOT REPRODUCED; a step-0 failure gives NOT EXECUTABLE AS SCOPED; otherwise each leg carries its own verdict exactly as its criteria read. This does not establish: a judgment on the paper's scholarship beyond reproducibility; a NOT REPRODUCED outcome under this falsifier is a statement about the published record's completeness for reproduction, stated as such.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "097-meroitic-reproduction-benchmark/C097-3",
+   "statement": "Leg B tests the fixture's sign inventory against the published corpus: the corpus's attested sign set is compared against the fixture's 19 signs after explicit reconciliation of the paper's E-for-/o/ convention (and a dotted-variant fold stated in the freeze); computed frequency ranks are compared against the fixture's ME rank order at the fixed Spearman rho 0.90 bar; and positional (initial/medial/final) distributions are computed and archived either way. This does not establish: that a mismatch impeaches the fixture's use as an inventory for other purposes; the leg measures the fixture's stated frequency-rank convention against this corpus, and a divergence is a finding about that convention's fit to the 2025 corpus, not about Meroitic sign values, which are not in question.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "097-meroitic-reproduction-benchmark/C097-1",
+   "statement": "Nothing computes before the corpus is pinned and its licensing is on the record: no benchmark computation runs before the paper's corpus repository is pinned by exact commit, its license (or its absence) is recorded, and a C095-3-style identity record for the pinned corpus is filed under this spec; the corpus is held in custody and is never committed to this repository or redistributed, and only the program's own code and derived aggregate statistics are published. This does not establish: that the corpus is the one the paper's authors used for every count; only that the benchmark's inputs are exactly the pinned ones, named.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "097-meroitic-reproduction-benchmark/C097-6",
+   "statement": "No outcome of this benchmark moves any other program record: no verdict, count, or statistic produced under this spec changes any Indus claim, anchor, standing, or fixture of record; the deciphered Meroitic sign values validate no Indus method; and any transfer claim to another script is a separate claim, in that script's own package, with its own falsifier. This does not establish: that transfer is impossible; only that this benchmark does not perform it.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "097-meroitic-reproduction-benchmark/C097-4",
+   "statement": "Leg C reproduces the alignment headlines in their fixed bands, with attempts accounted: under the paper's hyperparameters and the freeze's two arms, unseen-dictionary precision at 10 equals 0 percent, training-dictionary accuracy sits in the at-most-25 percent band, and the numerals dictionary is best or tied at 100 dimensions; every alignment attempt, including failures, appears in the run index. This does not establish: anything about whether Meroitic can be deciphered by alignment; the leg tests whether the paper's published headlines reproduce, and the paper's own reading of its 0 percent unseen result stands as the paper's, not this program's.",
    "status": "draft",
    "stage": "created",
    "population": "bundle"
@@ -27199,6 +27247,72 @@
    ]
   },
   {
+   "from": "spec.md",
+   "to": "097-meroitic-reproduction-benchmark/C097-1",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "097-meroitic-reproduction-benchmark/C097-1",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "097-meroitic-reproduction-benchmark/C097-2",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "097-meroitic-reproduction-benchmark/C097-2",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "097-meroitic-reproduction-benchmark/C097-3",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "097-meroitic-reproduction-benchmark/C097-3",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "097-meroitic-reproduction-benchmark/C097-4",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "097-meroitic-reproduction-benchmark/C097-4",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "097-meroitic-reproduction-benchmark/C097-5",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "097-meroitic-reproduction-benchmark/C097-5",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "097-meroitic-reproduction-benchmark/C097-6",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "097-meroitic-reproduction-benchmark/C097-6",
+    "spec.md"
+   ]
+  },
+  {
    "from": "055",
    "to": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "rel": "opposes",
@@ -32351,6 +32465,36 @@
    "constrains": 0
   },
   "096-eteocypriot-program/C096-2": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "097-meroitic-reproduction-benchmark/C097-2": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "097-meroitic-reproduction-benchmark/C097-5": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "097-meroitic-reproduction-benchmark/C097-3": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "097-meroitic-reproduction-benchmark/C097-1": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "097-meroitic-reproduction-benchmark/C097-6": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "097-meroitic-reproduction-benchmark/C097-4": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -38342,6 +38486,42 @@
    },
    {
     "id": "096-eteocypriot-program/C096-2",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "097-meroitic-reproduction-benchmark/C097-2",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "097-meroitic-reproduction-benchmark/C097-5",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "097-meroitic-reproduction-benchmark/C097-3",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "097-meroitic-reproduction-benchmark/C097-1",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "097-meroitic-reproduction-benchmark/C097-6",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "097-meroitic-reproduction-benchmark/C097-4",
     "population": "bundle",
     "status": "draft",
     "stage": "created"
@@ -57493,6 +57673,72 @@
     ]
    },
    {
+    "row": "097-meroitic-reproduction-benchmark/C097-1",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "097-meroitic-reproduction-benchmark/C097-1",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "097-meroitic-reproduction-benchmark/C097-2",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "097-meroitic-reproduction-benchmark/C097-2",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "097-meroitic-reproduction-benchmark/C097-3",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "097-meroitic-reproduction-benchmark/C097-3",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "097-meroitic-reproduction-benchmark/C097-4",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "097-meroitic-reproduction-benchmark/C097-4",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "097-meroitic-reproduction-benchmark/C097-5",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "097-meroitic-reproduction-benchmark/C097-5",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "097-meroitic-reproduction-benchmark/C097-6",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "097-meroitic-reproduction-benchmark/C097-6",
+     "spec.md"
+    ]
+   },
+   {
     "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
     "column": "055",
     "column_class": "studies",
@@ -57660,8 +57906,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 998,
-   "rows_with_cells": 984,
+   "rows_total": 1004,
+   "rows_with_cells": 990,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -58019,30 +58265,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1521,
+   "cells_total": 1527,
    "cells_by_relation": {
-    "supports": 1514,
+    "supports": 1520,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1514,
+    "documents": 1520,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 989,
-    "total": 998,
+    "covered": 995,
+    "total": 1004,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 975,
-      "total": 975
+      "covered": 981,
+      "total": 981
      }
     }
    },
@@ -63087,8 +63333,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 998,
-   "rows_with_cells": 984,
+   "rows_total": 1004,
+   "rows_with_cells": 990,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -63446,15 +63692,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1521,
+   "cells_total": 1527,
    "cells_by_relation": {
-    "supports": 1514,
+    "supports": 1520,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1514,
+    "documents": 1520,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -63523,7 +63769,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 974,
+    "draft": 980,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -63533,26 +63779,26 @@
    },
    "by_stage": {
     "checked": 3,
-    "created": 963,
+    "created": 969,
     "explained": 8
    },
    "no_stage_recorded": 24,
    "by_population": {
-    "bundle": 975,
+    "bundle": 981,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 989,
-   "total": 998,
+   "covered": 995,
+   "total": 1004,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 975,
-     "total": 975
+     "covered": 981,
+     "total": 981
     }
    },
    "gap_claims": [
@@ -63569,8 +63815,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 998,
-   "total": 998
+   "without_state": 1004,
+   "total": 1004
   },
   "unresolved": {
    "sign_mentions": [
@@ -65056,7 +65302,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "settling-20261120T184448Z-337450",
+      "record": "settling-20261120T200602Z-e65bed",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -65070,7 +65316,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "settling-20261120T184451Z-658fe3",
+      "record": "settling-20261120T200605Z-0feb5c",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -161478,6 +161724,516 @@
     },
     "sign_records": []
    }
+  },
+  "097-meroitic-reproduction-benchmark/C097-2": {
+   "id": "097-meroitic-reproduction-benchmark/C097-2",
+   "statement": "Leg A reproduces the published census or names each divergence's cause: each of the ten published counts (Table 1: 193, 897, 302, 708; section 5.3: 871, 1,729, 99,338, 1,868, 17,257, 782,761) and each Table 2 dictionary size (26, 18, 15, 14, 9, 6, 3) is either reproduced exactly from the pinned corpus under a counting basis stated before the count was taken, or reported as diverged with the traced cause (counting basis, repository state, or material never published) named on the record. This does not establish: that a reproduced count validates the paper's downstream claims; a census match is a statement about the corpus and the counting, not about decipherment.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "A published count for which the outcome record shows neither an exact reproduction nor a named, traced cause; or a counting basis in the outcome record that is absent from the execution freeze."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C097-2",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "097-meroitic-reproduction-benchmark/C097-2",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "097-meroitic-reproduction-benchmark/C097-2",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C097-2",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    },
+    "sign_records": []
+   }
+  },
+  "097-meroitic-reproduction-benchmark/C097-5": {
+   "id": "097-meroitic-reproduction-benchmark/C097-5",
+   "statement": "The falsifier is applied as fixed, not as convenient: the outcome record applies the scoping's falsifier verbatim; if Leg A fails on a majority of its counts with divergences tracing to the published corpus or the paper's stated methods, the premise is falsified and the outcome is NOT REPRODUCED; a step-0 failure gives NOT EXECUTABLE AS SCOPED; otherwise each leg carries its own verdict exactly as its criteria read. This does not establish: a judgment on the paper's scholarship beyond reproducibility; a NOT REPRODUCED outcome under this falsifier is a statement about the published record's completeness for reproduction, stated as such.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "An outcome record whose verdict does not follow from its own per-count table under the stated rule; or a verdict of NOT REPRODUCED (or REPRODUCED) that the per-leg verdicts do not support."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C097-5",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "097-meroitic-reproduction-benchmark/C097-5",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "097-meroitic-reproduction-benchmark/C097-5",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C097-5",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    },
+    "sign_records": []
+   }
+  },
+  "097-meroitic-reproduction-benchmark/C097-3": {
+   "id": "097-meroitic-reproduction-benchmark/C097-3",
+   "statement": "Leg B tests the fixture's sign inventory against the published corpus: the corpus's attested sign set is compared against the fixture's 19 signs after explicit reconciliation of the paper's E-for-/o/ convention (and a dotted-variant fold stated in the freeze); computed frequency ranks are compared against the fixture's ME rank order at the fixed Spearman rho 0.90 bar; and positional (initial/medial/final) distributions are computed and archived either way. This does not establish: that a mismatch impeaches the fixture's use as an inventory for other purposes; the leg measures the fixture's stated frequency-rank convention against this corpus, and a divergence is a finding about that convention's fit to the 2025 corpus, not about Meroitic sign values, which are not in question.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "The outcome record reports criterion (i) met while an attested sign outside the reconciled 19 goes unnamed; reports the rho without its computation basis; or lacks the archived positional distributions."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C097-3",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "097-meroitic-reproduction-benchmark/C097-3",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "097-meroitic-reproduction-benchmark/C097-3",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C097-3",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    },
+    "sign_records": []
+   }
+  },
+  "097-meroitic-reproduction-benchmark/C097-1": {
+   "id": "097-meroitic-reproduction-benchmark/C097-1",
+   "statement": "Nothing computes before the corpus is pinned and its licensing is on the record: no benchmark computation runs before the paper's corpus repository is pinned by exact commit, its license (or its absence) is recorded, and a C095-3-style identity record for the pinned corpus is filed under this spec; the corpus is held in custody and is never committed to this repository or redistributed, and only the program's own code and derived aggregate statistics are published. This does not establish: that the corpus is the one the paper's authors used for every count; only that the benchmark's inputs are exactly the pinned ones, named.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "A benchmark result dated before the step-0 identity record; a corpus file, authors' embedding, or authors' code file found in this repository's tree or history; or an identity record whose pin does not resolve to the commit the computations used."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C097-1",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "097-meroitic-reproduction-benchmark/C097-1",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "097-meroitic-reproduction-benchmark/C097-1",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C097-1",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    },
+    "sign_records": []
+   }
+  },
+  "097-meroitic-reproduction-benchmark/C097-6": {
+   "id": "097-meroitic-reproduction-benchmark/C097-6",
+   "statement": "No outcome of this benchmark moves any other program record: no verdict, count, or statistic produced under this spec changes any Indus claim, anchor, standing, or fixture of record; the deciphered Meroitic sign values validate no Indus method; and any transfer claim to another script is a separate claim, in that script's own package, with its own falsifier. This does not establish: that transfer is impossible; only that this benchmark does not perform it.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "An Indus record whose text, standing, or count changes citing this benchmark as its basis; or a transfer claim filed under this spec's claim ids."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C097-6",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "097-meroitic-reproduction-benchmark/C097-6",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "097-meroitic-reproduction-benchmark/C097-6",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C097-6",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    },
+    "sign_records": []
+   }
+  },
+  "097-meroitic-reproduction-benchmark/C097-4": {
+   "id": "097-meroitic-reproduction-benchmark/C097-4",
+   "statement": "Leg C reproduces the alignment headlines in their fixed bands, with attempts accounted: under the paper's hyperparameters and the freeze's two arms, unseen-dictionary precision at 10 equals 0 percent, training-dictionary accuracy sits in the at-most-25 percent band, and the numerals dictionary is best or tied at 100 dimensions; every alignment attempt, including failures, appears in the run index. This does not establish: anything about whether Meroitic can be deciphered by alignment; the leg tests whether the paper's published headlines reproduce, and the paper's own reading of its 0 percent unseen result stands as the paper's, not this program's.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "A headline reported outside its band without the leg being reported as not reproduced; a run index with a gap against the frozen settings grid; or a seeded (training) dictionary scored as unseen."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C097-4",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "097-meroitic-reproduction-benchmark/C097-4",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "097-meroitic-reproduction-benchmark/C097-4",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C097-4",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "9c4205cf25b3dcf7e7ec434452356a4282872cfe3c62d7e50ca6d6525cd7c111",
+     "spec": "097-meroitic-reproduction-benchmark"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -161485,7 +162241,7 @@
   "semantics": "glossa-settle-1",
   "assignment_sets": {
    "record": "glossa-indus/ledger/assignment-sets.json",
-   "sha256": "9f9a949300fe3c482d87aaac05e4b8227a31baa4189d9750fc7f076b0f0e4501",
+   "sha256": "19be42847a33b24e238cf841cf06aa1844d9257c111fcfd2c4551404bdba059b",
    "register": {
     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
@@ -161529,15 +162285,15 @@
   },
   "runs": [
    {
-    "record": "settling-20261120T184448Z-337450",
+    "record": "settling-20261120T200602Z-e65bed",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
-      "lines": 1029
+      "sha256": "72af0bc682e3387c44e3dd1f40fbdda5f249f4b21c87bba2967d71e678145ad5",
+      "lines": 1035
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -161588,15 +162344,15 @@
     }
    },
    {
-    "record": "settling-20261120T184451Z-658fe3",
+    "record": "settling-20261120T200605Z-0feb5c",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
-      "lines": 1029
+      "sha256": "72af0bc682e3387c44e3dd1f40fbdda5f249f4b21c87bba2967d71e678145ad5",
+      "lines": 1035
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -161651,7 +162407,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "e8e4f991787be96f9c643878d99763bef67de8b660cd1e2aa4c986f78717a6ee",
+   "sha256": "e87df368a6d28d5d7791abf01df9b336f5eb938386b7fd4acad561950c3879c9",
    "result": {
     "claims_compared": [
      {
@@ -161899,7 +162655,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "5d43f6d06b4b1531cf6829fd98df2b88974f551e18f8df3cc6c5d7935371175c",
+   "sha256": "f351031abe70ecb1d0cdb1749e64d3e86f82f732e193a1e60541f015bc82ff7d",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -162234,8 +162990,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 998,
-   "claims_untouched_by_any_run": 997,
+   "claims_total": 1004,
+   "claims_untouched_by_any_run": 1003,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

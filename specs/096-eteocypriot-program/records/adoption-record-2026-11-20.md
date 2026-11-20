@@ -85,7 +85,12 @@ regenerated artifacts' actuals (claims 994 -> 998, bundle
 Program infrastructure studies 23 -> 24, falsifier-present
 985 -> 989, claims untouched by any run 993 -> 997, matrix
 cells and map edges 1517 -> 1521, map edge census supports
-1510 -> 1514, dashboard e2e census 994 -> 998), per the standing
+1510 -> 1514, ledger lines 1025 -> 1029, map element kinds
+1638 -> 1642, AEE-state census 994 -> 998, dashboard and
+system-graph e2e censuses 994 -> 998, and the T405 run of record
+in the Spec 095 T403 dashboard tests re-pinned to the incumbent
+generation settling-20261120T184448Z-337450, whose quantities
+are the superseded generation's, byte-equal), per the standing
 intake-refresh discipline.
 
 The ledger gate on the final tree, both modes, run standalone:

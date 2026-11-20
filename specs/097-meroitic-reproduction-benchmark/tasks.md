@@ -53,18 +53,18 @@
 
 ## Stage 2 — The legs
 
-- [ ] **T201 — Leg A, the census.** The ten published counts and
+- [x] **T201 — Leg A, the census.** The ten published counts and
   the seven Table 2 dictionary sizes, each reproduced exactly
   under a frozen basis or diverged with its cause traced.
   Claims: C097-2. Acceptance: **test** (the per-count table is
   complete; every divergence names its cause).
-- [ ] **T202 — Leg B, sign statistics.** The attested sign set
+- [x] **T202 — Leg B, sign statistics.** The attested sign set
   against the fixture's 19 under the frozen reconciliation; the
   frequency-rank Spearman comparison at the fixed 0.90 bar; the
   positional distributions computed and archived. Claims: C097-3.
   Acceptance: **test** (the archived distributions exist and the
   comparison's basis is stated).
-- [ ] **T203 — Leg C, alignment.** The program's own
+- [x] **T203 — Leg C, alignment.** The program's own
   implementation of the paper's stated method over the frozen
   settings grid and arms; precision at 10 per dictionary and
   setting; the complete run index, failures included. Claims:
@@ -73,14 +73,14 @@
 
 ## Stage 3 — Outcome and closeout
 
-- [ ] **T301 — Benchmark outcome record.** Per-leg verdicts
+- [x] **T301 — Benchmark outcome record.** Per-leg verdicts
   exactly as the fixed criteria read; reproduced numbers beside
   the published targets; the falsifier applied as written; the
   licensing posture restated; this spec's claims adjudicated on
   the outcome. Claims: C097-5, C097-6. Acceptance: **record**
   (the verdict follows from the record's own per-count and
   per-leg tables under the stated rule).
-- [ ] **T302 — Closeout.** Tasks ticked to the record; remainders
+- [x] **T302 — Closeout.** Tasks ticked to the record; remainders
   named (none expected beyond what the outcome record itself
   carries); the program's standing stated in one paragraph.
   Acceptance: **record**.

@@ -1,0 +1,1304 @@
+{
+ "n_valid": 72,
+ "n_superseded": 18,
+ "cells": {
+  "arm1|dim20|unsupervised": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "training_pct": [],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm1|dim20|numerals-seeded": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "training_pct": [
+    26.67,
+    33.33,
+    26.67
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     26.67,
+     33.33,
+     26.67
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm1|dim20|nouns-seeded": {
+   "unseen_pct": [
+    0.0,
+    1.72,
+    1.72
+   ],
+   "training_pct": [
+    23.08,
+    23.08,
+    19.23
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     23.08,
+     23.08,
+     19.23
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     16.67,
+     16.67
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm1|dim50|unsupervised": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "training_pct": [],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm1|dim50|numerals-seeded": {
+   "unseen_pct": [
+    0.0,
+    1.45,
+    1.45
+   ],
+   "training_pct": [
+    13.33,
+    13.33,
+    6.67
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     3.85,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     13.33,
+     13.33,
+     6.67
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     11.11
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm1|dim50|nouns-seeded": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "training_pct": [
+    7.69,
+    3.85,
+    15.38
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     7.69,
+     3.85,
+     15.38
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm1|dim100|unsupervised": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "training_pct": [],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm1|dim100|numerals-seeded": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "training_pct": [
+    13.33,
+    6.67,
+    20.0
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     13.33,
+     6.67,
+     20.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm1|dim100|nouns-seeded": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    1.72
+   ],
+   "training_pct": [
+    11.54,
+    7.69,
+    7.69
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     11.54,
+     7.69,
+     7.69
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     11.11
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm1|dim120|unsupervised": {
+   "unseen_pct": [
+    0.0,
+    1.19,
+    0.0
+   ],
+   "training_pct": [],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     11.11,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm1|dim120|numerals-seeded": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "training_pct": [
+    13.33,
+    13.33,
+    13.33
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     13.33,
+     13.33,
+     13.33
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm1|dim120|nouns-seeded": {
+   "unseen_pct": [
+    1.72,
+    3.45,
+    1.72
+   ],
+   "training_pct": [
+    15.38,
+    7.69,
+    3.85
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     15.38,
+     7.69,
+     3.85
+    ],
+    "names": [
+     0.0,
+     6.25,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     11.11,
+     11.11,
+     11.11
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim20|unsupervised": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    1.19
+   ],
+   "training_pct": [],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     16.67
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim20|numerals-seeded": {
+   "unseen_pct": [
+    0.0,
+    1.45,
+    0.0
+   ],
+   "training_pct": [
+    13.33,
+    26.67,
+    20.0
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     3.85,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     13.33,
+     26.67,
+     20.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim20|nouns-seeded": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "training_pct": [
+    15.38,
+    11.54,
+    15.38
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     15.38,
+     11.54,
+     15.38
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim50|unsupervised": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "training_pct": [],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim50|numerals-seeded": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "training_pct": [
+    13.33,
+    26.67,
+    20.0
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     13.33,
+     26.67,
+     20.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim50|nouns-seeded": {
+   "unseen_pct": [
+    1.72,
+    0.0,
+    3.45
+   ],
+   "training_pct": [
+    15.38,
+    7.69,
+    26.92
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     15.38,
+     7.69,
+     26.92
+    ],
+    "names": [
+     6.25,
+     0.0,
+     6.25
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     11.11
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim100|unsupervised": {
+   "unseen_pct": [
+    1.19,
+    1.19,
+    1.19
+   ],
+   "training_pct": [],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     3.85,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     11.11,
+     0.0,
+     11.11
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim100|numerals-seeded": {
+   "unseen_pct": [
+    1.45,
+    1.45,
+    0.0
+   ],
+   "training_pct": [
+    6.67,
+    6.67,
+    20.0
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     6.67,
+     6.67,
+     20.0
+    ],
+    "verbs": [
+     10.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     16.67,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim100|nouns-seeded": {
+   "unseen_pct": [
+    0.0,
+    1.72,
+    1.72
+   ],
+   "training_pct": [
+    11.54,
+    15.38,
+    11.54
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     11.54,
+     15.38,
+     11.54
+    ],
+    "names": [
+     0.0,
+     6.25,
+     0.0
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     10.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim120|unsupervised": {
+   "unseen_pct": [
+    0.0,
+    1.19,
+    1.19
+   ],
+   "training_pct": [],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     6.25
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     10.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim120|numerals-seeded": {
+   "unseen_pct": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "training_pct": [
+    6.67,
+    0.0,
+    0.0
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "names": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "numerals": [
+     6.67,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "arm2|dim120|nouns-seeded": {
+   "unseen_pct": [
+    0.0,
+    1.72,
+    3.45
+   ],
+   "training_pct": [
+    7.69,
+    0.0,
+    7.69
+   ],
+   "per_cat_pct": {
+    "nouns": [
+     7.69,
+     0.0,
+     7.69
+    ],
+    "names": [
+     0.0,
+     0.0,
+     12.5
+    ],
+    "numerals": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "verbs": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "titularies": [
+     0.0,
+     11.11,
+     0.0
+    ],
+    "adj_adv": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "prepositions": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  }
+ },
+ "headline": {
+  "unseen_all_valid_runs": [
+   0.0,
+   1.19,
+   1.45,
+   1.72,
+   3.45
+  ],
+  "numerals_training_100d_arm1": [
+   13.33,
+   6.67,
+   20.0
+  ],
+  "numerals_training_100d_arm2": [
+   6.67,
+   6.67,
+   20.0
+  ],
+  "best_training_at_100d_arm1": {
+   "numerals-seeded": [
+    13.33,
+    6.67,
+    20.0
+   ],
+   "nouns-seeded": [
+    11.54,
+    7.69,
+    7.69
+   ]
+  },
+  "best_training_at_100d_arm2": {
+   "numerals-seeded": [
+    6.67,
+    6.67,
+    20.0
+   ],
+   "nouns-seeded": [
+    11.54,
+    15.38,
+    11.54
+   ]
+  },
+  "max_training_anywhere": 33.33
+ },
+ "superseded_cells": [
+  {
+   "dim": 100,
+   "setting": "unsupervised",
+   "seed": 42,
+   "unseen_pct": 0.0
+  },
+  {
+   "dim": 100,
+   "setting": "unsupervised",
+   "seed": 1337,
+   "unseen_pct": 1.19
+  },
+  {
+   "dim": 100,
+   "setting": "unsupervised",
+   "seed": 2025,
+   "unseen_pct": 0.0
+  },
+  {
+   "dim": 100,
+   "setting": "numerals-seeded",
+   "seed": 42,
+   "unseen_pct": 2.9
+  },
+  {
+   "dim": 100,
+   "setting": "numerals-seeded",
+   "seed": 1337,
+   "unseen_pct": 1.45
+  },
+  {
+   "dim": 100,
+   "setting": "numerals-seeded",
+   "seed": 2025,
+   "unseen_pct": 0.0
+  },
+  {
+   "dim": 100,
+   "setting": "nouns-seeded",
+   "seed": 42,
+   "unseen_pct": 3.45
+  },
+  {
+   "dim": 100,
+   "setting": "nouns-seeded",
+   "seed": 1337,
+   "unseen_pct": 1.72
+  },
+  {
+   "dim": 100,
+   "setting": "nouns-seeded",
+   "seed": 2025,
+   "unseen_pct": 1.72
+  },
+  {
+   "dim": 120,
+   "setting": "unsupervised",
+   "seed": 42,
+   "unseen_pct": 0.0
+  },
+  {
+   "dim": 120,
+   "setting": "unsupervised",
+   "seed": 1337,
+   "unseen_pct": 2.38
+  },
+  {
+   "dim": 120,
+   "setting": "unsupervised",
+   "seed": 2025,
+   "unseen_pct": 0.0
+  },
+  {
+   "dim": 120,
+   "setting": "numerals-seeded",
+   "seed": 42,
+   "unseen_pct": 0.0
+  },
+  {
+   "dim": 120,
+   "setting": "numerals-seeded",
+   "seed": 1337,
+   "unseen_pct": 0.0
+  },
+  {
+   "dim": 120,
+   "setting": "numerals-seeded",
+   "seed": 2025,
+   "unseen_pct": 0.0
+  },
+  {
+   "dim": 120,
+   "setting": "nouns-seeded",
+   "seed": 42,
+   "unseen_pct": 1.72
+  },
+  {
+   "dim": 120,
+   "setting": "nouns-seeded",
+   "seed": 1337,
+   "unseen_pct": 3.45
+  },
+  {
+   "dim": 120,
+   "setting": "nouns-seeded",
+   "seed": 2025,
+   "unseen_pct": 1.72
+  }
+ ]
+}

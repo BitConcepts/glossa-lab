@@ -140,3 +140,15 @@ is reported exactly as its criteria read: REPRODUCED, DIVERGED
 - **Stage 2** — the three legs, under the freeze.
 - **Stage 3** — the benchmark outcome record, claim adjudication,
   and closeout.
+- **Stage 4** — the decipherment campaign (added 2026-11-20 on
+  the owner's direction that the program's aim is decipherment,
+  not only reproduction). Preregistered in
+  `records/decipherment-campaign-design-2026-11-20.md` before
+  any campaign execution: corpus completion and the anchor
+  inventory freeze (4.1); the affiliation rivals adjudicated by
+  registered tests (4.2); candidate readings under the
+  identifiability protocol (4.3); the blind held-out scoring
+  (4.4); and the expert-verification package prepared for the
+  owner's approval, design only (4.5). Claims C097-7..C097-11.
+  The benchmark's verdicts (Stages 1–3) stand as scoped and are
+  not reopened by the campaign.

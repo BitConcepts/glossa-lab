@@ -111,3 +111,88 @@ changes citing this benchmark as its basis; or a transfer claim
 filed under this spec's claim ids.
 *Does not establish:* that transfer is impossible — only that this
 benchmark does not perform it.
+## The decipherment campaign (Stage 4, added 2026-11-20)
+
+**C097-7 — Corpus completion is exhaustive over lawful sources
+and names every gap.** The campaign's corpus stage consolidates
+everything lawfully held into one canonical build with a
+per-text provenance register, acquires every further openly
+licensed machine-readable Meroitic source (pinned and
+license-recorded as step 0 was), and names every remaining gap
+against the REM totals (some 1,300 published texts; roughly 900
+further known texts unpublished in the REM); no purchase and no
+outreach is made to close a gap.
+*Falsifier:* an openly licensed Meroitic source, named in the
+completion record's own search account, that the corpus neither
+acquired nor gap-named with cause; or a corpus text whose
+provenance entry lacks a source or a license state.
+*Does not establish:* that the completed corpus is the full
+ancient record — it is the fullest lawfully obtainable one,
+with the unobtainable remainder named.
+
+**C097-8 — Every anchor in the frozen inventory carries its
+evidence class, and readings cite only frozen anchors.** The
+anchor inventory is frozen as a versioned record; each anchor
+states its form, proposed reading, evidence class (A name
+correspondences, B formula structure, C numerals, D Egyptian
+loanwords and titles, E contextually pinned common words),
+source, and the use the class licenses; a candidate reading
+depending on an unfrozen anchor is out of scope until a new
+freeze version admits it.
+*Falsifier:* a scored candidate whose cited anchor is absent
+from the freeze in force at its scoring; or a frozen anchor
+with no evidence class or no source.
+*Does not establish:* that a frozen anchor's reading is beyond
+challenge — the freeze fixes what the campaign tests against,
+and the expert stage exists to challenge it.
+
+**C097-9 — Affiliation is adjudicated between registered
+rivals, never assumed.** The affiliation question is carried as
+R1 Northern East Sudanic (Rilly), R2 Afroasiatic (Rowan;
+Lipiński), and R3 the isolate/null rival, each with the
+registered tests and falsifiers of the campaign design
+(correspondence and formative regularity against permutation
+baselines for R1; the phonotactic restriction and vocabulary
+tests for R2; R3 supported exactly when both fail); comparative
+candidate generation draws only on the family an adjudicated
+verdict licenses.
+*Falsifier:* a candidate generated from a family's comparative
+material before that family's rival passed its registered
+tests; or an affiliation verdict recorded without its tests'
+outputs.
+*Does not establish:* that a passed affiliation verdict proves
+any individual reading — it licenses a generation route, whose
+products still face identifiability and the blind test.
+
+**C097-10 — No reading is scored SUPPORTED without the
+identifiability protocol and the blind held-out test.** A
+candidate reading is scored only after (1) its predictions are
+shown to differ from every named rival's on an observable
+dimension, (2) the discriminating observations occur in the
+corpus at the registered minimum count, and (3) no equally
+simple rival survives; failing any leg, the candidate is
+recorded NOT IDENTIFIABLE. SUPPORTED additionally requires the
+reading, frozen in writing on the development set, to pass its
+registered predictions on the sealed held-out inscriptions,
+opened once.
+*Falsifier:* a SUPPORTED score whose record lacks the
+identifiability showing or the held-out result; or a held-out
+set opened before its readings were frozen.
+*Does not establish:* that a NOT IDENTIFIABLE record means the
+reading is wrong — it means this evidence cannot pin it, which
+is the expected outcome for most candidates on this corpus.
+
+**C097-11 — Expert verification is designed and owner-gated,
+never improvised.** The expert-verification stage is prepared
+as a design (panel drawn from the REM and Sudanese-epigraphy
+specialist community; frozen records as the review material;
+per-item confirm / challenge-with-cause / no-position
+instrument; silence recorded as silence) and executes only on
+the owner's separate approval; no outreach of any kind is made
+under the campaign's earlier stages.
+*Falsifier:* any external contact made in the campaign's name
+before the owner's approval of the verification package; or a
+record that treats a specialist's silence as assent.
+*Does not establish:* that expert confirmation would substitute
+for the registered tests — it is an independent check layered
+on them, and challenges enter the record as evidence.

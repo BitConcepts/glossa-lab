@@ -199,9 +199,9 @@ def test_header_contract_q3(built) -> None:
     assert header
     data = json.loads(built.json_bytes)
     h = data["header"]
-    assert h["claims_total"] == 998
-    assert h["claims_by_status"]["draft"] == 974
-    assert sum(h["claims_by_status"].values()) == 998
+    assert h["claims_total"] == 1004
+    assert h["claims_by_status"]["draft"] == 980
+    assert sum(h["claims_by_status"].values()) == 1004
     assert h["anchors_strict"] == 94
     assert h["anchors_total"] == 287
     assert h["validated_anchor_share"] == pytest.approx(94 / 287)
@@ -216,7 +216,7 @@ def test_header_contract_q3(built) -> None:
     as_of = h["as_of"]
     assert as_of["ledger_sha256"] == li.sha256_file(ROOT / li.LEDGER_REL)
     assert as_of["map_defs"] == "map-defs v1"
-    assert as_of["ledger_lines"] == 1029
+    assert as_of["ledger_lines"] == 1035
 
 
 def test_sections_census(built) -> None:
@@ -224,21 +224,21 @@ def test_sections_census(built) -> None:
     kinds = {}
     for el in data["elements"]:
         kinds[el["kind"]] = kinds.get(el["kind"], 0) + 1
-    assert kinds["claim"] == 998
+    assert kinds["claim"] == 1004
     assert kinds.get("corpus_texts", 0) == 0
-    assert sum(kinds.values()) == 1642
+    assert sum(kinds.values()) == 1648
     rels = {}
     for edge in data["edges"]:
         rels[edge["rel"]] = rels.get(edge["rel"], 0) + 1
-    assert rels == {"supports": 1514, "opposes": 7}
-    assert len(data["loads"]) == 998
+    assert rels == {"supports": 1520, "opposes": 7}
+    assert len(data["loads"]) == 1004
     system = data["system"]
-    assert system["falsifier_census"]["covered"] == 989
-    assert system["falsifier_census"]["total"] == 998
+    assert system["falsifier_census"]["covered"] == 995
+    assert system["falsifier_census"]["total"] == 1004
     assert system["aee_state_census"] == {
         "with_state": 0,
-        "without_state": 998,
-        "total": 998,
+        "without_state": 1004,
+        "total": 1004,
     }
     assert system["claim_population"]["no_stage_recorded"] == 24
 
@@ -295,7 +295,7 @@ def test_settling_section_opens_on_the_stored_comparison(built) -> None:
     assert result["per_claim_divergences"] == []
     assert len(settling["canonicals"]["scenarios"]) == 5
     assert settling["reach"]["s_r3"]["status"] == "UNMEASURED"
-    assert settling["reach"]["claims_untouched_by_any_run"] == 997
+    assert settling["reach"]["claims_untouched_by_any_run"] == 1003
     assert settling["label"] == mp.SETTLING_LABEL
 
 
@@ -377,7 +377,7 @@ def test_api_header_and_stamp(client) -> None:
     resp = client.get("/api/v1/indus-map/header")
     assert resp.status_code == 200
     body = resp.json()
-    assert body["header"]["claims_total"] == 998
+    assert body["header"]["claims_total"] == 1004
     assert body["stamp"]["stale"] is False
     published = (ROOT / mp.MAP_REL).read_bytes()
     assert body["stamp"]["map_sha256"] == hashlib.sha256(
@@ -390,7 +390,7 @@ def test_api_sections_serve_the_artifact(client) -> None:
     assert system["sign_inventory"]["frame_scope"] == 286
     matrix = client.get("/api/v1/indus-map/matrix").json()["matrix"]
     assert matrix["coverage"]["cells_by_relation"] == {
-        "supports": 1514,
+        "supports": 1520,
         "opposes": 7,
         "constrains": 0,
     }
@@ -471,7 +471,7 @@ def cloud_client(tmp_path_factory):
 def test_scoping_member_reads_the_map(cloud_client) -> None:
     resp = cloud_client.get("/api/v1/indus-map/header", headers=MEMBER)
     assert resp.status_code == 200
-    assert resp.json()["header"]["claims_total"] == 998
+    assert resp.json()["header"]["claims_total"] == 1004
 
 
 def test_scoping_outsider_gets_the_scoped_404(cloud_client) -> None:

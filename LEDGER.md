@@ -14302,3 +14302,52 @@ standing execution-home rule.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-20 - Spec 097 adopted: Meroitic Reproduction Benchmark Program, claims intake discharged in the adoption PR
+
+Owner direction (2026-11-20, in chat): the Meroitic benchmark runs as its
+own separate program in Glossa-Lab, not as a deliverable inside Spec
+095's package. Spec 097 adopts the benchmark scoped by Spec 095 Stage 5
+(`specs/095-red-team-remediation/second-targets/meroitic-benchmark-scoping-2026-11-17.md`,
+summarized in its stage-5 scoping record §3) as a standalone program with
+its own claims, records, and verdicts: C097-1 the corpus census (Leg A),
+C097-2 the sign inventory and distribution (Leg B), C097-3 the
+embedding-alignment evaluation (Leg C), C097-4 the program falsifier
+(NOT REPRODUCED if Leg A fails on a majority of its counts with
+divergences tracing to the published corpus or the paper's stated
+methods), C097-5 the independence and licensing bound (the program's own
+implementation from the paper's stated methods; the authors' code read
+for the mapping scheme only, every reading recorded), and C097-6 the
+no-Indus-effect bound. The Spec 095 scoping document stays unedited as
+the founding provenance. AEE adoption assessment at intake: **iterate**
+(six claims validated; iteration drivers mirror the repo's standing
+adoption shape and are named in the package's adoption record). The
+program is also registered in the live Glossa-Lab platform as the
+project `meroitic_reproduction_benchmark` through the backend's own
+Projects API, read back verified, with the Indus project undisturbed
+(evidence in the package's adoption record).
+
+Numbering note (D-097-1): the package was first drafted as Spec 096; the
+parallel Eteocypriot program landed as Spec 096 first (PRs #604–#606),
+so this package was renumbered to the next free number and re-applied
+cleanly on top, per the shared-file discipline (fetch latest main,
+re-apply, never force-push, never drop the other program's entries). The
+first setup attempt (PR #607) was closed unmerged for the renumbering.
+
+Claims ledger: 1,029 → 1,035 lines; claims 998 → 1,004; canonical
+SHA-256 `72af0bc682e3387c44e3dd1f40fbdda5f249f4b21c87bba2967d71e678145ad5`.
+Settling refresh: verify-canonicals 6/6 on the grown ledger; T405 pair
+re-executed — incumbent `settling-20261120T200602Z-e65bed`, full-register
+`settling-20261120T200605Z-0feb5c`, result blocks byte-equal to the
+superseded Eteocypriot generation's; comparison re-filed; materialize-sets
+`settling-20261120T200703Z-193428` (sets unchanged: strict core 94,
+assignment register 286, H003 out); the superseded generation departed
+with per-record departure accounting (run-defs v2 §7.1); canonical pin
+refreshed with 13 re-derivations. Program map studies 97 → 98 (taxonomy
+domain "Sign inventory & corpus" / subdomain "Signary & corpus models").
+Ledger gate after the refresh: full mode 29 PASS / 0 FAIL / 1 NOT-RUN; --regen mode
+32 PASS / 0 FAIL / 0 NOT-RUN. Execution venue: the benchmark's computations ran on the
+mini-server; the registration machinery and verification runs for this
+landing ran on tower-compute after the owner's venue transition of
+2026-11-20 (Glossa-Lab studies execute on tower-compute; the mini-server
+keeps its serving role only).

@@ -37,9 +37,9 @@ def _ledger_claims() -> list[dict]:
 def test_home_census_is_the_records_census(client):
     body = client.get(f"{BASE}/home").json()
     claims = _ledger_claims()
-    assert body["census"]["claims"] == len(claims) == 998
-    assert body["census"]["ledger_lines"] == 1029
-    assert body["census"]["studies"] == 97
+    assert body["census"]["claims"] == len(claims) == 1004
+    assert body["census"]["ledger_lines"] == 1035
+    assert body["census"]["studies"] == 98
     anchors = json.loads(
         (REPO / "backend" / "reports" / "INDUS_FINAL_ANCHORS.json")
         .read_text(encoding="utf-8")
@@ -79,7 +79,7 @@ def test_falsifier_absent_class_is_exactly_the_gap(client):
         body["falsifier_census"]["gap_claims"]
     )
     present = client.get(f"{BASE}/claims", params={"falsifier": "present"}).json()
-    assert present["total"] == 989
+    assert present["total"] == 995
 
 
 def test_sign_filter_matches_both_record_name_forms(client):
@@ -116,7 +116,7 @@ def test_claim_export_is_the_records(client):
 
 def test_matrix_overview_matches_the_map(client):
     body = client.get(f"{BASE}/matrix").json()
-    assert body["rows_total"] == 998
+    assert body["rows_total"] == 1004
     assert body["columns_by_class"] == {
         "studies": 10, "documents": 316, "research_checks": 31, "anchors": 287,
     }
@@ -190,7 +190,7 @@ def test_results_legacy_runs_named_not_reproducible(client):
     assert body["settling_runs"]
     t405 = next(
         r for r in body["settling_runs"]
-        if r["record"] == "settling-20261120T184448Z-337450"
+        if r["record"] == "settling-20261120T200602Z-e65bed"
     )
     assert t405["assigned_count"] == 94
     assert t405["consistent"] == 94
@@ -215,7 +215,7 @@ def test_rerun_reproduces_the_t405_quantities(client):
         ["git", "-C", str(REPO), "checkout", "--", "glossa-indus/claims/extracted_claims"],
         check=False, capture_output=True,
     )
-    r = client.post(f"{BASE}/results/settling-20261120T184448Z-337450/rerun")
+    r = client.post(f"{BASE}/results/settling-20261120T200602Z-e65bed/rerun")
     assert r.status_code == 200, r.text
     body = r.json()
     assert body["corpus_identity"] == "verified"

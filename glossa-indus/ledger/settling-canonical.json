@@ -1,768 +1,783 @@
 {
-  "artifact": "settling-canonical",
-  "spec": "086-winning-combination-adoption",
-  "task": "T402",
-  "semantics": "glossa-settle-1",
-  "semantics_document": "glossa-indus/ledger/SETTLING-SEMANTICS.md",
-  "registered": "2026-11-01",
-  "re_derivations": [
-    {
-      "date": "2026-11-02",
-      "act": "Spec 087 adoption intake (branch feat/087-spec-package; record: specs/087-node-system-tightening/records/adoption-2026-11-02.md)",
-      "reason": "The claims ledger grew by append-only intake: the 17 bundle claims of Spec 087 (087-node-system-tightening/C087-1..17) were appended through tools/ledger/import_bundle.py on 2026-11-02. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf",
-        "lines": 871
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
-        "lines": 888
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    },
-    {
-      "date": "2026-11-04",
-      "act": "Spec 088 adoption intake (branch feat/088-adoption; record: specs/088-full-picture-map-gap-register/records/ratification-2026-11-04.md)",
-      "reason": "The claims ledger grew by append-only intake: the 19 bundle claims of Spec 088 (088-full-picture-map-gap-register/C088-1..19) were appended through tools/ledger/import_bundle.py on 2026-11-04. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
-        "lines": 888
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "9f8144c3fa73d7cfa4ffd02d3b6c23c3ea9e0c1e164e9497232dd2842e0a022c",
-        "lines": 907
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    },
-    {
-      "date": "2026-11-04",
-      "act": "Spec 089 adoption intake (branch feat/089-spec-package; record: specs/089-run-scoped-results/records/ratification-2026-11-04.md)",
-      "reason": "The claims ledger grew by append-only intake: the 20 bundle claims of Spec 089 (089-run-scoped-results/C089-1..20) were appended through tools/ledger/import_bundle.py on 2026-11-04. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "9f8144c3fa73d7cfa4ffd02d3b6c23c3ea9e0c1e164e9497232dd2842e0a022c",
-        "lines": 907
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "b442ce7e5825e938fbd4bc0033bcb0582b37c71fe724a55f4584b5a4d5213712",
-        "lines": 927
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    },
-    {
-      "date": "2026-11-04",
-      "act": "Spec 090 adoption intake (branch feat/090-adoption; record: specs/090-projected-constraints-generalization-study/records/ratification-2026-11-04.md)",
-      "reason": "The claims ledger grew by append-only intake: the 16 bundle claims of Spec 090 (090-projected-constraints-generalization-study/C090-1..16) were appended through tools/ledger/import_bundle.py on 2026-11-04. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "b442ce7e5825e938fbd4bc0033bcb0582b37c71fe724a55f4584b5a4d5213712",
-        "lines": 927
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
-        "lines": 943
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    },
-    {
-      "date": "2026-11-05",
-      "act": "Spec 084 C084-12 intake replay (branch feat/084-c084-12-intake-replay; record: specs/084-policy-sync-conformance/records/t011-intake-replay-2026-11-05.md)",
-      "reason": "The claims ledger grew by append-only intake: the one bundle claim of Spec 084's second bundle file (084-policy-sync-conformance/claims.json, C084-12) was appended through tools/ledger/import_bundle.py on 2026-11-05 (1 appended, 11 already canonical). This replays the intake first executed end-to-end on 2026-11-05 and then held, reverted, on a machinery gap (PR #531's stage record: the run-defs v1 run index could not account the departed T405 generations); run-defs v2 (PR #532) registered the departure act, and the completion builder appends the pair's departure acts as part of this intake's completion. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
-        "lines": 943
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922",
-        "lines": 944
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entry carries no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    },
-    {
-      "date": "2026-11-06",
-      "act": "Spec 093 adoption completion-chain recompute over the combined ledger (branch docs/093-material-channel-draft, PR #530; record: specs/093-material-context-channel/records/ratification-2026-11-05.md, combined-recompute addendum)",
-      "reason": "The claims ledger grew by two append-only intakes on divergent branches, and each line's completion chain was computed over its own build: Spec 084's C084-12 (PR #533, merged at bbdfc865; ledger 943 to 944 lines, pin 6a997a31) and Spec 093's C093-1..14 (this branch over the pre-PR-#533 base; 943 to 957 lines). At the merge of the two lines the whole chain was recomputed over the combined ledger (the 944 lines of PR #533's build followed by this branch's appended C093 block, block SHA-256 79c84105bf66f97d88fb0423f4b9a7361c795e4cead131c249ab56aeed98a45; 958 lines): both T405 scenarios were re-executed under run-defs v2 (runs settling-20261106T085256Z-316590 and settling-20261106T085304Z-78bf5c, superseding the standing pair of the 944 build) with result blocks byte-equal to both prior generations', the Stage 4 comparison was re-filed from the new pair, and the assignment sets were re-materialized unchanged (run settling-20261106T085304Z-a38e00). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the combined build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922",
-        "lines": 944
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
-        "lines": 958
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the combined build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    },
-    {
-      "date": "2026-11-10",
-      "act": "Spec 091 adoption intake (branch adopt/091-wave1; record: specs/091-anchor-comparison-integrity/records/ratification-2026-11-06.md)",
-      "reason": "The claims ledger grew by one append-only intake: the 15 bundle claims of Spec 091 (091-anchor-comparison-integrity/C091-1..15) were appended through tools/ledger/import_bundle.py on 2026-11-10 (intake date 2026-11-06, the ratification date, per the C090/C093 convention). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v2 (runs settling-20261110T135945Z-814eaf and settling-20261110T135950Z-410e98, same candidates, same 286-sign full-frame scope) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261110T140013Z-646244; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
-        "lines": 958
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
-        "lines": 973
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    },
-    {
-      "date": "2026-11-10",
-      "act": "Spec 090 Stage G3 adoption intake (branch adopt/090-g3; record: specs/090-projected-constraints-generalization-study/records/ratification-2026-11-06.md)",
-      "reason": "The claims ledger grew by one append-only intake: the 8 stage-bundle claims of Spec 090's G3 stage amendment (090-projected-constraints-generalization-study/C090-17..24, carried in the spec's claims.json stage bundle) were appended through tools/ledger/import_bundle.py on 2026-11-10 (intake date 2026-11-06, the ratification date, per the C090/C093 convention). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v2 (runs settling-20261110T145806Z-63c6de and settling-20261110T145813Z-5f57c9, same candidates, same 286-sign full-frame scope) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261110T145818Z-4fe3eb; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
-        "lines": 973
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
-        "lines": 981
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    },
-    {
-      "date": "2026-11-10",
-      "act": "Spec 092 adoption intake (branch adopt/092-r4; record: specs/092-platform-hardening-r4/records/ratification-2026-11-06.md)",
-      "reason": "The claims ledger grew by one append-only intake: the 14 bundle claims of Spec 092 (092-platform-hardening-r4/C092-1..14) were appended through tools/ledger/import_bundle.py on 2026-11-10 (intake date 2026-11-06, the ratification date, per the C090/C093 convention). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v2 (runs settling-20261110T153530Z-bef382 and settling-20261110T153537Z-fdc511, same candidates, same 286-sign full-frame scope) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261110T153556Z-3710e2; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
-        "lines": 981
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f",
-        "lines": 995
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    },
-    {
-      "date": "2026-11-13",
-      "act": "Spec 094 claims-ledger intake (T004; branch spec/094-t004-intake; record: the intake PR's root LEDGER.md entry). The adoption (PR #566) landed the spec files only and deferred this intake by name; this act discharges it.",
-      "reason": "The claims ledger grew by one append-only intake: the 13 bundle claims of Spec 094 (094-research-loop-acceptance-hardening/C094-1..13) were appended through tools/ledger/import_bundle.py on 2026-11-13 (intake date 2026-11-13, the ratification date). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v2 (runs settling-20261113T214900Z-951ac9 and settling-20261113T214901Z-42d642, same candidates, same 286-sign full-frame scope) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261113T214910Z-cd0183; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f",
-        "lines": 995
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a",
-        "lines": 1008
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    },
-    {
-      "date": "2026-11-15",
-      "act": "Spec 095 claims-ledger intake (T004, executed inside the adoption PR; branch adopt/095-red-team-remediation; record: the adoption PR's root LEDGER.md entry). The adoption lands the spec files and this intake in the same PR (D-095-6, the clean Spec 092 pattern of PR #548); no intake is deferred and no exception is taken.",
-      "reason": "The claims ledger grew by one append-only intake: the 17 bundle claims of Spec 095 (095-red-team-remediation/C095-1..17) were appended through tools/ledger/import_bundle.py on 2026-11-15 (intake date 2026-11-15, the ratification date). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v2 (runs settling-20261116T034814Z-3681c4 and settling-20261116T034819Z-8203db, same candidates, same 286-sign full-frame scope, same registered scenario ids) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261116T034856Z-903342; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a",
-        "lines": 1008
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
-        "lines": 1025
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    },
-    {
-      "date": "2026-11-20",
-      "act": "Spec 096 claims-ledger intake (T004, executed inside the adoption PR; branch feat/096-eteocypriot-program-setup; record: the adoption PR's root LEDGER.md entry and specs/096-eteocypriot-program/records/adoption-record-2026-11-20.md). The adoption lands the spec files and this intake in the same PR (D-096-2, the clean Spec 092 pattern of PR #548); no intake is deferred and no exception is taken.",
-      "reason": "The claims ledger grew by one append-only intake: the 4 bundle claims of Spec 096 (096-eteocypriot-program/C096-1..4) were appended through tools/ledger/import_bundle.py on 2026-11-20 (intake date 2026-11-20, the adoption date). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v3 (runs settling-20261120T184448Z-337450 and settling-20261120T184451Z-658fe3, same candidates, same 286-sign full-frame scope, same registered scenario ids) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261120T184602Z-1a1d67; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
-      "prior_ledger_pin": {
-        "sha256_canonical": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
-        "lines": 1025
-      },
-      "new_ledger_pin": {
-        "sha256_canonical": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
-        "lines": 1029
-      },
-      "expectations_changed": false,
-      "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
-    }
-  ],
-  "label": "Computation over ledgered relations under glossa-settle-1 semantics. Establishes what the ledger implies under these rules, not what the script says.",
-  "provenance": {
-    "ledger": {
-      "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256_canonical": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
-      "lines": 1029
-    },
-    "anchors_register": {
-      "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
-      "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-      "bytes": 570344,
-      "records": 287,
-      "frame_inventory": {
-        "mahadevan": 286
-      },
-      "other_keys": [
-        "H003"
-      ],
-      "strict": 94,
-      "strict_by_confidence": {
-        "HIGH": 90,
-        "MEDIUM": 4
-      }
-    },
-    "strict_rule": {
-      "rule_id": "strict_sa_independent_hm",
-      "rule_version": "Phase-109 follow-through (spec 007, 2026-10-06) applying the Phase-108 strict definition",
-      "register": "reports/phase108_provenance_register.json",
-      "definition": "confidence in {HIGH, MEDIUM} AND register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain is false"
-    },
-    "matrix_defs": "matrix-defs v1",
-    "corpus_snapshot": {
-      "path": "glossa-corpus/indus/exports/indus_research.jsonl",
-      "sha256_canonical": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
-    }
+ "artifact": "settling-canonical",
+ "spec": "086-winning-combination-adoption",
+ "task": "T402",
+ "semantics": "glossa-settle-1",
+ "semantics_document": "glossa-indus/ledger/SETTLING-SEMANTICS.md",
+ "registered": "2026-11-01",
+ "re_derivations": [
+  {
+   "date": "2026-11-02",
+   "act": "Spec 087 adoption intake (branch feat/087-spec-package; record: specs/087-node-system-tightening/records/adoption-2026-11-02.md)",
+   "reason": "The claims ledger grew by append-only intake: the 17 bundle claims of Spec 087 (087-node-system-tightening/C087-1..17) were appended through tools/ledger/import_bundle.py on 2026-11-02. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "c4e2326ec8757bb700dac0142dd0adf17d7464b4d929f5b103868c9228f13ccf",
+    "lines": 871
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
+    "lines": 888
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
   },
-  "subset": {
-    "id": "canonical-subset-1",
-    "frame": "mahadevan",
-    "signs": [
-      "mahadevan:64",
-      "mahadevan:70",
-      "mahadevan:72",
-      "mahadevan:222"
+  {
+   "date": "2026-11-04",
+   "act": "Spec 088 adoption intake (branch feat/088-adoption; record: specs/088-full-picture-map-gap-register/records/ratification-2026-11-04.md)",
+   "reason": "The claims ledger grew by append-only intake: the 19 bundle claims of Spec 088 (088-full-picture-map-gap-register/C088-1..19) were appended through tools/ledger/import_bundle.py on 2026-11-04. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "f988ed61404daf8200479e9d1a6580526c7b419ba7e802a3b6b41a5a73a167ac",
+    "lines": 888
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "9f8144c3fa73d7cfa4ffd02d3b6c23c3ea9e0c1e164e9497232dd2842e0a022c",
+    "lines": 907
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+  },
+  {
+   "date": "2026-11-04",
+   "act": "Spec 089 adoption intake (branch feat/089-spec-package; record: specs/089-run-scoped-results/records/ratification-2026-11-04.md)",
+   "reason": "The claims ledger grew by append-only intake: the 20 bundle claims of Spec 089 (089-run-scoped-results/C089-1..20) were appended through tools/ledger/import_bundle.py on 2026-11-04. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "9f8144c3fa73d7cfa4ffd02d3b6c23c3ea9e0c1e164e9497232dd2842e0a022c",
+    "lines": 907
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "b442ce7e5825e938fbd4bc0033bcb0582b37c71fe724a55f4584b5a4d5213712",
+    "lines": 927
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+  },
+  {
+   "date": "2026-11-04",
+   "act": "Spec 090 adoption intake (branch feat/090-adoption; record: specs/090-projected-constraints-generalization-study/records/ratification-2026-11-04.md)",
+   "reason": "The claims ledger grew by append-only intake: the 16 bundle claims of Spec 090 (090-projected-constraints-generalization-study/C090-1..16) were appended through tools/ledger/import_bundle.py on 2026-11-04. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "b442ce7e5825e938fbd4bc0033bcb0582b37c71fe724a55f4584b5a4d5213712",
+    "lines": 927
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
+    "lines": 943
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+  },
+  {
+   "date": "2026-11-05",
+   "act": "Spec 084 C084-12 intake replay (branch feat/084-c084-12-intake-replay; record: specs/084-policy-sync-conformance/records/t011-intake-replay-2026-11-05.md)",
+   "reason": "The claims ledger grew by append-only intake: the one bundle claim of Spec 084's second bundle file (084-policy-sync-conformance/claims.json, C084-12) was appended through tools/ledger/import_bundle.py on 2026-11-05 (1 appended, 11 already canonical). This replays the intake first executed end-to-end on 2026-11-05 and then held, reverted, on a machinery gap (PR #531's stage record: the run-defs v1 run index could not account the departed T405 generations); run-defs v2 (PR #532) registered the departure act, and the completion builder appends the pair's departure acts as part of this intake's completion. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the new build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "15a5fbad24f400631ace1ebc88bfb7712c9bf6f68fae23e56fedbcac5fd5a794",
+    "lines": 943
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922",
+    "lines": 944
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the new build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entry carries no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+  },
+  {
+   "date": "2026-11-06",
+   "act": "Spec 093 adoption completion-chain recompute over the combined ledger (branch docs/093-material-channel-draft, PR #530; record: specs/093-material-context-channel/records/ratification-2026-11-05.md, combined-recompute addendum)",
+   "reason": "The claims ledger grew by two append-only intakes on divergent branches, and each line's completion chain was computed over its own build: Spec 084's C084-12 (PR #533, merged at bbdfc865; ledger 943 to 944 lines, pin 6a997a31) and Spec 093's C093-1..14 (this branch over the pre-PR-#533 base; 943 to 957 lines). At the merge of the two lines the whole chain was recomputed over the combined ledger (the 944 lines of PR #533's build followed by this branch's appended C093 block, block SHA-256 79c84105bf66f97d88fb0423f4b9a7361c795e4cead131c249ab56aeed98a45; 958 lines): both T405 scenarios were re-executed under run-defs v2 (runs settling-20261106T085256Z-316590 and settling-20261106T085304Z-78bf5c, superseding the standing pair of the 944 build) with result blocks byte-equal to both prior generations', the Stage 4 comparison was re-filed from the new pair, and the assignment sets were re-materialized unchanged (run settling-20261106T085304Z-a38e00). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the combined build under this registration's amendment discipline. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "6a997a31be478e33106c40753f90653c4155141324ee198904dc333e2ebda922",
+    "lines": 944
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
+    "lines": 958
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the combined build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+  },
+  {
+   "date": "2026-11-10",
+   "act": "Spec 091 adoption intake (branch adopt/091-wave1; record: specs/091-anchor-comparison-integrity/records/ratification-2026-11-06.md)",
+   "reason": "The claims ledger grew by one append-only intake: the 15 bundle claims of Spec 091 (091-anchor-comparison-integrity/C091-1..15) were appended through tools/ledger/import_bundle.py on 2026-11-10 (intake date 2026-11-06, the ratification date, per the C090/C093 convention). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v2 (runs settling-20261110T135945Z-814eaf and settling-20261110T135950Z-410e98, same candidates, same 286-sign full-frame scope) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261110T140013Z-646244; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "c55d57822bcd9b2e9a3401d807aea6e5e1ce872c5e239baadea4834310c8f4aa",
+    "lines": 958
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
+    "lines": 973
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+  },
+  {
+   "date": "2026-11-10",
+   "act": "Spec 090 Stage G3 adoption intake (branch adopt/090-g3; record: specs/090-projected-constraints-generalization-study/records/ratification-2026-11-06.md)",
+   "reason": "The claims ledger grew by one append-only intake: the 8 stage-bundle claims of Spec 090's G3 stage amendment (090-projected-constraints-generalization-study/C090-17..24, carried in the spec's claims.json stage bundle) were appended through tools/ledger/import_bundle.py on 2026-11-10 (intake date 2026-11-06, the ratification date, per the C090/C093 convention). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v2 (runs settling-20261110T145806Z-63c6de and settling-20261110T145813Z-5f57c9, same candidates, same 286-sign full-frame scope) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261110T145818Z-4fe3eb; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
+    "lines": 973
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
+    "lines": 981
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+  },
+  {
+   "date": "2026-11-10",
+   "act": "Spec 092 adoption intake (branch adopt/092-r4; record: specs/092-platform-hardening-r4/records/ratification-2026-11-06.md)",
+   "reason": "The claims ledger grew by one append-only intake: the 14 bundle claims of Spec 092 (092-platform-hardening-r4/C092-1..14) were appended through tools/ledger/import_bundle.py on 2026-11-10 (intake date 2026-11-06, the ratification date, per the C090/C093 convention). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v2 (runs settling-20261110T153530Z-bef382 and settling-20261110T153537Z-fdc511, same candidates, same 286-sign full-frame scope) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261110T153556Z-3710e2; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "85c3b4c7e52e154cdc94c1f882bd609a459994c19ea821d8b20bae3934fb387b",
+    "lines": 981
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f",
+    "lines": 995
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+  },
+  {
+   "date": "2026-11-13",
+   "act": "Spec 094 claims-ledger intake (T004; branch spec/094-t004-intake; record: the intake PR's root LEDGER.md entry). The adoption (PR #566) landed the spec files only and deferred this intake by name; this act discharges it.",
+   "reason": "The claims ledger grew by one append-only intake: the 13 bundle claims of Spec 094 (094-research-loop-acceptance-hardening/C094-1..13) were appended through tools/ledger/import_bundle.py on 2026-11-13 (intake date 2026-11-13, the ratification date). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v2 (runs settling-20261113T214900Z-951ac9 and settling-20261113T214901Z-42d642, same candidates, same 286-sign full-frame scope) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261113T214910Z-cd0183; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "378f700dba87f0bde2cc6ddfa321e819e4fe204fffe015257698c58e63901d6f",
+    "lines": 995
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a",
+    "lines": 1008
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+  },
+  {
+   "date": "2026-11-15",
+   "act": "Spec 095 claims-ledger intake (T004, executed inside the adoption PR; branch adopt/095-red-team-remediation; record: the adoption PR's root LEDGER.md entry). The adoption lands the spec files and this intake in the same PR (D-095-6, the clean Spec 092 pattern of PR #548); no intake is deferred and no exception is taken.",
+   "reason": "The claims ledger grew by one append-only intake: the 17 bundle claims of Spec 095 (095-red-team-remediation/C095-1..17) were appended through tools/ledger/import_bundle.py on 2026-11-15 (intake date 2026-11-15, the ratification date). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v2 (runs settling-20261116T034814Z-3681c4 and settling-20261116T034819Z-8203db, same candidates, same 286-sign full-frame scope, same registered scenario ids) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261116T034856Z-903342; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "95d62298e6e4fd059aded79f787ee0c2be06e731bf8e5aaa9ffd2229df31eb1a",
+    "lines": 1008
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
+    "lines": 1025
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+  },
+  {
+   "date": "2026-11-20",
+   "act": "Spec 096 claims-ledger intake (T004, executed inside the adoption PR; branch feat/096-eteocypriot-program-setup; record: the adoption PR's root LEDGER.md entry and specs/096-eteocypriot-program/records/adoption-record-2026-11-20.md). The adoption lands the spec files and this intake in the same PR (D-096-2, the clean Spec 092 pattern of PR #548); no intake is deferred and no exception is taken.",
+   "reason": "The claims ledger grew by one append-only intake: the 4 bundle claims of Spec 096 (096-eteocypriot-program/C096-1..4) were appended through tools/ledger/import_bundle.py on 2026-11-20 (intake date 2026-11-20, the adoption date). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v3 (runs settling-20261120T184448Z-337450 and settling-20261120T184451Z-658fe3, same candidates, same 286-sign full-frame scope, same registered scenario ids) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the ledger pin), and the assignment sets were re-materialized unchanged (run settling-20261120T184602Z-1a1d67; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "b200827ce16d643f6567cfb9dac10524c89f592d653c2ae5c775697f87cd4100",
+    "lines": 1025
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
+    "lines": 1029
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot, and the assignment sets are untouched); the gate's anchors, corpus, and strict-count pins hold unchanged."
+  },
+  {
+   "date": "2026-11-20",
+   "act": "Spec 097 claims-ledger intake (T001, executed inside the program-setup PR; branch feat/097-meroitic-program-setup; record: specs/097-meroitic-reproduction-benchmark/records/adoption-and-registration-2026-11-20.md). The package was drafted as Spec 096 and first filed as PR #607 on the pre-Eteocypriot main; after the Eteocypriot program landed Spec 096 (PRs #604-#606), PR #607 was closed unmerged and the registration re-applied on the landed main under the renumbered Spec 097, following the Spec 095 pattern; no intake is deferred and no exception is taken.",
+   "reason": "The claims ledger grew by one append-only intake: the 6 bundle claims of Spec 097 (097-meroitic-reproduction-benchmark/C097-1..6) were appended through tools/ledger/import_bundle.py on 2026-11-20 (intake date 2026-11-20, the adoption date). The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v3 (runs settling-20261120T200602Z-e65bed and settling-20261120T200605Z-0feb5c, same candidates, same 286-sign full-frame scope, same registered scenario ids) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the pins), and the assignment sets were re-materialized unchanged (run settling-20261120T200703Z-193428; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The superseded generation (settling-20261120T184448Z-337450, settling-20261120T184451Z-658fe3, settling-20261120T184602Z-1a1d67, the Spec 096 Eteocypriot intake's refresh) departed the store in this same landing, its departure accounting appended through run_records.append_act after the index completion pass named the records post-spec skips. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "09ca2407e2a7769e5fe73ded8402d22998ef8388ede777617fbfa678eb6f9a53",
+    "lines": 1029
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "72af0bc682e3387c44e3dd1f40fbdda5f249f4b21c87bba2967d71e678145ad5",
+    "lines": 1035
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot and phase-108 register pins in the re-executed pair's input pins are identical to the superseded generation's); both T405 result blocks are byte-equal to the superseded generation's, verified by direct comparison of the stored records."
+  }
+ ],
+ "label": "Computation over ledgered relations under glossa-settle-1 semantics. Establishes what the ledger implies under these rules, not what the script says.",
+ "provenance": {
+  "ledger": {
+   "path": "glossa-indus/ledger/claims.jsonl",
+   "sha256_canonical": "72af0bc682e3387c44e3dd1f40fbdda5f249f4b21c87bba2967d71e678145ad5",
+   "lines": 1035
+  },
+  "anchors_register": {
+   "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+   "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+   "bytes": 570344,
+   "records": 287,
+   "frame_inventory": {
+    "mahadevan": 286
+   },
+   "other_keys": [
+    "H003"
+   ],
+   "strict": 94,
+   "strict_by_confidence": {
+    "HIGH": 90,
+    "MEDIUM": 4
+   }
+  },
+  "strict_rule": {
+   "rule_id": "strict_sa_independent_hm",
+   "rule_version": "Phase-109 follow-through (spec 007, 2026-10-06) applying the Phase-108 strict definition",
+   "register": "reports/phase108_provenance_register.json",
+   "definition": "confidence in {HIGH, MEDIUM} AND register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain is false"
+  },
+  "matrix_defs": "matrix-defs v1",
+  "corpus_snapshot": {
+   "path": "glossa-corpus/indus/exports/indus_research.jsonl",
+   "sha256_canonical": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
+  }
+ },
+ "subset": {
+  "id": "canonical-subset-1",
+  "frame": "mahadevan",
+  "signs": [
+   "mahadevan:64",
+   "mahadevan:70",
+   "mahadevan:72",
+   "mahadevan:222"
+  ],
+  "selection": "The three signs the ledger's only sign_refs-bearing claim names (mahadevan:64, 70, 72 — so S-R2 has a touched claim to enumerate; among them one strict anchor, M070, and two non-strict, M064 and M072, so S-R1 exercises both verdict classes) plus mahadevan:222, a strict MEDIUM anchor no claim names (so the incumbent assigns a sign outside every claim's refs, and the null scenario's forced computation has a strict member outside the claim's set)."
+ },
+ "scenarios": [
+  {
+   "id": "null-over-subset",
+   "title": "The null assignment over canonical-subset-1 (spec.md Point 3, Step 2, scenario 1)",
+   "inputs": {
+    "candidate": {
+     "id": "canonical-null",
+     "kind": "ad_hoc",
+     "provenance": {
+      "author": "Spec 086 Stage 4 registration (T402)",
+      "source": "the empty assignment, registered as the null canonical",
+      "date": "2026-11-01"
+     },
+     "frame": "mahadevan",
+     "assignments": []
+    },
+    "scope": [
+     "mahadevan:64",
+     "mahadevan:70",
+     "mahadevan:72",
+     "mahadevan:222"
+    ]
+   },
+   "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the candidate assigns nothing. S-R1: no assigned signs, so no contexts are touched and every S-R1 count is 0; strict_agreement_share is null (no strict contexts touched) and contexted_share is null (no assignments in scope). S-R2: with no assigned signs, no claim's sign_refs intersect the candidate, so claims_touched is empty. S-R3: no class table is registered in v1, so violations is []. Forced (semantics section 6): the scope's unassigned signs are all four; the strict among them are mahadevan:70 (forced value its record's reading 'vēl') and mahadevan:222 ('min'); mahadevan:64 and mahadevan:72 are not strict and are free. Coverage: assigned_share = 0/4 = 0.",
+   "expected": {
+    "scope": [
+     "mahadevan:64",
+     "mahadevan:70",
+     "mahadevan:72",
+     "mahadevan:222"
     ],
-    "selection": "The three signs the ledger's only sign_refs-bearing claim names (mahadevan:64, 70, 72 — so S-R2 has a touched claim to enumerate; among them one strict anchor, M070, and two non-strict, M064 and M072, so S-R1 exercises both verdict classes) plus mahadevan:222, a strict MEDIUM anchor no claim names (so the incumbent assigns a sign outside every claim's refs, and the null scenario's forced computation has a strict member outside the claim's set)."
+    "scope_signs": 4,
+    "assigned": [],
+    "assigned_count": 0,
+    "assigned_share": 0.0,
+    "uncontexted_assignments": [],
+    "contexts": [],
+    "contexts_touched": 0,
+    "strict_contexts": 0,
+    "consistent": 0,
+    "non_strict_contexts": 0,
+    "conflicts": [],
+    "strict_agreement_share": null,
+    "contexted_share": null,
+    "claims_touched": [],
+    "claims_touched_count": 0,
+    "s_r3": {
+     "class_table": null,
+     "violations": []
+    },
+    "forced": [
+     {
+      "sign": "mahadevan:70",
+      "value": "vēl"
+     },
+     {
+      "sign": "mahadevan:222",
+      "value": "min"
+     }
+    ]
+   }
   },
-  "scenarios": [
-    {
-      "id": "null-over-subset",
-      "title": "The null assignment over canonical-subset-1 (spec.md Point 3, Step 2, scenario 1)",
-      "inputs": {
-        "candidate": {
-          "id": "canonical-null",
-          "kind": "ad_hoc",
-          "provenance": {
-            "author": "Spec 086 Stage 4 registration (T402)",
-            "source": "the empty assignment, registered as the null canonical",
-            "date": "2026-11-01"
-          },
-          "frame": "mahadevan",
-          "assignments": []
-        },
-        "scope": [
-          "mahadevan:64",
-          "mahadevan:70",
-          "mahadevan:72",
-          "mahadevan:222"
-        ]
+  {
+   "id": "incumbent-over-subset",
+   "title": "The incumbent set (strict-94 read as assignments) restricted to canonical-subset-1 (spec.md Point 3, Step 2, scenario 2)",
+   "inputs": {
+    "candidate": {
+     "id": "incumbent",
+     "kind": "set_of_record_restricted",
+     "set": "incumbent",
+     "definition": "the strict set read as assignments (SETTLING-SEMANTICS.md section 3), restricted to the scope",
+     "frame": "mahadevan",
+     "assignments": [
+      {
+       "sign": "mahadevan:70",
+       "value": "vēl"
       },
-      "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the candidate assigns nothing. S-R1: no assigned signs, so no contexts are touched and every S-R1 count is 0; strict_agreement_share is null (no strict contexts touched) and contexted_share is null (no assignments in scope). S-R2: with no assigned signs, no claim's sign_refs intersect the candidate, so claims_touched is empty. S-R3: no class table is registered in v1, so violations is []. Forced (semantics section 6): the scope's unassigned signs are all four; the strict among them are mahadevan:70 (forced value its record's reading 'vēl') and mahadevan:222 ('min'); mahadevan:64 and mahadevan:72 are not strict and are free. Coverage: assigned_share = 0/4 = 0.",
-      "expected": {
-        "scope": [
-          "mahadevan:64",
-          "mahadevan:70",
-          "mahadevan:72",
-          "mahadevan:222"
-        ],
-        "scope_signs": 4,
-        "assigned": [],
-        "assigned_count": 0,
-        "assigned_share": 0.0,
-        "uncontexted_assignments": [],
-        "contexts": [],
-        "contexts_touched": 0,
-        "strict_contexts": 0,
-        "consistent": 0,
-        "non_strict_contexts": 0,
-        "conflicts": [],
-        "strict_agreement_share": null,
-        "contexted_share": null,
-        "claims_touched": [],
-        "claims_touched_count": 0,
-        "s_r3": {
-          "class_table": null,
-          "violations": []
-        },
-        "forced": [
-          {
-            "sign": "mahadevan:70",
-            "value": "vēl"
-          },
-          {
-            "sign": "mahadevan:222",
-            "value": "min"
-          }
-        ]
+      {
+       "sign": "mahadevan:222",
+       "value": "min"
       }
+     ]
     },
-    {
-      "id": "incumbent-over-subset",
-      "title": "The incumbent set (strict-94 read as assignments) restricted to canonical-subset-1 (spec.md Point 3, Step 2, scenario 2)",
-      "inputs": {
-        "candidate": {
-          "id": "incumbent",
-          "kind": "set_of_record_restricted",
-          "set": "incumbent",
-          "definition": "the strict set read as assignments (SETTLING-SEMANTICS.md section 3), restricted to the scope",
-          "frame": "mahadevan",
-          "assignments": [
-            {
-              "sign": "mahadevan:70",
-              "value": "vēl"
-            },
-            {
-              "sign": "mahadevan:222",
-              "value": "min"
-            }
-          ]
-        },
-        "scope": [
-          "mahadevan:64",
-          "mahadevan:70",
-          "mahadevan:72",
-          "mahadevan:222"
-        ]
+    "scope": [
+     "mahadevan:64",
+     "mahadevan:70",
+     "mahadevan:72",
+     "mahadevan:222"
+    ]
+   },
+   "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the incumbent assigns exactly the strict records, so restricted to the subset it assigns mahadevan:70 -> 'vēl' and mahadevan:222 -> 'min' (mahadevan:64 and mahadevan:72 are not strict and are not assigned). S-R1: mahadevan:70's context M070 is strict and the assigned value 'vēl' equals the record's reading -> consistent. mahadevan:222's context M222 is strict and 'min' equals 'min' -> consistent. Contexts touched 2, strict contexts 2, consistent 2, non-strict contexts 0, conflicts []. strict_agreement_share = 2/2 = 1; contexted_share = 2/2 = 1; assigned_share = 2/4 = 0.5. S-R2: assigned signs {70, 222}; the claim's refs {72, 64, 70} intersect at {70}, so the claim is touched via [mahadevan:70] with tallies 0/0/0 and falsifiers 1 present / 0 evaluable (per the claim facts above). S-R3: []. Forced: the scope's unassigned signs are {64, 72}; neither is strict, so forced is [].",
+   "expected": {
+    "scope": [
+     "mahadevan:64",
+     "mahadevan:70",
+     "mahadevan:72",
+     "mahadevan:222"
+    ],
+    "scope_signs": 4,
+    "assigned": [
+     {
+      "sign": "mahadevan:70",
+      "value": "vēl"
+     },
+     {
+      "sign": "mahadevan:222",
+      "value": "min"
+     }
+    ],
+    "assigned_count": 2,
+    "assigned_share": 0.5,
+    "uncontexted_assignments": [],
+    "contexts": [
+     {
+      "sign": "mahadevan:70",
+      "anchor": "M070",
+      "assigned_value": "vēl",
+      "anchor_reading": "vēl",
+      "confidence": "HIGH",
+      "strict": true,
+      "result": "consistent"
+     },
+     {
+      "sign": "mahadevan:222",
+      "anchor": "M222",
+      "assigned_value": "min",
+      "anchor_reading": "min",
+      "confidence": "MEDIUM",
+      "strict": true,
+      "result": "consistent"
+     }
+    ],
+    "contexts_touched": 2,
+    "strict_contexts": 2,
+    "consistent": 2,
+    "non_strict_contexts": 0,
+    "conflicts": [],
+    "strict_agreement_share": 1.0,
+    "contexted_share": 1.0,
+    "claims_touched": [
+     {
+      "claim": "parpola_2010_dravidian_solution_manual_002",
+      "via_signs": [
+       "mahadevan:70"
+      ],
+      "tallies": {
+       "supporting": 0,
+       "opposing": 0,
+       "constraining": 0
       },
-      "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the incumbent assigns exactly the strict records, so restricted to the subset it assigns mahadevan:70 -> 'vēl' and mahadevan:222 -> 'min' (mahadevan:64 and mahadevan:72 are not strict and are not assigned). S-R1: mahadevan:70's context M070 is strict and the assigned value 'vēl' equals the record's reading -> consistent. mahadevan:222's context M222 is strict and 'min' equals 'min' -> consistent. Contexts touched 2, strict contexts 2, consistent 2, non-strict contexts 0, conflicts []. strict_agreement_share = 2/2 = 1; contexted_share = 2/2 = 1; assigned_share = 2/4 = 0.5. S-R2: assigned signs {70, 222}; the claim's refs {72, 64, 70} intersect at {70}, so the claim is touched via [mahadevan:70] with tallies 0/0/0 and falsifiers 1 present / 0 evaluable (per the claim facts above). S-R3: []. Forced: the scope's unassigned signs are {64, 72}; neither is strict, so forced is [].",
-      "expected": {
-        "scope": [
-          "mahadevan:64",
-          "mahadevan:70",
-          "mahadevan:72",
-          "mahadevan:222"
-        ],
-        "scope_signs": 4,
-        "assigned": [
-          {
-            "sign": "mahadevan:70",
-            "value": "vēl"
-          },
-          {
-            "sign": "mahadevan:222",
-            "value": "min"
-          }
-        ],
-        "assigned_count": 2,
-        "assigned_share": 0.5,
-        "uncontexted_assignments": [],
-        "contexts": [
-          {
-            "sign": "mahadevan:70",
-            "anchor": "M070",
-            "assigned_value": "vēl",
-            "anchor_reading": "vēl",
-            "confidence": "HIGH",
-            "strict": true,
-            "result": "consistent"
-          },
-          {
-            "sign": "mahadevan:222",
-            "anchor": "M222",
-            "assigned_value": "min",
-            "anchor_reading": "min",
-            "confidence": "MEDIUM",
-            "strict": true,
-            "result": "consistent"
-          }
-        ],
-        "contexts_touched": 2,
-        "strict_contexts": 2,
-        "consistent": 2,
-        "non_strict_contexts": 0,
-        "conflicts": [],
-        "strict_agreement_share": 1.0,
-        "contexted_share": 1.0,
-        "claims_touched": [
-          {
-            "claim": "parpola_2010_dravidian_solution_manual_002",
-            "via_signs": [
-              "mahadevan:70"
-            ],
-            "tallies": {
-              "supporting": 0,
-              "opposing": 0,
-              "constraining": 0
-            },
-            "falsifiers_present": 1,
-            "falsifiers_evaluable": 0
-          }
-        ],
-        "claims_touched_count": 1,
-        "s_r3": {
-          "class_table": null,
-          "violations": []
-        },
-        "forced": []
-      }
+      "falsifiers_present": 1,
+      "falsifiers_evaluable": 0
+     }
+    ],
+    "claims_touched_count": 1,
+    "s_r3": {
+     "class_table": null,
+     "violations": []
     },
-    {
-      "id": "full-register-over-subset",
-      "title": "The full-register set (all 287 canonical anchors read as assignments) restricted to canonical-subset-1 (spec.md Point 3, Step 2, scenario 3)",
-      "inputs": {
-        "candidate": {
-          "id": "full-register",
-          "kind": "set_of_record_restricted",
-          "set": "full-register",
-          "definition": "every register record of the frame read as assignments (SETTLING-SEMANTICS.md section 3), restricted to the scope",
-          "frame": "mahadevan",
-          "assignments": [
-            {
-              "sign": "mahadevan:64",
-              "value": "va"
-            },
-            {
-              "sign": "mahadevan:70",
-              "value": "vēl"
-            },
-            {
-              "sign": "mahadevan:72",
-              "value": "mā"
-            },
-            {
-              "sign": "mahadevan:222",
-              "value": "min"
-            }
-          ]
-        },
-        "scope": [
-          "mahadevan:64",
-          "mahadevan:70",
-          "mahadevan:72",
-          "mahadevan:222"
-        ]
+    "forced": []
+   }
+  },
+  {
+   "id": "full-register-over-subset",
+   "title": "The full-register set (all 287 canonical anchors read as assignments) restricted to canonical-subset-1 (spec.md Point 3, Step 2, scenario 3)",
+   "inputs": {
+    "candidate": {
+     "id": "full-register",
+     "kind": "set_of_record_restricted",
+     "set": "full-register",
+     "definition": "every register record of the frame read as assignments (SETTLING-SEMANTICS.md section 3), restricted to the scope",
+     "frame": "mahadevan",
+     "assignments": [
+      {
+       "sign": "mahadevan:64",
+       "value": "va"
       },
-      "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the full-register set assigns every register record, so restricted to the subset it assigns all four signs their recorded readings. S-R1: mahadevan:64's context M064 is not strict -> a non-strict context (S-R1 gives no verdict on a non-strict context, whatever the value; here the value 'va' equals the reading). mahadevan:70 -> M070 strict, 'vēl' = 'vēl' -> consistent. mahadevan:72 -> M072 not strict -> non-strict context ('mā' = 'mā', no verdict). mahadevan:222 -> M222 strict, 'min' = 'min' -> consistent. Contexts touched 4, strict contexts 2, consistent 2, non-strict contexts 2, conflicts []. strict_agreement_share = 2/2 = 1; contexted_share = 4/4 = 1; assigned_share = 4/4 = 1. S-R2: assigned signs {64, 70, 72, 222}; the claim's refs intersect at {72, 64, 70} -> touched, via_signs in the entry's stored order [mahadevan:72, mahadevan:64, mahadevan:70]; tallies 0/0/0; falsifiers 1/0. S-R3: []. Forced: no scope sign is unassigned, so forced is [].",
-      "expected": {
-        "scope": [
-          "mahadevan:64",
-          "mahadevan:70",
-          "mahadevan:72",
-          "mahadevan:222"
-        ],
-        "scope_signs": 4,
-        "assigned": [
-          {
-            "sign": "mahadevan:64",
-            "value": "va"
-          },
-          {
-            "sign": "mahadevan:70",
-            "value": "vēl"
-          },
-          {
-            "sign": "mahadevan:72",
-            "value": "mā"
-          },
-          {
-            "sign": "mahadevan:222",
-            "value": "min"
-          }
-        ],
-        "assigned_count": 4,
-        "assigned_share": 1.0,
-        "uncontexted_assignments": [],
-        "contexts": [
-          {
-            "sign": "mahadevan:64",
-            "anchor": "M064",
-            "assigned_value": "va",
-            "anchor_reading": "va",
-            "confidence": "HIGH",
-            "strict": false,
-            "result": "non_strict"
-          },
-          {
-            "sign": "mahadevan:70",
-            "anchor": "M070",
-            "assigned_value": "vēl",
-            "anchor_reading": "vēl",
-            "confidence": "HIGH",
-            "strict": true,
-            "result": "consistent"
-          },
-          {
-            "sign": "mahadevan:72",
-            "anchor": "M072",
-            "assigned_value": "mā",
-            "anchor_reading": "mā",
-            "confidence": "HIGH",
-            "strict": false,
-            "result": "non_strict"
-          },
-          {
-            "sign": "mahadevan:222",
-            "anchor": "M222",
-            "assigned_value": "min",
-            "anchor_reading": "min",
-            "confidence": "MEDIUM",
-            "strict": true,
-            "result": "consistent"
-          }
-        ],
-        "contexts_touched": 4,
-        "strict_contexts": 2,
-        "consistent": 2,
-        "non_strict_contexts": 2,
-        "conflicts": [],
-        "strict_agreement_share": 1.0,
-        "contexted_share": 1.0,
-        "claims_touched": [
-          {
-            "claim": "parpola_2010_dravidian_solution_manual_002",
-            "via_signs": [
-              "mahadevan:72",
-              "mahadevan:64",
-              "mahadevan:70"
-            ],
-            "tallies": {
-              "supporting": 0,
-              "opposing": 0,
-              "constraining": 0
-            },
-            "falsifiers_present": 1,
-            "falsifiers_evaluable": 0
-          }
-        ],
-        "claims_touched_count": 1,
-        "s_r3": {
-          "class_table": null,
-          "violations": []
-        },
-        "forced": []
+      {
+       "sign": "mahadevan:70",
+       "value": "vēl"
+      },
+      {
+       "sign": "mahadevan:72",
+       "value": "mā"
+      },
+      {
+       "sign": "mahadevan:222",
+       "value": "min"
       }
+     ]
     },
-    {
-      "id": "seeded-conflict-over-subset",
-      "title": "One seeded-conflict assignment over canonical-subset-1 (spec.md Point 3, Step 2, scenario 4)",
-      "inputs": {
-        "candidate": {
-          "id": "canonical-seeded-conflict",
-          "kind": "ad_hoc",
-          "provenance": {
-            "author": "Spec 086 Stage 4 registration (T402)",
-            "source": "authored for this canonical; the value 'ka' is a fixture chosen because it differs from M070's recorded reading 'vēl' — it is not a proposed reading of the sign",
-            "date": "2026-11-01"
-          },
-          "frame": "mahadevan",
-          "assignments": [
-            {
-              "sign": "mahadevan:70",
-              "value": "ka"
-            }
-          ]
-        },
-        "scope": [
-          "mahadevan:64",
-          "mahadevan:70",
-          "mahadevan:72",
-          "mahadevan:222"
-        ]
+    "scope": [
+     "mahadevan:64",
+     "mahadevan:70",
+     "mahadevan:72",
+     "mahadevan:222"
+    ]
+   },
+   "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the full-register set assigns every register record, so restricted to the subset it assigns all four signs their recorded readings. S-R1: mahadevan:64's context M064 is not strict -> a non-strict context (S-R1 gives no verdict on a non-strict context, whatever the value; here the value 'va' equals the reading). mahadevan:70 -> M070 strict, 'vēl' = 'vēl' -> consistent. mahadevan:72 -> M072 not strict -> non-strict context ('mā' = 'mā', no verdict). mahadevan:222 -> M222 strict, 'min' = 'min' -> consistent. Contexts touched 4, strict contexts 2, consistent 2, non-strict contexts 2, conflicts []. strict_agreement_share = 2/2 = 1; contexted_share = 4/4 = 1; assigned_share = 4/4 = 1. S-R2: assigned signs {64, 70, 72, 222}; the claim's refs intersect at {72, 64, 70} -> touched, via_signs in the entry's stored order [mahadevan:72, mahadevan:64, mahadevan:70]; tallies 0/0/0; falsifiers 1/0. S-R3: []. Forced: no scope sign is unassigned, so forced is [].",
+   "expected": {
+    "scope": [
+     "mahadevan:64",
+     "mahadevan:70",
+     "mahadevan:72",
+     "mahadevan:222"
+    ],
+    "scope_signs": 4,
+    "assigned": [
+     {
+      "sign": "mahadevan:64",
+      "value": "va"
+     },
+     {
+      "sign": "mahadevan:70",
+      "value": "vēl"
+     },
+     {
+      "sign": "mahadevan:72",
+      "value": "mā"
+     },
+     {
+      "sign": "mahadevan:222",
+      "value": "min"
+     }
+    ],
+    "assigned_count": 4,
+    "assigned_share": 1.0,
+    "uncontexted_assignments": [],
+    "contexts": [
+     {
+      "sign": "mahadevan:64",
+      "anchor": "M064",
+      "assigned_value": "va",
+      "anchor_reading": "va",
+      "confidence": "HIGH",
+      "strict": false,
+      "result": "non_strict"
+     },
+     {
+      "sign": "mahadevan:70",
+      "anchor": "M070",
+      "assigned_value": "vēl",
+      "anchor_reading": "vēl",
+      "confidence": "HIGH",
+      "strict": true,
+      "result": "consistent"
+     },
+     {
+      "sign": "mahadevan:72",
+      "anchor": "M072",
+      "assigned_value": "mā",
+      "anchor_reading": "mā",
+      "confidence": "HIGH",
+      "strict": false,
+      "result": "non_strict"
+     },
+     {
+      "sign": "mahadevan:222",
+      "anchor": "M222",
+      "assigned_value": "min",
+      "anchor_reading": "min",
+      "confidence": "MEDIUM",
+      "strict": true,
+      "result": "consistent"
+     }
+    ],
+    "contexts_touched": 4,
+    "strict_contexts": 2,
+    "consistent": 2,
+    "non_strict_contexts": 2,
+    "conflicts": [],
+    "strict_agreement_share": 1.0,
+    "contexted_share": 1.0,
+    "claims_touched": [
+     {
+      "claim": "parpola_2010_dravidian_solution_manual_002",
+      "via_signs": [
+       "mahadevan:72",
+       "mahadevan:64",
+       "mahadevan:70"
+      ],
+      "tallies": {
+       "supporting": 0,
+       "opposing": 0,
+       "constraining": 0
       },
-      "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the candidate assigns only mahadevan:70 -> 'ka'. S-R1: its context M070 is strict and 'ka' != the record's reading 'vēl' -> exactly one conflict, enumerated as {sign mahadevan:70, anchor M070, assigned_value 'ka', anchor_reading 'vēl'}. Contexts touched 1, strict contexts 1, consistent 0, non-strict contexts 0. strict_agreement_share = 0/1 = 0; contexted_share = 1/1 = 1; assigned_share = 1/4 = 0.25. S-R2: assigned {70} intersects the claim's refs -> touched via [mahadevan:70]; tallies 0/0/0; falsifiers 1/0. S-R3: []. Forced: the scope's unassigned signs are {64, 72, 222}; the strict among them is mahadevan:222 -> forced [(mahadevan:222, 'min')].",
-      "expected": {
-        "scope": [
-          "mahadevan:64",
-          "mahadevan:70",
-          "mahadevan:72",
-          "mahadevan:222"
-        ],
-        "scope_signs": 4,
-        "assigned": [
-          {
-            "sign": "mahadevan:70",
-            "value": "ka"
-          }
-        ],
-        "assigned_count": 1,
-        "assigned_share": 0.25,
-        "uncontexted_assignments": [],
-        "contexts": [
-          {
-            "sign": "mahadevan:70",
-            "anchor": "M070",
-            "assigned_value": "ka",
-            "anchor_reading": "vēl",
-            "confidence": "HIGH",
-            "strict": true,
-            "result": "conflict"
-          }
-        ],
-        "contexts_touched": 1,
-        "strict_contexts": 1,
-        "consistent": 0,
-        "non_strict_contexts": 0,
-        "conflicts": [
-          {
-            "sign": "mahadevan:70",
-            "anchor": "M070",
-            "assigned_value": "ka",
-            "anchor_reading": "vēl"
-          }
-        ],
-        "strict_agreement_share": 0.0,
-        "contexted_share": 1.0,
-        "claims_touched": [
-          {
-            "claim": "parpola_2010_dravidian_solution_manual_002",
-            "via_signs": [
-              "mahadevan:70"
-            ],
-            "tallies": {
-              "supporting": 0,
-              "opposing": 0,
-              "constraining": 0
-            },
-            "falsifiers_present": 1,
-            "falsifiers_evaluable": 0
-          }
-        ],
-        "claims_touched_count": 1,
-        "s_r3": {
-          "class_table": null,
-          "violations": []
-        },
-        "forced": [
-          {
-            "sign": "mahadevan:222",
-            "value": "min"
-          }
-        ]
-      }
+      "falsifiers_present": 1,
+      "falsifiers_evaluable": 0
+     }
+    ],
+    "claims_touched_count": 1,
+    "s_r3": {
+     "class_table": null,
+     "violations": []
     },
-    {
-      "id": "untouched-sign",
-      "title": "A candidate assigning a sign no in-scope context touches (anchor-context coverage zero, stated as such)",
-      "inputs": {
-        "candidate": {
-          "id": "canonical-untouched-sign",
-          "kind": "ad_hoc",
-          "provenance": {
-            "author": "Spec 086 Stage 4 registration (T402)",
-            "source": "authored for this canonical; the value 'TESTVALUE' is a fixture string, not a proposed reading",
-            "date": "2026-11-01"
-          },
-          "frame": "mahadevan",
-          "assignments": [
-            {
-              "sign": "mahadevan:417",
-              "value": "TESTVALUE"
-            }
-          ]
-        },
-        "scope": [
-          "mahadevan:417"
-        ]
-      },
-      "derivation": "The register's mahadevan inventory is its 286 M-prefixed keys; M417 is not among them (verified against the register at derivation: the key set runs over the stored M-numbers and 417 is absent). So mahadevan:417 has no anchor context. S-R1: the assignment is uncontexted, enumerated under uncontexted_assignments; contexts touched 0, strict contexts 0, consistent 0, conflicts []; strict_agreement_share is null (no strict contexts touched); contexted_share = 0/1 = 0 — anchor-context coverage is zero, stated as such. assigned_share = 1/1 = 1 (the candidate assigns the whole scope; assignment share and context coverage are different counts, and this scenario exists to keep them distinct). S-R2: no ledger claim's sign_refs name mahadevan:417 (the ledger's only refs are mahadevan:72, 64, 70), so claims_touched is empty. S-R3: []. Forced: the scope's only sign is assigned, so forced is [].",
-      "expected": {
-        "scope": [
-          "mahadevan:417"
-        ],
-        "scope_signs": 1,
-        "assigned": [
-          {
-            "sign": "mahadevan:417",
-            "value": "TESTVALUE"
-          }
-        ],
-        "assigned_count": 1,
-        "assigned_share": 1.0,
-        "uncontexted_assignments": [
-          {
-            "sign": "mahadevan:417",
-            "value": "TESTVALUE"
-          }
-        ],
-        "contexts": [],
-        "contexts_touched": 0,
-        "strict_contexts": 0,
-        "consistent": 0,
-        "non_strict_contexts": 0,
-        "conflicts": [],
-        "strict_agreement_share": null,
-        "contexted_share": 0.0,
-        "claims_touched": [],
-        "claims_touched_count": 0,
-        "s_r3": {
-          "class_table": null,
-          "violations": []
-        },
-        "forced": []
+    "forced": []
+   }
+  },
+  {
+   "id": "seeded-conflict-over-subset",
+   "title": "One seeded-conflict assignment over canonical-subset-1 (spec.md Point 3, Step 2, scenario 4)",
+   "inputs": {
+    "candidate": {
+     "id": "canonical-seeded-conflict",
+     "kind": "ad_hoc",
+     "provenance": {
+      "author": "Spec 086 Stage 4 registration (T402)",
+      "source": "authored for this canonical; the value 'ka' is a fixture chosen because it differs from M070's recorded reading 'vēl' — it is not a proposed reading of the sign",
+      "date": "2026-11-01"
+     },
+     "frame": "mahadevan",
+     "assignments": [
+      {
+       "sign": "mahadevan:70",
+       "value": "ka"
       }
-    }
-  ],
-  "comparisons": [
-    {
-      "id": "incumbent-vs-full-register-over-subset",
-      "title": "Dual run over canonical-subset-1: incumbent vs full-register (the interchangeability pair; D-086-Q4's demonstration pair, registered here as a canonical expectation for T405)",
-      "inputs": {
-        "semantics": "glossa-settle-1",
-        "ledger_sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
-        "corpus_snapshot": {
-          "path": "glossa-corpus/indus/exports/indus_research.jsonl",
-          "sha256_canonical": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
-        },
-        "runs": [
-          "incumbent-over-subset",
-          "full-register-over-subset"
-        ]
+     ]
+    },
+    "scope": [
+     "mahadevan:64",
+     "mahadevan:70",
+     "mahadevan:72",
+     "mahadevan:222"
+    ]
+   },
+   "derivation": "The four scope signs in the canonical anchors register (backend/reports/INDUS_FINAL_ANCHORS.json), with strictness derived from the recorded rule (strict_sa_independent_hm: confidence in {HIGH, MEDIUM} AND Phase-108 register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain false; register: reports/phase108_provenance_register.json): mahadevan:64 -> key M064, reading 'va', confidence HIGH; register category DEDR (passes), sa_in_chain true (fails) -> NOT strict (validation_status sa_in_provenance_chain; stored strict_set false, agreeing). mahadevan:70 -> key M070, reading 'vēl', confidence HIGH; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). mahadevan:72 -> key M072, reading 'mā', confidence HIGH; category SA_DERIVED (fails; sa_in_chain also true) -> NOT strict (validation_status pending_non_sa_validation; stored false). mahadevan:222 -> key M222, reading 'min', confidence MEDIUM; category GRAMMAR (passes), sa_in_chain false (passes) -> STRICT (validation_status strict_sa_independent; stored true). The ledger's only sign_refs-bearing claim is parpola_2010_dravidian_solution_manual_002, sign_refs stored in the order [mahadevan:72, mahadevan:64, mahadevan:70] (the whole ledger carries exactly these three refs). Its record of record (glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json) carries no governing outcome blocks in the matrix-defs v1 R3 sense: no dated outcome blocks at all; its one outcome-shaped append names Spec 072, carries no outcome string, and stands with its result content removed under the Roif gate (Spec 086 spec.md section 9: name-only; not read). Its matrix row is empty (0 cells; Stage 2 coverage block lists it among the 14 empty rows). Its ledger entry carries one falsifier, a prose corpus-statistical condition, so falsifiers_present = 1 and, under S-R2(ii), falsifiers_evaluable = 0. Therefore whenever this claim is touched, its tallies are supporting 0, opposing 0, constraining 0. Derivation: the candidate assigns only mahadevan:70 -> 'ka'. S-R1: its context M070 is strict and 'ka' != the record's reading 'vēl' -> exactly one conflict, enumerated as {sign mahadevan:70, anchor M070, assigned_value 'ka', anchor_reading 'vēl'}. Contexts touched 1, strict contexts 1, consistent 0, non-strict contexts 0. strict_agreement_share = 0/1 = 0; contexted_share = 1/1 = 1; assigned_share = 1/4 = 0.25. S-R2: assigned {70} intersects the claim's refs -> touched via [mahadevan:70]; tallies 0/0/0; falsifiers 1/0. S-R3: []. Forced: the scope's unassigned signs are {64, 72, 222}; the strict among them is mahadevan:222 -> forced [(mahadevan:222, 'min')].",
+   "expected": {
+    "scope": [
+     "mahadevan:64",
+     "mahadevan:70",
+     "mahadevan:72",
+     "mahadevan:222"
+    ],
+    "scope_signs": 4,
+    "assigned": [
+     {
+      "sign": "mahadevan:70",
+      "value": "ka"
+     }
+    ],
+    "assigned_count": 1,
+    "assigned_share": 0.25,
+    "uncontexted_assignments": [],
+    "contexts": [
+     {
+      "sign": "mahadevan:70",
+      "anchor": "M070",
+      "assigned_value": "ka",
+      "anchor_reading": "vēl",
+      "confidence": "HIGH",
+      "strict": true,
+      "result": "conflict"
+     }
+    ],
+    "contexts_touched": 1,
+    "strict_contexts": 1,
+    "consistent": 0,
+    "non_strict_contexts": 0,
+    "conflicts": [
+     {
+      "sign": "mahadevan:70",
+      "anchor": "M070",
+      "assigned_value": "ka",
+      "anchor_reading": "vēl"
+     }
+    ],
+    "strict_agreement_share": 0.0,
+    "contexted_share": 1.0,
+    "claims_touched": [
+     {
+      "claim": "parpola_2010_dravidian_solution_manual_002",
+      "via_signs": [
+       "mahadevan:70"
+      ],
+      "tallies": {
+       "supporting": 0,
+       "opposing": 0,
+       "constraining": 0
       },
-      "derivation": "Both runs share every input pin (ledger build, corpus snapshot, semantics version) and the same scope; only the candidate differs. Claims touched by either run: only parpola_2010_dravidian_solution_manual_002 (incumbent touches it via mahadevan:70; full-register via mahadevan:72, 64, 70). Its tallies are {supporting 0, opposing 0, constraining 0} under both runs (per the claim facts in the scenarios above), so no claim's tallies differ and the per-claim divergence list is empty. The runs diverge in coverage, not in any claim's bearing: assigned 2 vs 4 (delta +2), contexts touched 2 vs 4 (+2), strict contexts 2 vs 2 (0), consistent 2 vs 2 (0), conflicts 0 vs 0 (0), forced 0 vs 0 (0). The signs assigned by one candidate only are mahadevan:64 and mahadevan:72, assigned by the full-register set only (both are non-strict anchors; the incumbent, being the strict set, does not assign them). Pre-registered expectations: none exists in the program's record for the touched claim. The Spec 074 outcome record — the expectation the T405 brief names — concerns yadav_2009_arxiv_manual_002, whose ledger entry carries no sign_refs and which neither run touches; that absence is recorded here, not omitted.",
-      "expected": {
-        "claims_compared": [
-          {
-            "claim": "parpola_2010_dravidian_solution_manual_002",
-            "incumbent_tallies": {
-              "supporting": 0,
-              "opposing": 0,
-              "constraining": 0
-            },
-            "full_register_tallies": {
-              "supporting": 0,
-              "opposing": 0,
-              "constraining": 0
-            },
-            "divergent": false
-          }
-        ],
-        "per_claim_divergences": [],
-        "coverage_deltas": {
-          "assigned_count": {
-            "incumbent": 2,
-            "full_register": 4
-          },
-          "contexts_touched": {
-            "incumbent": 2,
-            "full_register": 4
-          },
-          "strict_contexts": {
-            "incumbent": 2,
-            "full_register": 2
-          },
-          "consistent": {
-            "incumbent": 2,
-            "full_register": 2
-          },
-          "conflicts": {
-            "incumbent": 0,
-            "full_register": 0
-          },
-          "forced_count": {
-            "incumbent": 0,
-            "full_register": 0
-          }
-        },
-        "signs_assigned_by_one_only": {
-          "full_register_only": [
-            "mahadevan:64",
-            "mahadevan:72"
-          ],
-          "incumbent_only": []
-        },
-        "pre_registered_expectations": [],
-        "pre_registered_expectations_note": "No pre-registered expectation exists in the program's record for the one touched claim; Spec 074's outcome record concerns yadav_2009_arxiv_manual_002, touched by neither run."
+      "falsifiers_present": 1,
+      "falsifiers_evaluable": 0
+     }
+    ],
+    "claims_touched_count": 1,
+    "s_r3": {
+     "class_table": null,
+     "violations": []
+    },
+    "forced": [
+     {
+      "sign": "mahadevan:222",
+      "value": "min"
+     }
+    ]
+   }
+  },
+  {
+   "id": "untouched-sign",
+   "title": "A candidate assigning a sign no in-scope context touches (anchor-context coverage zero, stated as such)",
+   "inputs": {
+    "candidate": {
+     "id": "canonical-untouched-sign",
+     "kind": "ad_hoc",
+     "provenance": {
+      "author": "Spec 086 Stage 4 registration (T402)",
+      "source": "authored for this canonical; the value 'TESTVALUE' is a fixture string, not a proposed reading",
+      "date": "2026-11-01"
+     },
+     "frame": "mahadevan",
+     "assignments": [
+      {
+       "sign": "mahadevan:417",
+       "value": "TESTVALUE"
       }
-    }
-  ]
+     ]
+    },
+    "scope": [
+     "mahadevan:417"
+    ]
+   },
+   "derivation": "The register's mahadevan inventory is its 286 M-prefixed keys; M417 is not among them (verified against the register at derivation: the key set runs over the stored M-numbers and 417 is absent). So mahadevan:417 has no anchor context. S-R1: the assignment is uncontexted, enumerated under uncontexted_assignments; contexts touched 0, strict contexts 0, consistent 0, conflicts []; strict_agreement_share is null (no strict contexts touched); contexted_share = 0/1 = 0 — anchor-context coverage is zero, stated as such. assigned_share = 1/1 = 1 (the candidate assigns the whole scope; assignment share and context coverage are different counts, and this scenario exists to keep them distinct). S-R2: no ledger claim's sign_refs name mahadevan:417 (the ledger's only refs are mahadevan:72, 64, 70), so claims_touched is empty. S-R3: []. Forced: the scope's only sign is assigned, so forced is [].",
+   "expected": {
+    "scope": [
+     "mahadevan:417"
+    ],
+    "scope_signs": 1,
+    "assigned": [
+     {
+      "sign": "mahadevan:417",
+      "value": "TESTVALUE"
+     }
+    ],
+    "assigned_count": 1,
+    "assigned_share": 1.0,
+    "uncontexted_assignments": [
+     {
+      "sign": "mahadevan:417",
+      "value": "TESTVALUE"
+     }
+    ],
+    "contexts": [],
+    "contexts_touched": 0,
+    "strict_contexts": 0,
+    "consistent": 0,
+    "non_strict_contexts": 0,
+    "conflicts": [],
+    "strict_agreement_share": null,
+    "contexted_share": 0.0,
+    "claims_touched": [],
+    "claims_touched_count": 0,
+    "s_r3": {
+     "class_table": null,
+     "violations": []
+    },
+    "forced": []
+   }
+  }
+ ],
+ "comparisons": [
+  {
+   "id": "incumbent-vs-full-register-over-subset",
+   "title": "Dual run over canonical-subset-1: incumbent vs full-register (the interchangeability pair; D-086-Q4's demonstration pair, registered here as a canonical expectation for T405)",
+   "inputs": {
+    "semantics": "glossa-settle-1",
+    "ledger_sha256": "6eada964c585a859db34e1a0e8c1da892baf0012db90e3742829bb318905a0b5",
+    "corpus_snapshot": {
+     "path": "glossa-corpus/indus/exports/indus_research.jsonl",
+     "sha256_canonical": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
+    },
+    "runs": [
+     "incumbent-over-subset",
+     "full-register-over-subset"
+    ]
+   },
+   "derivation": "Both runs share every input pin (ledger build, corpus snapshot, semantics version) and the same scope; only the candidate differs. Claims touched by either run: only parpola_2010_dravidian_solution_manual_002 (incumbent touches it via mahadevan:70; full-register via mahadevan:72, 64, 70). Its tallies are {supporting 0, opposing 0, constraining 0} under both runs (per the claim facts in the scenarios above), so no claim's tallies differ and the per-claim divergence list is empty. The runs diverge in coverage, not in any claim's bearing: assigned 2 vs 4 (delta +2), contexts touched 2 vs 4 (+2), strict contexts 2 vs 2 (0), consistent 2 vs 2 (0), conflicts 0 vs 0 (0), forced 0 vs 0 (0). The signs assigned by one candidate only are mahadevan:64 and mahadevan:72, assigned by the full-register set only (both are non-strict anchors; the incumbent, being the strict set, does not assign them). Pre-registered expectations: none exists in the program's record for the touched claim. The Spec 074 outcome record — the expectation the T405 brief names — concerns yadav_2009_arxiv_manual_002, whose ledger entry carries no sign_refs and which neither run touches; that absence is recorded here, not omitted.",
+   "expected": {
+    "claims_compared": [
+     {
+      "claim": "parpola_2010_dravidian_solution_manual_002",
+      "incumbent_tallies": {
+       "supporting": 0,
+       "opposing": 0,
+       "constraining": 0
+      },
+      "full_register_tallies": {
+       "supporting": 0,
+       "opposing": 0,
+       "constraining": 0
+      },
+      "divergent": false
+     }
+    ],
+    "per_claim_divergences": [],
+    "coverage_deltas": {
+     "assigned_count": {
+      "incumbent": 2,
+      "full_register": 4
+     },
+     "contexts_touched": {
+      "incumbent": 2,
+      "full_register": 4
+     },
+     "strict_contexts": {
+      "incumbent": 2,
+      "full_register": 2
+     },
+     "consistent": {
+      "incumbent": 2,
+      "full_register": 2
+     },
+     "conflicts": {
+      "incumbent": 0,
+      "full_register": 0
+     },
+     "forced_count": {
+      "incumbent": 0,
+      "full_register": 0
+     }
+    },
+    "signs_assigned_by_one_only": {
+     "full_register_only": [
+      "mahadevan:64",
+      "mahadevan:72"
+     ],
+     "incumbent_only": []
+    },
+    "pre_registered_expectations": [],
+    "pre_registered_expectations_note": "No pre-registered expectation exists in the program's record for the one touched claim; Spec 074's outcome record concerns yadav_2009_arxiv_manual_002, touched by neither run."
+   }
+  }
+ ]
 }

@@ -200,14 +200,29 @@
    },
    "expectations_changed": false,
    "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot and phase-108 register pins in the re-executed pair's input pins are identical to the superseded generation's); both T405 result blocks are byte-equal to the superseded generation's, verified by direct comparison of the stored records."
+  },
+  {
+   "date": "2026-11-20",
+   "act": "Spec 097 Stage 4 campaign claims intake (T401, executed inside the campaign-design PR; branch feat/097-stage4-campaign-design; record: specs/097-meroitic-reproduction-benchmark/records/decipherment-campaign-design-2026-11-20.md). The decipherment campaign was added to Spec 097 on the owner's direction of 2026-11-20 (decipherment as the program's aim, the benchmark as its foundation), preregistered before any campaign execution.",
+   "reason": "The claims ledger grew by one append-only intake: the 5 campaign claims of Spec 097 (097-meroitic-reproduction-benchmark/C097-7..11) were appended through tools/ledger/import_bundle.py on 2026-11-20. The campaign claims are carried in the spec's claims.json bundle, a separate file from the adoption bundle (aee-claims.json), because the ledger's source verification pins one hash per source file: the adoption bundle is unchanged and its pin stands; claims.json carries its own pin. The canonicals' provenance pin names the ledger build they were derived over; the pin is refreshed to the grown build under this registration's amendment discipline: both T405 scenarios were re-executed under run-defs v3 (runs settling-20261120T213231Z-7d96a8 and settling-20261120T213235Z-f9e682, same candidates, same 286-sign full-frame scope, same registered scenario ids) with result blocks byte-equal to the superseded generation's, the Stage 4 dual-run comparison was re-filed from the new pair (identical to the previous filing except the pins), and the assignment sets were re-materialized unchanged (run settling-20261120T213249Z-5a3a46; sets unchanged, incumbent 94, full-register 286, H003 out of frame). The superseded generation (settling-20261120T200602Z-e65bed, settling-20261120T200605Z-0feb5c, settling-20261120T200703Z-193428, the Spec 097 adoption refresh) departed the store in this same landing, its departure accounting appended through run_records.append_act after the index completion pass named the records post-spec skips. The semantics (glossa-settle-1) are unchanged; no rule in SETTLING-SEMANTICS.md moved, so no new semantics version is registered.",
+   "prior_ledger_pin": {
+    "sha256_canonical": "72af0bc682e3387c44e3dd1f40fbdda5f249f4b21c87bba2967d71e678145ad5",
+    "lines": 1035
+   },
+   "new_ledger_pin": {
+    "sha256_canonical": "106cda6e404f77fbb95fadc7e9e215b6dda24cdca137ef995d5dbea07063014f",
+    "lines": 1040
+   },
+   "expectations_changed": false,
+   "verification": "tools/ledger/run_settling.py verify-canonicals over the grown build: 6/6 registered canonicals reproduce (the five scenarios and the one comparison), field-for-field, before the pin was refreshed. The appended entries carry no sign_refs (the ledger's only sign_refs-bearing entry remains the pre-existing one) and no outcome blocks, and no scenario input changed (anchors register, corpus snapshot and phase-108 register pins in the re-executed pair's input pins are identical to the superseded generation's); both T405 result blocks are byte-equal to the superseded generation's, verified by direct comparison of the stored records."
   }
  ],
  "label": "Computation over ledgered relations under glossa-settle-1 semantics. Establishes what the ledger implies under these rules, not what the script says.",
  "provenance": {
   "ledger": {
    "path": "glossa-indus/ledger/claims.jsonl",
-   "sha256_canonical": "72af0bc682e3387c44e3dd1f40fbdda5f249f4b21c87bba2967d71e678145ad5",
-   "lines": 1035
+   "sha256_canonical": "106cda6e404f77fbb95fadc7e9e215b6dda24cdca137ef995d5dbea07063014f",
+   "lines": 1040
   },
   "anchors_register": {
    "path": "backend/reports/INDUS_FINAL_ANCHORS.json",

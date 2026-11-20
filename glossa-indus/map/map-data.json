@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 1004,
+  "claims_total": 1009,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 980,
+   "draft": 985,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "72af0bc682e3387c44e3dd1f40fbdda5f249f4b21c87bba2967d71e678145ad5",
-   "ledger_lines": 1035,
+   "ledger_sha256": "106cda6e404f77fbb95fadc7e9e215b6dda24cdca137ef995d5dbea07063014f",
+   "ledger_lines": 1040,
    "ledger_date": "2026-11-20",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "25fe2c7c6fd710e56dbfe00f1b13d789b0fddd9643fb894520abf6aec95d981b",
+   "matrix_sha256": "7752391ab3e85a5f36c97a7d6cb95fe1999f1cd6fa8d1bee1d06a4a14eb4fdca",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-   "assignment_sets_sha256": "19be42847a33b24e238cf841cf06aa1844d9257c111fcfd2c4551404bdba059b",
-   "comparison_sha256": "e87df368a6d28d5d7791abf01df9b336f5eb938386b7fd4acad561950c3879c9",
-   "settling_canonical_sha256": "f351031abe70ecb1d0cdb1749e64d3e86f82f732e193a1e60541f015bc82ff7d"
+   "assignment_sets_sha256": "d96db65afb593175818a2659442026b3f284ea7a0a977ff9fa3d6830af7d9c6d",
+   "comparison_sha256": "c369ccd75614e11d707a9e4352458c019b2e27ef844d0c00d84bbfa0084dd388",
+   "settling_canonical_sha256": "3f5601d662ae3e63f398f43608201d9a32396a9bafc8123d810e78b8dccdfbb0"
   }
  },
  "elements": [
@@ -8100,6 +8100,46 @@
    "statement": "Leg C reproduces the alignment headlines in their fixed bands, with attempts accounted: under the paper's hyperparameters and the freeze's two arms, unseen-dictionary precision at 10 equals 0 percent, training-dictionary accuracy sits in the at-most-25 percent band, and the numerals dictionary is best or tied at 100 dimensions; every alignment attempt, including failures, appears in the run index. This does not establish: anything about whether Meroitic can be deciphered by alignment; the leg tests whether the paper's published headlines reproduce, and the paper's own reading of its 0 percent unseen result stands as the paper's, not this program's.",
    "status": "draft",
    "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "097-meroitic-reproduction-benchmark/C097-8",
+   "statement": "Every anchor in the frozen inventory carries its evidence class, and readings cite only frozen anchors: the anchor inventory is frozen as a versioned record; each anchor states its form, proposed reading, evidence class (A name correspondences, B formula structure, C numerals, D Egyptian loanwords and titles, E contextually pinned common words), source, and the use the class licenses; a candidate reading depending on an unfrozen anchor is out of scope until a new freeze version admits it.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "097-meroitic-reproduction-benchmark/C097-11",
+   "statement": "Expert verification is designed and owner-gated, never improvised: the expert-verification stage is prepared as a design (panel drawn from the REM and Sudanese-epigraphy specialist community; frozen records as the review material; per-item confirm / challenge-with-cause / no-position instrument; silence recorded as silence) and executes only on the owner's separate approval; no outreach of any kind is made under the campaign's earlier stages.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "097-meroitic-reproduction-benchmark/C097-10",
+   "statement": "No reading is scored SUPPORTED without the identifiability protocol and the blind held-out test: a candidate reading is scored only after (1) its predictions are shown to differ from every named rival's on an observable dimension, (2) the discriminating observations occur in the corpus at the registered minimum count, and (3) no equally simple rival survives; failing any leg, the candidate is recorded NOT IDENTIFIABLE. SUPPORTED additionally requires the reading, frozen in writing on the development set, to pass its registered predictions on the sealed held-out inscriptions, opened once.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "097-meroitic-reproduction-benchmark/C097-9",
+   "statement": "Affiliation is adjudicated between registered rivals, never assumed: the affiliation question is carried as R1 Northern East Sudanic (Rilly), R2 Afroasiatic (Rowan; Lipinski), and R3 the isolate/null rival, each with the registered tests and falsifiers of the campaign design (correspondence and formative regularity against permutation baselines for R1; the phonotactic restriction and vocabulary tests for R2; R3 supported exactly when both fail); comparative candidate generation draws only on the family an adjudicated verdict licenses.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "097-meroitic-reproduction-benchmark/C097-7",
+   "statement": "Corpus completion is exhaustive over lawful sources and names every gap: the campaign's corpus stage consolidates everything lawfully held into one canonical build with a per-text provenance register, acquires every further openly licensed machine-readable Meroitic source (pinned and license-recorded as step 0 was), and names every remaining gap against the REM totals (some 1,300 published texts; roughly 900 further known texts unpublished in the REM); no purchase and no outreach is made to close a gap.",
+   "status": "draft",
+   "stage": null,
    "population": "bundle"
   },
   {
@@ -27259,6 +27299,28 @@
   },
   {
    "from": "spec.md",
+   "to": "097-meroitic-reproduction-benchmark/C097-10",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "097-meroitic-reproduction-benchmark/C097-10",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "097-meroitic-reproduction-benchmark/C097-11",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "097-meroitic-reproduction-benchmark/C097-11",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
    "to": "097-meroitic-reproduction-benchmark/C097-2",
    "rel": "supports",
    "rule": "R2",
@@ -27309,6 +27371,39 @@
    "column_class": "documents",
    "citations": [
     "097-meroitic-reproduction-benchmark/C097-6",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "097-meroitic-reproduction-benchmark/C097-7",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "097-meroitic-reproduction-benchmark/C097-7",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "097-meroitic-reproduction-benchmark/C097-8",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "097-meroitic-reproduction-benchmark/C097-8",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "097-meroitic-reproduction-benchmark/C097-9",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "097-meroitic-reproduction-benchmark/C097-9",
     "spec.md"
    ]
   },
@@ -32495,6 +32590,31 @@
    "constrains": 0
   },
   "097-meroitic-reproduction-benchmark/C097-4": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "097-meroitic-reproduction-benchmark/C097-8": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "097-meroitic-reproduction-benchmark/C097-11": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "097-meroitic-reproduction-benchmark/C097-10": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "097-meroitic-reproduction-benchmark/C097-9": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "097-meroitic-reproduction-benchmark/C097-7": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -38525,6 +38645,36 @@
     "population": "bundle",
     "status": "draft",
     "stage": "created"
+   },
+   {
+    "id": "097-meroitic-reproduction-benchmark/C097-8",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
+   },
+   {
+    "id": "097-meroitic-reproduction-benchmark/C097-11",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
+   },
+   {
+    "id": "097-meroitic-reproduction-benchmark/C097-10",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
+   },
+   {
+    "id": "097-meroitic-reproduction-benchmark/C097-9",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
+   },
+   {
+    "id": "097-meroitic-reproduction-benchmark/C097-7",
+    "population": "bundle",
+    "status": "draft",
+    "stage": null
    }
   ],
   "columns": [
@@ -57684,6 +57834,28 @@
     ]
    },
    {
+    "row": "097-meroitic-reproduction-benchmark/C097-10",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "097-meroitic-reproduction-benchmark/C097-10",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "097-meroitic-reproduction-benchmark/C097-11",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "097-meroitic-reproduction-benchmark/C097-11",
+     "spec.md"
+    ]
+   },
+   {
     "row": "097-meroitic-reproduction-benchmark/C097-2",
     "column": "spec.md",
     "column_class": "documents",
@@ -57735,6 +57907,39 @@
     "rule": "R2",
     "citations": [
      "097-meroitic-reproduction-benchmark/C097-6",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "097-meroitic-reproduction-benchmark/C097-7",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "097-meroitic-reproduction-benchmark/C097-7",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "097-meroitic-reproduction-benchmark/C097-8",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "097-meroitic-reproduction-benchmark/C097-8",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "097-meroitic-reproduction-benchmark/C097-9",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "097-meroitic-reproduction-benchmark/C097-9",
      "spec.md"
     ]
    },
@@ -57906,8 +58111,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 1004,
-   "rows_with_cells": 990,
+   "rows_total": 1009,
+   "rows_with_cells": 995,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -58265,30 +58470,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1527,
+   "cells_total": 1532,
    "cells_by_relation": {
-    "supports": 1520,
+    "supports": 1525,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1520,
+    "documents": 1525,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 995,
-    "total": 1004,
+    "covered": 1000,
+    "total": 1009,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 981,
-      "total": 981
+      "covered": 986,
+      "total": 986
      }
     }
    },
@@ -63333,8 +63538,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 1004,
-   "rows_with_cells": 990,
+   "rows_total": 1009,
+   "rows_with_cells": 995,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -63692,15 +63897,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1527,
+   "cells_total": 1532,
    "cells_by_relation": {
-    "supports": 1520,
+    "supports": 1525,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1520,
+    "documents": 1525,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -63769,7 +63974,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 980,
+    "draft": 985,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -63782,23 +63987,23 @@
     "created": 969,
     "explained": 8
    },
-   "no_stage_recorded": 24,
+   "no_stage_recorded": 29,
    "by_population": {
-    "bundle": 981,
+    "bundle": 986,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 995,
-   "total": 1004,
+   "covered": 1000,
+   "total": 1009,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 981,
-     "total": 981
+     "covered": 986,
+     "total": 986
     }
    },
    "gap_claims": [
@@ -63815,8 +64020,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 1004,
-   "total": 1004
+   "without_state": 1009,
+   "total": 1009
   },
   "unresolved": {
    "sign_mentions": [
@@ -65302,7 +65507,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "settling-20261120T200602Z-e65bed",
+      "record": "settling-20261120T213231Z-7d96a8",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -65316,7 +65521,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "settling-20261120T200605Z-0feb5c",
+      "record": "settling-20261120T213235Z-f9e682",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -162234,6 +162439,431 @@
     },
     "sign_records": []
    }
+  },
+  "097-meroitic-reproduction-benchmark/C097-8": {
+   "id": "097-meroitic-reproduction-benchmark/C097-8",
+   "statement": "Every anchor in the frozen inventory carries its evidence class, and readings cite only frozen anchors: the anchor inventory is frozen as a versioned record; each anchor states its form, proposed reading, evidence class (A name correspondences, B formula structure, C numerals, D Egyptian loanwords and titles, E contextually pinned common words), source, and the use the class licenses; a candidate reading depending on an unfrozen anchor is out of scope until a new freeze version admits it.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "A scored candidate whose cited anchor is absent from the freeze in force at its scoring; or a frozen anchor with no evidence class or no source."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C097-8",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/claims.json",
+     "role": "source_of_record",
+     "sha256": "89982d5997cba63056ef68bd87fcf9a80be6356cf9a514d746cbc975e5745f4f",
+     "spec": "097-meroitic-reproduction-benchmark"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "097-meroitic-reproduction-benchmark/C097-8",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "097-meroitic-reproduction-benchmark/C097-8",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C097-8",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/claims.json",
+     "role": "source_of_record",
+     "sha256": "89982d5997cba63056ef68bd87fcf9a80be6356cf9a514d746cbc975e5745f4f",
+     "spec": "097-meroitic-reproduction-benchmark"
+    },
+    "sign_records": []
+   }
+  },
+  "097-meroitic-reproduction-benchmark/C097-11": {
+   "id": "097-meroitic-reproduction-benchmark/C097-11",
+   "statement": "Expert verification is designed and owner-gated, never improvised: the expert-verification stage is prepared as a design (panel drawn from the REM and Sudanese-epigraphy specialist community; frozen records as the review material; per-item confirm / challenge-with-cause / no-position instrument; silence recorded as silence) and executes only on the owner's separate approval; no outreach of any kind is made under the campaign's earlier stages.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "Any external contact made in the campaign's name before the owner's approval of the verification package; or a record that treats a specialist's silence as assent."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C097-11",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/claims.json",
+     "role": "source_of_record",
+     "sha256": "89982d5997cba63056ef68bd87fcf9a80be6356cf9a514d746cbc975e5745f4f",
+     "spec": "097-meroitic-reproduction-benchmark"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "097-meroitic-reproduction-benchmark/C097-11",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "097-meroitic-reproduction-benchmark/C097-11",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C097-11",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/claims.json",
+     "role": "source_of_record",
+     "sha256": "89982d5997cba63056ef68bd87fcf9a80be6356cf9a514d746cbc975e5745f4f",
+     "spec": "097-meroitic-reproduction-benchmark"
+    },
+    "sign_records": []
+   }
+  },
+  "097-meroitic-reproduction-benchmark/C097-10": {
+   "id": "097-meroitic-reproduction-benchmark/C097-10",
+   "statement": "No reading is scored SUPPORTED without the identifiability protocol and the blind held-out test: a candidate reading is scored only after (1) its predictions are shown to differ from every named rival's on an observable dimension, (2) the discriminating observations occur in the corpus at the registered minimum count, and (3) no equally simple rival survives; failing any leg, the candidate is recorded NOT IDENTIFIABLE. SUPPORTED additionally requires the reading, frozen in writing on the development set, to pass its registered predictions on the sealed held-out inscriptions, opened once.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "A SUPPORTED score whose record lacks the identifiability showing or the held-out result; or a held-out set opened before its readings were frozen."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C097-10",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/claims.json",
+     "role": "source_of_record",
+     "sha256": "89982d5997cba63056ef68bd87fcf9a80be6356cf9a514d746cbc975e5745f4f",
+     "spec": "097-meroitic-reproduction-benchmark"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "097-meroitic-reproduction-benchmark/C097-10",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "097-meroitic-reproduction-benchmark/C097-10",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C097-10",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/claims.json",
+     "role": "source_of_record",
+     "sha256": "89982d5997cba63056ef68bd87fcf9a80be6356cf9a514d746cbc975e5745f4f",
+     "spec": "097-meroitic-reproduction-benchmark"
+    },
+    "sign_records": []
+   }
+  },
+  "097-meroitic-reproduction-benchmark/C097-9": {
+   "id": "097-meroitic-reproduction-benchmark/C097-9",
+   "statement": "Affiliation is adjudicated between registered rivals, never assumed: the affiliation question is carried as R1 Northern East Sudanic (Rilly), R2 Afroasiatic (Rowan; Lipinski), and R3 the isolate/null rival, each with the registered tests and falsifiers of the campaign design (correspondence and formative regularity against permutation baselines for R1; the phonotactic restriction and vocabulary tests for R2; R3 supported exactly when both fail); comparative candidate generation draws only on the family an adjudicated verdict licenses.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "A candidate generated from a family's comparative material before that family's rival passed its registered tests; or an affiliation verdict recorded without its tests' outputs."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C097-9",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/claims.json",
+     "role": "source_of_record",
+     "sha256": "89982d5997cba63056ef68bd87fcf9a80be6356cf9a514d746cbc975e5745f4f",
+     "spec": "097-meroitic-reproduction-benchmark"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "097-meroitic-reproduction-benchmark/C097-9",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "097-meroitic-reproduction-benchmark/C097-9",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C097-9",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/claims.json",
+     "role": "source_of_record",
+     "sha256": "89982d5997cba63056ef68bd87fcf9a80be6356cf9a514d746cbc975e5745f4f",
+     "spec": "097-meroitic-reproduction-benchmark"
+    },
+    "sign_records": []
+   }
+  },
+  "097-meroitic-reproduction-benchmark/C097-7": {
+   "id": "097-meroitic-reproduction-benchmark/C097-7",
+   "statement": "Corpus completion is exhaustive over lawful sources and names every gap: the campaign's corpus stage consolidates everything lawfully held into one canonical build with a per-text provenance register, acquires every further openly licensed machine-readable Meroitic source (pinned and license-recorded as step 0 was), and names every remaining gap against the REM totals (some 1,300 published texts; roughly 900 further known texts unpublished in the REM); no purchase and no outreach is made to close a gap.",
+   "status": "draft",
+   "stage": null,
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-20",
+   "falsifier": [
+    "An openly licensed Meroitic source, named in the completion record's own search account, that the corpus neither acquired nor gap-named with cause; or a corpus text whose provenance entry lacks a source or a license state."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C097-7",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/claims.json",
+     "role": "source_of_record",
+     "sha256": "89982d5997cba63056ef68bd87fcf9a80be6356cf9a514d746cbc975e5745f4f",
+     "spec": "097-meroitic-reproduction-benchmark"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "097-meroitic-reproduction-benchmark/C097-7",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "097-meroitic-reproduction-benchmark/C097-7",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C097-7",
+     "document_id": null,
+     "path": "specs/097-meroitic-reproduction-benchmark/claims.json",
+     "role": "source_of_record",
+     "sha256": "89982d5997cba63056ef68bd87fcf9a80be6356cf9a514d746cbc975e5745f4f",
+     "spec": "097-meroitic-reproduction-benchmark"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -162241,7 +162871,7 @@
   "semantics": "glossa-settle-1",
   "assignment_sets": {
    "record": "glossa-indus/ledger/assignment-sets.json",
-   "sha256": "19be42847a33b24e238cf841cf06aa1844d9257c111fcfd2c4551404bdba059b",
+   "sha256": "d96db65afb593175818a2659442026b3f284ea7a0a977ff9fa3d6830af7d9c6d",
    "register": {
     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
@@ -162285,15 +162915,15 @@
   },
   "runs": [
    {
-    "record": "settling-20261120T200602Z-e65bed",
+    "record": "settling-20261120T213231Z-7d96a8",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "72af0bc682e3387c44e3dd1f40fbdda5f249f4b21c87bba2967d71e678145ad5",
-      "lines": 1035
+      "sha256": "106cda6e404f77fbb95fadc7e9e215b6dda24cdca137ef995d5dbea07063014f",
+      "lines": 1040
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -162344,15 +162974,15 @@
     }
    },
    {
-    "record": "settling-20261120T200605Z-0feb5c",
+    "record": "settling-20261120T213235Z-f9e682",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "72af0bc682e3387c44e3dd1f40fbdda5f249f4b21c87bba2967d71e678145ad5",
-      "lines": 1035
+      "sha256": "106cda6e404f77fbb95fadc7e9e215b6dda24cdca137ef995d5dbea07063014f",
+      "lines": 1040
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -162407,7 +163037,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "e87df368a6d28d5d7791abf01df9b336f5eb938386b7fd4acad561950c3879c9",
+   "sha256": "c369ccd75614e11d707a9e4352458c019b2e27ef844d0c00d84bbfa0084dd388",
    "result": {
     "claims_compared": [
      {
@@ -162655,7 +163285,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "f351031abe70ecb1d0cdb1749e64d3e86f82f732e193a1e60541f015bc82ff7d",
+   "sha256": "3f5601d662ae3e63f398f43608201d9a32396a9bafc8123d810e78b8dccdfbb0",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -162990,8 +163620,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 1004,
-   "claims_untouched_by_any_run": 1003,
+   "claims_total": 1009,
+   "claims_untouched_by_any_run": 1008,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,

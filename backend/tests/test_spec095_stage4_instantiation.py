@@ -74,11 +74,11 @@ def test_model_generic_layer_names_no_script_specific_assumption():
 def test_indus_claims_census_unchanged():
     rows = _ledger_rows()
     claims = [r for r in rows if r.get("kind") == "claim"]
-    assert len(rows) == 1035
-    assert len(claims) == 1004
+    assert len(rows) == 1040
+    assert len(claims) == 1009
     assert len(rows) - len(claims) == 31
-    # Falsifier coverage: 995 of 1004; the 9 without are GR-088-21.
-    assert sum(1 for r in claims if r.get("falsifier")) == 995
+    # Falsifier coverage: 1000 of 1009; the 9 without are GR-088-21.
+    assert sum(1 for r in claims if r.get("falsifier")) == 1000
     # Claim -> Sign linkage: exactly one claim carries sign_refs
     # (3 references) — the GR-088-07 gap, stated in the mapping.
     with_refs = [r for r in claims if r.get("sign_refs")]
@@ -109,7 +109,7 @@ def test_indus_corpus_registry_unchanged():
 
 def test_indus_matrix_census_unchanged():
     matrix = json.loads((ROOT / "glossa-indus" / "matrix" / "matrix.json").read_text(encoding="utf-8"))
-    assert len(matrix["rows"]) == 1004
+    assert len(matrix["rows"]) == 1009
     assert len(matrix["columns"]) == 644
 
 

@@ -25,7 +25,7 @@ test.describe("Researcher dashboard (Spec 095 T403)", () => {
   test("home states the census of record and the does-not-claim panel", async ({
     page,
   }) => {
-    await expect(page.getByTestId("census-claims")).toHaveText("1,004");
+    await expect(page.getByTestId("census-claims")).toHaveText("1,009");
     await expect(page.getByText("claims in the ledger")).toBeVisible();
     await expect(page.getByText("recorded anchor signs")).toBeVisible();
     await expect(

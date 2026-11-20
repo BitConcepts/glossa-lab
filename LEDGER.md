@@ -14351,3 +14351,47 @@ mini-server; the registration machinery and verification runs for this
 landing ran on tower-compute after the owner's venue transition of
 2026-11-20 (Glossa-Lab studies execute on tower-compute; the mini-server
 keeps its serving role only).
+
+## 2026-11-20 - Spec 097 Stage 4 added: the Meroitic decipherment campaign, preregistered, campaign claims intaken
+
+On the owner's direction of 2026-11-20 (the program's aim is
+decipherment, not only reproduction of the 2025 study), Spec 097
+gains Stage 4, a decipherment campaign preregistered in
+`specs/097-meroitic-reproduction-benchmark/records/decipherment-campaign-design-2026-11-20.md`
+before any campaign execution: corpus completion against the REM
+totals with every gap named (C097-7); the anchor inventory frozen
+with five evidence classes (C097-8); the affiliation question
+adjudicated between registered rivals R1 Northern East Sudanic,
+R2 Afroasiatic, and R3 isolate/null, each with falsifiers and
+permutation-baseline tests (C097-9); candidate readings scored
+only after the identifiability protocol and the blind held-out
+test on sealed inscriptions (C097-10); and an expert-verification
+stage prepared as a design for the owner's approval, with no
+outreach (C097-11). The design states plainly what decipherment
+can and cannot mean on this evidence: the script's sign values
+have been known since Griffith (1907–1911); the language has no
+bilingual text and no descendants, and the expected outcome for
+most candidate readings is NOT IDENTIFIABLE, recorded as a
+finding. The benchmark's verdicts (Stages 1–3, outcome NOT
+REPRODUCED) stand as scoped and are not reopened.
+
+Claims ledger: 1,035 → 1,040 lines; claims 1,004 → 1,009;
+canonical SHA-256 `106cda6e404f77fbb95fadc7e9e215b6dda24cdca137ef995d5dbea07063014f`.
+The campaign claims are carried in the spec's new `claims.json`
+bundle (the adoption bundle `aee-claims.json` is unchanged: the
+ledger's source verification pins one hash per source file, and
+the two-file pattern is the repo's standing shape for staged
+intakes). AEE assessment of the campaign bundle: **iterate**
+(5 claims validated; record in the package's records).
+Settling refresh: verify-canonicals 6/6 on the grown ledger;
+T405 pair re-executed — incumbent
+`settling-20261120T213231Z-7d96a8`, full-register
+`settling-20261120T213235Z-f9e682`, result blocks byte-equal to
+the superseded generation's; comparison re-filed; materialize-sets
+`settling-20261120T213249Z-5a3a46` (sets unchanged: strict core
+94, assignment register 286, H003 out); the superseded generation
+departed with per-record departure accounting (run-defs v2 §7.1);
+canonical pin refreshed with 14 re-derivations. Ledger gate after
+the refresh: full mode 29 PASS / 0 FAIL / 1 NOT-RUN; --regen mode 32 PASS / 0 FAIL / 0 NOT-RUN.
+Execution venue: tower-compute (owner venue transition,
+2026-11-20).

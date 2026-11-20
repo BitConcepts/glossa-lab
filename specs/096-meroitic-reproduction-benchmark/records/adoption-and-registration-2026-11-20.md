@@ -62,4 +62,56 @@ discipline).
 The bundle's `aee validate` and `aee assess --no-ledger` outcomes
 are recorded verbatim in `records/adoption-aee-assessment.json`
 (the assessor's own output) alongside this record; the summary
-line is quoted in the landing pull request.
+line is quoted in the landing pull request. The validate run
+reads "valid: 6 claim(s)"; the assess outcome is **iterate**, the
+expected draft-stage reading for a bundle on asserted sources
+(the same reading Spec 094's bundle received at adoption).
+
+## Platform registration (T004)
+
+The owner's direction of 2026-11-20 also places this program
+inside the Glossa-Lab platform itself. Two acts, both verified by
+read-back through the backend API (127.0.0.1:8001, token auth;
+the token was read in-process from the install's token file and
+is not recorded anywhere):
+
+1. **The project.** Created through the platform's own Projects
+   API (`PUT /api/v1/projects/meroitic_reproduction_benchmark`,
+   HTTP 200), the same machinery the dashboard and the project
+   seeder use. Read-back (`GET /api/v1/projects/meroitic_reproduction_benchmark`,
+   HTTP 200) shows: id `meroitic_reproduction_benchmark`, label
+   "Meroitic Reproduction Benchmark", slug
+   `meroitic-reproduction-benchmark`, the program's question
+   ("Is the published record of Otten & Anastasopoulos (2025)
+   reproducible from its published corpus by its stated
+   methods?"), its standing position (the C096-6 bound, in
+   surface-neutral form), and `corpus_ids: ["cat-meroitic"]` —
+   the catalogue's existing Meroitic corpus entry. The project
+   list read-back shows exactly two projects, and the active
+   project remains `indus_decipherment`: the Indus program's
+   project, records, and stores were not disturbed, and this
+   project was not activated.
+2. **The registered work.** The platform carries a program's
+   claims and studies in its record machinery, not in the project
+   record: the claims ledger (this intake: claims 994 to 1000,
+   visible on the ledger-driven dashboard and map surfaces) and
+   the spec-study register (`GET /api/v1/spec-studies/{spec_id}`,
+   which enumerates the serving tree's `specs/` directories).
+   The register entry for 096 reads back from the live API once
+   this package lands in the serving tree through the normal
+   merge-and-pull; that read-back is verified and recorded in
+   Stage 1's step-0 record, and the dashboard census figures move
+   with the same landing (claims 1000, ledger lines 1031 — the
+   pins updated in this package's pull request).
+
+What the project model cannot carry, recorded rather than worked
+around: the project record has no field linking it to a spec
+package or to ledger claims (its link fields are discovery
+topics, graph experiments, and corpora), so no such link was
+improvised in a parallel store. `experiment_ids` is empty because
+no registered graph experiment exists for this benchmark (the
+platform's legacy Meroitic benchmark is not this program's work
+and is not claimed as it); `topic_ids` is empty because discovery
+topics are feed registrations and none exists for Meroitic. If
+either is wanted, it is a platform change under its own spec,
+not a setup improvisation.

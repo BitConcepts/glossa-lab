@@ -14262,3 +14262,62 @@ after Spec 094's build stages in the adopted queue.
 
 **AI disclosure:** executed by an AI agent (Muse, via Muse) at
 the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-11-20 - Spec 096 adopted: Meroitic reproduction benchmark program, claims intake and platform registration discharged in the setup PR
+
+Spec 096 (Meroitic reproduction benchmark) is adopted. The
+owner commissioned the benchmark on 2026-11-20 in parallel with
+the other ancient-language decoding work, and directed the same
+day that it stand as its own separate program in Glossa-Lab
+rather than as a deliverable inside Spec 095's package. The
+founding record is the Spec 095 Stage 5 scoping of 2026-11-17
+(fixed target, three legs, success criteria and falsifier),
+which stays in place unedited as provenance; claim C095-16's
+placement is superseded, its substance is not. The package
+lands as `specs/096-meroitic-reproduction-benchmark/` (spec,
+plan, tasks, claims, AEE bundle, adoption record) with six
+claims of its own (C096-1..C096-6: the step-0 gate, the three
+legs, the falsifier, and the no-Indus-effect bound). The AEE
+adoption assessment reads **iterate**, the expected draft-stage
+reading (validate: 6 claim(s)).
+
+The claims-ledger intake rides inside the setup PR, following
+the Spec 095 pattern: C096-1..6 were appended through the
+importer (6 appended, 0 already canonical), the settling chain
+was refreshed in the standing order (verify-canonicals 6/6
+before any pin moved; the T405 pair re-executed under run-defs
+v3 with byte-equal result blocks, runs
+settling-20261120T184227Z-2cdc53 and
+settling-20261120T184230Z-63bbeb; the comparison re-filed from
+the new pair; the sets re-materialized unchanged, run
+settling-20261120T184329Z-7cb5f7; the superseded generation
+departed the store with its departure accounting appended), and
+the generated layers were regenerated in dependency order. The
+ledger stands at 1,031 lines (from 1,025), 1,000 program claims
+(from 994), SHA-256
+`c4e7a910a6162b9042cddd5cf10335650c7faf85109b79c9b1a216a41b73f6ce`
+(from `b200827ce16d643f...`). Every census re-pin was re-set
+from the regenerated artifacts' actuals. The program is
+registered in the program map (97 studies, from 96) under
+"Sign inventory & corpus" / "Signary & corpus models".
+
+The program also stands inside the platform: its project was
+created in the live backend through the Projects API
+(`meroitic_reproduction_benchmark`, "Meroitic Reproduction
+Benchmark", corpus `cat-meroitic` linked) and verified by
+read-back, with the Indus project remaining the active project,
+undisturbed. What the project model cannot carry (no spec or
+ledger-claim link fields) is recorded in the adoption record
+rather than improvised around.
+
+The ledger gate on the final tree reads the standing profile
+in both modes: full mode 29 PASS / 0 FAIL / 1 NOT-RUN; --regen
+32 PASS / 0 FAIL / 0 NOT-RUN.
+
+No execution stage is commissioned by the adoption beyond the
+owner's 2026-11-20 commission itself: step 0 and the three legs
+run under this spec's own records, and the benchmark's outcome
+record closes the program.
+
+**AI disclosure:** executed by an AI agent (Muse, via Muse) at
+the direction of Tristen Pierson, per constitution sec. VI.

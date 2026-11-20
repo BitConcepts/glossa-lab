@@ -5,7 +5,8 @@
 ancient-language decoding work, and then directed to stand as its
 own separate program in Glossa-Lab rather than as a deliverable
 inside Spec 095's package). Stage 0 of this package is the adoption
-and registration itself (tasks T001–T003). Execution runs under
+and registration itself (tasks T001–T004, including the program's
+registration inside the live platform). Execution runs under
 this spec's own records from step 0 onward.
 
 **Provenance.** The founding record is the Spec 095 Stage 5

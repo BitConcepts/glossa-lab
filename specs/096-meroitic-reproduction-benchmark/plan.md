@@ -1,6 +1,6 @@
 # Spec 096 — Plan
 
-## Stage 0 — Adoption and registration (T001–T003)
+## Stage 0 — Adoption and registration (T001–T004)
 
 The package (spec.md, claims.md, aee-claims.json, plan.md,
 tasks.md, records/) lands by pull request against the next free

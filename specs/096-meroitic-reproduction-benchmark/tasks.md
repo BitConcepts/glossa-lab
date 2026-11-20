@@ -2,7 +2,7 @@
 
 ## Stage 0 — Adoption and registration
 
-- [ ] **T001 — Package lands and the program is registered.**
+- [x] **T001 — Package lands and the program is registered.**
   spec.md, claims.md, aee-claims.json, plan.md, tasks.md and
   records/ committed as `specs/096-meroitic-reproduction-benchmark/`;
   the six claims intaken into the ledger under C096-1..C096-6; the
@@ -15,20 +15,30 @@
   on the landed tree). *This does not establish:* that the package
   is approved — only that it is complete, consistent, and
   registered.
-- [ ] **T002 — AEE verification of the claims.** The C096 bundle
+- [x] **T002 — AEE verification of the claims.** The C096 bundle
   run through the pinned assessor: `aee validate` and `aee assess
   --no-ledger`, the outcome recorded verbatim in
   `records/adoption-aee-assessment.json`. Acceptance: **test**
   (the assessor ran and its outcome is recorded). *This does not
   establish:* claim quality — a draft-stage outcome is the expected
   reading for a bundle on asserted sources.
-- [ ] **T003 — Owner commission recorded.** The owner's
+- [x] **T003 — Owner commission recorded.** The owner's
   2026-11-20 commission of the benchmark and the direction that it
   stand as its own program are the adoption act of record, filed
   in `records/adoption-and-registration-2026-11-20.md`.
   Acceptance: **record** (the record names the direction, its
   date, and what it superseded: the Spec 095 placement, not the
   scoping's substance).
+- [x] **T004 — Platform registration.** The program's project
+  created in the live backend through the Projects API and read
+  back; the registered work (this package, its ledger claims)
+  surfaces through the platform's own record machinery (the
+  spec-study register and the ledger-driven surfaces) on the
+  package's landing; what the project model cannot carry is
+  recorded, not improvised. Acceptance: **test** (the project
+  read-back matches the created record; the Indus project remains
+  the active project, undisturbed). Recorded in
+  `records/adoption-and-registration-2026-11-20.md`.
 
 ## Stage 1 — Step 0
 

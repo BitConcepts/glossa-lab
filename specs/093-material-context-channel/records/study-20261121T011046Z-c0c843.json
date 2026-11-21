@@ -1,0 +1,697 @@
+{
+ "run": {
+  "run_id": "study-20261121T011046Z-c0c843",
+  "surface": "study",
+  "tool": "run_stage2_findcontext_v3.py",
+  "tool_version": "1.0.0",
+  "started": "2026-11-21T01:10:46Z",
+  "finished": "2026-11-21T01:10:46Z",
+  "key": {
+   "surface": "study",
+   "command": "run-field --field find-context",
+   "tool_version": "1.0.0",
+   "input_pins": {
+    "spec": "093",
+    "stage": "2",
+    "freeze": "v3",
+    "freeze_record": "specs/093-material-context-channel/records/t202-findcontext-freeze-v3.md",
+    "freeze_record_sha256": "0dea3b2b2738cc9221282803fb3a98001fd7296518c483dbe86de473335c64bd",
+    "superseded_freeze_record": "specs/093-material-context-channel/records/t202-findcontext-freeze-v2.md",
+    "superseded_freeze_record_sha256": "075b5124171db8ab04d657cd5a85842db93e0fef29cc1a7717a61fd4f4b644d2",
+    "successor_record": "specs/093-material-context-channel/records/stage2-findcontext-successor-record-2026-11-19.md",
+    "successor_record_sha256": "ff7c44ee5b147fdfb4769c458ad96fe42f79e92c8f9697f5a66077184d4fddd8",
+    "v2_adjudication": "specs/093-material-context-channel/records/t202-findcontext-adjudication-v2-2026-11-19.json",
+    "v2_adjudication_sha256": "39bdc39549096cdc2b1513375150478dfde584558d915f9616ce9cf6896355e3",
+    "v2_audit": "specs/093-material-context-channel/records/t202-findcontext-audit-v2-2026-11-19.json",
+    "v2_audit_sha256": "1121757f858ac7b665895bbba608858e669b00e0bc315c009ac115ef6bd18b49",
+    "v1_freeze_record": "specs/093-material-context-channel/records/t202-freeze-v1.md",
+    "stage2_record": "specs/093-material-context-channel/records/stage2-record-2026-11-19.md",
+    "stage2_record_sha256": "4d64bd2bebbb806878131a03f578bdeecc78600208691cffaf9936165bf94a8f",
+    "definition_record": "specs/093-material-context-channel/records/t201-channel-definition-2026-11-19.md",
+    "definition_record_sha256": "deaa5a71f26ac5eb7e2e089767388458dbaf922fe974f59bfcaa762186bdb641",
+    "counts_record": "specs/093-material-context-channel/records/t201-counts-2026-11-19.json",
+    "counts_record_sha256": "15e2cef667872868a4ba3145677aecc7b818dcbf8cf3ccc13a9d6aff532df3b8",
+    "snapshot": {
+     "path": "glossa-corpus/indus/exports/indus_research.jsonl",
+     "sha256": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e"
+    },
+    "join_pairs": {
+     "path": "specs/093-material-context-channel/records/t103-join-pairs-v1.jsonl",
+     "sha256": "7107f738832a4e3b04cff91d81073212bc0f3a77afed6f0ccc3cee4fce621703"
+    }
+   },
+   "seed": 20261123,
+   "code_version": "d579bebea10ec23997fdcbaa03df902135f11f88",
+   "environment_class": "mini-server/linux"
+  },
+  "determinism_class": "deterministic"
+ },
+ "result": {
+  "spec": "093",
+  "stage": "2",
+  "task": "T202-successor-v3",
+  "freeze": "v3",
+  "kind": "administration",
+  "field": "find-context",
+  "population": 175,
+  "adjudged_classes": {
+   "DK-": 16,
+   "DKG. (N)": 17,
+   "DKG. (S)": 68,
+   "HRB": 13,
+   "VSA": 11
+  },
+  "excluded_classes": {
+   "DKB": 7,
+   "DKC": 9,
+   "DKD": 1,
+   "DKE": 6,
+   "DKG": 6,
+   "DKH": 1,
+   "HR-": 7,
+   "HRA": 5,
+   "L-": 1,
+   "SD-": 5,
+   "SDBath Cells": 1,
+   "VS-": 1
+  },
+  "adjudged_total": 125,
+  "n_repeats": 10,
+  "n_folds": 5,
+  "per_repeat": [
+   {
+    "repeat": 0,
+    "kappa": -0.049217855780236554,
+    "balanced_accuracy": 0.18877005347593584,
+    "accuracy": 0.472,
+    "per_class_recall": {
+     "DK-": 0.0,
+     "DKG. (N)": 0.0,
+     "DKG. (S)": 0.8529411764705882,
+     "HRB": 0.0,
+     "VSA": 0.09090909090909091
+    },
+    "confusion": {
+     "DK-": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 16,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (N)": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 17,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (S)": {
+      "DK-": 5,
+      "DKG. (N)": 3,
+      "DKG. (S)": 58,
+      "HRB": 1,
+      "VSA": 1
+     },
+     "HRB": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 12,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "VSA": {
+      "DK-": 2,
+      "DKG. (N)": 0,
+      "DKG. (S)": 8,
+      "HRB": 0,
+      "VSA": 1
+     }
+    },
+    "vocabulary_sizes_by_fold": [
+     80,
+     77,
+     81,
+     75,
+     80
+    ]
+   },
+   {
+    "repeat": 1,
+    "kappa": -0.056743947739208406,
+    "balanced_accuracy": 0.18308823529411763,
+    "accuracy": 0.472,
+    "per_class_recall": {
+     "DK-": 0.0625,
+     "DKG. (N)": 0.0,
+     "DKG. (S)": 0.8529411764705882,
+     "HRB": 0.0,
+     "VSA": 0.0
+    },
+    "confusion": {
+     "DK-": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 15,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (N)": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 17,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (S)": {
+      "DK-": 4,
+      "DKG. (N)": 4,
+      "DKG. (S)": 58,
+      "HRB": 0,
+      "VSA": 2
+     },
+     "HRB": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 13,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "VSA": {
+      "DK-": 2,
+      "DKG. (N)": 0,
+      "DKG. (S)": 9,
+      "HRB": 0,
+      "VSA": 0
+     }
+    },
+    "vocabulary_sizes_by_fold": [
+     75,
+     81,
+     74,
+     82,
+     81
+    ]
+   },
+   {
+    "repeat": 2,
+    "kappa": -0.02166580176440062,
+    "balanced_accuracy": 0.2071524064171123,
+    "accuracy": 0.496,
+    "per_class_recall": {
+     "DK-": 0.0625,
+     "DKG. (N)": 0.0,
+     "DKG. (S)": 0.8823529411764706,
+     "HRB": 0.0,
+     "VSA": 0.09090909090909091
+    },
+    "confusion": {
+     "DK-": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 15,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (N)": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 17,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (S)": {
+      "DK-": 4,
+      "DKG. (N)": 2,
+      "DKG. (S)": 60,
+      "HRB": 1,
+      "VSA": 1
+     },
+     "HRB": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 13,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "VSA": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 9,
+      "HRB": 0,
+      "VSA": 1
+     }
+    },
+    "vocabulary_sizes_by_fold": [
+     83,
+     71,
+     81,
+     82,
+     77
+    ]
+   },
+   {
+    "repeat": 3,
+    "kappa": -0.03225806451612903,
+    "balanced_accuracy": 0.1889705882352941,
+    "accuracy": 0.488,
+    "per_class_recall": {
+     "DK-": 0.0625,
+     "DKG. (N)": 0.0,
+     "DKG. (S)": 0.8823529411764706,
+     "HRB": 0.0,
+     "VSA": 0.0
+    },
+    "confusion": {
+     "DK-": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 15,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (N)": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 17,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (S)": {
+      "DK-": 3,
+      "DKG. (N)": 4,
+      "DKG. (S)": 60,
+      "HRB": 0,
+      "VSA": 1
+     },
+     "HRB": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 12,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "VSA": {
+      "DK-": 2,
+      "DKG. (N)": 0,
+      "DKG. (S)": 9,
+      "HRB": 0,
+      "VSA": 0
+     }
+    },
+    "vocabulary_sizes_by_fold": [
+     79,
+     80,
+     78,
+     80,
+     78
+    ]
+   },
+   {
+    "repeat": 4,
+    "kappa": -0.04139964111766214,
+    "balanced_accuracy": 0.18529411764705883,
+    "accuracy": 0.48,
+    "per_class_recall": {
+     "DK-": 0.0,
+     "DKG. (N)": 0.058823529411764705,
+     "DKG. (S)": 0.8676470588235294,
+     "HRB": 0.0,
+     "VSA": 0.0
+    },
+    "confusion": {
+     "DK-": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 16,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (N)": {
+      "DK-": 0,
+      "DKG. (N)": 1,
+      "DKG. (S)": 16,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (S)": {
+      "DK-": 5,
+      "DKG. (N)": 3,
+      "DKG. (S)": 59,
+      "HRB": 0,
+      "VSA": 1
+     },
+     "HRB": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 12,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "VSA": {
+      "DK-": 2,
+      "DKG. (N)": 0,
+      "DKG. (S)": 9,
+      "HRB": 0,
+      "VSA": 0
+     }
+    },
+    "vocabulary_sizes_by_fold": [
+     78,
+     78,
+     82,
+     81,
+     75
+    ]
+   },
+   {
+    "repeat": 5,
+    "kappa": -0.01807075591753627,
+    "balanced_accuracy": 0.19852941176470587,
+    "accuracy": 0.488,
+    "per_class_recall": {
+     "DK-": 0.125,
+     "DKG. (N)": 0.0,
+     "DKG. (S)": 0.8676470588235294,
+     "HRB": 0.0,
+     "VSA": 0.0
+    },
+    "confusion": {
+     "DK-": {
+      "DK-": 2,
+      "DKG. (N)": 0,
+      "DKG. (S)": 14,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (N)": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 17,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (S)": {
+      "DK-": 4,
+      "DKG. (N)": 3,
+      "DKG. (S)": 59,
+      "HRB": 1,
+      "VSA": 1
+     },
+     "HRB": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 12,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "VSA": {
+      "DK-": 2,
+      "DKG. (N)": 0,
+      "DKG. (S)": 9,
+      "HRB": 0,
+      "VSA": 0
+     }
+    },
+    "vocabulary_sizes_by_fold": [
+     78,
+     80,
+     80,
+     79,
+     77
+    ]
+   },
+   {
+    "repeat": 6,
+    "kappa": -0.06328135068952184,
+    "balanced_accuracy": 0.17352941176470588,
+    "accuracy": 0.472,
+    "per_class_recall": {
+     "DK-": 0.0,
+     "DKG. (N)": 0.0,
+     "DKG. (S)": 0.8676470588235294,
+     "HRB": 0.0,
+     "VSA": 0.0
+    },
+    "confusion": {
+     "DK-": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 16,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (N)": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 17,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (S)": {
+      "DK-": 3,
+      "DKG. (N)": 3,
+      "DKG. (S)": 59,
+      "HRB": 1,
+      "VSA": 2
+     },
+     "HRB": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 12,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "VSA": {
+      "DK-": 2,
+      "DKG. (N)": 0,
+      "DKG. (S)": 9,
+      "HRB": 0,
+      "VSA": 0
+     }
+    },
+    "vocabulary_sizes_by_fold": [
+     78,
+     78,
+     81,
+     75,
+     81
+    ]
+   },
+   {
+    "repeat": 7,
+    "kappa": -0.06382978723404255,
+    "balanced_accuracy": 0.17352941176470588,
+    "accuracy": 0.472,
+    "per_class_recall": {
+     "DK-": 0.0,
+     "DKG. (N)": 0.0,
+     "DKG. (S)": 0.8676470588235294,
+     "HRB": 0.0,
+     "VSA": 0.0
+    },
+    "confusion": {
+     "DK-": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 16,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (N)": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 17,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (S)": {
+      "DK-": 5,
+      "DKG. (N)": 2,
+      "DKG. (S)": 59,
+      "HRB": 1,
+      "VSA": 1
+     },
+     "HRB": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 12,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "VSA": {
+      "DK-": 2,
+      "DKG. (N)": 0,
+      "DKG. (S)": 9,
+      "HRB": 0,
+      "VSA": 0
+     }
+    },
+    "vocabulary_sizes_by_fold": [
+     78,
+     80,
+     80,
+     79,
+     77
+    ]
+   },
+   {
+    "repeat": 8,
+    "kappa": -0.0542364084598417,
+    "balanced_accuracy": 0.17647058823529413,
+    "accuracy": 0.48,
+    "per_class_recall": {
+     "DK-": 0.0,
+     "DKG. (N)": 0.0,
+     "DKG. (S)": 0.8823529411764706,
+     "HRB": 0.0,
+     "VSA": 0.0
+    },
+    "confusion": {
+     "DK-": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 16,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (N)": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 17,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (S)": {
+      "DK-": 2,
+      "DKG. (N)": 3,
+      "DKG. (S)": 60,
+      "HRB": 1,
+      "VSA": 2
+     },
+     "HRB": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 12,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "VSA": {
+      "DK-": 2,
+      "DKG. (N)": 0,
+      "DKG. (S)": 9,
+      "HRB": 0,
+      "VSA": 0
+     }
+    },
+    "vocabulary_sizes_by_fold": [
+     80,
+     79,
+     78,
+     78,
+     80
+    ]
+   },
+   {
+    "repeat": 9,
+    "kappa": -0.0649796541200407,
+    "balanced_accuracy": 0.17058823529411765,
+    "accuracy": 0.464,
+    "per_class_recall": {
+     "DK-": 0.0,
+     "DKG. (N)": 0.0,
+     "DKG. (S)": 0.8529411764705882,
+     "HRB": 0.0,
+     "VSA": 0.0
+    },
+    "confusion": {
+     "DK-": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 16,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (N)": {
+      "DK-": 0,
+      "DKG. (N)": 0,
+      "DKG. (S)": 17,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "DKG. (S)": {
+      "DK-": 5,
+      "DKG. (N)": 2,
+      "DKG. (S)": 58,
+      "HRB": 1,
+      "VSA": 2
+     },
+     "HRB": {
+      "DK-": 1,
+      "DKG. (N)": 0,
+      "DKG. (S)": 12,
+      "HRB": 0,
+      "VSA": 0
+     },
+     "VSA": {
+      "DK-": 3,
+      "DKG. (N)": 0,
+      "DKG. (S)": 8,
+      "HRB": 0,
+      "VSA": 0
+     }
+    },
+    "vocabulary_sizes_by_fold": [
+     82,
+     72,
+     80,
+     80,
+     80
+    ]
+   }
+  ],
+  "kappa_mean": -0.04656832673386198,
+  "balanced_accuracy_mean": 0.18459224598930482,
+  "pooled_confusion": {
+   "DK-": {
+    "DK-": 5,
+    "DKG. (N)": 0,
+    "DKG. (S)": 155,
+    "HRB": 0,
+    "VSA": 0
+   },
+   "DKG. (N)": {
+    "DK-": 0,
+    "DKG. (N)": 1,
+    "DKG. (S)": 169,
+    "HRB": 0,
+    "VSA": 0
+   },
+   "DKG. (S)": {
+    "DK-": 40,
+    "DKG. (N)": 29,
+    "DKG. (S)": 590,
+    "HRB": 7,
+    "VSA": 14
+   },
+   "HRB": {
+    "DK-": 8,
+    "DKG. (N)": 0,
+    "DKG. (S)": 122,
+    "HRB": 0,
+    "VSA": 0
+   },
+   "VSA": {
+    "DK-": 20,
+    "DKG. (N)": 0,
+    "DKG. (S)": 88,
+    "HRB": 0,
+    "VSA": 2
+   }
+  },
+  "majority_rule": {
+   "kappa_mean": 0.0,
+   "balanced_accuracy_mean": 0.2
+  }
+ }
+}

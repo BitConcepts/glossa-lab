@@ -1,3 +1,22 @@
+> **Superseded — please read this first.** The framing in the
+> package below is retired. It presents an early preprint built
+> around a cohort of 161 candidate readings, and that framing is
+> no longer the current account of this work.
+>
+> The current paper is version 11 (DOI: 10.5281/zenodo.24376384).
+> The current standings are the register of 287 readings and the
+> strict core of 94 readings within it: 6 independently supported
+> (all six are recorded as NOT IDENTIFIABLE on the program's
+> identifiability test), 65 supported on internal evidence only,
+> 4 requiring revalidation, 3 pending expert review, and 16 with
+> insufficient evidence.
+>
+> The package below is retained unchanged as the historical
+> reproducibility record of the retired version. It is not a
+> statement of the current standings.
+>
+> ---
+>
 # A Falsifiable Computational Anchor Model for the Indus Script
 ## Preprint Release v1 — Reproducibility Package
 

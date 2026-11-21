@@ -636,10 +636,11 @@
     },
     "M222": {
       "confidence": "MEDIUM",
-      "reading": "kur",
-      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "reading": "min",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
       "corpus_freq": 5,
-      "evidence_score": 2.0
+      "evidence_score": 1.0,
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb). Register correction 2026-11-21: the earlier Phase-87 reading kur for this sign is superseded in the canonical register; this public table is corrected to the register value."
     },
     "M365": {
       "reading": "vāṉ",

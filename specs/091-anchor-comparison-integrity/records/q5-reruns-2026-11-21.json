@@ -1,0 +1,205 @@
+{
+ "venue": "tower-compute",
+ "workstream": "Q5 item 3 dependency-aware reruns",
+ "raw_holdat_csv_held_in_clone": false,
+ "sections": {
+  "tranche1": {
+   "M176": {
+    "corpus_n_from_filed_all_site_counts": 356,
+    "table_grand_total": 354,
+    "terminal_count": 68,
+    "terminal_rate": 0.19101123595505617,
+    "filed_terminal_rate": 0.19101123595505617,
+    "recomputed_chi2": 22.858877313772798,
+    "filed_chi2": 22.858877313772798,
+    "recomputed_df": 14,
+    "filed_df": 14,
+    "recomputed_p": 0.0626051531789166,
+    "filed_p": 0.0626051531789166,
+    "checker_status": "OK",
+    "filed_corrected_result_reproduces": true
+   },
+   "M342": {
+    "corpus_n_from_filed_all_site_counts": 584,
+    "table_grand_total": 584,
+    "terminal_count": 70,
+    "terminal_rate": 0.11986301369863013,
+    "filed_terminal_rate": 0.11986301369863013,
+    "recomputed_chi2": 25.246836667200593,
+    "filed_chi2": 25.246836667200593,
+    "recomputed_df": 16,
+    "filed_df": 16,
+    "recomputed_p": 0.06559048567133662,
+    "filed_p": 0.06559048567133662,
+    "checker_status": "OK",
+    "filed_corrected_result_reproduces": true
+   }
+  },
+  "tranche2": {
+   "M005": {
+    "filed_collocation": "M005-M342 n=4",
+    "phase142_right_neighbor_count": 4,
+    "raw_count_verified": true,
+    "anchor_deleted": "M342",
+    "anchor_class": "U"
+   },
+   "M030": {
+    "filed_collocation": "M030-M342 n=4",
+    "phase142_right_neighbor_count": 4,
+    "raw_count_verified": true,
+    "anchor_deleted": "M342",
+    "anchor_class": "U"
+   },
+   "M037": {
+    "filed_collocation": "M037-M267 n=4",
+    "phase142_right_neighbor_count": 4,
+    "raw_count_verified": true,
+    "anchor_deleted": "M267",
+    "anchor_class": "I"
+   },
+   "M068": {
+    "filed_collocation": "M068-M342 n=4",
+    "phase142_right_neighbor_count": null,
+    "raw_count_verified": null,
+    "note": "no phase142 initial-sign entry for this sign; count stands on the anchor record only, not independently verified from a second in-repo corpus record",
+    "anchor_deleted": "M342",
+    "anchor_class": "U"
+   },
+   "M075": {
+    "filed_collocation": "M075-M267 n=4",
+    "phase142_right_neighbor_count": null,
+    "raw_count_verified": null,
+    "note": "no phase142 initial-sign entry for this sign; count stands on the anchor record only, not independently verified from a second in-repo corpus record",
+    "anchor_deleted": "M267",
+    "anchor_class": "I"
+   },
+   "M089": {
+    "filed_basis_excerpt": "Positional analysis; UPGRADED: high frequency (171); consistent TERMINAL position (n=171); collocates with HIGH anchor M342 (n=15); collocates with HIGH anchor M267 (n=6); collocates with HIGH anchor M176 (n=6); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M176 (n=12); collocates with HIGH anchor M267 (n=10); has specific PDR reading",
+    "note": "upgrade text lists M342 collocations twice with different counts (n=15 and n=13) and M176 twice (n=6 and n=12); the raw counts are not stated consistently on file, and all three invoked anchors are deleted in any case (M342 U, M176 U, M267 I)",
+    "t302_battery_v2": "positional pass + bigram pass (neighbour_match=4/5=80.0%), dedr not_run; structural only"
+   },
+   "M347": {
+    "filed_basis": "Phase-117 grammar inference: slot=MEDIAL_BETWEEN_CONF, n_contexts=7, patterns=['M342-[M347]-M293', 'M028-[M347]-M367', 'M211-[M347]-M099']. Inferred from Dravidian grammar slot model (Phases 74-112). [Phase-120: grammar n_ctx=7\u22654 \u2192 MEDIUM]",
+    "raw_context_patterns_on_file": [
+     "M342-[M347]-M293",
+     "M028-[M347]-M367",
+     "M211-[M347]-M099"
+    ],
+    "n_contexts_filed": 7,
+    "note": "7 contexts claimed, 3 distinct patterns exemplified on file; every interpreted neighbour is U (M342, M328-in-pattern-family, M367) or I (M099) except context signs M293/M028/M211, which are outside the 94 and carry no standing here"
+   },
+   "M375": {
+    "corpus_freq": 7,
+    "name_slot_count": 7,
+    "ay_an_pattern_count": 2,
+    "genitive_pattern_count": 0,
+    "sample_patterns_raw": [
+     "M059-[M375]-M342",
+     "[M375]-M342-M176",
+     "M367-[M375]-M267",
+     "M045-[M375]-M342",
+     "M233-[M375]-M065"
+    ]
+   },
+   "M398": {
+    "corpus_freq": 3,
+    "name_slot_count": 5,
+    "ay_an_pattern_count": 1,
+    "genitive_pattern_count": 1,
+    "sample_patterns_raw": [
+     "M002-[M398]-M176",
+     "M267-[M398]-M342",
+     "M036-[M398]-M162",
+     "[M398]-M342-M176"
+    ]
+   },
+   "M267": {
+    "observed": 26,
+    "null_mean": 6,
+    "enrichment_recomputed": 4.333333333333333,
+    "filed_enrichment": 4.3,
+    "z_filed": 8.038,
+    "p_filed": 0.0,
+    "implied_null_sd_from_filed_z": 2.488181139586962,
+    "poisson_null_z_crosscheck": 8.16496580927726,
+    "pattern_counts": {
+     "total": 400,
+     "agent_before_title_after": 26,
+     "agent_before_only": 67,
+     "title_after_only": 79,
+     "neither": 228,
+     "top_before": {
+      "M328": 40,
+      "M293": 37,
+      "M059": 30,
+      "M176": 17,
+      "M342": 17,
+      "M267": 13,
+      "M162": 12,
+      "M391": 11
+     },
+     "top_after": {
+      "M099": 84,
+      "M342": 31,
+      "M211": 21,
+      "M328": 18,
+      "M059": 13,
+      "M267": 13,
+      "M367": 12,
+      "M336": 12
+     }
+    },
+    "agent_markers": [
+     "M059",
+     "M176",
+     "M305",
+     "M328",
+     "M336"
+    ],
+    "title_markers": [
+     "M030",
+     "M041",
+     "M073",
+     "M099",
+     "M211"
+    ],
+    "rerun_as_specified": "NOT EXECUTABLE AS SPECIFIED",
+    "reason": "AGENT markers include M176 (U) and M328 (U); TITLE markers include M099 (I) and M073 (I); the slot labels are assigned from the same candidate reading/grammar system the test is meant to support, so no slot labelling independent of that system exists on file, and no selection correction over the candidate search is stated on file"
+   },
+   "M374": {
+    "filed_basis_excerpt": "Phase-123 substrate match: Munda 'kul' (tiger/king-tiger, Witzel 1999). DEDR 1709 kulam = clan/lineage \u2014 attested Tamil noun. Positional: MEDIAL between authority signs (M328=\u0101l/man, M073=k\u014d\u1e49/king) and vessel/cargo signs (M065=kuTam, M099=kol). Semantic fit: 'kul' (clan-guild) as a social-group identifier within guild-title inscriptions. The Munda substrate + Dravidian cognate confirms this is a l",
+    "interpreted_context_removed": [
+     "M328=man (U)",
+     "M073=king (I)"
+    ]
+   }
+  },
+  "tranche3": {
+   "M063": {
+    "filed_corrected": "lift 4.35; 3 of 18 gharial seals carry the sign; also 4 unicorn, 3 zebu bull seals (anchor fact-check correction 2026-05-11)",
+    "gharial_carriage_rate": 0.16666666666666666,
+    "original_threshold": 5.0,
+    "filed_lift_below_threshold": true,
+    "full_2x2_reconstructible_from_repo_records": false,
+    "reason_not_fully_reconstructible": "the filed records state the gharial cell (3/18) and the lift (4.35) but do not jointly file the sign's total seal count and the deduplicated seal population the lift denominator uses; the raw Holdat CSV is gitignored and not held in this clone, so the missing cells cannot be recounted from held data",
+    "t302_battery_v2_tests": {
+     "positional": {
+      "outcome": "pass",
+      "detail": "PASS"
+     },
+     "dedr": {
+      "outcome": "not_run",
+      "detail": "dedr_dataset_not_held\u2014not_run"
+     },
+     "bigram": {
+      "outcome": "pass",
+      "detail": "neighbour_match=2/4=50.0%"
+     }
+    },
+    "motif_claim_rerun_by_battery_v2": false,
+    "verdict_on_claim_as_specified": "FAILS on the filed corrected figures: lift 4.35 < 5.0 threshold; exclusivity also fails on file (sign present on unicorn and zebu seals)"
+   }
+  }
+ },
+ "failures": []
+}

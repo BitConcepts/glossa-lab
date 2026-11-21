@@ -23,20 +23,44 @@ directory existed, and no branch or open pull request carried
   with falsifiers (claims.md; bundle form in
   aee-claims.json), plan, tasks, two implemented test cases,
   the freeze record, and the population annex.
-- **Ledger intake: deferred, with the reason on the record
-  (D-098-3).** Parallel audit-response packages are landing
-  in the same window and touch the same shared files (the
-  claims ledger and the census pins it moves). Under the
-  program's shared-file discipline, the intake of the
-  C098-1..C098-8 bundle through
-  `tools/ledger/import_bundle.py` is serialized through the
-  coordinator and re-applied on the latest main; it is not
-  performed inside this package's pull request, and no shared
-  file is touched here. The bundle is complete, parses, and
-  matches claims.md claim for claim; the intake is task T004,
-  open, with this deferral as its blocker of record.
-- No program-map, taxonomy, census, ledger, anchor, or
-  standing record is changed by this package.
+- **Ledger intake and full registration: performed in this
+  landing** (D-098-3), in the Spec 096/097 pattern. Claims
+  C098-1..C098-8 were appended to the canonical ledger through
+  tools/ledger/import_bundle.py (route 2), dated 2026-11-21:
+  8 appended, 0 already canonical; the ledger grows from
+  1,040 lines / 1,009 claims to 1,048 lines / 1,017 claims.
+  The program-map taxonomy gains one study entry,
+  098-identifiability-over-the-65, domain Anchors & readings,
+  subdomain Validation batteries for the SA-lineage anchors,
+  Phases 111-119. The settling chain was refreshed in the
+  standing order: verify-canonicals 6/6 PASS over the grown
+  build before any pin moved; both T405 scenarios re-executed
+  (runs settling-20261121T110155Z-e5597c and
+  settling-20261121T110155Z-f28db5) with result blocks
+  byte-equal to the superseded generations; the Stage 4
+  dual-run comparison re-filed from the new pair; assignment
+  sets re-materialized unchanged (run
+  settling-20261121T110209Z-bb2f40; incumbent 94,
+  full-register 286, H003 out of frame); the canonical pin
+  refreshed with the re-derivation recorded as
+  re_derivations[14]; the superseded generation
+  (settling-20261120T213231Z-7d96a8,
+  settling-20261120T213235Z-f9e682,
+  settling-20261120T213249Z-5a3a46) departed the store with
+  its departure accounting appended through
+  run_records.append_act. The generated layers were
+  regenerated in dependency order (matrix, program map,
+  map-data), and every census pin the intake moves was
+  updated in the same pull request from the regenerated
+  artifacts actuals. An earlier draft of this package
+  deferred the intake to a coordinator serialization; the
+  program conformance machinery requires the registration in
+  the landing pull request itself, and the deferral was
+  withdrawn before landing — the record states this so the
+  change of plan is not silent.
+- No anchor or standing record is changed by this package;
+  the ledger, taxonomy, census, and generated-layer changes
+  above are the registration, and nothing else.
 
 **Freeze and run state.** The design is frozen
 (`records/freeze-v1-2026-11-21.md`). The study is **not run**

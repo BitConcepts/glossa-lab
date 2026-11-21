@@ -312,17 +312,17 @@ explicitly either way.
   (§3.3). Running on the in-corpus split alone and calling
   it out-of-sample would repeat, in new dress, the reuse
   defect the audit charged.
-- **D-098-3 (ledger intake deferred, bundle filed).** The
-  claims are filed as this package's bundle
-  (`aee-claims.json`, C098-1..C098-8) and are **not** intaken
-  into the canonical ledger in this pull request: parallel
-  audit-response packages are landing in the same window and
-  touch the same shared files (ledger, census pins), and the
-  program's shared-file discipline serializes those acts
-  through the coordinator, who re-applies the intake on the
-  latest main. The bundle is the registration of record
-  until that act; the deferral and its reason are stated in
-  the adoption record.
+- **D-098-3 (registration performed in full, Spec 097
+  pattern).** The claims are intaken into the canonical
+  ledger in this package's own landing pull request through
+  the bundle-import route (C098-1..C098-8 appended,
+  2026-11-21), with the taxonomy entry added, the settling
+  chain refreshed in the standing order, the generated layers
+  regenerated, and every census pin the intake moves updated
+  in the same pull request — the registration the program's
+  conformance machinery requires of any new spec package, as
+  Specs 096/097 performed it. The full account is in
+  `records/adoption-and-registration-2026-11-21.md`.
 - **D-098-4 (venue).** All execution runs on tower-compute,
   in a fresh clone under `~/glossa-work/`, never in the
   coordination VM and never on the mini-server (which serves

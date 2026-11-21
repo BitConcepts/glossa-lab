@@ -526,6 +526,11 @@
    "spec_dir": "097-meroitic-reproduction-benchmark",
    "domain": "Sign inventory & corpus",
    "subdomain": "Signary & corpus models"
+  },
+  {
+   "spec_dir": "098-identifiability-over-the-65",
+   "domain": "Anchors & readings",
+   "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
   }
  ],
  "extracted_documents": [

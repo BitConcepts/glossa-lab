@@ -10,11 +10,12 @@ with the design frozen in
 `records/population-annex-2026-11-21.md`. The two test cases
 are executed on tower-compute at adoption and their payload
 verdicts recorded. The claims bundle (`aee-claims.json`,
-C098-1..C098-8) is filed in the package; ledger intake is
-deferred to the coordinator under D-098-3 (parallel
-audit-response packages touch the same shared files; intake
-is re-applied on the latest main, never resolved by dropping
-another package's entries).
+C098-1..C098-8) is intaken into the canonical ledger through
+the bundle-import route, the taxonomy entry is added, the
+settling chain is refreshed in the standing order, the
+generated layers are regenerated, and every census pin the
+intake moves is updated in the same pull request (D-098-3),
+as Specs 096/097 performed the same registration.
 
 Gate: the pull request merges only on genuine per-job CI
 green (all ten jobs read per job; a wrapper's success is not
@@ -74,8 +75,10 @@ program act. Closeout ticks the tasks and names remainders.
 
 ## Shared-file discipline
 
-This package touches no shared file in its adoption pull
-request (no ledger, census, taxonomy, or program-map edit;
-D-098-3). Later stages that need a shared file re-apply on
-the latest origin/main and hold rather than drop another
-package's entries.
+The shared files this package touches in its adoption pull
+request are exactly the registration set of D-098-3 (ledger,
+settling chain, taxonomy, generated layers, census pins),
+re-applied on the latest origin/main at landing time. A
+conflict in that set that cannot be resolved without
+dropping another package's entries holds the pull request
+and is reported, never resolved by deletion.

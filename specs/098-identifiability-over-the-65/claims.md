@@ -5,8 +5,8 @@ observation that would show it false) and a "does not
 establish" line (the over-reading it forbids), per the
 program's claims discipline. The same set, normalized into
 `aee-claims.json` without substantive change, is the claims
-bundle of record for this package (ledger intake deferred,
-D-098-3). The design every claim binds was frozen before any
+bundle of record for this package, intaken into the
+canonical ledger at adoption (D-098-3). The design every claim binds was frozen before any
 test inscription was revealed to any scoring path
 (`records/freeze-v1-2026-11-21.md`).
 

@@ -25,15 +25,21 @@
   item 2, are the adoption act of record, filed in
   `records/adoption-and-registration-2026-11-21.md`.
   Acceptance: **record**.
-- [ ] **T004 — Ledger intake (deferred, D-098-3).** The
-  C098-1..C098-8 bundle (`aee-claims.json`) intaken into the
-  canonical ledger through the bundle-import route by the
-  coordinator, re-applied on the latest main alongside the
-  other audit-response packages; census pins the intake moves
-  updated in the same act. Acceptance: **test** (the ledger
-  gate passes on the landed tree after intake). Blocked in
-  this round by the shared-file serialization of D-098-3,
-  not by the bundle, which is complete and filed here.
+- [x] **T004 — Ledger intake and full registration.** The
+  C098-1..C098-8 bundle intaken into the canonical ledger
+  through `tools/ledger/import_bundle.py` (8 appended, 0
+  already canonical; ledger 1,040 to 1,048 lines, claims
+  1,009 to 1,017); the taxonomy entry added (Anchors &
+  readings / Validation batteries for the SA-lineage
+  anchors); the settling chain refreshed in the standing
+  order (verify-canonicals 6/6; the T405 pair re-executed,
+  result blocks byte-equal; the comparison re-filed; sets
+  re-materialized unchanged; the canonical pin refreshed as
+  re_derivations[14]; the superseded generation departed
+  with its accounting); the generated layers regenerated;
+  census pins updated from the regenerated actuals.
+  Acceptance: **test** (the ledger gate and the program-map
+  conformance checks pass on the landed tree).
 
 ## Stage 1 — Step 0 (before anything is scored)
 

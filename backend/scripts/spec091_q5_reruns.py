@@ -9,7 +9,8 @@ Exit code: 0 if every executable check ran; 3 if any executable check
 failed to run. Non-executable-as-specified items are recorded, not
 counted as failures of execution.
 """
-import json, sys
+import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -115,7 +116,8 @@ t2["M089"] = {"filed_basis_excerpt": b89[:400],
 print("PAYLOAD VERDICT T2 M089: exit=0 filed upgrade counts internally inconsistent (duplicated, differing); anchors deleted regardless")
 
 # M347: raw contexts from the anchor record basis.
-import csv, io
+import csv
+import io
 rows = list(csv.DictReader(io.StringIO((ROOT / "research/indus/anchor_table.csv").read_text("utf-8"))))
 by = {r["Sign"]: r for r in rows}
 t2["M347"] = {"filed_basis": by["M347"]["Basis"],

@@ -101,7 +101,7 @@
 "M168","inci","MEDIUM","","Phase-110","Phase-110 targeted SA: modal='inci', consistency=0.90, 10 seeds, 130 anchors pinned. DEDR : . freq=6."
 "M332","intu","MEDIUM","","Phase-108","Phase-106 name SA sprint: SA modal='intu', consistency=0.50, PD-valid. DEDR : . Freq=6."
 "M183","vēḷ","LOW","","","Round 4: MEDIAL position (freq=5), distributional assignment"
-"M222","kur","MEDIUM","","Phase-87 DEDR_REBUS_EXTENDED",""
+"M222","min","MEDIUM","","anchor_staging_archive:compound_semantic_coherence","Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb). Register correction 2026-11-21: the earlier Phase-87 reading kur for this sign is superseded in the canonical register; this public table is corrected to the register value."
 "M365","vāṉ","LOW","","","Round 4: MEDIAL position (freq=5), distributional assignment"
 "M412","cūḷ","LOW","","","Round 4: MEDIAL position (freq=5), distributional assignment"
 "M151","viḷ","LOW","","","Round 4: MEDIAL position (freq=5), distributional assignment"

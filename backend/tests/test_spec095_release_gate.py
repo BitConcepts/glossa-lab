@@ -12,11 +12,13 @@ validation, contamination subprocess) are replaced by stand-ins in
 the composition tests — their own correctness is covered by their
 own gates and suites. The corpus-identity, anchor-regression, and
 public-claims components run for real here, including against the
-live tree: the tree's anchor-model README still carries the RT-03
-stale presentation at Stage 4 (its banner is owner-gated
-micro-task MT-095-1), so the real-tree public-claims component
-must FAIL. When MT-095-1 lands, that test's expectation changes
-with it.
+live tree: the tree's anchor-model README carried the RT-03
+stale presentation at Stage 4, so the real-tree public-claims
+component had to FAIL while that stood. The supersession
+banner landed on 2026-11-20 under the owner's delegation
+(the RT-03 banner item of the delegated-decisions package),
+so that test's expectation changed with it, as this file
+recorded it would: the component must now PASS.
 """
 
 from __future__ import annotations
@@ -158,7 +160,7 @@ def test_real_tree_anchor_and_corpus_components_pass():
     assert "holdat_downloads_layer" in corpus.detail
 
 
-def test_real_tree_readme_fails_public_claims_rt03_outstanding():
+def test_real_tree_readme_passes_public_claims_rt03_banner_landed():
     result = rg.check_public_claims(ROOT)
-    assert result.status == rg.FAIL
-    assert "indus-anchor-model/README.md" in result.detail
+    assert result.status == rg.PASS, result.detail
+    assert "indus-anchor-model/README.md" not in result.detail or "free of" in result.detail

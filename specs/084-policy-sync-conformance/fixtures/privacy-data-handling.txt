@@ -1,7 +1,12 @@
 # FIXTURE — approved text under Spec 084 (POLICY-SYNC). Do not edit
 # without a recorded owner-approval act on the actual text
 # (FR-084-08); an unapproved fixture edit is itself a finding.
-# Approval: the owner approved the privacy / data-handling
+# Amendment 2026-11-20: Version 1.1 was approved by the owner
+# on 2026-11-20 — the owner delegated the decisions waiting on
+# him that day ("do to your best recommendations") and approved
+# git work in the tower-compute clones the same day. The
+# amendment corrects section 2 only, per section 7.
+# Original approval: the owner approved the privacy / data-handling
 # statement (draft of 2026-10-31, inventory gap A4) on 2026-11-05
 # and directed that its five [UNVERIFIED] items be closed as
 # recorded here. This fixture is that approval act's execution
@@ -98,10 +103,19 @@ search services, or an email account for notifications. Those keys
 are stored in a file named `.keys.json` inside the data folder,
 separate from the database. Two honest details:
 
-- The file is **not encrypted**. It is protected by the same
-  restricted file permissions as the token file, and by your
-  operating-system account — anyone who can read your files as you
-  can read this file.
+- The credential values in that file are **encrypted at rest**.
+  Each credential is encrypted (AES-256-GCM) before it is written,
+  under a separate encryption key that is not kept in the data
+  folder: it is held in its own file beside the data folder.
+  A copy of the data folder on its own, or of `.keys.json` on
+  its own, therefore does not reveal any stored credential.
+  The encryption does not protect against someone who can also
+  read that separate key file, or who controls your computer or
+  your operating-system account while the program is running,
+  because the program itself must be able to decrypt the keys
+  to use them. Settings in the same file that are not credentials
+  (such as host names, ports, and sender addresses) are not
+  encrypted and are stored in plain text.
 - The program never shows a stored key back. Its settings screens
   report only whether a key is set, never the key itself.
 
@@ -360,9 +374,12 @@ system serves is checked against the approved version
 automatically, so the served words and the approved words cannot
 quietly drift apart.
 
-*Version: 1.0 — approved by the owner on 2026-11-05, effective
-from that date. This is the first approved version; the version
-history begins here.*
+*Version: 1.1 — approved by the owner on 2026-11-20, effective
+from that date. Version 1.0 was approved by the owner on
+2026-11-05. Version 1.1 corrects section 2: credential values
+in the settings store have been encrypted at rest since
+2026-11-14, and section 2 now states that fact and what the
+encryption does and does not protect against.*
 
 ## 8. Questions
 

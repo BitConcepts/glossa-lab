@@ -1,0 +1,71 @@
+{
+ "bar": {
+  "balanced_accuracy": 0.85,
+  "kappa": 0.8
+ },
+ "c093_1_standing": "INDEPENDENT IN PART",
+ "fallen_fields": [],
+ "fields": {
+  "artifact type": {
+   "forcing_counts": "3,085 sequence-bearing records carrying exactly 1 distinct value ('seal'); the join concurs ('SEAL:S', 179 of 179)",
+   "outcome": "NOT ADMINISTERED",
+   "source": "freeze v2 adjudication (unchanged; carries freeze v1 for these fields)"
+  },
+  "find-context": {
+   "adjudged_total": 125,
+   "administration_run": "study-20261121T011046Z-c0c843",
+   "balanced_accuracy_mean": 0.18459224598930482,
+   "control_kappa_mean_max": 0.18689521136910844,
+   "control_kappa_mean_mean": -9.983533205029439e-05,
+   "control_kappa_mean_p99": 0.09272583472265365,
+   "controls_run": "study-20261121T011057Z-af6d5d",
+   "controls_valid": true,
+   "kappa_mean": -0.04656832673386198,
+   "n_at_or_above_ceiling": 15,
+   "n_folds": 5,
+   "n_permutations": 2000,
+   "n_repeats": 10,
+   "outcome": "NOT RECOVERED"
+  },
+  "holding/provenance": {
+   "forcing_counts": "sequence and holding copresence in the pinned snapshot: 0 records; the join pairs carry no holding on either side",
+   "outcome": "NOT ADMINISTERED",
+   "source": "freeze v2 adjudication (unchanged; carries freeze v1 for these fields)"
+  },
+  "material class": {
+   "forcing_counts": "adjudged classes 1 (Steatite 176); Clay 1 and Faience 1 under the class floor; 1 empty of 179 joined pairs",
+   "outcome": "NOT ADMINISTERED",
+   "source": "freeze v2 adjudication (unchanged; carries freeze v1 for these fields)"
+  },
+  "site": {
+   "accuracy": 0.8767605633802817,
+   "administration_run": "study-20261119T190159Z-e493a7",
+   "balanced_accuracy": 0.5091754195339853,
+   "control_kappa_p99": 0.08512299882858258,
+   "controls_run": "study-20261119T190237Z-02e03b",
+   "controls_valid": true,
+   "held_out_n": 284,
+   "kappa": 0.02967590784849668,
+   "outcome": "NOT RECOVERED",
+   "source": "freeze v2 adjudication (unchanged; carries freeze v1 for these fields)"
+  }
+ },
+ "freeze": "v3",
+ "not_administered_or_not_yet_fields": [
+  "material class",
+  "artifact type",
+  "holding/provenance"
+ ],
+ "not_recovered_fields": [
+  "site",
+  "find-context"
+ ],
+ "recovered_fields": [],
+ "spec": "093",
+ "stage": "2",
+ "surviving_fields": [
+  "site",
+  "find-context"
+ ],
+ "task": "T202-successor-v3"
+}

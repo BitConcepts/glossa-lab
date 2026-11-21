@@ -1,0 +1,309 @@
+{
+ "record": "Q5 item 5 — motif and numerical evidence tables with replication (Round 2, 2026-11-21)",
+ "venue": "tower-compute, fresh clone ~/glossa-work/r2-motif-a333",
+ "population": {
+  "n_seals": 1670,
+  "source_files": [
+   "outputs/phase100_full_corpus.json",
+   "outputs/phase114_full_seal_translations.json"
+  ],
+  "note": "Both tracked files are independent generations over the same 1,670-seal Holdat-derived population. The underlying Holdat CSV (corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv, with the iconography column every motif script reads) is gitignored and ABSENT from the repository."
+ },
+ "motif_tables": {
+  "M006": {
+   "reading": "puli",
+   "filed_motif": "tiger",
+   "filed_basis": "Exclusive to tiger seals (lift > 5.0)",
+   "sign_present_total_seals": 15,
+   "sign_tokens": 15,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M013": {
+   "reading": "nakaram",
+   "filed_motif": "gharial",
+   "filed_basis": "Exclusive to gharial seals (lift > 5.0)",
+   "sign_present_total_seals": 23,
+   "sign_tokens": 23,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M016": {
+   "reading": "kaḷiṟu",
+   "filed_motif": "elephant",
+   "filed_basis": "Exclusive to elephant seals (lift > 5.0)",
+   "sign_present_total_seals": 23,
+   "sign_tokens": 23,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M039": {
+   "reading": "āṉai",
+   "filed_motif": "elephant",
+   "filed_basis": "Exclusive to elephant seals (lift > 5.0)",
+   "sign_present_total_seals": 18,
+   "sign_tokens": 18,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M045": {
+   "reading": "yānai",
+   "filed_motif": "elephant",
+   "filed_basis": "Exclusive to elephant seals (lift > 5.0)",
+   "sign_present_total_seals": 24,
+   "sign_tokens": 24,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M057": {
+   "reading": "māṭu",
+   "filed_motif": "zebu",
+   "filed_basis": "Exclusive to zebu seals (lift > 5.0)",
+   "sign_present_total_seals": 18,
+   "sign_tokens": 18,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M060": {
+   "reading": "kāṇṭāmirukam",
+   "filed_motif": "rhinoceros",
+   "filed_basis": "Exclusive to rhinoceros seals (lift > 5.0)",
+   "sign_present_total_seals": 20,
+   "sign_tokens": 20,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M062": {
+   "reading": "erutu",
+   "filed_motif": "zebu",
+   "filed_basis": "Exclusive to zebu seals (lift > 5.0)",
+   "sign_present_total_seals": 28,
+   "sign_tokens": 28,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M063": {
+   "reading": "mutalai",
+   "filed_motif": "gharial",
+   "filed_basis": "Corrected 2026-05-11: 3 of 18 gharial-motif seals, lift 4.35, threshold 5.0; also filed 4 unicorn, 3 zebu",
+   "sign_present_total_seals": 18,
+   "sign_tokens": 18,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M067": {
+   "reading": "kōṭṭāṉ",
+   "filed_motif": "rhinoceros",
+   "filed_basis": "Exclusive to rhinoceros seals (lift > 5.0)",
+   "sign_present_total_seals": 15,
+   "sign_tokens": 15,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M068": {
+   "reading": "maṟi",
+   "filed_motif": "rhinoceros",
+   "filed_basis": "Exclusive to rhinoceros seals (lift > 5.0)",
+   "sign_present_total_seals": 13,
+   "sign_tokens": 13,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M073": {
+   "reading": "kōṉ",
+   "filed_motif": "zebu",
+   "filed_basis": "Exclusive to zebu seals (lift > 5.0)",
+   "sign_present_total_seals": 25,
+   "sign_tokens": 25,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  },
+  "M080": {
+   "reading": "vēṅkai",
+   "filed_motif": "tiger",
+   "filed_basis": "Exclusive to tiger seals (lift > 5.0)",
+   "sign_present_total_seals": 19,
+   "sign_tokens": 19,
+   "contingency_table": null,
+   "verdict": "NOT REPRODUCIBLE FROM THE RECORDS",
+   "missing": "Per-seal iconography/motif labels joined to per-seal sign sequences over the seal population. No tracked repo file carries that join: phase100/phase114 carry signs+site only (object_type is literal ? , no period field); the mayig-CISI layer (179 inscriptions) is unicorn-only in description and carries P-numbers; the Phase-134/135 pilot datasets carry adjudicated motif codes for 200 objects but no sign sequences; the Holdat CSV with the iconography column is gitignored and absent.",
+   "replication_sign_marginal": "EXACT AGREEMENT between Path A and Path B"
+  }
+ },
+ "numerical_tables": {
+  "M012": {
+   "seals_with_sign": 141,
+   "tokens": 143,
+   "sites": {
+    "Harappa": 45,
+    "Mohenjo-daro": 55,
+    "Banawali": 4,
+    "Dholavira": 4,
+    "Kalibangan": 13,
+    "Lothal": 6,
+    "Chanhu-daro": 5,
+    "Surkotada": 7,
+    "Rakhigarhi": 2
+   },
+   "inscription_length_distribution": {
+    "2": 16,
+    "3": 27,
+    "4": 35,
+    "5": 31,
+    "6": 17,
+    "7": 12,
+    "8": 3
+   },
+   "formula_distribution": {
+    "UNCERTAIN": 23,
+    "OWNERSHIP_FORMULA": 29,
+    "TITLE_ONLY": 12,
+    "PLACE_FORMULA": 14,
+    "TITLE_FORMULA_SIMPLE": 24,
+    "SUFFIX_ONLY": 36,
+    "TITLE_FORMULA_ANIMAL": 2,
+    "NUMERAL_FORMULA": 1
+   },
+   "first_position_fraction": 0.2057,
+   "last_position_fraction": 0.4326,
+   "seals_with_sign_repeated": 2,
+   "max_repeats_in_one_seal": 2,
+   "replication": "EXACT AGREEMENT between Path A and Path B on seals, tokens, sites, length distribution, positions, repeats"
+  },
+  "M059": {
+   "seals_with_sign": 210,
+   "tokens": 222,
+   "sites": {
+    "Harappa": 61,
+    "Mohenjo-daro": 79,
+    "Dholavira": 16,
+    "Lothal": 16,
+    "Rakhigarhi": 5,
+    "Banawali": 9,
+    "Kalibangan": 14,
+    "Chanhu-daro": 5,
+    "Surkotada": 5
+   },
+   "inscription_length_distribution": {
+    "2": 18,
+    "3": 34,
+    "4": 55,
+    "5": 49,
+    "6": 22,
+    "7": 20,
+    "8": 12
+   },
+   "formula_distribution": {
+    "TITLE_ONLY": 42,
+    "OWNERSHIP_FORMULA": 56,
+    "TITLE_FORMULA_SIMPLE": 86,
+    "TITLE_FORMULA_ANIMAL": 16,
+    "PLACE_FORMULA": 9,
+    "NUMERAL_FORMULA": 1
+   },
+   "first_position_fraction": 0.2048,
+   "last_position_fraction": 0.3571,
+   "seals_with_sign_repeated": 12,
+   "max_repeats_in_one_seal": 2,
+   "replication": "EXACT AGREEMENT between Path A and Path B on seals, tokens, sites, length distribution, positions, repeats"
+  },
+  "M391": {
+   "seals_with_sign": 187,
+   "tokens": 193,
+   "sites": {
+    "Harappa": 50,
+    "Mohenjo-daro": 72,
+    "Chanhu-daro": 10,
+    "Lothal": 14,
+    "Dholavira": 15,
+    "Banawali": 3,
+    "Surkotada": 11,
+    "Kalibangan": 10,
+    "Rakhigarhi": 2
+   },
+   "inscription_length_distribution": {
+    "2": 9,
+    "3": 33,
+    "4": 50,
+    "5": 36,
+    "6": 26,
+    "7": 23,
+    "8": 10
+   },
+   "formula_distribution": {
+    "TITLE_FORMULA_SIMPLE": 46,
+    "OWNERSHIP_FORMULA": 36,
+    "PLACE_FORMULA": 25,
+    "SUFFIX_ONLY": 74,
+    "TITLE_FORMULA_ANIMAL": 4,
+    "NUMERAL_FORMULA": 2
+   },
+   "first_position_fraction": 0.1176,
+   "last_position_fraction": 0.3209,
+   "seals_with_sign_repeated": 6,
+   "max_repeats_in_one_seal": 2,
+   "replication": "EXACT AGREEMENT between Path A and Path B on seals, tokens, sites, length distribution, positions, repeats"
+  }
+ },
+ "replication": {
+  "paths": "Path A: r2-motif-path-a-phase100.py over outputs/phase100_full_corpus.json (exit 0). Path B: r2-motif-path-b-phase114-mayig.py over outputs/phase114_full_seal_translations.json (exit 0 after one fixed None-guard rerun; first run exit 1 on rows with null text_code in the mayig-mapping leg only).",
+  "outcome": "EXACT AGREEMENT on every computable count: seals-with-sign and token counts for all 16 signs, per-site counts, and all numerical distributions. The mayig P-to-M mapping leg returned no mapping for M012/M059/M391 (only 27 distinct canonical grapheme ids are populated in indus_open.jsonl) and is recorded as a failed third leg, not used.",
+  "motif_cells": "No replication is possible for the motif cells themselves: there is no motif-labelled record in the repo to count, by either path."
+ },
+ "population_controls": {
+  "inscription_length_distribution_all": {
+   "2": 269,
+   "3": 330,
+   "4": 415,
+   "5": 330,
+   "6": 164,
+   "7": 116,
+   "8": 46
+  },
+  "formula_distribution_all": {
+   "TITLE_FORMULA_SIMPLE": 294,
+   "UNCERTAIN": 218,
+   "OWNERSHIP_FORMULA": 350,
+   "TITLE_ONLY": 103,
+   "SUFFIX_ONLY": 477,
+   "PLACE_FORMULA": 182,
+   "TITLE_FORMULA_ANIMAL": 32,
+   "NUMERAL_FORMULA": 14
+  },
+  "sites_all": {
+   "Harappa": 492,
+   "Dholavira": 106,
+   "Mohenjo-daro": 606,
+   "Lothal": 124,
+   "Chanhu-daro": 78,
+   "Banawali": 60,
+   "Surkotada": 61,
+   "Rakhigarhi": 33,
+   "Kalibangan": 110
+  }
+ }
+}

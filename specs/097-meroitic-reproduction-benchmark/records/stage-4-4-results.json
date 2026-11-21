@@ -1,0 +1,222 @@
+{
+ "candidates": [
+  {
+   "form": "soreyi",
+   "candidate_reading": "cult or offering term (theonym-adjacent)",
+   "per_stratum": {
+    "royal_temple": {
+     "held_texts": 10,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "graffito": {
+     "held_texts": 2,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "funerary": {
+     "held_texts": 16,
+     "occurrences": 10,
+     "texts_with_form": 10
+    },
+    "document": {
+     "held_texts": 5,
+     "occurrences": 0,
+     "texts_with_form": 0
+    }
+   },
+   "heldout_funerary_share": 1.0,
+   "predicted_range": [
+    0.75,
+    1.0
+   ],
+   "heldout_result": "PASS",
+   "score": "PARTIALLY SUPPORTED (held-out leg passed; seal unverifiable by construction - see freeze v2 s.6)"
+  },
+  {
+   "form": "asoreyi",
+   "candidate_reading": "cult or offering term (theonym-adjacent)",
+   "per_stratum": {
+    "royal_temple": {
+     "held_texts": 10,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "graffito": {
+     "held_texts": 2,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "funerary": {
+     "held_texts": 16,
+     "occurrences": 2,
+     "texts_with_form": 2
+    },
+    "document": {
+     "held_texts": 5,
+     "occurrences": 0,
+     "texts_with_form": 0
+    }
+   },
+   "heldout_funerary_share": 1.0,
+   "predicted_range": [
+    0.75,
+    1.0
+   ],
+   "heldout_result": "FAIL",
+   "score": "UNSUPPORTED on held-out"
+  },
+  {
+   "form": "xolkete",
+   "candidate_reading": "closing evaluative term of the funerary formula",
+   "per_stratum": {
+    "royal_temple": {
+     "held_texts": 10,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "graffito": {
+     "held_texts": 2,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "funerary": {
+     "held_texts": 16,
+     "occurrences": 1,
+     "texts_with_form": 1
+    },
+    "document": {
+     "held_texts": 5,
+     "occurrences": 0,
+     "texts_with_form": 0
+    }
+   },
+   "heldout_funerary_share": 1.0,
+   "predicted_range": [
+    0.75,
+    1.0
+   ],
+   "heldout_result": "FAIL",
+   "score": "UNSUPPORTED on held-out"
+  },
+  {
+   "form": "pxolkete",
+   "candidate_reading": "cult or offering term (theonym-adjacent)",
+   "per_stratum": {
+    "royal_temple": {
+     "held_texts": 10,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "graffito": {
+     "held_texts": 2,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "funerary": {
+     "held_texts": 16,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "document": {
+     "held_texts": 5,
+     "occurrences": 0,
+     "texts_with_form": 0
+    }
+   },
+   "heldout_funerary_share": null,
+   "predicted_range": [
+    0.75,
+    1.0
+   ],
+   "heldout_result": "FAIL",
+   "score": "UNSUPPORTED on held-out"
+  },
+  {
+   "form": "xolkte",
+   "candidate_reading": "closing evaluative term of the funerary formula",
+   "per_stratum": {
+    "royal_temple": {
+     "held_texts": 10,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "graffito": {
+     "held_texts": 2,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "funerary": {
+     "held_texts": 16,
+     "occurrences": 2,
+     "texts_with_form": 1
+    },
+    "document": {
+     "held_texts": 5,
+     "occurrences": 0,
+     "texts_with_form": 0
+    }
+   },
+   "heldout_funerary_share": 1.0,
+   "predicted_range": [
+    0.75,
+    1.0
+   ],
+   "heldout_result": "FAIL",
+   "score": "UNSUPPORTED on held-out"
+  },
+  {
+   "form": "wisi",
+   "candidate_reading": "invocation element of the funerary formula",
+   "per_stratum": {
+    "royal_temple": {
+     "held_texts": 10,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "graffito": {
+     "held_texts": 2,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "funerary": {
+     "held_texts": 16,
+     "occurrences": 0,
+     "texts_with_form": 0
+    },
+    "document": {
+     "held_texts": 5,
+     "occurrences": 0,
+     "texts_with_form": 0
+    }
+   },
+   "heldout_funerary_share": null,
+   "predicted_range": [
+    0.75,
+    1.0
+   ],
+   "heldout_result": "FAIL",
+   "score": "UNSUPPORTED on held-out"
+  }
+ ],
+ "anchor_controls_heldout": {
+  "royal_temple": {
+   "qore": 1
+  },
+  "graffito": {},
+  "funerary": {
+   "qore": 2,
+   "kdi": 1,
+   "ato": 11,
+   "ste": 1,
+   "mk": 1
+  },
+  "document": {}
+ },
+ "heldout_texts_by_stratum": {
+  "royal_temple": 10,
+  "graffito": 2,
+  "funerary": 16,
+  "document": 5
+ }
+}

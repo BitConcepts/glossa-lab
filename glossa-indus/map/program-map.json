@@ -4,30 +4,30 @@
    "by_class": {
     "closed_other": 1,
     "negative": 6,
-    "open": 1000,
+    "open": 1008,
     "positive": 2
    },
    "by_population": {
-    "bundle": 986,
+    "bundle": 994,
     "extracted": 23
    },
-   "total": 1009
+   "total": 1017
   },
   "domains": {
    "Anchors & readings": {
-    "claims": 0,
+    "claims": 8,
     "claims_by_class": {
      "closed_other": 0,
      "negative": 0,
-     "open": 0,
+     "open": 8,
      "positive": 0
     },
     "restricted_studies": 0,
-    "studies": 13,
+    "studies": 14,
     "studies_by_class": {
      "closed_other": 0,
      "negative": 0,
-     "open": 0,
+     "open": 1,
      "positive": 0,
      "unjudged": 13
     }
@@ -117,8 +117,8 @@
     "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
     "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001"
    ],
-   "present": 1000,
-   "total": 1009
+   "present": 1008,
+   "total": 1017
   },
   "judgment_call_studies": [],
   "multi_spec_claims": [
@@ -171,12 +171,12 @@
    "by_class": {
     "closed_other": 0,
     "negative": 0,
-    "open": 69,
+    "open": 70,
     "positive": 0,
     "unjudged": 28
    },
    "restricted": 1,
-   "total": 98
+   "total": 99
   },
   "unjudged_studies": [
    "001-glossa-lab-baseline",
@@ -14018,6 +14018,118 @@
    },
    {
     "class": "open",
+    "document": null,
+    "domain": "Anchors & readings",
+    "falsifier_present": true,
+    "id": "098-identifiability-over-the-65/C098-1",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "098-identifiability-over-the-65",
+    "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Anchors & readings",
+    "falsifier_present": true,
+    "id": "098-identifiability-over-the-65/C098-2",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "098-identifiability-over-the-65",
+    "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Anchors & readings",
+    "falsifier_present": true,
+    "id": "098-identifiability-over-the-65/C098-3",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "098-identifiability-over-the-65",
+    "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Anchors & readings",
+    "falsifier_present": true,
+    "id": "098-identifiability-over-the-65/C098-4",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "098-identifiability-over-the-65",
+    "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Anchors & readings",
+    "falsifier_present": true,
+    "id": "098-identifiability-over-the-65/C098-5",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "098-identifiability-over-the-65",
+    "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Anchors & readings",
+    "falsifier_present": true,
+    "id": "098-identifiability-over-the-65/C098-6",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "098-identifiability-over-the-65",
+    "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Anchors & readings",
+    "falsifier_present": true,
+    "id": "098-identifiability-over-the-65/C098-7",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "098-identifiability-over-the-65",
+    "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+   },
+   {
+    "class": "open",
+    "document": null,
+    "domain": "Anchors & readings",
+    "falsifier_present": true,
+    "id": "098-identifiability-over-the-65/C098-8",
+    "kind": "claim",
+    "population": "bundle",
+    "stage": "created",
+    "standing": "Ledger standing: status draft · stage created · falsifier present",
+    "status": "draft",
+    "study": "098-identifiability-over-the-65",
+    "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
+   },
+   {
+    "class": "open",
     "document": "ancient_writing_and_modern_technologies_51831ac9",
     "domain": "Claim families by study line",
     "falsifier_present": false,
@@ -15900,14 +16012,30 @@
     },
     "restricted": false,
     "subdomain": "Signary & corpus models"
+   },
+   {
+    "class": "open",
+    "domain": "Anchors & readings",
+    "id": "098-identifiability-over-the-65",
+    "judgment_call": false,
+    "kind": "study",
+    "member_counts": {
+     "closed_other": 0,
+     "negative": 0,
+     "open": 8,
+     "positive": 0,
+     "total": 8
+    },
+    "restricted": false,
+    "subdomain": "Validation batteries for the SA-lineage anchors, Phases 111–119"
    }
   ]
  },
  "stamp": {
-  "ledger_latest_entry_date": "2026-11-20",
-  "ledger_lines": 1040,
+  "ledger_latest_entry_date": "2026-11-21",
+  "ledger_lines": 1048,
   "ledger_schema": "ledger-schema v1",
-  "ledger_sha256": "106cda6e404f77fbb95fadc7e9e215b6dda24cdca137ef995d5dbea07063014f",
+  "ledger_sha256": "8a521d407a5e0895c024cf3eca92050b3967d65e63d0bd8836f56d8421c47875",
   "program_map_defs": "program-map-defs v1",
   "program_map_taxonomy": "program-map-taxonomy v1"
  },

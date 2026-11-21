@@ -3,10 +3,10 @@
  "generated_from": "glossa-indus/ledger/claims.jsonl through glossa-indus/matrix/matrix.json and the settling records of record",
  "generated_by": "tools/ledger/generate_map.py (backend/glossa_lab/map_generate.py)",
  "header": {
-  "claims_total": 1009,
+  "claims_total": 1017,
   "claims_by_status": {
    "contradicted": 4,
-   "draft": 985,
+   "draft": 993,
    "partially_falsified": 1,
    "partially_supported": 3,
    "strongly_supported": 2,
@@ -55,18 +55,18 @@
    "reason": "the anchors register records no review dates for the pending validations, so they appear as a count, not as dated items (decision Q4)"
   },
   "as_of": {
-   "ledger_sha256": "106cda6e404f77fbb95fadc7e9e215b6dda24cdca137ef995d5dbea07063014f",
-   "ledger_lines": 1040,
-   "ledger_date": "2026-11-20",
+   "ledger_sha256": "8a521d407a5e0895c024cf3eca92050b3967d65e63d0bd8836f56d8421c47875",
+   "ledger_lines": 1048,
+   "ledger_date": "2026-11-21",
    "ledger_schema": "ledger-schema v1",
    "matrix_defs": "matrix-defs v1",
    "map_defs": "map-defs v1",
    "settle_semantics": "glossa-settle-1",
-   "matrix_sha256": "7752391ab3e85a5f36c97a7d6cb95fe1999f1cd6fa8d1bee1d06a4a14eb4fdca",
+   "matrix_sha256": "22bcb79215604c2f03a2fb33b722a24f871f7e486a7293b469cbc0f89c061826",
    "anchors_register_sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
-   "assignment_sets_sha256": "d96db65afb593175818a2659442026b3f284ea7a0a977ff9fa3d6830af7d9c6d",
-   "comparison_sha256": "c369ccd75614e11d707a9e4352458c019b2e27ef844d0c00d84bbfa0084dd388",
-   "settling_canonical_sha256": "3f5601d662ae3e63f398f43608201d9a32396a9bafc8123d810e78b8dccdfbb0"
+   "assignment_sets_sha256": "3d71c9ac4ef5240dfee79720f1b07b9d342f14f2cb49f24f1ea87ea79264d3f7",
+   "comparison_sha256": "b23c6d1856033fdf25319ad8a5919d4a713e4fa5c8e6aeecc487b6d6f7166613",
+   "settling_canonical_sha256": "073d888fa145729bf3b6216ff9a84fc26cb6fff69c91ed797b06442cb1a0b970"
   }
  },
  "elements": [
@@ -8140,6 +8140,70 @@
    "statement": "Corpus completion is exhaustive over lawful sources and names every gap: the campaign's corpus stage consolidates everything lawfully held into one canonical build with a per-text provenance register, acquires every further openly licensed machine-readable Meroitic source (pinned and license-recorded as step 0 was), and names every remaining gap against the REM totals (some 1,300 published texts; roughly 900 further known texts unpublished in the REM); no purchase and no outreach is made to close a gap.",
    "status": "draft",
    "stage": null,
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "098-identifiability-over-the-65/C098-4",
+   "statement": "Success must be value-relevant: a sign can reach a pass outcome only on an accepted prediction sheet whose differing observables are value-relevant (neighbour identity or class, referent-distinguishing context, or a collocation on which phonetic and logogram rivals differ); success on language-neutral position or frequency alone, including beating the structural-only rival R-D, never suffices, and a sign with no accepted sheet is NOT IDENTIFIABLE by construction. This does not establish: that a borne-out value-relevant prediction proves the value; it is the frozen bar for discrimination, not a decipherment criterion.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "098-identifiability-over-the-65/C098-7",
+   "statement": "No outcome of this study moves any other program record: no per-sign outcome, margin, or family count produced under this spec changes any reading's standing, anchor, or class (including the audit's E/I relabels, which are separate acts); identifiability outcomes and support dispositions are kept in their separate vocabularies per Standards Part III rule 5. This does not establish: that standings should never change on this evidence; only that this study does not change them.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "098-identifiability-over-the-65/C098-2",
+   "statement": "The population and its values are the frozen annex's, exactly: the study tests the 65 I candidates and, as its secondary arm, the six E readings, with sign identities, allograph handling, candidate values, reading variants, and grammatical assumptions exactly as the population annex and the crosswalk of record state them at the pinned commit; no value is resolved, split, respelled, or re-glossed after the freeze. This does not establish: that the annex's values are correct; the annex freezes what is tested, not what is true.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "098-identifiability-over-the-65/C098-5",
+   "statement": "The decision rules are applied as frozen: each sign's outcome is the frozen vocabulary's, under the frozen precedence (UNDECIDABLE AT THIS POWER before NOT IDENTIFIABLE before the pass outcomes), the frozen bars (minimum 5 held-out tokens; penalized margin at least 10 nats; above the permutation null's 99th percentile, B = 999, seed 9801), and the frozen flexibility penalty of 2 nats per free choice, charged to candidates and rivals alike. This does not establish: that the bars are the uniquely right ones; they are the frozen ones, stated in advance so the study cannot be tuned to its results.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "098-identifiability-over-the-65/C098-6",
+   "statement": "The contamination ceiling is honoured: because the candidates were historically derived on the program's full corpus, the in-corpus held-out arm is pseudo-held-out; its pass outcome is DISCRIMINATED ON PSEUDO-HELD-OUT and supports no identification claim beyond the corpus; only a pass on the Stage 1 genuine-holdout subset (material documented as absent from every candidate-generation input) can be reported IDENTIFIABLE ON HELD-OUT; if no such subset exists, that absence is itself recorded. This does not establish: that a pseudo-held-out discrimination is worthless; it is real evidence about predictive fit, capped at what its provenance can carry.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "098-identifiability-over-the-65/C098-8",
+   "statement": "Execution discipline: venue, index, payload verdicts: all execution runs on tower-compute in a fresh clone; every scoring attempt, including failures, appears in the run index; and every reported run verdict is the run's own payload verdict record, never a wrapper or transport state. This does not establish: that a complete index proves the runs were correct; it proves they are all on the record, which is what makes their correctness checkable.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "098-identifiability-over-the-65/C098-3",
+   "statement": "Every scored sign faces the full frozen rival set under matched conditions: each sign's candidate is compared against rivals R-A (matched wrong Dravidian value), R-B (unrelated-family value), R-C (logogram), R-D (structural-only), and the model-level permutation R-E, constructed on development data only under WP8 fairness conditions (matched tuning budget, matched available evidence); Arm E signs additionally face the cross-sign and comparandum-as-value rivals named in the spec. This does not establish: that the rival set is exhaustive of all conceivable alternatives; it is the frozen, named set the audit's serious alternatives requires, and its limits are stated, not hidden.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle"
+  },
+  {
+   "kind": "claim",
+   "id": "098-identifiability-over-the-65/C098-1",
+   "statement": "Nothing is scored before the freeze and the seal: no held-out inscription is revealed to the scoring path, and no scoring-path code runs on development data for this study, before the freeze record is committed and the Stage 1 seal record (held-out count and SHA-256 only) is committed; the held-out list is released to the scoring path exactly once, at scoring, and that release is recorded. This does not establish: that the held-out material is pristine against the candidates' historical derivation; that is C098-6's separate, capped question.",
+   "status": "draft",
+   "stage": "created",
    "population": "bundle"
   },
   {
@@ -27408,6 +27472,94 @@
    ]
   },
   {
+   "from": "spec.md",
+   "to": "098-identifiability-over-the-65/C098-1",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "098-identifiability-over-the-65/C098-1",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "098-identifiability-over-the-65/C098-2",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "098-identifiability-over-the-65/C098-2",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "098-identifiability-over-the-65/C098-3",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "098-identifiability-over-the-65/C098-3",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "098-identifiability-over-the-65/C098-4",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "098-identifiability-over-the-65/C098-4",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "098-identifiability-over-the-65/C098-5",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "098-identifiability-over-the-65/C098-5",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "098-identifiability-over-the-65/C098-6",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "098-identifiability-over-the-65/C098-6",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "098-identifiability-over-the-65/C098-7",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "098-identifiability-over-the-65/C098-7",
+    "spec.md"
+   ]
+  },
+  {
+   "from": "spec.md",
+   "to": "098-identifiability-over-the-65/C098-8",
+   "rel": "supports",
+   "rule": "R2",
+   "column_class": "documents",
+   "citations": [
+    "098-identifiability-over-the-65/C098-8",
+    "spec.md"
+   ]
+  },
+  {
    "from": "055",
    "to": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
    "rel": "opposes",
@@ -32615,6 +32767,46 @@
    "constrains": 0
   },
   "097-meroitic-reproduction-benchmark/C097-7": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "098-identifiability-over-the-65/C098-4": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "098-identifiability-over-the-65/C098-7": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "098-identifiability-over-the-65/C098-2": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "098-identifiability-over-the-65/C098-5": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "098-identifiability-over-the-65/C098-6": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "098-identifiability-over-the-65/C098-8": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "098-identifiability-over-the-65/C098-3": {
+   "supports": 1,
+   "opposes": 0,
+   "constrains": 0
+  },
+  "098-identifiability-over-the-65/C098-1": {
    "supports": 1,
    "opposes": 0,
    "constrains": 0
@@ -38675,6 +38867,54 @@
     "population": "bundle",
     "status": "draft",
     "stage": null
+   },
+   {
+    "id": "098-identifiability-over-the-65/C098-4",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "098-identifiability-over-the-65/C098-7",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "098-identifiability-over-the-65/C098-2",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "098-identifiability-over-the-65/C098-5",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "098-identifiability-over-the-65/C098-6",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "098-identifiability-over-the-65/C098-8",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "098-identifiability-over-the-65/C098-3",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
+   },
+   {
+    "id": "098-identifiability-over-the-65/C098-1",
+    "population": "bundle",
+    "status": "draft",
+    "stage": "created"
    }
   ],
   "columns": [
@@ -57944,6 +58184,94 @@
     ]
    },
    {
+    "row": "098-identifiability-over-the-65/C098-1",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "098-identifiability-over-the-65/C098-1",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "098-identifiability-over-the-65/C098-2",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "098-identifiability-over-the-65/C098-2",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "098-identifiability-over-the-65/C098-3",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "098-identifiability-over-the-65/C098-3",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "098-identifiability-over-the-65/C098-4",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "098-identifiability-over-the-65/C098-4",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "098-identifiability-over-the-65/C098-5",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "098-identifiability-over-the-65/C098-5",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "098-identifiability-over-the-65/C098-6",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "098-identifiability-over-the-65/C098-6",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "098-identifiability-over-the-65/C098-7",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "098-identifiability-over-the-65/C098-7",
+     "spec.md"
+    ]
+   },
+   {
+    "row": "098-identifiability-over-the-65/C098-8",
+    "column": "spec.md",
+    "column_class": "documents",
+    "relation": "supports",
+    "rule": "R2",
+    "citations": [
+     "098-identifiability-over-the-65/C098-8",
+     "spec.md"
+    ]
+   },
+   {
     "row": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
     "column": "055",
     "column_class": "studies",
@@ -58111,8 +58439,8 @@
    }
   ],
   "coverage": {
-   "rows_total": 1009,
-   "rows_with_cells": 995,
+   "rows_total": 1017,
+   "rows_with_cells": 1003,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -58470,30 +58798,30 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1532,
+   "cells_total": 1540,
    "cells_by_relation": {
-    "supports": 1525,
+    "supports": 1533,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1525,
+    "documents": 1533,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
    },
    "falsifier_coverage": {
-    "covered": 1000,
-    "total": 1009,
+    "covered": 1008,
+    "total": 1017,
     "by_population": {
      "extracted": {
       "covered": 14,
       "total": 23
      },
      "bundle": {
-      "covered": 986,
-      "total": 986
+      "covered": 994,
+      "total": 994
      }
     }
    },
@@ -63538,8 +63866,8 @@
    }
   },
   "matrix_coverage": {
-   "rows_total": 1009,
-   "rows_with_cells": 995,
+   "rows_total": 1017,
+   "rows_with_cells": 1003,
    "empty_rows": [
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
     "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -63897,15 +64225,15 @@
     ],
     "corpus_texts": []
    },
-   "cells_total": 1532,
+   "cells_total": 1540,
    "cells_by_relation": {
-    "supports": 1525,
+    "supports": 1533,
     "opposes": 7,
     "constrains": 0
    },
    "cells_by_class": {
     "studies": 7,
-    "documents": 1525,
+    "documents": 1533,
     "research_checks": 0,
     "anchors": 0,
     "corpus_texts": 0
@@ -63974,7 +64302,7 @@
   "claim_population": {
    "by_status": {
     "contradicted": 4,
-    "draft": 985,
+    "draft": 993,
     "partially_falsified": 1,
     "partially_supported": 3,
     "strongly_supported": 2,
@@ -63984,26 +64312,26 @@
    },
    "by_stage": {
     "checked": 3,
-    "created": 969,
+    "created": 977,
     "explained": 8
    },
    "no_stage_recorded": 29,
    "by_population": {
-    "bundle": 986,
+    "bundle": 994,
     "extracted": 23
    }
   },
   "falsifier_census": {
-   "covered": 1000,
-   "total": 1009,
+   "covered": 1008,
+   "total": 1017,
    "by_population": {
     "extracted": {
      "covered": 14,
      "total": 23
     },
     "bundle": {
-     "covered": 986,
-     "total": 986
+     "covered": 994,
+     "total": 994
     }
    },
    "gap_claims": [
@@ -64020,8 +64348,8 @@
   },
   "aee_state_census": {
    "with_state": 0,
-   "without_state": 1009,
-   "total": 1009
+   "without_state": 1017,
+   "total": 1017
   },
   "unresolved": {
    "sign_mentions": [
@@ -65507,7 +65835,7 @@
     "runs": [
      {
       "candidate": "incumbent",
-      "record": "settling-20261120T213231Z-7d96a8",
+      "record": "settling-20261121T110155Z-e5597c",
       "via_signs": [
        "mahadevan:70"
       ],
@@ -65521,7 +65849,7 @@
      },
      {
       "candidate": "full-register",
-      "record": "settling-20261120T213235Z-f9e682",
+      "record": "settling-20261121T110155Z-f28db5",
       "via_signs": [
        "mahadevan:72",
        "mahadevan:64",
@@ -162864,6 +163192,686 @@
     },
     "sign_records": []
    }
+  },
+  "098-identifiability-over-the-65/C098-4": {
+   "id": "098-identifiability-over-the-65/C098-4",
+   "statement": "Success must be value-relevant: a sign can reach a pass outcome only on an accepted prediction sheet whose differing observables are value-relevant (neighbour identity or class, referent-distinguishing context, or a collocation on which phonetic and logogram rivals differ); success on language-neutral position or frequency alone, including beating the structural-only rival R-D, never suffices, and a sign with no accepted sheet is NOT IDENTIFIABLE by construction. This does not establish: that a borne-out value-relevant prediction proves the value; it is the frozen bar for discrimination, not a decipherment criterion.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-21",
+   "falsifier": [
+    "A pass outcome whose prediction sheet's only differing observable is position or frequency; or a scored sign with no prediction sheet in the pre-unsealing record."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C098-4",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "098-identifiability-over-the-65/C098-4",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "098-identifiability-over-the-65/C098-4",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C098-4",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    },
+    "sign_records": []
+   }
+  },
+  "098-identifiability-over-the-65/C098-7": {
+   "id": "098-identifiability-over-the-65/C098-7",
+   "statement": "No outcome of this study moves any other program record: no per-sign outcome, margin, or family count produced under this spec changes any reading's standing, anchor, or class (including the audit's E/I relabels, which are separate acts); identifiability outcomes and support dispositions are kept in their separate vocabularies per Standards Part III rule 5. This does not establish: that standings should never change on this evidence; only that this study does not change them.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-21",
+   "falsifier": [
+    "A standing, anchor, or register entry changed citing this study as its basis without a separate act of record; or a record that converts an outcome here into a support disposition."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C098-7",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "098-identifiability-over-the-65/C098-7",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "098-identifiability-over-the-65/C098-7",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C098-7",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    },
+    "sign_records": []
+   }
+  },
+  "098-identifiability-over-the-65/C098-2": {
+   "id": "098-identifiability-over-the-65/C098-2",
+   "statement": "The population and its values are the frozen annex's, exactly: the study tests the 65 I candidates and, as its secondary arm, the six E readings, with sign identities, allograph handling, candidate values, reading variants, and grammatical assumptions exactly as the population annex and the crosswalk of record state them at the pinned commit; no value is resolved, split, respelled, or re-glossed after the freeze. This does not establish: that the annex's values are correct; the annex freezes what is tested, not what is true.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-21",
+   "falsifier": [
+    "A scored sign absent from the annex; a scored value differing from the annex's recorded value for that sign; or a grapheme-to-sign mapping in the scoring inputs that the frozen crosswalk does not carry."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C098-2",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "098-identifiability-over-the-65/C098-2",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "098-identifiability-over-the-65/C098-2",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C098-2",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    },
+    "sign_records": []
+   }
+  },
+  "098-identifiability-over-the-65/C098-5": {
+   "id": "098-identifiability-over-the-65/C098-5",
+   "statement": "The decision rules are applied as frozen: each sign's outcome is the frozen vocabulary's, under the frozen precedence (UNDECIDABLE AT THIS POWER before NOT IDENTIFIABLE before the pass outcomes), the frozen bars (minimum 5 held-out tokens; penalized margin at least 10 nats; above the permutation null's 99th percentile, B = 999, seed 9801), and the frozen flexibility penalty of 2 nats per free choice, charged to candidates and rivals alike. This does not establish: that the bars are the uniquely right ones; they are the frozen ones, stated in advance so the study cannot be tuned to its results.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-21",
+   "falsifier": [
+    "An outcome record whose per-sign outcome does not follow from its own margins, counts, and null under the stated rules; a bar, seed, or penalty in the outcome record absent from the freeze; or a family-level summary that is not counts of per-sign outcomes."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C098-5",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "098-identifiability-over-the-65/C098-5",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "098-identifiability-over-the-65/C098-5",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C098-5",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    },
+    "sign_records": []
+   }
+  },
+  "098-identifiability-over-the-65/C098-6": {
+   "id": "098-identifiability-over-the-65/C098-6",
+   "statement": "The contamination ceiling is honoured: because the candidates were historically derived on the program's full corpus, the in-corpus held-out arm is pseudo-held-out; its pass outcome is DISCRIMINATED ON PSEUDO-HELD-OUT and supports no identification claim beyond the corpus; only a pass on the Stage 1 genuine-holdout subset (material documented as absent from every candidate-generation input) can be reported IDENTIFIABLE ON HELD-OUT; if no such subset exists, that absence is itself recorded. This does not establish: that a pseudo-held-out discrimination is worthless; it is real evidence about predictive fit, capped at what its provenance can carry.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-21",
+   "falsifier": [
+    "An IDENTIFIABLE ON HELD-OUT outcome scored on in-corpus material; or a Stage 1 record that omits the provenance audit's result."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C098-6",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "098-identifiability-over-the-65/C098-6",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "098-identifiability-over-the-65/C098-6",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C098-6",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    },
+    "sign_records": []
+   }
+  },
+  "098-identifiability-over-the-65/C098-8": {
+   "id": "098-identifiability-over-the-65/C098-8",
+   "statement": "Execution discipline: venue, index, payload verdicts: all execution runs on tower-compute in a fresh clone; every scoring attempt, including failures, appears in the run index; and every reported run verdict is the run's own payload verdict record, never a wrapper or transport state. This does not establish: that a complete index proves the runs were correct; it proves they are all on the record, which is what makes their correctness checkable.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-21",
+   "falsifier": [
+    "A run executed on the coordination VM or the mini-server; a run index with a gap against the frozen settings; or a reported verdict that is a wrapper state rather than the payload's own record."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C098-8",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "098-identifiability-over-the-65/C098-8",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "098-identifiability-over-the-65/C098-8",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C098-8",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    },
+    "sign_records": []
+   }
+  },
+  "098-identifiability-over-the-65/C098-3": {
+   "id": "098-identifiability-over-the-65/C098-3",
+   "statement": "Every scored sign faces the full frozen rival set under matched conditions: each sign's candidate is compared against rivals R-A (matched wrong Dravidian value), R-B (unrelated-family value), R-C (logogram), R-D (structural-only), and the model-level permutation R-E, constructed on development data only under WP8 fairness conditions (matched tuning budget, matched available evidence); Arm E signs additionally face the cross-sign and comparandum-as-value rivals named in the spec. This does not establish: that the rival set is exhaustive of all conceivable alternatives; it is the frozen, named set the audit's serious alternatives requires, and its limits are stated, not hidden.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-21",
+   "falsifier": [
+    "A scored sign whose outcome record lacks any of the five rival scores; a rival constructed using held-out data; or a tuning-budget asymmetry between candidate and rivals in the run record."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C098-3",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "098-identifiability-over-the-65/C098-3",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "098-identifiability-over-the-65/C098-3",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C098-3",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    },
+    "sign_records": []
+   }
+  },
+  "098-identifiability-over-the-65/C098-1": {
+   "id": "098-identifiability-over-the-65/C098-1",
+   "statement": "Nothing is scored before the freeze and the seal: no held-out inscription is revealed to the scoring path, and no scoring-path code runs on development data for this study, before the freeze record is committed and the Stage 1 seal record (held-out count and SHA-256 only) is committed; the held-out list is released to the scoring path exactly once, at scoring, and that release is recorded. This does not establish: that the held-out material is pristine against the candidates' historical derivation; that is C098-6's separate, capped question.",
+   "status": "draft",
+   "stage": "created",
+   "population": "bundle",
+   "author": null,
+   "author_kind": null,
+   "as_of": null,
+   "date": "2026-11-21",
+   "falsifier": [
+    "A scoring output, run-index entry, or development export dated before the seal record; a second release of the held-out list; or a seal hash at scoring time that does not recompute from the released list (which voids the run as SEAL FAILURE)."
+   ],
+   "falsifier_counts": {
+    "present": 1,
+    "evaluable": null
+   },
+   "does_not_establish": null,
+   "aee_state": null,
+   "displayed_score": {
+    "state": "empty"
+   },
+   "sign_refs": [],
+   "sources": [
+    {
+     "claim_id": "C098-1",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    }
+   ],
+   "matrix_row": {
+    "cells": [
+     {
+      "row": "098-identifiability-over-the-65/C098-1",
+      "column": "spec.md",
+      "column_class": "documents",
+      "relation": "supports",
+      "rule": "R2",
+      "citations": [
+       "098-identifiability-over-the-65/C098-1",
+       "spec.md"
+      ]
+     }
+    ],
+    "empty": false
+   },
+   "settling_bearing": null,
+   "annotations": [],
+   "evidence": {
+    "column_summary": {
+     "studies": {
+      "columns": 10,
+      "cells": 0
+     },
+     "documents": {
+      "columns": 316,
+      "cells": 1
+     },
+     "research_checks": {
+      "columns": 31,
+      "cells": 0
+     },
+     "anchors": {
+      "columns": 287,
+      "cells": 0
+     },
+     "corpus_texts": {
+      "columns": 0,
+      "cells": 0
+     }
+    },
+    "source_document": {
+     "claim_id": "C098-1",
+     "document_id": null,
+     "path": "specs/098-identifiability-over-the-65/aee-claims.json",
+     "role": "source_of_record",
+     "sha256": "1624ce6760432f5a73acd2fadd3a4402a47bb0ad77c1e75052a3b6fc430dec16",
+     "spec": "098-identifiability-over-the-65"
+    },
+    "sign_records": []
+   }
   }
  },
  "settling": {
@@ -162871,7 +163879,7 @@
   "semantics": "glossa-settle-1",
   "assignment_sets": {
    "record": "glossa-indus/ledger/assignment-sets.json",
-   "sha256": "d96db65afb593175818a2659442026b3f284ea7a0a977ff9fa3d6830af7d9c6d",
+   "sha256": "3d71c9ac4ef5240dfee79720f1b07b9d342f14f2cb49f24f1ea87ea79264d3f7",
    "register": {
     "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
     "sha256_raw_bytes": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
@@ -162915,15 +163923,15 @@
   },
   "runs": [
    {
-    "record": "settling-20261120T213231Z-7d96a8",
+    "record": "settling-20261121T110155Z-e5597c",
     "scenario": "t405-incumbent-over-full-frame",
     "candidate": "incumbent",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "106cda6e404f77fbb95fadc7e9e215b6dda24cdca137ef995d5dbea07063014f",
-      "lines": 1040
+      "sha256": "8a521d407a5e0895c024cf3eca92050b3967d65e63d0bd8836f56d8421c47875",
+      "lines": 1048
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -162974,15 +163982,15 @@
     }
    },
    {
-    "record": "settling-20261120T213235Z-f9e682",
+    "record": "settling-20261121T110155Z-f28db5",
     "scenario": "t405-full-register-over-full-frame",
     "candidate": "full-register",
     "semantics": "glossa-settle-1",
     "pins": {
      "ledger": {
       "path": "glossa-indus/ledger/claims.jsonl",
-      "sha256": "106cda6e404f77fbb95fadc7e9e215b6dda24cdca137ef995d5dbea07063014f",
-      "lines": 1040
+      "sha256": "8a521d407a5e0895c024cf3eca92050b3967d65e63d0bd8836f56d8421c47875",
+      "lines": 1048
      },
      "anchors_register": {
       "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
@@ -163037,7 +164045,7 @@
   ],
   "comparison": {
    "record": "specs/086-winning-combination-adoption/records/stage-4-dual-run-comparison.json",
-   "sha256": "c369ccd75614e11d707a9e4352458c019b2e27ef844d0c00d84bbfa0084dd388",
+   "sha256": "b23c6d1856033fdf25319ad8a5919d4a713e4fa5c8e6aeecc487b6d6f7166613",
    "result": {
     "claims_compared": [
      {
@@ -163285,7 +164293,7 @@
   },
   "canonicals": {
    "record": "glossa-indus/ledger/settling-canonical.json",
-   "sha256": "3f5601d662ae3e63f398f43608201d9a32396a9bafc8123d810e78b8dccdfbb0",
+   "sha256": "073d888fa145729bf3b6216ff9a84fc26cb6fff69c91ed797b06442cb1a0b970",
    "scenarios": [
     {
      "id": "null-over-subset",
@@ -163620,8 +164628,8 @@
   },
   "reach": {
    "claims_with_sign_refs": 1,
-   "claims_total": 1009,
-   "claims_untouched_by_any_run": 1008,
+   "claims_total": 1017,
+   "claims_untouched_by_any_run": 1016,
    "s_r3": {
     "status": "UNMEASURED",
     "class_table": null,
